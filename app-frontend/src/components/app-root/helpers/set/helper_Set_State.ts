@@ -6,5 +6,4 @@ export const helper_Set_State = payload_AccountDetails => {
   state.account_Email = payload_AccountDetails.email;
   state.isVerified_AccountEmail = payload_AccountDetails.isVerified_Email;
   state.isActive_Session = payload_AccountDetails.isActive_Session;
-  state.isPublisher = payload_AccountDetails.isPublisher;
 };
