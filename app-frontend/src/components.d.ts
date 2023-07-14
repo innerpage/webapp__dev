@@ -69,23 +69,6 @@ export namespace Components {
     }
     interface PGallery {
     }
-    interface PPublication {
-        "description": string;
-        "documents": any;
-        "heading": string;
-        "id_Publication": string;
-        "isSkel": boolean;
-        "sub_Heading": string;
-        "url_Cover": string;
-        "url_Sample": string;
-        "url_Toc": string;
-    }
-    interface PReading {
-        "document": string;
-        "edition": string;
-        "id": string;
-        "title": string;
-    }
     interface PUserControl {
     }
     interface VCatchAll {
@@ -101,23 +84,13 @@ export namespace Components {
     }
     interface VLogin {
     }
-    interface VMyLibrary {
-        "history": RouterHistory;
-    }
     interface VPaymentCancel {
     }
     interface VPaymentHandle {
         "history": RouterHistory;
         "match": MatchResults;
     }
-    interface VReader {
-        "history": RouterHistory;
-        "match": MatchResults;
-    }
     interface VSignup {
-    }
-    interface VStore {
-        "history": RouterHistory;
     }
 }
 declare global {
@@ -217,18 +190,6 @@ declare global {
         prototype: HTMLPGalleryElement;
         new (): HTMLPGalleryElement;
     };
-    interface HTMLPPublicationElement extends Components.PPublication, HTMLStencilElement {
-    }
-    var HTMLPPublicationElement: {
-        prototype: HTMLPPublicationElement;
-        new (): HTMLPPublicationElement;
-    };
-    interface HTMLPReadingElement extends Components.PReading, HTMLStencilElement {
-    }
-    var HTMLPReadingElement: {
-        prototype: HTMLPReadingElement;
-        new (): HTMLPReadingElement;
-    };
     interface HTMLPUserControlElement extends Components.PUserControl, HTMLStencilElement {
     }
     var HTMLPUserControlElement: {
@@ -265,12 +226,6 @@ declare global {
         prototype: HTMLVLoginElement;
         new (): HTMLVLoginElement;
     };
-    interface HTMLVMyLibraryElement extends Components.VMyLibrary, HTMLStencilElement {
-    }
-    var HTMLVMyLibraryElement: {
-        prototype: HTMLVMyLibraryElement;
-        new (): HTMLVMyLibraryElement;
-    };
     interface HTMLVPaymentCancelElement extends Components.VPaymentCancel, HTMLStencilElement {
     }
     var HTMLVPaymentCancelElement: {
@@ -283,23 +238,11 @@ declare global {
         prototype: HTMLVPaymentHandleElement;
         new (): HTMLVPaymentHandleElement;
     };
-    interface HTMLVReaderElement extends Components.VReader, HTMLStencilElement {
-    }
-    var HTMLVReaderElement: {
-        prototype: HTMLVReaderElement;
-        new (): HTMLVReaderElement;
-    };
     interface HTMLVSignupElement extends Components.VSignup, HTMLStencilElement {
     }
     var HTMLVSignupElement: {
         prototype: HTMLVSignupElement;
         new (): HTMLVSignupElement;
-    };
-    interface HTMLVStoreElement extends Components.VStore, HTMLStencilElement {
-    }
-    var HTMLVStoreElement: {
-        prototype: HTMLVStoreElement;
-        new (): HTMLVStoreElement;
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
@@ -318,20 +261,15 @@ declare global {
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
         "p-gallery": HTMLPGalleryElement;
-        "p-publication": HTMLPPublicationElement;
-        "p-reading": HTMLPReadingElement;
         "p-user-control": HTMLPUserControlElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
         "v-forgot-password": HTMLVForgotPasswordElement;
         "v-home": HTMLVHomeElement;
         "v-login": HTMLVLoginElement;
-        "v-my-library": HTMLVMyLibraryElement;
         "v-payment-cancel": HTMLVPaymentCancelElement;
         "v-payment-handle": HTMLVPaymentHandleElement;
-        "v-reader": HTMLVReaderElement;
         "v-signup": HTMLVSignupElement;
-        "v-store": HTMLVStoreElement;
     }
 }
 declare namespace LocalJSX {
@@ -401,23 +339,6 @@ declare namespace LocalJSX {
     }
     interface PGallery {
     }
-    interface PPublication {
-        "description"?: string;
-        "documents"?: any;
-        "heading"?: string;
-        "id_Publication"?: string;
-        "isSkel"?: boolean;
-        "sub_Heading"?: string;
-        "url_Cover"?: string;
-        "url_Sample"?: string;
-        "url_Toc"?: string;
-    }
-    interface PReading {
-        "document"?: string;
-        "edition"?: string;
-        "id"?: string;
-        "title"?: string;
-    }
     interface PUserControl {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
@@ -438,10 +359,6 @@ declare namespace LocalJSX {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
         "onSuccess_Auth"?: (event: CustomEvent<any>) => void;
     }
-    interface VMyLibrary {
-        "history"?: RouterHistory;
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-    }
     interface VPaymentCancel {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
@@ -450,18 +367,9 @@ declare namespace LocalJSX {
         "match"?: MatchResults;
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
-    interface VReader {
-        "history"?: RouterHistory;
-        "match"?: MatchResults;
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-    }
     interface VSignup {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
         "onSuccess_Auth"?: (event: CustomEvent<any>) => void;
-    }
-    interface VStore {
-        "history"?: RouterHistory;
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
@@ -480,20 +388,15 @@ declare namespace LocalJSX {
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
         "p-gallery": PGallery;
-        "p-publication": PPublication;
-        "p-reading": PReading;
         "p-user-control": PUserControl;
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
         "v-forgot-password": VForgotPassword;
         "v-home": VHome;
         "v-login": VLogin;
-        "v-my-library": VMyLibrary;
         "v-payment-cancel": VPaymentCancel;
         "v-payment-handle": VPaymentHandle;
-        "v-reader": VReader;
         "v-signup": VSignup;
-        "v-store": VStore;
     }
 }
 export { LocalJSX as JSX };
@@ -516,20 +419,15 @@ declare module "@stencil/core" {
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
-            "p-publication": LocalJSX.PPublication & JSXBase.HTMLAttributes<HTMLPPublicationElement>;
-            "p-reading": LocalJSX.PReading & JSXBase.HTMLAttributes<HTMLPReadingElement>;
             "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;
             "v-forgot-password": LocalJSX.VForgotPassword & JSXBase.HTMLAttributes<HTMLVForgotPasswordElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
             "v-login": LocalJSX.VLogin & JSXBase.HTMLAttributes<HTMLVLoginElement>;
-            "v-my-library": LocalJSX.VMyLibrary & JSXBase.HTMLAttributes<HTMLVMyLibraryElement>;
             "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
             "v-payment-handle": LocalJSX.VPaymentHandle & JSXBase.HTMLAttributes<HTMLVPaymentHandleElement>;
-            "v-reader": LocalJSX.VReader & JSXBase.HTMLAttributes<HTMLVReaderElement>;
             "v-signup": LocalJSX.VSignup & JSXBase.HTMLAttributes<HTMLVSignupElement>;
-            "v-store": LocalJSX.VStore & JSXBase.HTMLAttributes<HTMLVStoreElement>;
         }
     }
 }
