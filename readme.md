@@ -1,39 +1,38 @@
-# Main
-
-## build.sh
+## ./build.sh
 
 - Add git remote
 
 ---
 
-# Frontend
-
-## package.json
+## app-frontend/package.json
 
 - Change `name`
 - Change `description`
 
 ---
 
-## src/index.html
+## app-frontend/src/index.html
+
 - Change `<title></title>`
 - Change `<meta name="Description">`
 
 ---
 
-## src/manifest.json
+## app-frontend/src/manifest.json
+
 - Change `name`
 - Change `short_name`
 - Change `font-family` (Optional)
 
 ---
 
-# Server
+## app-server/package.json
 
-## package.json
 - Change `name`
 - Change `description`
 
-## package.json
-- Change `PORT` 
+---
 
+## app-server/index.ts
+
+- Change `PORT`
