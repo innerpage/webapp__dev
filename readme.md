@@ -1,10 +1,14 @@
-## Init
+## Git
+
+- Change project remote
+
+## Initialize both `app-frontend` and `app-server`
 
 - `./init.sh` to install NPM dependencies for `app-frontend` and `app-server`
 
 ## ./build.sh
 
-- Add remote of prod_repo
+- Change remote to prod_repo
 
 ## app-frontend/package.json
 
