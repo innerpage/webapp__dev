@@ -4,7 +4,7 @@
 
 ## ./build.sh
 
-- Add git remote of prod_repo
+- Add remote of prod_repo
 
 ## app-frontend/package.json
 
