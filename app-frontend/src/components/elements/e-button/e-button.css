@@ -16,15 +16,15 @@ button:disabled {
 .primary {
   font-weight: 600;
   padding: 0.5em 1em;
-  background: var(--blue-regular);
+  background: var(--color__blue--regular);
   color: white;
   border-radius: 0.25em;
 }
 .primary:hover {
-  background: var(--blue-dark);
+  background: var(--color__blue--dark);
 }
 .primary:active {
-  background: var(--blue-darkest);
+  background: var(--color__blue--darkest);
 }
 
 .transparent--white {

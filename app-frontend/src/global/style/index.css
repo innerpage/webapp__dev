@@ -2,8 +2,8 @@
 @import 'vars/vars.css';
 
 body {
-  font-size: var(--site-font-size--body);
-  color: var(--grey-dark);
+  font-size: var(--site__font-size--body);
+  color: var(--color__grey--dark);
   font-family: 'Roboto', sans-serif;
-  line-height: var(--site-line-height);
+  line-height: var(--site__line-height);
 }

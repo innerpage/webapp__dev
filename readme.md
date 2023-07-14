@@ -22,6 +22,10 @@
 - Change `short_name`
 - Change `font-family` (Optional)
 
+## app-frontend/stencil.config.ts
+
+- Change `baseUrl` under `outputTargets`
+
 ## app-server/package.json
 
 - Change `name`

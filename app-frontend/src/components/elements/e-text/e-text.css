@@ -13,19 +13,19 @@ p {
 
 .footnote {
   font-size: 0.8em;
-  color: var(--grey-medium);
+  color: var(--color__grey--medium);
 }
 /* 
 .default {
-  color: var(--grey-dark);
+  color: var(--color__grey--dark);
 } */
 
 .success {
-  color: var(--green-dark);
+  color: var(--color__green--dark);
 }
 
 .danger {
-  color: var(--red-dark);
+  color: var(--color__red--dark);
 }
 
 .light-grey {

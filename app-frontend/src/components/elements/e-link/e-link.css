@@ -1,15 +1,15 @@
 a {
   text-decoration: none;
   display: inline-block;
-  color: var(--blue-regular);
+  color: var(--color__blue--regular);
 }
 
 a:hover {
-  color: var(--blue-dark);
+  color: var(--color__blue--dark);
 }
 
 a:active {
-  color: var(--blue-darkest);
+  color: var(--color__blue--darkest);
 }
 
 .nav__link {
@@ -17,20 +17,20 @@ a:active {
 }
 
 .nav__link--active {
-  color: var(--blue-darkest);
-  background: var(--blue-lightest);
-  border-radius: var(--site-border-radius);
+  color: var(--color__blue--darkest);
+  background: var(--color__blue--lightest);
+  border-radius: var(--site__border-radius);
   padding: 0.5em 1em;
 }
 
 .danger {
-  color: var(--red-regular);
+  color: var(--color__red--regular);
 }
 
 .danger:hover {
-  color: var(--red-dark);
+  color: var(--color__red--dark);
 }
 
 .danger:active {
-  color: var(--red-darkest);
+  color: var(--color__red--darkest);
 }

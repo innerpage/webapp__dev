@@ -1,42 +1,36 @@
 :root {
-  --site-bg-color: #121212;
+  --site__font-size--body: 16px;
+  --site__font-size--display: 1.5em;
+  --site__font-size--heading: 1.25em;
+  --site__font-since__footnote: 0.8em;
 
-  --site-font-size--display: 28px;
-  --site-font-size--heading: 24px;
-  --site-font-size--subHeading: 20px;
-  --site-font-size--body: 16px;
+  --site__font-weight--display: 700;
+  --site__font-weight--heading: 500;
+  --site__font-weight--body: 400;
+  --site__padding: 1em;
+  --site__border-radius: 0.5em;
+  --site__line-height: 1.5;
 
-  --site-font-weight--display: 700;
-  --site-font-weight--heading: 600;
-  --site-font-weight--subHeading: 500;
-  --site-font-weight--body: 400;
+  --color__site--background: #121212;
+  --color__grey--dark: rgba(0, 0, 0, 0.9);
+  --color__grey--medium: rgba(0, 0, 0, 0.6);
+  --color__grey--light: rgba(0, 0, 0, 0.3);
+  --color__grey--lightest: rgba(0, 0, 0, 0.1);
+  --color__blue--darkest: #04355b;
+  --color__blue--dark: #065c9f;
+  --color__blue--regular: #0984e3;
+  --color__blue--light: #53a9eb;
+  --color__blue--lightest: #e6f3fc;
 
-  --site-padding-default: 1em;
+  --color__red--darkest: #561314;
+  --color__red--dark: #962222;
+  --color__red--regular: #d63031;
+  --color__red--light: #e68383;
+  --color__red--lightest: #fbeaea;
 
-  --site-border-radius: 0.5em;
-
-  --site-line-height: 1.5;
-
-  --grey-dark: rgba(0, 0, 0, 0.9);
-  --grey-medium: rgba(0, 0, 0, 0.6);
-  --grey-light: rgba(0, 0, 0, 0.3);
-  --grey-lightest: rgba(0, 0, 0, 0.1);
-
-  --blue-darkest: #04355b;
-  --blue-dark: #065c9f;
-  --blue-regular: #0984e3;
-  --blue-light: #53a9eb;
-  --blue-lightest: #e6f3fc;
-
-  --red-darkest: #561314;
-  --red-dark: #962222;
-  --red-regular: #d63031;
-  --red-light: #e68383;
-  --red-lightest: #fbeaea;
-
-  --green-darkest: #004a3b;
-  --green-dark: #008168;
-  --green-regular: #00b894;
-  --green-light: #80dcca;
-  --green-lightest: #e6f8f4;
+  --color__green--darkest: #004a3b;
+  --color__green--dark: #008168;
+  --color__green--regular: #00b894;
+  --color__green--light: #80dcca;
+  --color__green--lightest: #e6f8f4;
 }
