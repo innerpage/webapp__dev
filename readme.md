@@ -1,6 +1,6 @@
 ## ./build.sh
 
-- Add git remote
+- Add git remote of prod_repo
 
 ---
 

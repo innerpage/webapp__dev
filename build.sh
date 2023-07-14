@@ -14,10 +14,10 @@ cd dev
 cd app-server 
 
 # Build app-server
-rm -rf dest
 npm run build
 rsync -av dest/ ../../prod
 cp {.gitignore,package.json} ../../prod
+rm -rf dest
 
 
 # Pre-build app-frontend
@@ -25,9 +25,9 @@ cd ..
 cd app-frontend 
 
 # Build app-frontend
-rm -rf www
 npm run build --prerender
 rsync -av --delete www/ ../../prod/www
+rm -rf www
 
 # Push prod 
 cd ..
