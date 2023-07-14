@@ -30,6 +30,10 @@
 
 - Change `baseUrl` under `outputTargets`
 
+## app-frontend/src/global/script/vars/vars.ts
+
+- Change `url` of production api
+
 ## app-server/package.json
 
 - Change `name`

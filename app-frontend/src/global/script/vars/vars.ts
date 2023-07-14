@@ -1,6 +1,6 @@
 export const Vars = {
   api: {
-    url: document.domain === 'localhost' ? 'http://localhost:5555' : 'https://api.slimdl.com',
+    url: document.domain === 'localhost' ? 'http://localhost:4444' : 'https://api.example.com',
     endpoint: {
       account: {
         details: 'account-details',
