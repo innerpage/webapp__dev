@@ -5,7 +5,7 @@ export const helper_Signup_Api_Signup = async (payload_SignupInputs: interface_S
   let payload_SignupInputs_Submission: any;
   let isSuccess_SignupInputs_Submission: boolean = false;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.signup}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account.signup}`;
   let options: any = {
     method: 'POST',
     headers: {

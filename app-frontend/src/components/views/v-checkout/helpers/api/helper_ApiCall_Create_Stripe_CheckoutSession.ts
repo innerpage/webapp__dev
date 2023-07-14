@@ -3,7 +3,7 @@ import { Vars } from '../../../../../global/script';
 export const helper_ApiCall_Create_Stripe_CheckoutSession = async payload_Create_Stripe_CheckoutSession => {
   let backendPayload_Create_Stripe_CheckoutSession: any;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.stripe.create_Checkout_Session}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.checkout.stripe.create_Session}`;
   let options: any = {
     method: 'POST',
     headers: {

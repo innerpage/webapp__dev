@@ -5,7 +5,7 @@ export const helper_ConfirmPassword_Api = async (payload_ConfirmPassword_Inputs:
   let payload_ConfirmPassword_Inputs_Submission: any;
   let isSuccess_ConfirmPassword_Inputs_Submission: boolean = false;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.confirm_Password}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account.password.confirm}`;
   let options: any = {
     method: 'POST',
     headers: {

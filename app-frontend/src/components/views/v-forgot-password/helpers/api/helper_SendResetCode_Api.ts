@@ -5,7 +5,7 @@ export const helper_SendResetCode_Api = async (payload_SendResetCode_Inputs: int
   let payload_SendResetCode_Inputs_Submission: any;
   let isSuccess_SendResetCode_Inputs_Submission: boolean = false;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.send_PasswordResetCode}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.mail.password.resetCode}`;
   let options: any = {
     method: 'POST',
     headers: {

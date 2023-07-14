@@ -4,7 +4,7 @@ export const helper_UserControl_Api_Logout = async () => {
   let payload_Logout_Submission: any;
   let isSuccess_Logout_Submission: boolean = false;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.logout}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account.logout}`;
   let options: any = {
     method: 'POST',
     headers: {

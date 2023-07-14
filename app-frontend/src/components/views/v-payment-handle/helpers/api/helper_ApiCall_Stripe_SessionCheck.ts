@@ -3,7 +3,7 @@ import { Vars } from '../../../../../global/script';
 export const helper_ApiCall_Stripe_SessionCheck = async payload_Stripe_SessionCheck => {
   let backendPayload_Stripe_SessionCheck: any;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.stripe.check_Session}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.checkout.stripe.check_Session}`;
   let options: any = {
     method: 'POST',
     headers: {
