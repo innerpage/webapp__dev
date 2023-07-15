@@ -1,12 +1,7 @@
 import { Component, Event, EventEmitter, Prop, FunctionalComponent, Listen, State, Host, h } from '@stencil/core';
 import { MatchResults, RouterHistory, injectHistory } from '@stencil/router';
 
-import {
-  helper_ApiCall_Document_Checkout,
-  helper_Generate_DocumentDetails_Payload,
-  helper_Generate_Create_Stripe_CheckoutSession_Payload,
-  helper_ApiCall_Create_Stripe_CheckoutSession,
-} from './helpers';
+import { helper_ApiCall_Document_Checkout, helper_Generate_Create_StripeSession_Payload, helper_ApiCall_Create_StripeSession } from './helpers';
 
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -71,21 +66,21 @@ export class VCheckout {
   }
 
   async fetch_ViewData() {
-    let payload_Get_Document_Inputs: any = helper_Generate_DocumentDetails_Payload(this.id_Document);
-    let { success, message, payload } = await helper_ApiCall_Document_Checkout(payload_Get_Document_Inputs);
-    if (!success) {
-      alert(message);
-      this.event_RouteTo.emit({
-        type: 'push',
-        route: '/store',
-        data: {},
-      });
-      return;
-    }
+    // let payload_Get_Document_Inputs: any = helper_Generate_DocumentDetails_Payload(this.id_Document);
+    // let { success, message, payload } = await helper_ApiCall_Document_Checkout(payload_Get_Document_Inputs);
+    // if (!success) {
+    //   alert(message);
+    //   this.event_RouteTo.emit({
+    //     type: 'push',
+    //     route: '/store',
+    //     data: {},
+    //   });
+    //   return;
+    // }
 
-    this.data_Document = payload;
-    this.init_ViewData();
-    this.init_Stripe();
+    // this.data_Document = payload;
+    // this.init_ViewData();
+    // this.init_Stripe();
 
     this.isFetched_ViewData = true;
   }
@@ -109,9 +104,9 @@ export class VCheckout {
   }
 
   async create_Checkout_Session() {
-    let payload_Create_Stripe_CheckoutSession: any = helper_Generate_Create_Stripe_CheckoutSession_Payload(this.id_Document);
+    let payload_Create_Stripe_CheckoutSession: any = helper_Generate_Create_StripeSession_Payload(this.id_Document);
     this.isActive_ConfirmAndPay_Button = true;
-    let { success, message, payload } = await helper_ApiCall_Create_Stripe_CheckoutSession(payload_Create_Stripe_CheckoutSession);
+    let { success, message, payload } = await helper_ApiCall_Create_StripeSession(payload_Create_Stripe_CheckoutSession);
     this.isActive_ConfirmAndPay_Button = false;
     if (!success) {
       return alert(message);

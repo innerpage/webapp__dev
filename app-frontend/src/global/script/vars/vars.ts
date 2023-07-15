@@ -3,12 +3,12 @@ export const Vars = {
     url: document.domain === 'localhost' ? 'http://localhost:4444' : 'https://api.example.com',
     endpoint: {
       account: {
-        details: 'account-details',
+        details: 'account',
         login: 'login',
         logout: 'logout',
         signup: 'signup',
         password: {
-          confirm: 'confirm-password',
+          confirm: 'password',
           send_ResetCode: '',
         },
         email: {
@@ -25,7 +25,8 @@ export const Vars = {
       },
       checkout: {
         stripe: {
-          create_Session: 'stripe-create-checkout-session',
+          get_Price: 'stripe-get-price',
+          create_Session: 'stripe-create-session',
           check_Session: 'stripe-check-session',
         },
       },

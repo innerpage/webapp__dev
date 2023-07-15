@@ -1,6 +1,6 @@
 import { Vars } from '../../../../../global/script';
 
-export const helper_ApiCall_Create_Stripe_CheckoutSession = async payload_Create_Stripe_CheckoutSession => {
+export const helper_ApiCall_Create_StripeSession = async payload_Create_Stripe_CheckoutSession => {
   let backendPayload_Create_Stripe_CheckoutSession: any;
 
   let url: string = `${Vars.api.url}/${Vars.api.endpoint.checkout.stripe.create_Session}`;

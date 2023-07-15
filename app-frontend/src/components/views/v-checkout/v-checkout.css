@@ -39,7 +39,6 @@ td {
 
 .skel__line {
   height: 10px;
-  /* width: 200px; */
   border-radius: 0.25em;
   background: #ccc;
   background-image: linear-gradient(90deg, #f4f4f4 0px, rgba(229, 229, 229, 0.8) 40%, #f4f4f4 100%);

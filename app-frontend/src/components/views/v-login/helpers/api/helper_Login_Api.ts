@@ -5,7 +5,7 @@ export const helper_Login_Api = async (payload_LoginInputs: interface_LoginInput
   let payload_LoginInputs_Submission: any;
   let isSuccess_LoginInputs_Submission: boolean = false;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.login}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account.login}`;
   let options: any = {
     method: 'POST',
     headers: {
