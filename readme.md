@@ -34,6 +34,10 @@
 
 - Change `url` of production api
 
+## app-frontend/src/global/script/store/store.ts
+
+- Add `googleClientId` for OAuth
+
 ## app-server/package.json
 
 - Change `name`

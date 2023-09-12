@@ -62,12 +62,16 @@ export namespace Components {
         "variant": string;
     }
     interface LSeperator {
+        "variant": string;
     }
     interface LSpacer {
         "value": number;
         "variant": string;
     }
     interface PGallery {
+    }
+    interface POauthButton {
+        "variant": string;
     }
     interface PUserControl {
     }
@@ -190,6 +194,12 @@ declare global {
         prototype: HTMLPGalleryElement;
         new (): HTMLPGalleryElement;
     };
+    interface HTMLPOauthButtonElement extends Components.POauthButton, HTMLStencilElement {
+    }
+    var HTMLPOauthButtonElement: {
+        prototype: HTMLPOauthButtonElement;
+        new (): HTMLPOauthButtonElement;
+    };
     interface HTMLPUserControlElement extends Components.PUserControl, HTMLStencilElement {
     }
     var HTMLPUserControlElement: {
@@ -261,6 +271,7 @@ declare global {
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
         "p-gallery": HTMLPGalleryElement;
+        "p-oauth-button": HTMLPOauthButtonElement;
         "p-user-control": HTMLPUserControlElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
@@ -332,12 +343,17 @@ declare namespace LocalJSX {
         "variant"?: string;
     }
     interface LSeperator {
+        "variant"?: string;
     }
     interface LSpacer {
         "value"?: number;
         "variant"?: string;
     }
     interface PGallery {
+    }
+    interface POauthButton {
+        "onGoogleOAuthInitializationEvent"?: (event: CustomEvent<any>) => void;
+        "variant"?: string;
     }
     interface PUserControl {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
@@ -388,6 +404,7 @@ declare namespace LocalJSX {
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
         "p-gallery": PGallery;
+        "p-oauth-button": POauthButton;
         "p-user-control": PUserControl;
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
@@ -419,6 +436,7 @@ declare module "@stencil/core" {
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
+            "p-oauth-button": LocalJSX.POauthButton & JSXBase.HTMLAttributes<HTMLPOauthButtonElement>;
             "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;

@@ -32,8 +32,8 @@ export class EInput {
   }
 
   generate_StyleObject_Textbox() {
-    this.styleObject_Textbox.padding = '0.5em';
-    this.styleObject_Textbox.border = '1px solid rgba(0, 0, 0, 0.3)';
+    this.styleObject_Textbox.padding = '0.75em';
+    this.styleObject_Textbox.border = '1px solid rgba(0, 0, 0, 0.1)';
     this.styleObject_Textbox.borderRadius = '0.25em';
     this.styleObject_Textbox.fontSize = '0.9em';
     this.styleObject_Textbox.width = '100%';

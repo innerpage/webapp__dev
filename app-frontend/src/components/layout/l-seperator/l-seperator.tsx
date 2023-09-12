@@ -1,4 +1,4 @@
-import { Component, h, Host } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'l-seperator',
@@ -6,7 +6,18 @@ import { Component, h, Host } from '@stencil/core';
   shadow: true,
 })
 export class LSeperator {
+  @Prop() variant: string = 'default';
   render() {
-    return <Host></Host>;
+    if (this.variant === 'default') {
+      return <div id="seperator_default"></div>;
+    } else if (this.variant === 'oauth') {
+      return (
+        <div id="seperator__oauth">
+          <div class="seperator__oauth--lines"></div>
+          <c-text>OR</c-text>
+          <div class="seperator__oauth--lines"></div>
+        </div>
+      );
+    }
   }
 }

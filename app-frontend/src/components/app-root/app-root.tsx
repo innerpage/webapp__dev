@@ -33,8 +33,8 @@ export class AppRoot {
   }
 
   componentDidLoad() {
-    init_Socket();
     if (state.isActive_Session) {
+      init_Socket();
       this.fetch_AccountData();
     }
   }

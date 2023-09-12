@@ -126,13 +126,11 @@ export class VForgotPassword {
   Init: FunctionalComponent = () => (
     <div>
       <e-text variant="display">Forgot Password</e-text>
-      <e-text variant="footnote">
-        <strong>STEP 1 of 2 - EMAIL VERIFICATION</strong>
-      </e-text>
+      <e-text>Step 1 of 2: Email verification</e-text>
       <l-spacer value={1}></l-spacer>
       <l-seperator></l-seperator>
       <l-spacer value={1}></l-spacer>
-      <e-text>Enter your email. You will receive a 4-digit password reset code</e-text>
+      <e-text>A password reset code will be sent to your email</e-text>
       <l-spacer value={2}></l-spacer>
       <e-input type="email" name="email" placeholder="Email"></e-input>
       <l-spacer value={2}></l-spacer>
@@ -152,9 +150,7 @@ export class VForgotPassword {
   Confirm: FunctionalComponent = () => (
     <div>
       <e-text variant="display">Forgot Password</e-text>
-      <e-text variant="footnote">
-        <strong>STEP 2 of 2 - PASSWORD RESET</strong>
-      </e-text>
+      <e-text>Step 2 of 2: Password reset</e-text>
       <l-spacer value={1}></l-spacer>
       <l-seperator></l-seperator>
       <l-spacer value={1}></l-spacer>
@@ -182,10 +178,8 @@ export class VForgotPassword {
   render() {
     return (
       <Host>
-        <c-card>
-          {this.state === this.wizard_Steps[0] && <this.Init></this.Init>}
-          {this.state === this.wizard_Steps[1] && <this.Confirm></this.Confirm>}
-        </c-card>
+        {this.state === this.wizard_Steps[0] && <this.Init></this.Init>}
+        {this.state === this.wizard_Steps[1] && <this.Confirm></this.Confirm>}
       </Host>
     );
   }

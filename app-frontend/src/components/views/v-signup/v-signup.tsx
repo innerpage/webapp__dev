@@ -88,51 +88,53 @@ export class VSignup {
   render() {
     return (
       <Host>
-        <c-card>
-          <e-text variant="display">Sign up</e-text>
-          <e-text>
-            Have an account?{' '}
-            <e-link action="login" event={true}>
-              Login
+        <e-text variant="display">Sign up</e-text>
+        <e-text>
+          Have an account?{' '}
+          <e-link action="login" event={true}>
+            Login
+          </e-link>
+        </e-text>
+        <l-spacer value={1}></l-spacer>
+        <p-oauth-button></p-oauth-button>
+        <l-spacer value={1}></l-spacer>
+        <l-seperator variant="oauth"></l-seperator>
+        <l-spacer value={1}></l-spacer>
+        <e-input type="text" name="name_First" placeholder="First name"></e-input>
+        <br />
+        <l-spacer value={1}></l-spacer>
+        <e-input type="text" name="name_Last" placeholder="Last name"></e-input>
+        <br />
+        <l-spacer value={1}></l-spacer>
+        <e-input type="email" name="email" placeholder="Email"></e-input>
+        <br />
+        <l-spacer value={1}></l-spacer>
+        <e-input type="password" name="password" placeholder="Password (Min. 8 letters)"></e-input>
+        <l-spacer value={1}></l-spacer>
+        <l-row justifyContent="space-between">
+          <e-text variant="footnote">
+            <e-link action="forgotPassword" event={true}>
+              Forgot Password
             </e-link>
           </e-text>
-          <l-spacer value={2}></l-spacer>
-          <e-input type="text" name="name_First" placeholder="First name"></e-input>
+          <e-button action="submit_SignupInputs" active={this.isActive_Signup_Button}>
+            Sign up
+          </e-button>
+        </l-row>
+        <l-spacer value={2}></l-spacer>
+        <l-seperator></l-seperator>
+        <l-spacer value={0.5}></l-spacer>
+        <e-text variant="footnote">
+          By signing up, you accept our
           <br />
-          <l-spacer value={1}></l-spacer>
-          <e-input type="text" name="name_Last" placeholder="Last name"></e-input>
-          <br />
-          <l-spacer value={1}></l-spacer>
-          <e-input type="email" name="email" placeholder="Email"></e-input>
-          <br />
-          <l-spacer value={1}></l-spacer>
-          <e-input type="password" name="password" placeholder="Password (Min. 8 letters)"></e-input>
-          <l-spacer value={1}></l-spacer>
-          <l-row justifyContent="space-between">
-            <e-text variant="footnote">
-              <e-link action="forgotPassword" event={true}>
-                Forgot Password
-              </e-link>
-            </e-text>
-            <e-button action="submit_SignupInputs" active={this.isActive_Signup_Button}>
-              Sign up
-            </e-button>
-          </l-row>
-          <l-spacer value={2}></l-spacer>
-          <l-seperator></l-seperator>
-          <l-spacer value={0.5}></l-spacer>
-          <e-text variant="footnote">
-            By signing up, you accept our
-            <br />
-            <e-link href="https://aitihyatheheritage.in/terms-of-service.html" target="_blank">
-              terms
-            </e-link>{' '}
-            &{' '}
-            <e-link href="https://aitihyatheheritage.in/cancellation-refund-policy.html" target="_blank">
-              privacy policy
-            </e-link>
-          </e-text>{' '}
-        </c-card>
+          <e-link href="https://aitihyatheheritage.in/terms-of-service.html" target="_blank">
+            terms
+          </e-link>{' '}
+          &{' '}
+          <e-link href="https://aitihyatheheritage.in/cancellation-refund-policy.html" target="_blank">
+            privacy policy
+          </e-link>
+        </e-text>{' '}
       </Host>
     );
   }
