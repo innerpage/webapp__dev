@@ -114,7 +114,7 @@ export class VSignup {
         <l-row justifyContent="space-between">
           <e-text variant="footnote">
             <e-link action="forgotPassword" event={true}>
-              Forgot Password
+              Change Password
             </e-link>
           </e-text>
           <e-button action="submit_SignupInputs" active={this.isActive_Signup_Button}>
@@ -125,8 +125,7 @@ export class VSignup {
         <l-seperator></l-seperator>
         <l-spacer value={0.5}></l-spacer>
         <e-text variant="footnote">
-          By signing up, you accept our
-          <br />
+          By creating your account, you accept our{' '}
           <e-link href="https://aitihyatheheritage.in/terms-of-service.html" target="_blank">
             terms
           </e-link>{' '}

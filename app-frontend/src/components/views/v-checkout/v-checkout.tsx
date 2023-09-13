@@ -185,7 +185,7 @@ export class VCheckout {
           <l-row justifyContent="space-between">
             <e-text variant="footnote">
               <e-link action="goBack" event={true}>
-                &lt; Back
+                Back
               </e-link>
             </e-text>
             <e-button action="action_Create_CheckoutSession" disabled={this.isDisabled_ConfirmAndPay_Button} active={this.isActive_ConfirmAndPay_Button}>

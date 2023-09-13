@@ -103,7 +103,7 @@ export class VLogin {
         <l-row justifyContent="space-between">
           <e-text variant="footnote">
             <e-link action="forgotPassword" event={true}>
-              Forgot Password
+              Change Password
             </e-link>
           </e-text>
           <e-button action="submit_LoginInputs" active={this.isActive_Login_Button}>
@@ -114,7 +114,7 @@ export class VLogin {
         <l-seperator></l-seperator>
         <l-spacer value={0.5}></l-spacer>
         <e-text variant="footnote">
-          By logging in, you accept our <br />
+          By logging into your account, you accept our{' '}
           <e-link href="https://aitihyatheheritage.in/terms-of-service.html" target="_blank">
             terms
           </e-link>{' '}

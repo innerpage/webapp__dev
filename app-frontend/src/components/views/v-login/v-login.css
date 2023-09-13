@@ -1,6 +1,6 @@
 :host {
   display: block;
-  width: 25%;
+  max-width: 250px;
   margin: 0 auto;
   padding-top: 6em;
 }

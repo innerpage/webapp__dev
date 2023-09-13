@@ -7,10 +7,7 @@ export const Vars = {
         login: 'login',
         logout: 'logout',
         signup: 'signup',
-        password: {
-          confirm: 'password',
-          send_ResetCode: '',
-        },
+        password: 'password',
         email: {
           verification: 'verify-email',
         },
@@ -20,7 +17,7 @@ export const Vars = {
           verificationCode: 'resend-email-verification-code',
         },
         password: {
-          resetCode: 'send-password-reset-code',
+          resetCode: 'mail-password-reset-code',
         },
       },
       checkout: {

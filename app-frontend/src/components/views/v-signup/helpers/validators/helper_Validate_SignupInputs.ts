@@ -2,8 +2,8 @@ import Joi from 'joi';
 import { interface_SignupInputs } from '../../interfaces';
 
 const schema_Signup_Inputs = Joi.object({
-  name_First: Joi.string().required(),
-  name_Last: Joi.string().required(),
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .min(5)

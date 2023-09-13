@@ -26,7 +26,7 @@ export const helper_Signup_Api_Signup = async (payload_SignupInputs: interface_S
     });
 
   if (!isSuccess_SignupInputs_Submission) {
-    return { isSuccess_SignupInputs_Submission: false, message_SignupInputs_Submission: 'Signup failed', payload_SignupInputs_Submission: {} };
+    return { isSuccess_SignupInputs_Submission: false, message_SignupInputs_Submission: payload_SignupInputs_Submission.message, payload_SignupInputs_Submission: {} };
   } else {
     return { isSuccess_SignupInputs_Submission: true, message_SignupInputs_Submission: 'Signup successful', payload_SignupInputs_Submission: payload_SignupInputs_Submission };
   }
