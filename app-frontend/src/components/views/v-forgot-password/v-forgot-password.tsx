@@ -126,12 +126,8 @@ export class VForgotPassword {
   Init: FunctionalComponent = () => (
     <div>
       <e-text variant="display">Reset Password</e-text>
-      <e-text>Step 1 of 2: Email verification</e-text>
+      <e-text>Step 1 of 2: Verify your email</e-text>
       <l-spacer value={1}></l-spacer>
-      {/* <l-seperator></l-seperator>
-      <l-spacer value={1}></l-spacer>
-      <e-text>A password reset code will be sent to your email</e-text>
-      <l-spacer value={2}></l-spacer> */}
       <e-input type="email" name="email" placeholder="Email"></e-input>
       <l-spacer value={1}></l-spacer>
       <l-row justifyContent="space-between">
@@ -147,25 +143,21 @@ export class VForgotPassword {
       <l-spacer value={2}></l-spacer>
       <l-seperator></l-seperator>
       <l-spacer value={0.5}></l-spacer>
-      <e-text variant="footnote">We will send a reset code if we find an account with your email</e-text>{' '}
+      <e-text variant="footnote">We will send a reset code if your email is registered with us</e-text>{' '}
     </div>
   );
 
   Confirm: FunctionalComponent = () => (
     <div>
-      <e-text variant="display">Forgot Password</e-text>
-      <e-text>Step 2 of 2: Password reset</e-text>
+      <e-text variant="display">Reset Password</e-text>
+      <e-text>Step 2 of 2: Provide new password</e-text>
       <l-spacer value={1}></l-spacer>
-      <l-seperator></l-seperator>
-      <l-spacer value={1}></l-spacer>
-      <e-text>Enter reset code & new password</e-text>
-      <l-spacer value={1}></l-spacer>
-      <e-input type="number" name="code_ResetPassword" placeholder="4-digit reset code (check inbox)"></e-input>
+      <e-input type="number" name="code_ResetPassword" placeholder="Password reset code (check your mail)"></e-input>
       <l-spacer value={2}></l-spacer>
       <e-input type="password" name="password_New" placeholder="New password (min 8 chars)"></e-input>
-      <l-spacer value={2}></l-spacer>
+      <l-spacer value={1}></l-spacer>
       <e-input type="password" name="password_New_Repeat" placeholder="Repeat new password"></e-input>
-      <l-spacer value={2}></l-spacer>
+      <l-spacer value={1}></l-spacer>
       <l-row justifyContent="space-between">
         <e-text variant="footnote">
           <e-link action="goBack" event={true}>
@@ -173,7 +165,7 @@ export class VForgotPassword {
           </e-link>
         </e-text>
         <e-button action="confirm_Password" active={this.isActive_ConfirmPassword_Button}>
-          Confirm
+          Reset password
         </e-button>
       </l-row>
     </div>

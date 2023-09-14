@@ -62,6 +62,7 @@ export class POauthButton {
         type: 'standard',
         theme: 'outline',
         size: 'large',
+        width: 250,
       });
 
       this.isGoogleOauthLoaded = true;
