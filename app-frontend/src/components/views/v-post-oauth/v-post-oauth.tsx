@@ -1,5 +1,8 @@
-import { Component, FunctionalComponent, State, Prop, Host, h } from '@stencil/core';
+import { Component, Event, EventEmitter, FunctionalComponent, State, Prop, Host, h } from '@stencil/core';
+import { getGoogleProfilePayloadGenerator, getGoogleProfileApi } from './helpers';
+import { getGoogleProfilePayloadInterface } from './interfaces';
 import { RouterHistory, injectHistory } from '@stencil/router';
+import { helper_Set_State } from '../../app-root/helpers';
 
 @Component({
   tag: 'v-post-oauth',
@@ -7,24 +10,73 @@ import { RouterHistory, injectHistory } from '@stencil/router';
   shadow: true,
 })
 export class VPostOauth {
+  @Event({
+    eventName: 'event_RouteTo',
+    bubbles: true,
+  })
+  event_RouteTo: EventEmitter;
+
   @Prop() history: RouterHistory;
 
-  @State() compState: string = 'init';
+  @State() compState: string = 'fetching';
 
-  componentWillLoad() {
-    if (this.history.location.state.type === 'google') {
-      this.fetchDataForGoogleOAuth(this.history.location.state.token);
+  componentDidLoad() {
+    if (this.history.location.state.type) {
+      if (this.history.location.state.type === 'google') {
+        this.getGoogleProfile(this.history.location.state.token);
+      }
     }
   }
 
-  Loader: FunctionalComponent = () => <div></div>;
+  async getGoogleProfile(token: string) {
+    let getGoogleProfilePayload: getGoogleProfilePayloadInterface = getGoogleProfilePayloadGenerator(token);
+    let { success, message, payload } = await getGoogleProfileApi(getGoogleProfilePayload);
 
-  Error: FunctionalComponent = () => <div></div>;
+    if (!success) {
+      this.compState = 'error';
+      return;
+    }
+    console.log(message);
+    helper_Set_State(payload);
 
-  async fetchDataForGoogleOAuth(token: string) {}
+    this.event_RouteTo.emit({
+      type: 'push',
+      route: '/home',
+      data: {},
+    });
+  }
+
+  Loader: FunctionalComponent = () => (
+    <l-row align="center">
+      <p-spinner></p-spinner>&nbsp;&nbsp;<e-text>Fetching profile info..</e-text>
+    </l-row>
+  );
+
+  Error: FunctionalComponent = () => (
+    <div>
+      <e-text theme="danger">
+        <strong>Oops..</strong>
+      </e-text>
+      <e-text>We could not fetch your google account details. Please try again</e-text>
+      <e-text>
+        <e-link action="login" event={true}>
+          Login{' '}
+        </e-link>{' '}
+        /{' '}
+        <e-link action="signup" event={true}>
+          Sign up
+        </e-link>
+      </e-text>
+    </div>
+  );
 
   render() {
-    return <Host></Host>;
+    return (
+      <Host>
+        {this.compState === 'fetching' && <this.Loader></this.Loader>}
+        {this.compState === 'error' && <this.Error></this.Error>}
+      </Host>
+    );
   }
 }
 

@@ -73,6 +73,9 @@ export namespace Components {
     interface POauthButton {
         "variant": string;
     }
+    interface PSpinner {
+        "theme": string;
+    }
     interface PUserControl {
     }
     interface VCatchAll {
@@ -203,6 +206,12 @@ declare global {
         prototype: HTMLPOauthButtonElement;
         new (): HTMLPOauthButtonElement;
     };
+    interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {
+    }
+    var HTMLPSpinnerElement: {
+        prototype: HTMLPSpinnerElement;
+        new (): HTMLPSpinnerElement;
+    };
     interface HTMLPUserControlElement extends Components.PUserControl, HTMLStencilElement {
     }
     var HTMLPUserControlElement: {
@@ -281,6 +290,7 @@ declare global {
         "l-spacer": HTMLLSpacerElement;
         "p-gallery": HTMLPGalleryElement;
         "p-oauth-button": HTMLPOauthButtonElement;
+        "p-spinner": HTMLPSpinnerElement;
         "p-user-control": HTMLPUserControlElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
@@ -365,6 +375,9 @@ declare namespace LocalJSX {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
         "variant"?: string;
     }
+    interface PSpinner {
+        "theme"?: string;
+    }
     interface PUserControl {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
@@ -395,6 +408,7 @@ declare namespace LocalJSX {
     }
     interface VPostOauth {
         "history"?: RouterHistory;
+        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
     interface VSignup {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
@@ -418,6 +432,7 @@ declare namespace LocalJSX {
         "l-spacer": LSpacer;
         "p-gallery": PGallery;
         "p-oauth-button": POauthButton;
+        "p-spinner": PSpinner;
         "p-user-control": PUserControl;
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
@@ -451,6 +466,7 @@ declare module "@stencil/core" {
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
             "p-oauth-button": LocalJSX.POauthButton & JSXBase.HTMLAttributes<HTMLPOauthButtonElement>;
+            "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;
