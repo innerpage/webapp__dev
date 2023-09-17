@@ -1,8 +1,8 @@
 import { Component, Prop, Listen, h } from '@stencil/core';
 import { RouterHistory, injectHistory } from '@stencil/router';
 import { state, IO, init_Socket } from '../../global/script';
-import { helper_Set_State, helper_Set_Session_In_LocalStorage, helper_Check_Session_In_LocalStorage } from './helpers';
-import { Helper_ApiCall_GetAccountDetails_BySession } from '../../global/script/helpers';
+import { helper_Set_State, helper_Set_Session_In_LocalStorage, helper_Check_Session_In_LocalStorage, helper_Clear_Session_In_LocalStorage } from './helpers';
+import { Helper_ApiCall_GetAccountDetails_BySession, Helper_ApiCall_Account_Logout } from '../../global/script/helpers';
 
 @Component({
   tag: 'app-root',
@@ -20,6 +20,23 @@ export class AppRoot {
     }
   }
 
+  @Listen('event_LinkClick') handle_LinkClick(e) {
+    if (e.detail.action === 'home') {
+      this.history.push('/home', {});
+      state.activeView = 'home';
+    } else if (e.detail.action === 'logout') {
+      this.handle_Logout();
+    } else if (e.detail.action === 'goBack') {
+      this.history.goBack();
+    } else if (e.detail.action === 'signup') {
+      this.history.push('/signup', {});
+    } else if (e.detail.action === 'forgotPassword') {
+      this.history.push('/forgot-password', {});
+    } else if (e.detail.action === 'login') {
+      this.history.push('/login', {});
+    }
+  }
+
   @Listen('success_Auth') handle_success_Auth(e) {
     helper_Set_State(e.detail.payload);
     helper_Set_Session_In_LocalStorage();
@@ -34,7 +51,7 @@ export class AppRoot {
 
   componentDidLoad() {
     if (state.isActive_Session) {
-      // init_Socket();
+      init_Socket();
       this.fetch_AccountData();
     }
   }
@@ -49,24 +66,47 @@ export class AppRoot {
       this.history.push('/login', {});
       return console.log(message);
     }
-    helper_Set_State(payload);
+
+    helper_Set_State(payload.accountDetails);
     helper_Set_Session_In_LocalStorage();
+  }
+
+  async handle_Logout() {
+    let { success, message, payload } = await Helper_ApiCall_Account_Logout();
+    if (!success) {
+      return alert(message);
+    }
+
+    if (!payload.success) {
+      return alert(payload.message);
+    }
+
+    helper_Clear_Session_In_LocalStorage();
+    state.isActive_Session = payload.isActive_Session;
+    this.history.push('/login', {});
   }
 
   render() {
     return (
       <stencil-router>
         <stencil-route-switch scrollTopOffset={0}>
-          <stencil-route url="/" component={state.isActive_Session ? 'v-my-library' : 'v-login'} exact={true} />
+          {/* LoggedOut Routes */}
           <this.Route_LoggedOut url="/login" component="v-login"></this.Route_LoggedOut>
           <this.Route_LoggedOut url="/signup" component="v-signup"></this.Route_LoggedOut>
           <this.Route_LoggedOut url="/forgot-password" component="v-forgot-password"></this.Route_LoggedOut>
+          <this.Route_LoggedOut url="/post-oauth" component="v-post-oauth"></this.Route_LoggedOut>
+
+          {/* LoggedIn Routes */}
           <this.Route_LoggedIn url="/home" component="v-home"></this.Route_LoggedIn>
           <this.Route_LoggedIn url="/payment-cancel" component="v-payment-cancel"></this.Route_LoggedIn>
           <this.Route_LoggedIn url="/payment-handle/:id_Session" component="v-payment-handle"></this.Route_LoggedIn>
           <this.Route_LoggedIn url="/checkout/:id_Order" component="v-checkout"></this.Route_LoggedIn>
+
+          {/* Catch-all Route */}
           <stencil-route component="v-catch-all" />
-          {/* <stencil-route url="/payment-cancel" component="v-payment-cancel" />
+
+          {/* Sample Routes
+          <stencil-route url="/payment-cancel" component="v-payment-cancel" />
           <stencil-route url="/payment-handle/:id_Session" component="v-payment-handle" /> */}
         </stencil-route-switch>
       </stencil-router>
@@ -98,7 +138,7 @@ export class AppRoot {
           if (!state.isActive_Session) {
             return <Component {...props} {...props.componentProps} {...routeRenderProps}></Component>;
           } else {
-            return <stencil-router-redirect url="/my-library"></stencil-router-redirect>;
+            return <stencil-router-redirect url="/home"></stencil-router-redirect>;
           }
         }}
       />

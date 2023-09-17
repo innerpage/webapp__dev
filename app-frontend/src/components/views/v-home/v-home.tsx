@@ -10,6 +10,7 @@ export class VHome {
     return (
       <Host>
         <p>Home</p>
+        <p-user-control></p-user-control>
       </Host>
     );
   }

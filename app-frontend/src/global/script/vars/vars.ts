@@ -6,6 +6,11 @@ export const Vars = {
         details: 'account',
         login: 'login',
         logout: 'logout',
+        oauth: {
+          google: {
+            getProfile: 'get-google-profile',
+          },
+        },
         signup: 'signup',
         password: 'password',
         email: {

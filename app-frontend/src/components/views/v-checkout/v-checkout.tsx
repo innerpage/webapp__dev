@@ -56,7 +56,7 @@ export class VCheckout {
     if (!this.match.params.id_Product) {
       this.event_RouteTo.emit({
         type: 'push',
-        route: '/store',
+        route: '/home',
         data: {},
       });
     }

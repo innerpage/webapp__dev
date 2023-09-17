@@ -19,7 +19,7 @@ export class VPaymentHandle {
     if (e.detail.action === 'myLibrary') {
       this.event_RouteTo.emit({
         type: 'push',
-        route: '/my-library',
+        route: '/home',
         data: {},
       });
     }
@@ -37,7 +37,7 @@ export class VPaymentHandle {
     if (!this.match.params.id_Session) {
       this.event_RouteTo.emit({
         type: 'push',
-        route: '/store',
+        route: '/home',
         data: {},
       });
     }

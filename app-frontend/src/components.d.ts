@@ -94,6 +94,9 @@ export namespace Components {
         "history": RouterHistory;
         "match": MatchResults;
     }
+    interface VPostOauth {
+        "history": RouterHistory;
+    }
     interface VSignup {
     }
 }
@@ -248,6 +251,12 @@ declare global {
         prototype: HTMLVPaymentHandleElement;
         new (): HTMLVPaymentHandleElement;
     };
+    interface HTMLVPostOauthElement extends Components.VPostOauth, HTMLStencilElement {
+    }
+    var HTMLVPostOauthElement: {
+        prototype: HTMLVPostOauthElement;
+        new (): HTMLVPostOauthElement;
+    };
     interface HTMLVSignupElement extends Components.VSignup, HTMLStencilElement {
     }
     var HTMLVSignupElement: {
@@ -280,6 +289,7 @@ declare global {
         "v-login": HTMLVLoginElement;
         "v-payment-cancel": HTMLVPaymentCancelElement;
         "v-payment-handle": HTMLVPaymentHandleElement;
+        "v-post-oauth": HTMLVPostOauthElement;
         "v-signup": HTMLVSignupElement;
     }
 }
@@ -352,7 +362,7 @@ declare namespace LocalJSX {
     interface PGallery {
     }
     interface POauthButton {
-        "onGoogleOAuthInitializationEvent"?: (event: CustomEvent<any>) => void;
+        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
         "variant"?: string;
     }
     interface PUserControl {
@@ -382,6 +392,9 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
         "match"?: MatchResults;
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+    }
+    interface VPostOauth {
+        "history"?: RouterHistory;
     }
     interface VSignup {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
@@ -413,6 +426,7 @@ declare namespace LocalJSX {
         "v-login": VLogin;
         "v-payment-cancel": VPaymentCancel;
         "v-payment-handle": VPaymentHandle;
+        "v-post-oauth": VPostOauth;
         "v-signup": VSignup;
     }
 }
@@ -445,6 +459,7 @@ declare module "@stencil/core" {
             "v-login": LocalJSX.VLogin & JSXBase.HTMLAttributes<HTMLVLoginElement>;
             "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
             "v-payment-handle": LocalJSX.VPaymentHandle & JSXBase.HTMLAttributes<HTMLVPaymentHandleElement>;
+            "v-post-oauth": LocalJSX.VPostOauth & JSXBase.HTMLAttributes<HTMLVPostOauthElement>;
             "v-signup": LocalJSX.VSignup & JSXBase.HTMLAttributes<HTMLVSignupElement>;
         }
     }

@@ -15,7 +15,7 @@ export const helper_Validate_LoginInputs = (payload_LoginInputs: object) => {
   let { error } = schema_Login_Inputs.validate(payload_LoginInputs);
 
   if (error) {
-    return { isValid_LoginInputs: false, message_Validate_LoginInputs: error.details[0].message };
+    return { isValid_LoginInputs: false, message_Validate_LoginInputs: `❌ ${error.details[0].message}` };
   } else {
     return { isValid_LoginInputs: true, message_Validate_LoginInputs: '' };
   }

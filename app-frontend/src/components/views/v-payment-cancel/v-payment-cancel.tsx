@@ -13,10 +13,10 @@ export class VPaymentCancel {
   event_RouteTo: EventEmitter;
 
   @Listen('event_LinkClick') handle_LinkClick(e) {
-    if (e.detail.action === 'store') {
+    if (e.detail.action === 'home') {
       this.event_RouteTo.emit({
         type: 'push',
-        route: '/store',
+        route: '/home',
         data: {},
       });
     }
@@ -39,8 +39,8 @@ export class VPaymentCancel {
             <strong>aitihya.webmaster@gmail.com</strong>
           </e-link>
           <l-spacer value={1}></l-spacer>
-          <e-link action="store" event={true}>
-            <strong>Go to store</strong>
+          <e-link action="home" event={true}>
+            <strong>Go to home</strong>
           </e-link>
         </c-card>
       </Host>

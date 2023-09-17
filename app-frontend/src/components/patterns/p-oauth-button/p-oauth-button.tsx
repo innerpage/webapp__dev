@@ -10,10 +10,10 @@ export class POauthButton {
   googleOauthButton!: HTMLDivElement;
 
   @Event({
-    eventName: 'googleOAuthInitializationEvent',
+    eventName: 'event_RouteTo',
     bubbles: true,
   })
-  googleOAuthInitializationEventEmitter: EventEmitter;
+  event_RouteTo: EventEmitter;
 
   @Prop() variant: string = 'google';
 
@@ -52,8 +52,13 @@ export class POauthButton {
       await this._window.google.accounts.id.initialize({
         client_id: state.googleClientId,
         callback: response => {
-          this.googleOAuthInitializationEventEmitter.emit({
-            googleJwt: response.credential,
+          this.event_RouteTo.emit({
+            type: 'push',
+            route: '/post-oauth',
+            data: {
+              type: 'google',
+              token: response.credential,
+            },
           });
         },
       });
