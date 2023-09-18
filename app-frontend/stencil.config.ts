@@ -8,7 +8,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
-      baseUrl: 'https://myapp.local/',
+      baseUrl: document.domain === 'localhost' ? 'http://localhost:4444' : 'https://api.example.com',
     },
   ],
 };

@@ -19,7 +19,7 @@ export const Vars = {
       },
       mail: {
         email: {
-          verificationCode: 'resend-email-verification-code',
+          verificationCode: 'mail-email-verification-code',
         },
         password: {
           resetCode: 'mail-password-reset-code',

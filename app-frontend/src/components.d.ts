@@ -11,6 +11,7 @@ export namespace Components {
         "history": RouterHistory;
     }
     interface CBanner {
+        "position": string;
         "theme": string;
     }
     interface CCard {
@@ -308,6 +309,7 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
     }
     interface CBanner {
+        "position"?: string;
         "theme"?: string;
     }
     interface CCard {
