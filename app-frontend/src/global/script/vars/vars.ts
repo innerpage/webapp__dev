@@ -8,7 +8,7 @@ export const Vars = {
         logout: 'logout',
         oauth: {
           google: {
-            getProfile: 'get-google-profile',
+            getProfile: 'google-oauth',
           },
         },
         signup: 'signup',

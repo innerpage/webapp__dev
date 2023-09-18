@@ -30,15 +30,14 @@ export class VPostOauth {
 
   async getGoogleProfile(token: string) {
     let getGoogleProfilePayload: getGoogleProfilePayloadInterface = getGoogleProfilePayloadGenerator(token);
-    let { success, message, payload } = await getGoogleProfileApi(getGoogleProfilePayload);
+    let { success, payload } = await getGoogleProfileApi(getGoogleProfilePayload);
 
     if (!success) {
       this.compState = 'error';
       return;
     }
-    console.log(message);
-    helper_Set_State(payload);
 
+    helper_Set_State(payload);
     this.event_RouteTo.emit({
       type: 'push',
       route: '/home',
