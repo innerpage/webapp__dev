@@ -16,9 +16,9 @@ import { interface_SendResetCode_Inputs, interface_ConfirmPassword_Inputs } from
 })
 export class VForgotPassword {
   private email: string = '';
-  private code_ResetPassword: number = -1;
-  private password_New: string = '';
-  private password_New_Repeat: string = '';
+  private passwordResetCode: number = -1;
+  private newPassword: string = '';
+  private newPasswordRepeat: string = '';
   private wizard_Steps = ['init', 'confirm'];
 
   @State() wizard_CurrentStep: number = 0;
@@ -35,12 +35,12 @@ export class VForgotPassword {
   @Listen('textInput') handle_TextInput(e) {
     if (e.detail.name === 'email') {
       this.email = e.detail.value;
-    } else if (e.detail.name === 'code_ResetPassword') {
-      this.code_ResetPassword = e.detail.value;
-    } else if (e.detail.name === 'password_New') {
-      this.password_New = e.detail.value;
-    } else if (e.detail.name === 'password_New_Repeat') {
-      this.password_New_Repeat = e.detail.value;
+    } else if (e.detail.name === 'passwordResetCode') {
+      this.passwordResetCode = e.detail.value;
+    } else if (e.detail.name === 'newPassword') {
+      this.newPassword = e.detail.value;
+    } else if (e.detail.name === 'newPasswordRepeat') {
+      this.newPasswordRepeat = e.detail.value;
     }
   }
 
@@ -95,9 +95,9 @@ export class VForgotPassword {
   handle_Confirm_Password = async () => {
     let payload_ConfirmPassword_Inputs: interface_ConfirmPassword_Inputs = generate_ConfirmPassword_Payload(
       this.email,
-      this.password_New,
-      this.password_New_Repeat,
-      this.code_ResetPassword,
+      this.newPassword,
+      this.newPasswordRepeat,
+      this.passwordResetCode,
     );
 
     let { isValid_ConfirmPassword_Inputs, message_Validate_ConfirmPassword_Inputs } = helper_Validate_ConfirmPassword_Inputs(payload_ConfirmPassword_Inputs);
@@ -152,11 +152,11 @@ export class VForgotPassword {
       <e-text variant="display">Reset Password</e-text>
       <e-text>Step 2 of 2: Provide new password</e-text>
       <l-spacer value={1}></l-spacer>
-      <e-input type="number" name="code_ResetPassword" placeholder="Password reset code (check your mail)"></e-input>
+      <e-input type="number" name="passwordResetCode" placeholder="Password reset code (check your mail)"></e-input>
       <l-spacer value={2}></l-spacer>
-      <e-input type="password" name="password_New" placeholder="New password (min 8 chars)"></e-input>
+      <e-input type="password" name="newPassword" placeholder="New password (min 8 chars)"></e-input>
       <l-spacer value={1}></l-spacer>
-      <e-input type="password" name="password_New_Repeat" placeholder="Repeat new password"></e-input>
+      <e-input type="password" name="newPasswordRepeat" placeholder="Repeat new password"></e-input>
       <l-spacer value={1}></l-spacer>
       <l-row justifyContent="space-between">
         <e-text variant="footnote">
