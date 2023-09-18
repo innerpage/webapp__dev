@@ -40,7 +40,6 @@ export class AppRoot {
   @Listen('event_LinkClick') async handle_LinkClick(e) {
     if (e.detail.action === 'home') {
       this.history.push('/home', {});
-      state.activeView = 'home';
     } else if (e.detail.action === 'logout') {
       let { success, message, payload } = await Helper_ApiCall_Account_Logout();
       if (!success) {
@@ -50,6 +49,10 @@ export class AppRoot {
         return alert(payload.message);
       }
       state.isActive_Session = payload.isActive_Session;
+      state.account_FirstName = '';
+      state.account_LastName = '';
+      state.account_Email = '';
+      state.isVerified_AccountEmail = true;
       this.history.push('/login', {});
     } else if (e.detail.action === 'goBack') {
       this.history.goBack();
