@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Prop, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'c-sidebar',
@@ -6,6 +6,7 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class CSidebar {
+  @Prop() variant: string = 'default';
 
   render() {
     return (
@@ -14,5 +15,4 @@ export class CSidebar {
       </Host>
     );
   }
-
 }

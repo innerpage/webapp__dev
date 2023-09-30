@@ -16,9 +16,12 @@ export namespace Components {
     }
     interface CCard {
     }
+    interface CMain {
+    }
     interface CPage {
     }
     interface CSidebar {
+        "variant": string;
     }
     interface EButton {
         "action": string;
@@ -122,6 +125,12 @@ declare global {
     var HTMLCCardElement: {
         prototype: HTMLCCardElement;
         new (): HTMLCCardElement;
+    };
+    interface HTMLCMainElement extends Components.CMain, HTMLStencilElement {
+    }
+    var HTMLCMainElement: {
+        prototype: HTMLCMainElement;
+        new (): HTMLCMainElement;
     };
     interface HTMLCPageElement extends Components.CPage, HTMLStencilElement {
     }
@@ -277,6 +286,7 @@ declare global {
         "app-root": HTMLAppRootElement;
         "c-banner": HTMLCBannerElement;
         "c-card": HTMLCCardElement;
+        "c-main": HTMLCMainElement;
         "c-page": HTMLCPageElement;
         "c-sidebar": HTMLCSidebarElement;
         "e-button": HTMLEButtonElement;
@@ -314,9 +324,12 @@ declare namespace LocalJSX {
     }
     interface CCard {
     }
+    interface CMain {
+    }
     interface CPage {
     }
     interface CSidebar {
+        "variant"?: string;
     }
     interface EButton {
         "action"?: string;
@@ -420,6 +433,7 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "c-banner": CBanner;
         "c-card": CCard;
+        "c-main": CMain;
         "c-page": CPage;
         "c-sidebar": CSidebar;
         "e-button": EButton;
@@ -454,6 +468,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "c-banner": LocalJSX.CBanner & JSXBase.HTMLAttributes<HTMLCBannerElement>;
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
+            "c-main": LocalJSX.CMain & JSXBase.HTMLAttributes<HTMLCMainElement>;
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "c-sidebar": LocalJSX.CSidebar & JSXBase.HTMLAttributes<HTMLCSidebarElement>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;

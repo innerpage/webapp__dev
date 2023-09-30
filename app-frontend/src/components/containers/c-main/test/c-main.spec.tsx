@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { LRow } from '../l-row';
+import { CMain } from '../c-main';
 
-describe('l-row', () => {
+describe('c-main', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [LRow],
-      html: `<l-row></l-row>`,
+      components: [CMain],
+      html: `<c-main></c-main>`,
     });
     expect(page.root).toEqualHtml(`
-      <l-row>
+      <c-main>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </l-row>
+      </c-main>
     `);
   });
 });
