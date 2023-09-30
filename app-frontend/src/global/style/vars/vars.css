@@ -15,7 +15,9 @@
   --color__grey--dark: rgba(0, 0, 0, 0.9);
   --color__grey--medium: rgba(0, 0, 0, 0.6);
   --color__grey--light: rgba(0, 0, 0, 0.3);
-  --color__grey--lightest: rgba(0, 0, 0, 0.1);
+  --color__grey--lighter: rgba(0, 0, 0, 0.1);
+  --color__grey--lightest: rgba(0, 0, 0, 0.06);
+
   --color__blue--darkest: #04355b;
   --color__blue--dark: #065c9f;
   --color__blue--regular: #0984e3;

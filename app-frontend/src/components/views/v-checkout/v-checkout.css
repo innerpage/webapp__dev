@@ -28,7 +28,7 @@ table {
 
 table,
 td {
-  border: 1px solid var(--color__grey--lightest);
+  border: 1px solid var(--color__grey--lighter);
   text-align: left;
 }
 
