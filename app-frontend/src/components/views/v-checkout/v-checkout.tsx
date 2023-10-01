@@ -21,17 +21,14 @@ export class VCheckout {
   })
   event_RouteTo: EventEmitter;
 
-  @Listen('event_LinkClick') handle_LinkClick(e) {
-    if (e.detail.action === 'goBack') {
-      this.event_RouteTo.emit({
-        type: 'goBack',
-      });
-    }
-  }
-
   @Listen('buttonClick') handle_ButtonClick(e) {
     if (e.detail.action === 'action_Create_CheckoutSession') {
       this.create_Checkout_Session();
+    } else if (e.detail.action === 'goBack') {
+      this.event_RouteTo.emit({
+        type: 'goBack',
+        data: {},
+      });
     }
   }
 
@@ -183,11 +180,7 @@ export class VCheckout {
 
           <l-spacer value={2}></l-spacer>
           <l-row justifyContent="space-between">
-            <e-text variant="footnote">
-              <e-link action="goBack" event={true}>
-                Back
-              </e-link>
-            </e-text>
+            <e-button action="goBack">Back</e-button>
             <e-button action="action_Create_CheckoutSession" disabled={this.isDisabled_ConfirmAndPay_Button} active={this.isActive_ConfirmAndPay_Button}>
               Confirm & pay
             </e-button>

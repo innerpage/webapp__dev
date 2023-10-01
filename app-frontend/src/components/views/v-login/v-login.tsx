@@ -1,6 +1,7 @@
 import { Component, Event, EventEmitter, Host, State, Listen, h } from '@stencil/core';
 import { generate_Login_Payload, helper_Validate_LoginInputs, helper_Login_Api } from './helpers';
 import { interface_LoginInputs } from './interfaces';
+import { Vars } from '../../../global/script';
 
 @Component({
   tag: 'v-login',
@@ -84,10 +85,7 @@ export class VLogin {
       <Host>
         <e-text variant="display">Login</e-text>
         <e-text>
-          Not registered?{' '}
-          <e-link action="signup" event={true}>
-            Sign up
-          </e-link>
+          Not registered? <e-link url="/signup">Sign up</e-link>
         </e-text>
         <l-spacer value={1}></l-spacer>
         <p-oauth-button></p-oauth-button>
@@ -102,9 +100,7 @@ export class VLogin {
         <l-spacer value={1}></l-spacer>
         <l-row justifyContent="space-between">
           <e-text variant="footnote">
-            <e-link action="forgotPassword" event={true}>
-              Change Password
-            </e-link>
+            <e-link url="/forgot-password">Forgot Password?</e-link>
           </e-text>
           <e-button action="submit_LoginInputs" active={this.isActive_Login_Button}>
             Login
@@ -114,14 +110,8 @@ export class VLogin {
         <l-seperator></l-seperator>
         <l-spacer value={0.5}></l-spacer>
         <e-text variant="footnote">
-          By logging into your account, you accept our{' '}
-          <e-link href="https://aitihyatheheritage.in/terms-of-service.html" target="_blank">
-            terms
-          </e-link>{' '}
-          &{' '}
-          <e-link href="https://aitihyatheheritage.in/cancellation-refund-policy.html" target="_blank">
-            privacy policy
-          </e-link>
+          By logging into your account, you accept our <e-link url={Vars.legal.url.termsAndConditions}>terms</e-link> &{' '}
+          <e-link url={Vars.legal.url.privacyPolicy}>privacy policy</e-link>
         </e-text>{' '}
       </Host>
     );

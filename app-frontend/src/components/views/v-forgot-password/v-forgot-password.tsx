@@ -49,6 +49,11 @@ export class VForgotPassword {
       this.handle_Submit_SendResetCode();
     } else if (e.detail.action === 'confirm_Password') {
       this.handle_Confirm_Password();
+    } else if (e.detail.action === 'goBack') {
+      this.event_RouteTo.emit({
+        type: 'goBack',
+        data: {},
+      });
     }
   }
 
@@ -132,9 +137,7 @@ export class VForgotPassword {
       <l-spacer value={1}></l-spacer>
       <l-row justifyContent="space-between">
         <e-text variant="footnote">
-          <e-link action="goBack" event={true}>
-            Back
-          </e-link>
+          <e-button action="goBack">Back</e-button>
         </e-text>
         <e-button action="send_ResetCode" active={this.isActive_SendResetCode_Button}>
           Send reset code
@@ -159,11 +162,7 @@ export class VForgotPassword {
       <e-input type="password" name="newPasswordRepeat" placeholder="Repeat new password"></e-input>
       <l-spacer value={1}></l-spacer>
       <l-row justifyContent="space-between">
-        <e-text variant="footnote">
-          <e-link action="goBack" event={true}>
-            Back
-          </e-link>
-        </e-text>
+        <e-button action="goBack">Back</e-button>
         <e-button action="confirm_Password" active={this.isActive_ConfirmPassword_Button}>
           Reset password
         </e-button>

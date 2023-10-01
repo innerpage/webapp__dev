@@ -77,19 +77,16 @@ export class VPaymentHandle {
 
   UI_Default: FunctionalComponent = () => (
     <c-card>
-      {/* <e-text variant="display" theme="success">
+      <e-text variant="display" theme="success">
         Payment Successful
-      </e-text> */}
-      <h1 class="text--success">Payment Successful</h1>
+      </e-text>
+      {/* <h1 class="text--success">Payment Successful</h1> */}
       <l-spacer value={1}></l-spacer>
       <e-text>
-        Thank you for purchasing <strong>{this.title_Purchase}</strong>
+        You have upgraded to <strong>{this.title_Purchase} Plan</strong>
       </e-text>
-      <e-text>It has been added to your library.</e-text>
       <l-spacer value={1}></l-spacer>
-      <e-link action="myLibrary" event={true}>
-        <strong>Go to library</strong>
-      </e-link>
+      <e-link url="/">Go to account</e-link>
     </c-card>
   );
 

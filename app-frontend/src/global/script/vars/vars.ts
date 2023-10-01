@@ -1,4 +1,13 @@
 export const Vars = {
+  support: {
+    email: 'mail@example.com',
+  },
+  legal: {
+    url: {
+      privacyPolicy: '',
+      termsAndConditions: '',
+    },
+  },
   api: {
     url: document.domain === 'localhost' ? 'http://localhost:4444' : 'https://api.example.com',
     endpoint: {

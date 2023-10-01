@@ -58,13 +58,7 @@ export class VPostOauth {
       </e-text>
       <e-text>We could not fetch your google account details. Please try again</e-text>
       <e-text>
-        <e-link action="login" event={true}>
-          Login{' '}
-        </e-link>{' '}
-        /{' '}
-        <e-link action="signup" event={true}>
-          Sign up
-        </e-link>
+        <e-link url="/login">Login </e-link> / <e-link url="/signup">Sign up</e-link>
       </e-text>
     </div>
   );

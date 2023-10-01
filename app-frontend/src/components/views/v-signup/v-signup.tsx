@@ -1,6 +1,7 @@
 import { Component, Event, EventEmitter, Host, Listen, State, h } from '@stencil/core';
 import { generate_Signup_Payload, helper_Validate_SignupInputs, helper_Signup_Api_Signup } from './helpers';
 import { interface_SignupInputs } from './interfaces';
+import { Vars } from '../../../global/script';
 
 @Component({
   tag: 'v-signup',
@@ -90,10 +91,7 @@ export class VSignup {
       <Host>
         <e-text variant="display">Sign up</e-text>
         <e-text>
-          Have an account?{' '}
-          <e-link action="login" event={true}>
-            Login
-          </e-link>
+          Have an account? <e-link url="/login">Login</e-link>
         </e-text>
         <l-spacer value={1}></l-spacer>
         <p-oauth-button></p-oauth-button>
@@ -113,9 +111,7 @@ export class VSignup {
         <l-spacer value={1}></l-spacer>
         <l-row justifyContent="space-between">
           <e-text variant="footnote">
-            <e-link action="forgotPassword" event={true}>
-              Change Password
-            </e-link>
+            <e-link url="/forgot-password">Forgot Password?</e-link>
           </e-text>
           <e-button action="submit_SignupInputs" active={this.isActive_Signup_Button}>
             Sign up
@@ -125,15 +121,9 @@ export class VSignup {
         <l-seperator></l-seperator>
         <l-spacer value={0.5}></l-spacer>
         <e-text variant="footnote">
-          By creating your account, you accept our{' '}
-          <e-link href="https://aitihyatheheritage.in/terms-of-service.html" target="_blank">
-            terms
-          </e-link>{' '}
-          &{' '}
-          <e-link href="https://aitihyatheheritage.in/cancellation-refund-policy.html" target="_blank">
-            privacy policy
-          </e-link>
-        </e-text>{' '}
+          By creating your account, you accept our <e-link url={Vars.legal.url.termsAndConditions}>terms</e-link> &{' '}
+          <e-link url={Vars.legal.url.privacyPolicy}>privacy policy</e-link>
+        </e-text>
       </Host>
     );
   }
