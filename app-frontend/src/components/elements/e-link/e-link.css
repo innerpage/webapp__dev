@@ -24,7 +24,7 @@ a:active {
   padding: 0.5em 1em;
 }
 
-.link__card {
+.link__card a {
   width: 100%;
   box-sizing: border-box;
   border-radius: var(--site__border-radius);

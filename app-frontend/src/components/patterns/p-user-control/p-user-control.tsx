@@ -41,7 +41,7 @@ export class PUserControl {
 
   render() {
     return (
-      <stencil-route-link url="/account">
+      <e-link url="/account" variant="card">
         <l-row justifyContent="space-between" align="center">
           <l-row>
             <ion-icon name="person-outline"></ion-icon>
@@ -50,7 +50,7 @@ export class PUserControl {
           </l-row>
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </l-row>
-      </stencil-route-link>
+      </e-link>
     );
   }
 }
