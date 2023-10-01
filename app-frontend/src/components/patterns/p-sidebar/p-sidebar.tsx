@@ -1,4 +1,5 @@
 import { Component, FunctionalComponent, Prop, Host, h } from '@stencil/core';
+import { state } from '../../../global/script';
 
 @Component({
   tag: 'p-sidebar',
@@ -12,10 +13,10 @@ export class PSidebar {
     <div class="sidebar__default">
       <div>
         <div class="logo"></div>
-        <l-spacer value={4}></l-spacer>
+        <l-spacer value={2}></l-spacer>
         <e-list>
           <e-list-item>
-            <e-link url="/home">
+            <e-link url="/home" variant={state.activeView === 'home' ? 'navLinkActive' : 'navLink'}>
               <l-row>
                 <ion-icon name="home-outline"></ion-icon>
                 <l-spacer value={0.25} variant="horizontal"></l-spacer>
@@ -23,9 +24,8 @@ export class PSidebar {
               </l-row>
             </e-link>
           </e-list-item>
-          <l-spacer value={1}></l-spacer>
           <e-list-item>
-            <e-link url="/page-1">
+            <e-link url="/page-1" variant={state.activeView === 'page1' ? 'navLinkActive' : 'navLink'}>
               <l-row>
                 <ion-icon name="document-outline"></ion-icon>
                 <l-spacer value={0.25} variant="horizontal"></l-spacer>
@@ -33,9 +33,8 @@ export class PSidebar {
               </l-row>
             </e-link>
           </e-list-item>
-          <l-spacer value={1}></l-spacer>
           <e-list-item>
-            <e-link url="/page-2">
+            <e-link url="/page-2" variant={state.activeView === 'page2' ? 'navLinkActive' : 'navLink'}>
               <l-row>
                 <ion-icon name="document-text-outline"></ion-icon>
                 <l-spacer value={0.25} variant="horizontal"></l-spacer>

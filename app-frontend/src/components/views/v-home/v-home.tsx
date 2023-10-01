@@ -1,4 +1,5 @@
 import { Component, Host, h } from '@stencil/core';
+import { state } from '../../../global/script';
 
 @Component({
   tag: 'v-home',
@@ -6,6 +7,10 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class VHome {
+  componentWillLoad() {
+    state.activeView = 'home';
+  }
+
   render() {
     return (
       <Host>

@@ -1,4 +1,5 @@
 import { Component, Host, h } from '@stencil/core';
+import { state } from '../../../global/script';
 
 @Component({
   tag: 'v-page-2',
@@ -6,6 +7,10 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class VPage2 {
+  componentWillLoad() {
+    state.activeView = 'page2';
+  }
+
   render() {
     return (
       <Host>

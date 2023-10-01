@@ -2,7 +2,7 @@
   --site__font-size--body: 16px;
   --site__font-size--display: 1.5em;
   --site__font-size--heading: 1.25em;
-  --site__font-since__footnote: 0.8em;
+  --site__font-size--footnote: 0.8em;
 
   --site__font-weight--display: 700;
   --site__font-weight--heading: 500;
@@ -12,6 +12,7 @@
   --site__line-height: 1.5;
 
   --color__site--background: #121212;
+
   --color__grey--dark: rgba(0, 0, 0, 0.9);
   --color__grey--medium: rgba(0, 0, 0, 0.6);
   --color__grey--light: rgba(0, 0, 0, 0.3);
@@ -19,10 +20,12 @@
   --color__grey--lightest: rgba(0, 0, 0, 0.06);
 
   --color__blue--darkest: #04355b;
-  --color__blue--dark: #065c9f;
+  --color__blue--darker: #054f88;
+  --color__blue--dark: #076ab6;
   --color__blue--regular: #0984e3;
-  --color__blue--light: #53a9eb;
-  --color__blue--lightest: #e6f3fc;
+  --color__blue--light: #6bb5ee;
+  --color__blue--lighter: #cee6f9;
+  --color__blue--lightest: #f0f8fd;
 
   --color__red--darkest: #561314;
   --color__red--dark: #962222;

@@ -24,9 +24,9 @@ export class ELink {
 
   generateCssClassString() {
     if (this.variant === 'navLink') {
-      this.cssStyleString = this.cssStyleString + ` nav__link`;
-    } else if (this.variant === 'navLink_Active') {
-      this.cssStyleString = this.cssStyleString + ` nav__link--active`;
+      this.cssStyleString = this.cssStyleString + ` link__nav`;
+    } else if (this.variant === 'navLinkActive') {
+      this.cssStyleString = this.cssStyleString + ` link__nav--active`;
     } else if (this.variant === 'card') {
       this.cssStyleString = `${this.cssStyleString} link__card`;
     }
@@ -38,16 +38,16 @@ export class ELink {
 
   updateCssClassString() {
     if (this.variant === 'navLink') {
-      this.cssStyleString.replace('nav__link--active', 'nav__link');
-    } else if (this.variant === 'navLink_Active') {
-      this.cssStyleString.replace('nav__link', 'nav__link--active');
+      this.cssStyleString.replace('link__nav--active', 'link__nav');
+    } else if (this.variant === 'navLinkActive') {
+      this.cssStyleString.replace('link__nav', 'link__nav--active');
     }
   }
 
   render() {
     return (
       <div class={this.cssStyleString}>
-        <stencil-route-link style={{ color: 'red' }} url={this.url}>
+        <stencil-route-link url={this.url}>
           <slot />
         </stencil-route-link>
       </div>
