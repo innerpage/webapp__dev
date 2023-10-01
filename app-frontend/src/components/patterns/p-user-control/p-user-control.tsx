@@ -41,31 +41,41 @@ export class PUserControl {
 
   render() {
     return (
-      <c-card>
-        <l-row>
-          <ion-icon name="person-outline"></ion-icon>
-          <l-spacer variant="horizontal" value={0.25}></l-spacer>
-          <e-text>{state.account_FirstName}</e-text>
+      // <c-card>
+      //   <l-row>
+      //     <ion-icon name="person-outline"></ion-icon>
+      //     <l-spacer variant="horizontal" value={0.25}></l-spacer>
+      //     <e-text>{state.account_FirstName}</e-text>
+      //   </l-row>
+      //   <l-spacer value={0.5}></l-spacer>
+      //   <l-seperator></l-seperator>
+      //   <l-spacer value={0.5}></l-spacer>
+      //   <e-link action="settings" event={true}>
+      //     <l-row>
+      //       <ion-icon name="settings-outline"></ion-icon>
+      //       <l-spacer variant="horizontal" value={0.25}></l-spacer>
+      //       <e-text>Settings</e-text>
+      //     </l-row>
+      //   </e-link>
+      //   <l-spacer value={0.5}></l-spacer>
+      //   <e-link theme="danger" action="logout" event={true}>
+      //     <l-row>
+      //       <ion-icon name="log-out-outline"></ion-icon>
+      //       <l-spacer variant="horizontal" value={0.25}></l-spacer>
+      //       <e-text>Logout</e-text>
+      //     </l-row>
+      //   </e-link>
+      // </c-card>
+      <e-link variant="card" event={true}>
+        <l-row justifyContent="space-between" align="center">
+          <l-row>
+            <ion-icon name="person-outline"></ion-icon>
+            <l-spacer variant="horizontal" value={0.25}></l-spacer>
+            <e-text>{state.account_FirstName}</e-text>
+          </l-row>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
         </l-row>
-        <l-spacer value={0.5}></l-spacer>
-        <l-seperator></l-seperator>
-        <l-spacer value={0.5}></l-spacer>
-        <e-link action="settings" event={true}>
-          <l-row>
-            <ion-icon name="settings-outline"></ion-icon>
-            <l-spacer variant="horizontal" value={0.25}></l-spacer>
-            <e-text>Settings</e-text>
-          </l-row>
-        </e-link>
-        <l-spacer value={0.5}></l-spacer>
-        <e-link theme="danger" action="logout" event={true}>
-          <l-row>
-            <ion-icon name="log-out-outline"></ion-icon>
-            <l-spacer variant="horizontal" value={0.25}></l-spacer>
-            <e-text>Logout</e-text>
-          </l-row>
-        </e-link>
-      </c-card>
+      </e-link>
     );
   }
 }

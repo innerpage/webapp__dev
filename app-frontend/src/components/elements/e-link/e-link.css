@@ -2,6 +2,7 @@ a {
   text-decoration: none;
   display: inline-block;
   color: var(--color__blue--regular);
+  transition: all 0.25s;
 }
 
 a:hover {
@@ -21,6 +22,18 @@ a:active {
   background: var(--color__blue--lightest);
   border-radius: var(--site__border-radius);
   padding: 0.5em 1em;
+}
+
+.link__card {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: var(--site__border-radius);
+  padding: calc(var(--site__padding) / 2) var(--site__padding);
+  border: 1px solid var(--color__grey--lightest);
+}
+
+.link__card:hover {
+  background: var(--color__blue--lightest);
 }
 
 .danger {

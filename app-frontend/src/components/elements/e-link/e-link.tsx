@@ -31,6 +31,8 @@ export class ELink {
       this.styleClasses = this.styleClasses + ` nav__link`;
     } else if (this.variant === 'navLink_Active') {
       this.styleClasses = this.styleClasses + ` nav__link--active`;
+    } else if (this.variant === 'card') {
+      this.styleClasses = `${this.styleClasses} link__card`;
     }
 
     if (this.theme === 'danger') {

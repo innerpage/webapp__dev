@@ -1,6 +1,7 @@
 import { createStore } from '@stencil/store';
 
 export const { state } = createStore({
+  activeView: '',
   isActive_Session: false,
   account_FirstName: '',
   account_LastName: '',

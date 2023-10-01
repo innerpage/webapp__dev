@@ -21,6 +21,7 @@ export class LRow {
   }
 
   generate_StyleObject() {
+    this.styleObject.width = '100%';
     this.styleObject.display = 'flex';
     this.styleObject.alignItems = this.align;
     this.styleObject.justifyContent = this.justifyContent;
