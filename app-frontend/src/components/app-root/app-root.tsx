@@ -138,6 +138,8 @@ export class AppRoot {
 
             {/* LoggedIn Routes */}
             <this.Route_LoggedIn url="/home" component="v-home"></this.Route_LoggedIn>
+            <this.Route_LoggedIn url="/page-1" component="v-page-1"></this.Route_LoggedIn>
+            <this.Route_LoggedIn url="/page-2" component="v-page-2"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/payment-cancel" component="v-payment-cancel"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/payment-handle/:id_Session" component="v-payment-handle"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/checkout/:id_Order" component="v-checkout"></this.Route_LoggedIn>

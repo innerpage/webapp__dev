@@ -93,6 +93,10 @@ export namespace Components {
     }
     interface VLogin {
     }
+    interface VPage1 {
+    }
+    interface VPage2 {
+    }
     interface VPaymentCancel {
     }
     interface VPaymentHandle {
@@ -262,6 +266,18 @@ declare global {
         prototype: HTMLVLoginElement;
         new (): HTMLVLoginElement;
     };
+    interface HTMLVPage1Element extends Components.VPage1, HTMLStencilElement {
+    }
+    var HTMLVPage1Element: {
+        prototype: HTMLVPage1Element;
+        new (): HTMLVPage1Element;
+    };
+    interface HTMLVPage2Element extends Components.VPage2, HTMLStencilElement {
+    }
+    var HTMLVPage2Element: {
+        prototype: HTMLVPage2Element;
+        new (): HTMLVPage2Element;
+    };
     interface HTMLVPaymentCancelElement extends Components.VPaymentCancel, HTMLStencilElement {
     }
     var HTMLVPaymentCancelElement: {
@@ -313,6 +329,8 @@ declare global {
         "v-forgot-password": HTMLVForgotPasswordElement;
         "v-home": HTMLVHomeElement;
         "v-login": HTMLVLoginElement;
+        "v-page-1": HTMLVPage1Element;
+        "v-page-2": HTMLVPage2Element;
         "v-payment-cancel": HTMLVPaymentCancelElement;
         "v-payment-handle": HTMLVPaymentHandleElement;
         "v-post-oauth": HTMLVPostOauthElement;
@@ -415,6 +433,10 @@ declare namespace LocalJSX {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
         "onSuccess_Auth"?: (event: CustomEvent<any>) => void;
     }
+    interface VPage1 {
+    }
+    interface VPage2 {
+    }
     interface VPaymentCancel {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
@@ -458,6 +480,8 @@ declare namespace LocalJSX {
         "v-forgot-password": VForgotPassword;
         "v-home": VHome;
         "v-login": VLogin;
+        "v-page-1": VPage1;
+        "v-page-2": VPage2;
         "v-payment-cancel": VPaymentCancel;
         "v-payment-handle": VPaymentHandle;
         "v-post-oauth": VPostOauth;
@@ -494,6 +518,8 @@ declare module "@stencil/core" {
             "v-forgot-password": LocalJSX.VForgotPassword & JSXBase.HTMLAttributes<HTMLVForgotPasswordElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
             "v-login": LocalJSX.VLogin & JSXBase.HTMLAttributes<HTMLVLoginElement>;
+            "v-page-1": LocalJSX.VPage1 & JSXBase.HTMLAttributes<HTMLVPage1Element>;
+            "v-page-2": LocalJSX.VPage2 & JSXBase.HTMLAttributes<HTMLVPage2Element>;
             "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
             "v-payment-handle": LocalJSX.VPaymentHandle & JSXBase.HTMLAttributes<HTMLVPaymentHandleElement>;
             "v-post-oauth": LocalJSX.VPostOauth & JSXBase.HTMLAttributes<HTMLVPostOauthElement>;
