@@ -20,9 +20,6 @@ export namespace Components {
     }
     interface CPage {
     }
-    interface CSidebar {
-        "variant": string;
-    }
     interface EButton {
         "action": string;
         "active": boolean;
@@ -75,6 +72,9 @@ export namespace Components {
     interface PGallery {
     }
     interface POauthButton {
+        "variant": string;
+    }
+    interface PSidebar {
         "variant": string;
     }
     interface PSpinner {
@@ -139,12 +139,6 @@ declare global {
     var HTMLCPageElement: {
         prototype: HTMLCPageElement;
         new (): HTMLCPageElement;
-    };
-    interface HTMLCSidebarElement extends Components.CSidebar, HTMLStencilElement {
-    }
-    var HTMLCSidebarElement: {
-        prototype: HTMLCSidebarElement;
-        new (): HTMLCSidebarElement;
     };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
@@ -217,6 +211,12 @@ declare global {
     var HTMLPOauthButtonElement: {
         prototype: HTMLPOauthButtonElement;
         new (): HTMLPOauthButtonElement;
+    };
+    interface HTMLPSidebarElement extends Components.PSidebar, HTMLStencilElement {
+    }
+    var HTMLPSidebarElement: {
+        prototype: HTMLPSidebarElement;
+        new (): HTMLPSidebarElement;
     };
     interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {
     }
@@ -296,7 +296,6 @@ declare global {
         "c-card": HTMLCCardElement;
         "c-main": HTMLCMainElement;
         "c-page": HTMLCPageElement;
-        "c-sidebar": HTMLCSidebarElement;
         "e-button": HTMLEButtonElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
@@ -309,6 +308,7 @@ declare global {
         "l-spacer": HTMLLSpacerElement;
         "p-gallery": HTMLPGalleryElement;
         "p-oauth-button": HTMLPOauthButtonElement;
+        "p-sidebar": HTMLPSidebarElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-user-control": HTMLPUserControlElement;
         "v-account": HTMLVAccountElement;
@@ -336,9 +336,6 @@ declare namespace LocalJSX {
     interface CMain {
     }
     interface CPage {
-    }
-    interface CSidebar {
-        "variant"?: string;
     }
     interface EButton {
         "action"?: string;
@@ -399,6 +396,9 @@ declare namespace LocalJSX {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
         "variant"?: string;
     }
+    interface PSidebar {
+        "variant"?: string;
+    }
     interface PSpinner {
         "theme"?: string;
     }
@@ -446,7 +446,6 @@ declare namespace LocalJSX {
         "c-card": CCard;
         "c-main": CMain;
         "c-page": CPage;
-        "c-sidebar": CSidebar;
         "e-button": EButton;
         "e-input": EInput;
         "e-link": ELink;
@@ -459,6 +458,7 @@ declare namespace LocalJSX {
         "l-spacer": LSpacer;
         "p-gallery": PGallery;
         "p-oauth-button": POauthButton;
+        "p-sidebar": PSidebar;
         "p-spinner": PSpinner;
         "p-user-control": PUserControl;
         "v-account": VAccount;
@@ -482,7 +482,6 @@ declare module "@stencil/core" {
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
             "c-main": LocalJSX.CMain & JSXBase.HTMLAttributes<HTMLCMainElement>;
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
-            "c-sidebar": LocalJSX.CSidebar & JSXBase.HTMLAttributes<HTMLCSidebarElement>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;
@@ -495,6 +494,7 @@ declare module "@stencil/core" {
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
             "p-oauth-button": LocalJSX.POauthButton & JSXBase.HTMLAttributes<HTMLPOauthButtonElement>;
+            "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
             "v-account": LocalJSX.VAccount & JSXBase.HTMLAttributes<HTMLVAccountElement>;

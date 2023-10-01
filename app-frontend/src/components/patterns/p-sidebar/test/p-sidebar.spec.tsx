@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CSidebar } from '../c-sidebar';
+import { PSidebar } from '../p-sidebar';
 
-describe('c-sidebar', () => {
+describe('p-sidebar', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [CSidebar],
-      html: `<c-sidebar></c-sidebar>`,
+      components: [PSidebar],
+      html: `<p-sidebar></p-sidebar>`,
     });
     expect(page.root).toEqualHtml(`
-      <c-sidebar>
+      <p-sidebar>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </c-sidebar>
+      </p-sidebar>
     `);
   });
 });

@@ -9,10 +9,7 @@ export class VHome {
   render() {
     return (
       <Host>
-        <c-sidebar>
-          <div class="logo"></div>
-          <p-user-control></p-user-control>
-        </c-sidebar>
+        <p-sidebar></p-sidebar>
         <c-main>
           <e-text variant="heading">Home</e-text>
           <l-spacer value={0.5}></l-spacer>

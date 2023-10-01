@@ -76,16 +76,6 @@ export class PUserControl {
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </l-row>
       </stencil-route-link>
-      // <e-link variant="card" event={true} action="account">
-      //   <l-row justifyContent="space-between" align="center">
-      //     <l-row>
-      //       <ion-icon name="person-outline"></ion-icon>
-      //       <l-spacer variant="horizontal" value={0.25}></l-spacer>
-      //       <e-text>{state.account_FirstName}</e-text>
-      //     </l-row>
-      //     <ion-icon name="chevron-forward-outline"></ion-icon>
-      //   </l-row>
-      // </e-link>
     );
   }
 }
