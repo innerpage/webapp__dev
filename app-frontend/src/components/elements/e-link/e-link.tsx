@@ -29,6 +29,9 @@ export class ELink {
       this.cssStyleString = this.cssStyleString + ` link__nav--active`;
     } else if (this.variant === 'card') {
       this.cssStyleString = `${this.cssStyleString} link__card`;
+    } else if (this.variant === 'tab') {
+      this.cssStyleString = `${this.cssStyleString} link__tab--active`;
+      console.log('link tab');
     }
 
     if (this.theme === 'danger') {

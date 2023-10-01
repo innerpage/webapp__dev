@@ -48,6 +48,13 @@ LINK CARD VARIANT
   background: var(--color__blue--lightest);
 }
 
+/* -------------
+LINK TAB VARIANT
+------------- */
+.link__tab--active {
+  border-bottom: 2px solid var(--color__blue--regular);
+}
+
 /* ---------
 DANGER THEME
 --------- */

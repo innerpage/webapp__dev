@@ -143,7 +143,11 @@ export class AppRoot {
             <this.Route_LoggedIn url="/payment-cancel" component="v-payment-cancel"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/payment-handle/:id_Session" component="v-payment-handle"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/checkout/:id_Order" component="v-checkout"></this.Route_LoggedIn>
-            <this.Route_LoggedIn url="/account" component="v-account"></this.Route_LoggedIn>
+
+            <this.Route_LoggedIn url="/billing" component="v-billing"></this.Route_LoggedIn>
+            <this.Route_LoggedIn url="/profile" component="v-profile"></this.Route_LoggedIn>
+            <this.Route_LoggedIn url="/support" component="v-support"></this.Route_LoggedIn>
+            <this.Route_LoggedIn url="/upgrade" component="v-upgrade"></this.Route_LoggedIn>
 
             {/* Catch-all Route */}
             <stencil-route component="v-catch-all" />

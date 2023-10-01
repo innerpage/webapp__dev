@@ -78,7 +78,7 @@ export namespace Components {
     }
     interface PUserControl {
     }
-    interface VAccount {
+    interface VBilling {
     }
     interface VCatchAll {
         "history": RouterHistory;
@@ -106,7 +106,13 @@ export namespace Components {
     interface VPostOauth {
         "history": RouterHistory;
     }
+    interface VProfile {
+    }
     interface VSignup {
+    }
+    interface VSupport {
+    }
+    interface VUpgrade {
     }
 }
 declare global {
@@ -230,11 +236,11 @@ declare global {
         prototype: HTMLPUserControlElement;
         new (): HTMLPUserControlElement;
     };
-    interface HTMLVAccountElement extends Components.VAccount, HTMLStencilElement {
+    interface HTMLVBillingElement extends Components.VBilling, HTMLStencilElement {
     }
-    var HTMLVAccountElement: {
-        prototype: HTMLVAccountElement;
-        new (): HTMLVAccountElement;
+    var HTMLVBillingElement: {
+        prototype: HTMLVBillingElement;
+        new (): HTMLVBillingElement;
     };
     interface HTMLVCatchAllElement extends Components.VCatchAll, HTMLStencilElement {
     }
@@ -296,11 +302,29 @@ declare global {
         prototype: HTMLVPostOauthElement;
         new (): HTMLVPostOauthElement;
     };
+    interface HTMLVProfileElement extends Components.VProfile, HTMLStencilElement {
+    }
+    var HTMLVProfileElement: {
+        prototype: HTMLVProfileElement;
+        new (): HTMLVProfileElement;
+    };
     interface HTMLVSignupElement extends Components.VSignup, HTMLStencilElement {
     }
     var HTMLVSignupElement: {
         prototype: HTMLVSignupElement;
         new (): HTMLVSignupElement;
+    };
+    interface HTMLVSupportElement extends Components.VSupport, HTMLStencilElement {
+    }
+    var HTMLVSupportElement: {
+        prototype: HTMLVSupportElement;
+        new (): HTMLVSupportElement;
+    };
+    interface HTMLVUpgradeElement extends Components.VUpgrade, HTMLStencilElement {
+    }
+    var HTMLVUpgradeElement: {
+        prototype: HTMLVUpgradeElement;
+        new (): HTMLVUpgradeElement;
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
@@ -323,7 +347,7 @@ declare global {
         "p-sidebar": HTMLPSidebarElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-user-control": HTMLPUserControlElement;
-        "v-account": HTMLVAccountElement;
+        "v-billing": HTMLVBillingElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
         "v-forgot-password": HTMLVForgotPasswordElement;
@@ -334,7 +358,10 @@ declare global {
         "v-payment-cancel": HTMLVPaymentCancelElement;
         "v-payment-handle": HTMLVPaymentHandleElement;
         "v-post-oauth": HTMLVPostOauthElement;
+        "v-profile": HTMLVProfileElement;
         "v-signup": HTMLVSignupElement;
+        "v-support": HTMLVSupportElement;
+        "v-upgrade": HTMLVUpgradeElement;
     }
 }
 declare namespace LocalJSX {
@@ -414,7 +441,7 @@ declare namespace LocalJSX {
     interface PUserControl {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
-    interface VAccount {
+    interface VBilling {
     }
     interface VCatchAll {
         "history"?: RouterHistory;
@@ -449,9 +476,15 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
+    interface VProfile {
+    }
     interface VSignup {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
         "onSuccess_Auth"?: (event: CustomEvent<any>) => void;
+    }
+    interface VSupport {
+    }
+    interface VUpgrade {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
@@ -474,7 +507,7 @@ declare namespace LocalJSX {
         "p-sidebar": PSidebar;
         "p-spinner": PSpinner;
         "p-user-control": PUserControl;
-        "v-account": VAccount;
+        "v-billing": VBilling;
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
         "v-forgot-password": VForgotPassword;
@@ -485,7 +518,10 @@ declare namespace LocalJSX {
         "v-payment-cancel": VPaymentCancel;
         "v-payment-handle": VPaymentHandle;
         "v-post-oauth": VPostOauth;
+        "v-profile": VProfile;
         "v-signup": VSignup;
+        "v-support": VSupport;
+        "v-upgrade": VUpgrade;
     }
 }
 export { LocalJSX as JSX };
@@ -512,7 +548,7 @@ declare module "@stencil/core" {
             "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
-            "v-account": LocalJSX.VAccount & JSXBase.HTMLAttributes<HTMLVAccountElement>;
+            "v-billing": LocalJSX.VBilling & JSXBase.HTMLAttributes<HTMLVBillingElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;
             "v-forgot-password": LocalJSX.VForgotPassword & JSXBase.HTMLAttributes<HTMLVForgotPasswordElement>;
@@ -523,7 +559,10 @@ declare module "@stencil/core" {
             "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
             "v-payment-handle": LocalJSX.VPaymentHandle & JSXBase.HTMLAttributes<HTMLVPaymentHandleElement>;
             "v-post-oauth": LocalJSX.VPostOauth & JSXBase.HTMLAttributes<HTMLVPostOauthElement>;
+            "v-profile": LocalJSX.VProfile & JSXBase.HTMLAttributes<HTMLVProfileElement>;
             "v-signup": LocalJSX.VSignup & JSXBase.HTMLAttributes<HTMLVSignupElement>;
+            "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
+            "v-upgrade": LocalJSX.VUpgrade & JSXBase.HTMLAttributes<HTMLVUpgradeElement>;
         }
     }
 }

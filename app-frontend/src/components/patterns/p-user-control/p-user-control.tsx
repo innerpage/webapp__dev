@@ -41,7 +41,7 @@ export class PUserControl {
 
   render() {
     return (
-      <e-link url="/account" variant="card">
+      <e-link url="/profile" variant="card">
         <l-row justifyContent="space-between" align="center">
           <l-row>
             <ion-icon name="person-outline"></ion-icon>
