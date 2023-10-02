@@ -4,6 +4,6 @@
 body {
   font-size: var(--site__font-size--body);
   color: var(--color__grey--dark);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   line-height: var(--site__line-height);
 }

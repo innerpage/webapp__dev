@@ -1,24 +1,24 @@
+/* Button Init */
 button {
   background: none;
   border: 0;
   font-size: 0.9em;
+  padding: 0.75em 1em;
+  border-radius: 0.25em;
 }
-
 button:hover {
   cursor: pointer;
 }
-
 button:disabled {
   opacity: 0.3;
+  pointer-events: none;
 }
 
-/* VARIANT: PRIMARY, THEME: DEFAULT */
+/* PRIMARY BUTTON (Default) */
 .primary--default {
   font-weight: 600;
-  padding: 0.75em 1em;
   background: var(--color__blue--regular);
   color: white;
-  border-radius: 0.25em;
 }
 .primary--default:hover {
   background: var(--color__blue--dark);
@@ -27,56 +27,52 @@ button:disabled {
   background: var(--color__blue--darkest);
 }
 
-/* VARIANT - THEME */
+/* PRIMARY BUTTON (Danger) */
+.primary--danger {
+  background: var(--color__red--regular);
+  color: white;
+}
+.primary--danger:hover {
+  background: var(--color__red--dark);
+}
+.primary--danger:active {
+  background: var(--color__red--darkest);
+}
 
-.ghost {
+/* GHOST BUTTON (Default) */
+.ghost--default {
   border: 1px solid var(--color__grey--lightest);
-  padding: 0.75em 1em;
-  border-radius: 0.25em;
   color: var(--color__blue--regular);
 }
-
-.ghost:hover {
+.ghost--default:hover {
   background: var(--color__blue--lightest);
 }
-
-.ghost:active {
+.ghost--default:active {
   background: var(--color__blue--lighter);
 }
 
-.light {
+/* LIGHT BUTTON (Default) */
+.light--default {
   color: var(--color__blue--regular);
-  padding: 0.75em 1em;
-  border-radius: 0.25em;
 }
-.light:hover {
+.light--default:hover {
   background: var(--color__blue--lightest);
 }
-.light:active {
+.light--default:active {
   background: var(--color__blue--lighter);
 }
 
-.transparent--white {
-  outline: none;
-  border: none;
-  background: none;
-  color: rgba(255, 255, 255, 0.6);
-  padding: 0.3em 0.3em 0em 0.3em;
-  border-radius: 0.25em;
-  font-size: 1.25em;
-}
-.transparent--white:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* BLOCK */
-.wide {
+/* WIDE BUTTON (Default) */
+.wide--default {
   display: block;
   width: 100%;
 }
 
-/* SPINNER */
+/* Button Spinner (in action) */
+.in-action {
+  padding: 0.3em 0.8em;
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;
@@ -112,8 +108,4 @@ button:disabled {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.in-action {
-  padding: 0.3em 0.8em;
 }
