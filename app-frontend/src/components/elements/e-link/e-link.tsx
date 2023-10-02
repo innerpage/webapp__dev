@@ -29,9 +29,10 @@ export class ELink {
       this.cssStyleString = this.cssStyleString + ` link__nav--active`;
     } else if (this.variant === 'card') {
       this.cssStyleString = `${this.cssStyleString} link__card`;
-    } else if (this.variant === 'tab') {
+    } else if (this.variant === 'tabLink') {
+      this.cssStyleString = `${this.cssStyleString} link__tab`;
+    } else if (this.variant === 'tabLinkActive') {
       this.cssStyleString = `${this.cssStyleString} link__tab--active`;
-      console.log('link tab');
     }
 
     if (this.theme === 'danger') {
@@ -48,12 +49,22 @@ export class ELink {
   }
 
   render() {
-    return (
-      <div class={this.cssStyleString}>
-        <stencil-route-link url={this.url}>
-          <slot />
-        </stencil-route-link>
-      </div>
-    );
+    if (this.variant === 'email') {
+      return (
+        <div class={this.cssStyleString}>
+          <a href={this.url}>
+            <slot />
+          </a>
+        </div>
+      );
+    } else {
+      return (
+        <div class={this.cssStyleString}>
+          <stencil-route-link url={this.url}>
+            <slot />
+          </stencil-route-link>
+        </div>
+      );
+    }
   }
 }

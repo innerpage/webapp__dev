@@ -8,6 +8,7 @@ import { Component, Prop, h } from '@stencil/core';
 export class EText {
   @Prop() variant: string = 'body';
   @Prop() theme: string = 'default';
+  @Prop() weight: string = 'regular';
 
   private styleClasses: string;
 
@@ -16,7 +17,7 @@ export class EText {
   }
 
   generate_StyleClasses() {
-    this.styleClasses = `${this.variant} ${this.theme}`;
+    this.styleClasses = `${this.variant} ${this.theme} ${this.weight}`;
   }
 
   render() {

@@ -27,6 +27,33 @@ button:disabled {
   background: var(--color__blue--darkest);
 }
 
+.ghost {
+  border: 1px solid var(--color__grey--lightest);
+  padding: 0.75em 1em;
+  border-radius: 0.25em;
+  color: var(--color__blue--regular);
+}
+
+.ghost:hover {
+  background: var(--color__blue--lightest);
+}
+
+.ghost:active {
+  background: var(--color__blue--lighter);
+}
+
+.light {
+  color: var(--color__blue--regular);
+  padding: 0.75em 1em;
+  border-radius: 0.25em;
+}
+.light:hover {
+  background: var(--color__blue--lightest);
+}
+.light:active {
+  background: var(--color__blue--lighter);
+}
+
 .transparent--white {
   outline: none;
   border: none;

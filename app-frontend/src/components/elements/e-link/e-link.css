@@ -51,7 +51,12 @@ LINK CARD VARIANT
 /* -------------
 LINK TAB VARIANT
 ------------- */
+.link__tab {
+  margin-right: 3em;
+}
+
 .link__tab--active {
+  margin-right: 3em;
   border-bottom: 2px solid var(--color__blue--regular);
 }
 
@@ -59,14 +64,14 @@ LINK TAB VARIANT
 DANGER THEME
 --------- */
 
-.danger {
+.danger a {
   color: var(--color__red--regular);
 }
 
-.danger:hover {
+.danger a:hover {
   color: var(--color__red--dark);
 }
 
-.danger:active {
+.danger a:active {
   color: var(--color__red--darkest);
 }

@@ -1,5 +1,5 @@
 import { Component, Host, h } from '@stencil/core';
-import { state } from '../../../../global/script';
+import { Vars, state } from '../../../../global/script';
 
 @Component({
   tag: 'v-support',
@@ -8,7 +8,7 @@ import { state } from '../../../../global/script';
 })
 export class VSupport {
   componentWillLoad() {
-    state.activeView = 'billing';
+    state.activeView = 'support';
   }
 
   render() {
@@ -19,18 +19,19 @@ export class VSupport {
           <e-text variant="heading">Support</e-text>
           <l-spacer value={0.5}></l-spacer>
           <l-seperator></l-seperator>
-          <l-spacer value={1}></l-spacer>
-          <l-row>
-            <e-link url="/profile">Profile</e-link>
-            <l-spacer value={1} variant="horizontal"></l-spacer>
-            <e-link url="/billing">Billing</e-link>
-            <l-spacer value={1} variant="horizontal"></l-spacer>
-            <e-link url="/upgrade">Upgrade</e-link>
-            <l-spacer value={1} variant="horizontal"></l-spacer>
-            <e-link url="/support" variant="tab">
-              Support
-            </e-link>
-          </l-row>
+          <l-spacer value={2}></l-spacer>
+          <p-tab-nav location="settings"></p-tab-nav>
+          <l-spacer value={2}></l-spacer>
+          <c-card>
+            <e-text>
+              <l-row>
+                To report bugs or request new features, kindly drop a mail at:&nbsp;
+                <e-link variant="email" url={`mailto:${Vars.support.email}`}>
+                  {Vars.support.email}
+                </e-link>
+              </l-row>
+            </e-text>
+          </c-card>
         </c-main>
       </Host>
     );

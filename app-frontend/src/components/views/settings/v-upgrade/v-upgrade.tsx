@@ -8,7 +8,7 @@ import { state } from '../../../../global/script';
 })
 export class VUpgrade {
   componentWillLoad() {
-    state.activeView = 'billing';
+    state.activeView = 'upgrade';
   }
 
   render() {
@@ -19,18 +19,9 @@ export class VUpgrade {
           <e-text variant="heading">Upgrade</e-text>
           <l-spacer value={0.5}></l-spacer>
           <l-seperator></l-seperator>
-          <l-spacer value={1}></l-spacer>
-          <l-row>
-            <e-link url="/profile">Profile</e-link>
-            <l-spacer value={1} variant="horizontal"></l-spacer>
-            <e-link url="/billing">Billing</e-link>
-            <l-spacer value={1} variant="horizontal"></l-spacer>
-            <e-link url="/upgrade" variant="tab">
-              Upgrade
-            </e-link>
-            <l-spacer value={1} variant="horizontal"></l-spacer>
-            <e-link url="/support">Support</e-link>
-          </l-row>
+          <l-spacer value={2}></l-spacer>
+          <p-tab-nav location="settings"></p-tab-nav>
+          <l-spacer value={2}></l-spacer>
         </c-main>
       </Host>
     );

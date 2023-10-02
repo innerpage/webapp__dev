@@ -1,3 +1,7 @@
 :host {
   display: flex;
 }
+
+c-card {
+  width: 360px;
+}

@@ -19,18 +19,50 @@ export class VProfile {
           <e-text variant="heading">Profile</e-text>
           <l-spacer value={0.5}></l-spacer>
           <l-seperator></l-seperator>
+          <l-spacer value={2}></l-spacer>
+          <p-tab-nav location="settings"></p-tab-nav>
+          <l-spacer value={2}></l-spacer>
+          <c-card>
+            <e-text variant="footnote">NAME</e-text>
+            <l-row justifyContent="space-between">
+              <e-text>
+                {state.account_FirstName} {state.account_LastName}
+              </e-text>
+              <e-button variant="light">Edit</e-button>
+            </l-row>
+            <l-spacer value={1}></l-spacer>
+            <l-seperator></l-seperator>
+            <l-spacer value={1}></l-spacer>
+            <e-text variant="footnote">EMAIL</e-text>
+            <l-row justifyContent="space-between">
+              <e-link variant="email" url={`mailto:${state.account_Email}`}>
+                {state.account_Email}
+              </e-link>
+              <e-button variant="light">Edit</e-button>
+            </l-row>
+            <l-spacer value={1}></l-spacer>
+            <l-seperator></l-seperator>
+            <l-spacer value={1}></l-spacer>
+            <e-text variant="footnote">PASSWORD</e-text>
+            <l-row justifyContent="space-between">
+              <e-text>********</e-text>
+              <e-button variant="light">Edit</e-button>
+            </l-row>
+          </c-card>
+          <l-spacer value={2}></l-spacer>
+          <e-button variant="ghost">
+            <l-row>
+              <ion-icon name="log-out-outline"></ion-icon>&nbsp;Logout
+            </l-row>
+          </e-button>
+          <l-spacer value={2}></l-spacer>
+          <l-seperator></l-seperator>
           <l-spacer value={1}></l-spacer>
-          <l-row>
-            <e-link url="/profile" variant="tab">
-              Profile
+          <e-text variant="footnote">
+            <e-link url="/delete-account" theme="danger">
+              Click here to permanent delete your account and data
             </e-link>
-            <l-spacer value={1} variant="horizontal"></l-spacer>
-            <e-link url="/billing">Billing</e-link>
-            <l-spacer value={1} variant="horizontal"></l-spacer>
-            <e-link url="/upgrade">Upgrade</e-link>
-            <l-spacer value={1} variant="horizontal"></l-spacer>
-            <e-link url="/support">Support</e-link>
-          </l-row>
+          </e-text>
         </c-main>
       </Host>
     );
