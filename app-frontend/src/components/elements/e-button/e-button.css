@@ -12,20 +12,22 @@ button:disabled {
   opacity: 0.3;
 }
 
-/* VARIANT */
-.primary {
+/* VARIANT: PRIMARY, THEME: DEFAULT */
+.primary--default {
   font-weight: 600;
   padding: 0.75em 1em;
   background: var(--color__blue--regular);
   color: white;
   border-radius: 0.25em;
 }
-.primary:hover {
+.primary--default:hover {
   background: var(--color__blue--dark);
 }
-.primary:active {
+.primary--default:active {
   background: var(--color__blue--darkest);
 }
+
+/* VARIANT - THEME */
 
 .ghost {
   border: 1px solid var(--color__grey--lightest);

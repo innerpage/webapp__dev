@@ -26,20 +26,6 @@ export class AppRoot {
       let { message } = await mailEmailVerificationCodeApi(data);
       this.isMailingEmailVerification = false;
       alert(message);
-    }
-  }
-
-  @Listen('event_RouteTo') handle_RouteTo(e) {
-    if (e.detail.type === 'push') {
-      this.history.push(e.detail.route, e.detail.data);
-    } else if (e.detail.type === 'goBack') {
-      this.history.goBack();
-    }
-  }
-
-  @Listen('event_LinkClick') async handle_LinkClick(e) {
-    if (e.detail.action === 'home') {
-      this.history.push('/home', {});
     } else if (e.detail.action === 'logout') {
       let { success, message, payload } = await Helper_ApiCall_Account_Logout();
       if (!success) {
@@ -54,6 +40,20 @@ export class AppRoot {
       state.account_Email = '';
       state.isVerified_AccountEmail = true;
       this.history.push('/login', {});
+    }
+  }
+
+  @Listen('event_RouteTo') handle_RouteTo(e) {
+    if (e.detail.type === 'push') {
+      this.history.push(e.detail.route, e.detail.data);
+    } else if (e.detail.type === 'goBack') {
+      this.history.goBack();
+    }
+  }
+
+  @Listen('event_LinkClick') async handle_LinkClick(e) {
+    if (e.detail.action === 'home') {
+      this.history.push('/home', {});
     } else if (e.detail.action === 'goBack') {
       this.history.goBack();
     } else if (e.detail.action === 'signup') {
@@ -148,6 +148,7 @@ export class AppRoot {
             <this.Route_LoggedIn url="/profile" component="v-profile"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/support" component="v-support"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/upgrade" component="v-upgrade"></this.Route_LoggedIn>
+            <this.Route_LoggedIn url="/delete-account" component="v-delete-account"></this.Route_LoggedIn>
 
             {/* Catch-all Route */}
             <stencil-route component="v-catch-all" />

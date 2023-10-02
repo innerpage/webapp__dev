@@ -121,8 +121,14 @@ export class VSignup {
         <l-seperator></l-seperator>
         <l-spacer value={0.5}></l-spacer>
         <e-text variant="footnote">
-          By creating your account, you accept our <e-link url={Vars.legal.url.termsAndConditions}>terms</e-link> &{' '}
-          <e-link url={Vars.legal.url.privacyPolicy}>privacy policy</e-link>
+          By logging into your account, you accept our{' '}
+          <e-link variant="externalLink" url={Vars.legal.url.termsAndConditions}>
+            terms
+          </e-link>{' '}
+          &{' '}
+          <e-link variant="externalLink" url={Vars.legal.url.privacyPolicy}>
+            privacy policy
+          </e-link>
         </e-text>
       </Host>
     );

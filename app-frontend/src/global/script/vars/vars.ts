@@ -4,8 +4,8 @@ export const Vars = {
   },
   legal: {
     url: {
-      privacyPolicy: '',
-      termsAndConditions: '',
+      privacyPolicy: 'https://google.com',
+      termsAndConditions: 'https://facebook.com',
     },
   },
   api: {

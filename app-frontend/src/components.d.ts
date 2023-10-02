@@ -25,6 +25,7 @@ export namespace Components {
         "active": boolean;
         "disabled": boolean;
         "size": string;
+        "theme": string;
         "value": any;
         "variant": string;
     }
@@ -90,6 +91,8 @@ export namespace Components {
     interface VCheckout {
         "history": RouterHistory;
         "match": MatchResults;
+    }
+    interface VDeleteAccount {
     }
     interface VForgotPassword {
     }
@@ -264,6 +267,12 @@ declare global {
         prototype: HTMLVCheckoutElement;
         new (): HTMLVCheckoutElement;
     };
+    interface HTMLVDeleteAccountElement extends Components.VDeleteAccount, HTMLStencilElement {
+    }
+    var HTMLVDeleteAccountElement: {
+        prototype: HTMLVDeleteAccountElement;
+        new (): HTMLVDeleteAccountElement;
+    };
     interface HTMLVForgotPasswordElement extends Components.VForgotPassword, HTMLStencilElement {
     }
     var HTMLVForgotPasswordElement: {
@@ -361,6 +370,7 @@ declare global {
         "v-billing": HTMLVBillingElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
+        "v-delete-account": HTMLVDeleteAccountElement;
         "v-forgot-password": HTMLVForgotPasswordElement;
         "v-home": HTMLVHomeElement;
         "v-login": HTMLVLoginElement;
@@ -395,6 +405,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "onButtonClick"?: (event: CustomEvent<any>) => void;
         "size"?: string;
+        "theme"?: string;
         "value"?: any;
         "variant"?: string;
     }
@@ -466,6 +477,8 @@ declare namespace LocalJSX {
         "match"?: MatchResults;
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
+    interface VDeleteAccount {
+    }
     interface VForgotPassword {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
@@ -526,6 +539,7 @@ declare namespace LocalJSX {
         "v-billing": VBilling;
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
+        "v-delete-account": VDeleteAccount;
         "v-forgot-password": VForgotPassword;
         "v-home": VHome;
         "v-login": VLogin;
@@ -568,6 +582,7 @@ declare module "@stencil/core" {
             "v-billing": LocalJSX.VBilling & JSXBase.HTMLAttributes<HTMLVBillingElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;
+            "v-delete-account": LocalJSX.VDeleteAccount & JSXBase.HTMLAttributes<HTMLVDeleteAccountElement>;
             "v-forgot-password": LocalJSX.VForgotPassword & JSXBase.HTMLAttributes<HTMLVForgotPasswordElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
             "v-login": LocalJSX.VLogin & JSXBase.HTMLAttributes<HTMLVLoginElement>;

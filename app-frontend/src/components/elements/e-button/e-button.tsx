@@ -12,6 +12,7 @@ export class EButton {
   @Prop() size: string = 'default';
   @Prop() disabled: boolean = false;
   @Prop() active: boolean = false;
+  @Prop() theme: string = 'default';
 
   @State() inAction: boolean = false;
 
@@ -43,7 +44,7 @@ export class EButton {
   }
 
   generate_StyleClasses() {
-    this.styleClasses = `${this.variant} ${this.size}`;
+    this.styleClasses = `${this.variant}--${this.theme} ${this.size}`;
   }
 
   Spinner: FunctionalComponent = () => (

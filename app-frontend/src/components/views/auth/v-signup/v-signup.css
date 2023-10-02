@@ -4,3 +4,7 @@
   margin: 0 auto;
   padding-top: 6em;
 }
+
+e-link {
+  display: inline-block;
+}

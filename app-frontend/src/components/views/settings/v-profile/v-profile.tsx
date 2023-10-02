@@ -50,7 +50,7 @@ export class VProfile {
             </l-row>
           </c-card>
           <l-spacer value={2}></l-spacer>
-          <e-button variant="ghost">
+          <e-button variant="ghost" action="logout">
             <l-row>
               <ion-icon name="log-out-outline"></ion-icon>&nbsp;Logout
             </l-row>

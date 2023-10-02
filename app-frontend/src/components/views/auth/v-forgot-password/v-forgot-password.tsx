@@ -136,9 +136,9 @@ export class VForgotPassword {
       <e-input type="email" name="email" placeholder="Email"></e-input>
       <l-spacer value={1}></l-spacer>
       <l-row justifyContent="space-between">
-        <e-text variant="footnote">
-          <e-button action="goBack">Back</e-button>
-        </e-text>
+        <e-button action="goBack" variant="light">
+          Back
+        </e-button>
         <e-button action="send_ResetCode" active={this.isActive_SendResetCode_Button}>
           Send reset code
         </e-button>
@@ -162,7 +162,9 @@ export class VForgotPassword {
       <e-input type="password" name="newPasswordRepeat" placeholder="Repeat new password"></e-input>
       <l-spacer value={1}></l-spacer>
       <l-row justifyContent="space-between">
-        <e-button action="goBack">Back</e-button>
+        <e-button action="goBack" variant="light">
+          Back
+        </e-button>
         <e-button action="confirm_Password" active={this.isActive_ConfirmPassword_Button}>
           Reset password
         </e-button>

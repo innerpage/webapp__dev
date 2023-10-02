@@ -57,6 +57,14 @@ export class ELink {
           </a>
         </div>
       );
+    } else if (this.variant === 'externalLink') {
+      return (
+        <div class={this.cssStyleString}>
+          <a href={this.url} target="_blank">
+            <slot />
+          </a>
+        </div>
+      );
     } else {
       return (
         <div class={this.cssStyleString}>
