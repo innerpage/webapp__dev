@@ -37,7 +37,9 @@ git add --all
 git commit -m "Deploy build `date`"
 git push origin main --force
 
-# Install modules
+# Install modules in prod
 npm install 
+
+# Reset
 cd ..
 cd dev
