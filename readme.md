@@ -8,7 +8,7 @@
 
 ## ./build.sh
 
-- Change remote to prod_repo
+- Change remote to prod_remote
 
 ## app-frontend/package.json
 
