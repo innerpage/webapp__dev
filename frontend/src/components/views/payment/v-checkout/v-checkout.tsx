@@ -44,7 +44,6 @@ export class VCheckout {
   private subscription_Type: string = '';
   private price_Currency: string = '';
   private price_Product: number = 0;
-  private price_GatewayProcessing: number = 0;
   private price_Total: number = 0;
   private stripe_Key_Public: string = '';
   private stripe: any;
@@ -80,7 +79,6 @@ export class VCheckout {
     this.name_Product = this.data_Checkout.product.name;
     this.price_Currency = this.data_Checkout.price.currency;
     this.price_Product = this.data_Checkout.price.value;
-    this.price_GatewayProcessing = this.data_Checkout.gateway.processing_fee;
     this.stripe_Key_Public = this.data_Checkout.gateway.stripe_Key_Public;
   }
 
@@ -136,13 +134,6 @@ export class VCheckout {
             {this.price_Product}
           </td>
         </tr>
-        {/* <tr>
-          <td>Processing fees</td>
-          <td>
-            {this.price_Currency}
-            {this.price_GatewayProcessing}
-          </td>
-        </tr> */}
         <tr>
           <td>
             <strong>Grand total</strong>
