@@ -1,48 +1,53 @@
-## Git
+## Clone repo
 
-- Change project remote
+- `git clone git@github.com-projckt:projckt/starter_website-dev.git dev`
+- `cd dev`
 
-## Initialize both `app-frontend` and `app-server`
+## Edit remote
 
-- `./init.sh` to install NPM dependencies for `app-frontend` and `app-server`
+- `git remote set-url origin git@github.com-{username}:{username}/{repo_name}-dev.git`
 
-## ./build.sh
+## Install dependencies
 
-- Change remote to prod_remote
+- `./init.sh`
 
-## app-frontend/package.json
+## Edit ./build.sh
+
+- Change production repo to `git@github.com-{username}:{username}/{repo_name}-prod.git`
+
+## Edit ./frontend/package.json
 
 - Change `name`
 - Change `description`
 
-## app-frontend/src/index.html
+## Edit <meta> and <title>
 
+- Change `<meta name="description">` in ./frontend/src/index.html
 - Change `<title></title>`
-- Change `<meta name="Description">`
 
-## app-frontend/src/manifest.json
+## Edit ./frontend/src/manifest.json
 
 - Change `name`
 - Change `short_name`
 - Change `font-family` (Optional)
 
-## app-frontend/stencil.config.ts
+## Edit ./frontend/stencil.config.ts
 
-- Change `baseUrl` under `outputTargets`
+- Change `baseUrl` in `outputTargets`
 
-## app-frontend/src/global/script/vars/vars.ts
+## Edit ./frontend/src/global/script/vars/vars.ts
 
-- Change `url` of production api
+- Change `api.url` for production
 
-## app-frontend/src/global/script/store/store.ts
+## Edit ./frontend/src/global/script/store/store.ts
 
-- Add `googleClientId` for OAuth
+- Change `googleClientId`
 
-## app-server/package.json
+## Edit ./server/package.json
 
 - Change `name`
 - Change `description`
 
-## app-server/index.ts
+## Edit ./server/index.ts
 
-- Change `PORT`
+- Change server `PORT`

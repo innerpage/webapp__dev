@@ -8,23 +8,23 @@ cd prod
 git init
 git remote add origin git@github.com-projckt:projckt/starter_webapp-prod.git
 
-# Pre-build app-server
+# Pre-build ./server
 cd ..
 cd dev
-cd app-server 
+cd server 
 
-# Build app-server
+# Build ./server
 npm run build
 rsync -av dest/ ../../prod
 cp {.gitignore,package.json} ../../prod
 # rm -rf dest
 
 
-# Pre-build app-frontend
+# Pre-build ./frontend
 cd .. 
-cd app-frontend 
+cd frontend 
 
-# Build app-frontend
+# Build ./frontend
 npm run build --prerender
 rsync -av --delete www/ ../../prod/www
 # rm -rf www
