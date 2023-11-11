@@ -1,33 +1,26 @@
-# Cleanup previous prod
+## Delete previous ./prod 
 cd ..
 rm -rf prod
 mkdir prod
 
-# Init Git prod
+## Init git in ./prod
 cd prod
 git init
 git remote add origin git@github.com-projckt:projckt/starter_webapp-prod.git
 
-# Pre-build ./server
+## Build server
 cd ..
 cd dev
 cd server 
-
-# Build ./server
 npm run build
 rsync -av dest/ ../../prod
 cp {.gitignore,package.json} ../../prod
-# rm -rf dest
 
-
-# Pre-build ./frontend
+## Build ./frontend
 cd .. 
 cd frontend 
-
-# Build ./frontend
 npm run build --prerender
 rsync -av --delete www/ ../../prod/www
-# rm -rf www
 
 # Push prod 
 cd ..
