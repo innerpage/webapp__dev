@@ -20,7 +20,7 @@
 - Change `name`
 - Change `description`
 
-## Edit <meta> and <title>
+## Edit `<meta>` and `<title>`
 
 - Change `<meta name="description">` in ./frontend/src/index.html
 - Change `<title></title>`
