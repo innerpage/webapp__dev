@@ -41,7 +41,7 @@ LINK CARD VARIANT
   box-sizing: border-box;
   border-radius: var(--site__border-radius);
   padding: calc(var(--site__padding) / 2) var(--site__padding);
-  border: 1px solid var(--color__grey--lightest);
+  border: 1px solid var(--color__grey--lighter);
 }
 
 .link__card a:hover {

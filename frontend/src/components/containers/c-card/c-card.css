@@ -1,6 +1,6 @@
 :host {
   display: block;
-  border: 1px solid var(--color__grey--lightest);
+  border: 1px solid var(--color__grey--lighter);
   border-radius: var(--site__border-radius);
   padding: var(--site__padding);
   background: white;

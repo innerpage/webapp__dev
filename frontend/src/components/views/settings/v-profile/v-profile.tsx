@@ -20,8 +20,6 @@ export class VProfile {
           <l-spacer value={0.5}></l-spacer>
           <l-seperator></l-seperator>
           <l-spacer value={2}></l-spacer>
-          <p-tab-nav location="settings"></p-tab-nav>
-          <l-spacer value={2}></l-spacer>
           <c-card>
             <e-text variant="footnote">NAME</e-text>
             <l-row justifyContent="space-between">
@@ -60,7 +58,7 @@ export class VProfile {
           <l-spacer value={1}></l-spacer>
           <e-text variant="footnote">
             <e-link url="/delete-account" theme="danger">
-              Click here to permanent delete your account and data
+              Delete your account and data
             </e-link>
           </e-text>
         </c-main>

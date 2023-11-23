@@ -1,5 +1,5 @@
 :root {
-  --site__font-size--body: 16px;
+  --site__font-size--body: 15px;
   --site__font-size--display: 1.5em;
   --site__font-size--heading: 1.25em;
   --site__font-size--footnote: 0.8em;
@@ -13,12 +13,12 @@
 
   --color__site--background: #121212;
 
-  --color__grey--darkest: #032844;
-  --color__grey--darker: #054272;
-  --color__grey--dark: #065c9f;
-  --color__grey--regular: #0984e3;
-  --color__grey--light: #84c2f1;
-  --color__grey--lighter: #e6f3fc;
+  --color__blue--darkest: #032844;
+  --color__blue--darker: #054272;
+  --color__blue--dark: #065c9f;
+  --color__blue--regular: #0984e3;
+  --color__blue--light: #84c2f1;
+  --color__blue--lighter: #e6f3fc;
   --color__blue--lightest: #f3f9fe;
 
   --color__grey--darkest: #262626;

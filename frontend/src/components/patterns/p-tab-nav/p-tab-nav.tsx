@@ -17,9 +17,6 @@ export class PTabNav {
       <e-link url="/billing" variant={state.activeView === 'billing' ? 'tabLinkActive' : 'tabLink'}>
         Billing
       </e-link>
-      <e-link url="/upgrade" variant={state.activeView === 'upgrade' ? 'tabLinkActive' : 'tabLink'}>
-        Upgrade
-      </e-link>
       <e-link url="/support" variant={state.activeView === 'support' ? 'tabLinkActive' : 'tabLink'}>
         Support
       </e-link>

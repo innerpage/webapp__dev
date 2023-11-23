@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Listen, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Listen, Host, h } from '@stencil/core';
 import { state } from '../../../global/script';
 import { helper_UserControl_Api_Logout } from './helpers';
 
@@ -46,9 +46,9 @@ export class PUserControl {
           <l-row>
             <ion-icon name="person-outline"></ion-icon>
             <l-spacer variant="horizontal" value={0.25}></l-spacer>
-            <e-text>{state.account_FirstName}</e-text>
+            <e-text>Settings</e-text>
           </l-row>
-          <ion-icon name="chevron-forward-outline"></ion-icon>
+          <ion-icon name="chevron-right-outline"></ion-icon>
         </l-row>
       </e-link>
     );

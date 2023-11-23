@@ -119,8 +119,6 @@ export namespace Components {
     }
     interface VSupport {
     }
-    interface VUpgrade {
-    }
 }
 declare global {
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
@@ -339,12 +337,6 @@ declare global {
         prototype: HTMLVSupportElement;
         new (): HTMLVSupportElement;
     };
-    interface HTMLVUpgradeElement extends Components.VUpgrade, HTMLStencilElement {
-    }
-    var HTMLVUpgradeElement: {
-        prototype: HTMLVUpgradeElement;
-        new (): HTMLVUpgradeElement;
-    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "c-banner": HTMLCBannerElement;
@@ -382,7 +374,6 @@ declare global {
         "v-profile": HTMLVProfileElement;
         "v-signup": HTMLVSignupElement;
         "v-support": HTMLVSupportElement;
-        "v-upgrade": HTMLVUpgradeElement;
     }
 }
 declare namespace LocalJSX {
@@ -512,8 +503,6 @@ declare namespace LocalJSX {
     }
     interface VSupport {
     }
-    interface VUpgrade {
-    }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "c-banner": CBanner;
@@ -551,7 +540,6 @@ declare namespace LocalJSX {
         "v-profile": VProfile;
         "v-signup": VSignup;
         "v-support": VSupport;
-        "v-upgrade": VUpgrade;
     }
 }
 export { LocalJSX as JSX };
@@ -594,7 +582,6 @@ declare module "@stencil/core" {
             "v-profile": LocalJSX.VProfile & JSXBase.HTMLAttributes<HTMLVProfileElement>;
             "v-signup": LocalJSX.VSignup & JSXBase.HTMLAttributes<HTMLVSignupElement>;
             "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
-            "v-upgrade": LocalJSX.VUpgrade & JSXBase.HTMLAttributes<HTMLVUpgradeElement>;
         }
     }
 }

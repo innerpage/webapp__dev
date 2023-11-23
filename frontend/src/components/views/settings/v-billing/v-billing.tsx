@@ -20,8 +20,6 @@ export class VBilling {
           <l-spacer value={0.5}></l-spacer>
           <l-seperator></l-seperator>
           <l-spacer value={2}></l-spacer>
-          <p-tab-nav location="settings"></p-tab-nav>
-          <l-spacer value={2}></l-spacer>
         </c-main>
       </Host>
     );

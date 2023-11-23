@@ -1,7 +1,6 @@
 :host {
   display: block;
   box-sizing: border-box;
-  width: 70vw;
-  height: 100px;
-  margin: 2em auto;
+  width: 75vw;
+  margin: 1em auto;
 }
