@@ -50,7 +50,8 @@ export class VProfile {
           <l-spacer value={2}></l-spacer>
           <e-button variant="ghost" action="logout">
             <l-row>
-              <ion-icon name="log-out-outline"></ion-icon>&nbsp;Logout
+              <ph-sign-out></ph-sign-out>
+              &nbsp;Logout
             </l-row>
           </e-button>
           <l-spacer value={2}></l-spacer>

@@ -78,11 +78,6 @@ export namespace Components {
     interface PSpinner {
         "theme": string;
     }
-    interface PTabNav {
-        "location": string;
-    }
-    interface PUserControl {
-    }
     interface VBilling {
     }
     interface VCatchAll {
@@ -235,18 +230,6 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
-    interface HTMLPTabNavElement extends Components.PTabNav, HTMLStencilElement {
-    }
-    var HTMLPTabNavElement: {
-        prototype: HTMLPTabNavElement;
-        new (): HTMLPTabNavElement;
-    };
-    interface HTMLPUserControlElement extends Components.PUserControl, HTMLStencilElement {
-    }
-    var HTMLPUserControlElement: {
-        prototype: HTMLPUserControlElement;
-        new (): HTMLPUserControlElement;
-    };
     interface HTMLVBillingElement extends Components.VBilling, HTMLStencilElement {
     }
     var HTMLVBillingElement: {
@@ -357,8 +340,6 @@ declare global {
         "p-oauth-button": HTMLPOauthButtonElement;
         "p-sidebar": HTMLPSidebarElement;
         "p-spinner": HTMLPSpinnerElement;
-        "p-tab-nav": HTMLPTabNavElement;
-        "p-user-control": HTMLPUserControlElement;
         "v-billing": HTMLVBillingElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
@@ -452,12 +433,6 @@ declare namespace LocalJSX {
     interface PSpinner {
         "theme"?: string;
     }
-    interface PTabNav {
-        "location"?: string;
-    }
-    interface PUserControl {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-    }
     interface VBilling {
     }
     interface VCatchAll {
@@ -523,8 +498,6 @@ declare namespace LocalJSX {
         "p-oauth-button": POauthButton;
         "p-sidebar": PSidebar;
         "p-spinner": PSpinner;
-        "p-tab-nav": PTabNav;
-        "p-user-control": PUserControl;
         "v-billing": VBilling;
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
@@ -565,8 +538,6 @@ declare module "@stencil/core" {
             "p-oauth-button": LocalJSX.POauthButton & JSXBase.HTMLAttributes<HTMLPOauthButtonElement>;
             "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
-            "p-tab-nav": LocalJSX.PTabNav & JSXBase.HTMLAttributes<HTMLPTabNavElement>;
-            "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
             "v-billing": LocalJSX.VBilling & JSXBase.HTMLAttributes<HTMLVBillingElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;

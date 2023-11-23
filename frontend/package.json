@@ -21,6 +21,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@phosphor-icons/webcomponents": "^2.0.5",
     "@stripe/stripe-js": "^1.53.0",
     "joi": "^17.8.3",
     "socket.io-client": "^4.6.2",
