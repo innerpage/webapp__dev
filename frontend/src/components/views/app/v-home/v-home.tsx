@@ -16,7 +16,13 @@ export class VHome {
       <Host>
         <p-sidebar></p-sidebar>
         <c-main>
-          <e-text variant="heading">Home</e-text>
+          <e-text variant="heading">
+            <l-row align="flex-end">
+              <ph-house color="var(--color__grey--light)"></ph-house>
+              <l-spacer value={0.25} variant="horizontal"></l-spacer>
+              <e-text>Home</e-text>
+            </l-row>
+          </e-text>
           <l-spacer value={0.5}></l-spacer>
           <l-seperator></l-seperator>
         </c-main>

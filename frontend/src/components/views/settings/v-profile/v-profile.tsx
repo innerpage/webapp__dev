@@ -16,7 +16,13 @@ export class VProfile {
       <Host>
         <p-sidebar></p-sidebar>
         <c-main>
-          <e-text variant="heading">Profile</e-text>
+          <e-text variant="heading">
+            <l-row>
+              <ph-user color="var(--color__grey--light)" align="flex-end"></ph-user>
+              <l-spacer value={0.25} variant="horizontal"></l-spacer>
+              <e-text>Profile</e-text>
+            </l-row>
+          </e-text>
           <l-spacer value={0.5}></l-spacer>
           <l-seperator></l-seperator>
           <l-spacer value={2}></l-spacer>
@@ -57,11 +63,13 @@ export class VProfile {
           <l-spacer value={2}></l-spacer>
           <l-seperator></l-seperator>
           <l-spacer value={1}></l-spacer>
-          <e-text variant="footnote">
-            <e-link url="/delete-account" theme="danger">
-              Delete your account and data
-            </e-link>
-          </e-text>
+          <e-link url="/delete-account" theme="danger">
+            <l-row>
+              <ph-trash weight={state.activeView === 'page1' ? 'fill' : 'regular'}></ph-trash>
+              <l-spacer value={0.25} variant="horizontal"></l-spacer>
+              <e-text> Delete your account and data</e-text>
+            </l-row>
+          </e-link>
         </c-main>
       </Host>
     );

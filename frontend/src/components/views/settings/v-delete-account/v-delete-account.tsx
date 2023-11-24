@@ -10,10 +10,10 @@ export class VDeleteAccount {
     return (
       <Host>
         <e-text variant="display">Are you sure?</e-text>
-        <e-text>You account and data will be lost forever. Deleting your account is an irreversible step</e-text>
+        <e-text>Deleting your account is an irreversible step. Your account and data will be lost forever. Do you still want to delete your account?</e-text>
         <l-spacer value={0.5}></l-spacer>
         <e-button action="deleteAccount" theme="danger">
-          Delete my account
+          Yes, delete my account
         </e-button>
       </Host>
     );

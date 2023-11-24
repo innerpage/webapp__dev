@@ -16,7 +16,13 @@ export class VPage1 {
       <Host>
         <p-sidebar></p-sidebar>
         <c-main>
-          <e-text variant="heading">Page 1</e-text>
+          <e-text variant="heading">
+            <l-row align="flex-end">
+              <ph-file color="var(--color__grey--light)"></ph-file>
+              <l-spacer value={0.25} variant="horizontal"></l-spacer>
+              <e-text>Home</e-text>
+            </l-row>
+          </e-text>
           <l-spacer value={0.5}></l-spacer>
           <l-seperator></l-seperator>
         </c-main>
