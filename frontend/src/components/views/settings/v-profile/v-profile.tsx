@@ -56,7 +56,7 @@ export class VProfile {
           <l-spacer value={2}></l-spacer>
           <e-button variant="ghost" action="logout">
             <l-row>
-              <ph-sign-out></ph-sign-out>
+              <ph-sign-out color="var(--color__blue--regular)"></ph-sign-out>
               &nbsp;Logout
             </l-row>
           </e-button>

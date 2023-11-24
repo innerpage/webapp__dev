@@ -83,42 +83,44 @@ export class VLogin {
   render() {
     return (
       <Host>
-        <e-text variant="display">Login</e-text>
-        <e-text>
-          Not registered? <e-link url="/signup">Sign up</e-link>
-        </e-text>
-        <l-spacer value={1}></l-spacer>
-        <p-oauth-button></p-oauth-button>
-        <l-spacer value={1}></l-spacer>
-        <l-seperator variant="oauth"></l-seperator>
-        <l-spacer value={1}></l-spacer>
-        <e-input type="email" name="email" placeholder="Email"></e-input>
-        <br />
-        <l-spacer value={1}></l-spacer>
-        <e-input type="password" name="password" placeholder="Password"></e-input>
-        <br />
-        <l-spacer value={1}></l-spacer>
-        <l-row justifyContent="space-between">
-          <e-text variant="footnote">
-            <e-link url="/forgot-password">Forgot Password?</e-link>
+        <div id="login-container">
+          <e-text variant="display">Login</e-text>
+          <e-text>
+            Not registered? <e-link url="/signup">Sign up</e-link>
           </e-text>
-          <e-button action="submit_LoginInputs" active={this.isActive_Login_Button}>
-            Login
-          </e-button>
-        </l-row>
-        <l-spacer value={2}></l-spacer>
-        <l-seperator></l-seperator>
-        <l-spacer value={0.5}></l-spacer>
-        <e-text variant="footnote">
-          By logging into your account, you accept our{' '}
-          <e-link variant="externalLink" url={Vars.legal.url.termsAndConditions}>
-            terms
-          </e-link>{' '}
-          &{' '}
-          <e-link variant="externalLink" url={Vars.legal.url.privacyPolicy}>
-            privacy policy
-          </e-link>
-        </e-text>{' '}
+          <l-spacer value={1}></l-spacer>
+          <p-oauth-button></p-oauth-button>
+          <l-spacer value={1}></l-spacer>
+          <l-seperator variant="oauth"></l-seperator>
+          <l-spacer value={1}></l-spacer>
+          <e-input type="email" name="email" placeholder="Email"></e-input>
+          <br />
+          <l-spacer value={1}></l-spacer>
+          <e-input type="password" name="password" placeholder="Password"></e-input>
+          <br />
+          <l-spacer value={1}></l-spacer>
+          <l-row justifyContent="space-between">
+            <e-text variant="footnote">
+              <e-link url="/forgot-password">Forgot Password?</e-link>
+            </e-text>
+            <e-button action="submit_LoginInputs" active={this.isActive_Login_Button}>
+              Login
+            </e-button>
+          </l-row>
+          <l-spacer value={2}></l-spacer>
+          <l-seperator></l-seperator>
+          <l-spacer value={0.5}></l-spacer>
+          <e-text variant="footnote">
+            By logging into your account, you accept our{' '}
+            <e-link variant="externalLink" url={Vars.legal.url.termsAndConditions}>
+              terms
+            </e-link>{' '}
+            &{' '}
+            <e-link variant="externalLink" url={Vars.legal.url.privacyPolicy}>
+              privacy policy
+            </e-link>
+          </e-text>{' '}
+        </div>
       </Host>
     );
   }

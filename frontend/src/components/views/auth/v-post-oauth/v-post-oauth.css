@@ -1,6 +1,17 @@
 :host {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+#post-oauth-container {
   display: block;
   max-width: 250px;
   margin: 0 auto;
   padding-top: 6em;
+}
+
+e-link {
+  display: inline-block;
 }

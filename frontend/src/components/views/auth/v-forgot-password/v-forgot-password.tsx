@@ -175,8 +175,10 @@ export class VForgotPassword {
   render() {
     return (
       <Host>
-        {this.state === this.wizard_Steps[0] && <this.Init></this.Init>}
-        {this.state === this.wizard_Steps[1] && <this.Confirm></this.Confirm>}
+        <div id="forgot-password-container">
+          {this.state === this.wizard_Steps[0] && <this.Init></this.Init>}
+          {this.state === this.wizard_Steps[1] && <this.Confirm></this.Confirm>}
+        </div>
       </Host>
     );
   }

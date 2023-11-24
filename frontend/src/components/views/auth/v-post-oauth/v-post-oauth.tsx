@@ -66,8 +66,10 @@ export class VPostOauth {
   render() {
     return (
       <Host>
-        {this.compState === 'fetching' && <this.Loader></this.Loader>}
-        {this.compState === 'error' && <this.Error></this.Error>}
+        <div id="post-oauth-container">
+          {this.compState === 'fetching' && <this.Loader></this.Loader>}
+          {this.compState === 'error' && <this.Error></this.Error>}
+        </div>
       </Host>
     );
   }
