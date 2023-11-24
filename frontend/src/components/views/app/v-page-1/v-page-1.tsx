@@ -20,7 +20,7 @@ export class VPage1 {
             <l-row align="flex-end">
               <ph-file color="var(--color__grey--light)"></ph-file>
               <l-spacer value={0.25} variant="horizontal"></l-spacer>
-              <e-text>Home</e-text>
+              <e-text>Page 1</e-text>
             </l-row>
           </e-text>
           <l-spacer value={0.5}></l-spacer>

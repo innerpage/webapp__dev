@@ -14,6 +14,8 @@ export class PSidebar {
     <div class="sidebar__default">
       <div class="logo"></div>
       <l-spacer value={2}></l-spacer>
+      <e-text variant="footnote">MAIN</e-text>
+
       <e-list>
         <e-list-item>
           <e-link url="/home" variant={state.activeView === 'home' ? 'navLinkActive' : 'navLink'}>
@@ -37,6 +39,7 @@ export class PSidebar {
       <l-spacer value={1}></l-spacer>
       <l-seperator></l-seperator>
       <l-spacer value={1}></l-spacer>
+      <e-text variant="footnote">SETTINGS</e-text>
       <e-list>
         <e-list-item>
           <e-link url="/profile" variant={state.activeView === 'profile' ? 'navLinkActive' : 'navLink'}>
