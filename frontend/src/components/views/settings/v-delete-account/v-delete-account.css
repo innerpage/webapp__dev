@@ -1,6 +1,12 @@
 :host {
-  display: block;
-  max-width: 250px;
+  height: 100vh;
+  display: flex;
   margin: 0 auto;
-  padding-top: 6em;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--color__red--lightest);
+}
+
+main {
+  width: 360px;
 }

@@ -67,6 +67,10 @@ export namespace Components {
         "value": number;
         "variant": string;
     }
+    interface PEditableText {
+        "label": string;
+        "type": string;
+    }
     interface PGallery {
     }
     interface POauthButton {
@@ -204,6 +208,12 @@ declare global {
         prototype: HTMLLSpacerElement;
         new (): HTMLLSpacerElement;
     };
+    interface HTMLPEditableTextElement extends Components.PEditableText, HTMLStencilElement {
+    }
+    var HTMLPEditableTextElement: {
+        prototype: HTMLPEditableTextElement;
+        new (): HTMLPEditableTextElement;
+    };
     interface HTMLPGalleryElement extends Components.PGallery, HTMLStencilElement {
     }
     var HTMLPGalleryElement: {
@@ -328,6 +338,7 @@ declare global {
         "l-row": HTMLLRowElement;
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
+        "p-editable-text": HTMLPEditableTextElement;
         "p-gallery": HTMLPGalleryElement;
         "p-oauth-button": HTMLPOauthButtonElement;
         "p-sidebar": HTMLPSidebarElement;
@@ -412,6 +423,10 @@ declare namespace LocalJSX {
         "value"?: number;
         "variant"?: string;
     }
+    interface PEditableText {
+        "label"?: string;
+        "type"?: string;
+    }
     interface PGallery {
     }
     interface POauthButton {
@@ -483,6 +498,7 @@ declare namespace LocalJSX {
         "l-row": LRow;
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
+        "p-editable-text": PEditableText;
         "p-gallery": PGallery;
         "p-oauth-button": POauthButton;
         "p-sidebar": PSidebar;
@@ -522,6 +538,7 @@ declare module "@stencil/core" {
             "l-row": LocalJSX.LRow & JSXBase.HTMLAttributes<HTMLLRowElement>;
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
+            "p-editable-text": LocalJSX.PEditableText & JSXBase.HTMLAttributes<HTMLPEditableTextElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
             "p-oauth-button": LocalJSX.POauthButton & JSXBase.HTMLAttributes<HTMLPOauthButtonElement>;
             "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;

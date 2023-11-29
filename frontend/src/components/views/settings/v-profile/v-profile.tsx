@@ -28,30 +28,17 @@ export class VProfile {
           <l-spacer value={2}></l-spacer>
           <c-card>
             <e-text variant="footnote">NAME</e-text>
-            <l-row justifyContent="space-between">
-              <e-text>
-                {state.account_FirstName} {state.account_LastName}
-              </e-text>
-              <e-button variant="light">Edit</e-button>
-            </l-row>
+            <p-editable-text type="text" label={`${state.account_FirstName} ${state.account_LastName}`}></p-editable-text>
             <l-spacer value={1}></l-spacer>
             <l-seperator></l-seperator>
             <l-spacer value={1}></l-spacer>
             <e-text variant="footnote">EMAIL</e-text>
-            <l-row justifyContent="space-between">
-              <e-link variant="email" url={`mailto:${state.account_Email}`}>
-                {state.account_Email}
-              </e-link>
-              <e-button variant="light">Edit</e-button>
-            </l-row>
+            <p-editable-text type="link" label={`${state.account_Email}`}></p-editable-text>
             <l-spacer value={1}></l-spacer>
             <l-seperator></l-seperator>
             <l-spacer value={1}></l-spacer>
             <e-text variant="footnote">PASSWORD</e-text>
-            <l-row justifyContent="space-between">
-              <e-text>********</e-text>
-              <e-button variant="light">Edit</e-button>
-            </l-row>
+            <p-editable-text type="text" label="********"></p-editable-text>
           </c-card>
           <l-spacer value={2}></l-spacer>
           <e-button variant="ghost" action="logout">

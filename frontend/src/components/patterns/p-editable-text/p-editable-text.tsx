@@ -1,0 +1,50 @@
+import { Component, FunctionalComponent, Prop, State, Listen, h } from '@stencil/core';
+
+@Component({
+  tag: 'p-editable-text',
+  styleUrl: 'p-editable-text.css',
+  shadow: true,
+})
+export class PEditableText {
+  @Prop() type: string;
+  @Prop() label: string;
+  @State() isEditModeOn: boolean = false;
+
+  @Listen('buttonClick') async handle_ButtonClick(e) {
+    if (e.detail.action === 'startEditing') {
+      this.isEditModeOn = true;
+    }
+  }
+
+  EditModeOn: FunctionalComponent = () => (
+    <l-row justifyContent="space-between">
+      <e-input></e-input>
+      <div>
+        <e-button variant="light">Cancel</e-button>
+        <e-button>Save</e-button>
+      </div>
+    </l-row>
+  );
+
+  EditModeOff: FunctionalComponent = () => (
+    <l-row justifyContent="space-between">
+      {this.type === 'text' && <e-text>{this.label}</e-text>}
+      {this.type === 'link' && (
+        <e-link variant="email" url={`mailto:${this.label}`}>
+          {this.label}
+        </e-link>
+      )}
+      <e-button variant="light" action="startEditing">
+        Edit
+      </e-button>
+    </l-row>
+  );
+
+  render() {
+    if (this.isEditModeOn) {
+      return <this.EditModeOn></this.EditModeOn>;
+    } else {
+      return <this.EditModeOff></this.EditModeOff>;
+    }
+  }
+}
