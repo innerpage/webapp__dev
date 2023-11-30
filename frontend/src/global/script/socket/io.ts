@@ -6,7 +6,7 @@ export let IO: any;
 export const init_Socket = async () => {
   IO = await io(Vars.api.url, {
     query: {
-      email: state.account_Email,
+      email: state.accountEmail,
     },
   });
 };

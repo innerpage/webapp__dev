@@ -28,12 +28,12 @@ export class VProfile {
           <l-spacer value={2}></l-spacer>
           <c-card>
             <e-text variant="footnote">NAME</e-text>
-            <p-editable-text type="text" label={`${state.account_FirstName} ${state.account_LastName}`}></p-editable-text>
+            <p-editable-text type="text" label={state.accountName}></p-editable-text>
             <l-spacer value={1}></l-spacer>
             <l-seperator></l-seperator>
             <l-spacer value={1}></l-spacer>
             <e-text variant="footnote">EMAIL</e-text>
-            <p-editable-text type="link" label={`${state.account_Email}`}></p-editable-text>
+            <p-editable-text type="link" label={`${state.accountEmail}`}></p-editable-text>
             <l-spacer value={1}></l-spacer>
             <l-seperator></l-seperator>
             <l-spacer value={1}></l-spacer>

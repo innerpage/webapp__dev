@@ -20,7 +20,7 @@ export class AppRoot {
   @Listen('buttonClick') async handle_ButtonClick(e) {
     if (e.detail.action === 'mailEmailVerificationCode') {
       let data = {
-        email: state.account_Email,
+        email: state.accountEmail,
       };
       this.isMailingEmailVerification = true;
       let { message } = await mailEmailVerificationCodeApi(data);
@@ -34,11 +34,10 @@ export class AppRoot {
       if (!payload.success) {
         return alert(payload.message);
       }
-      state.isActive_Session = payload.isActive_Session;
-      state.account_FirstName = '';
-      state.account_LastName = '';
-      state.account_Email = '';
-      state.isVerified_AccountEmail = true;
+      state.isSessionActive = payload.isSessionActive;
+      state.accountName = '';
+      state.accountEmail = '';
+      state.isAccountEmailVerified = true;
       this.history.push('/login', {});
     }
   }
@@ -76,24 +75,24 @@ export class AppRoot {
         return;
       }
       let data = {
-        email: state.account_Email,
+        email: state.accountEmail,
         emailVerificationCode: this.emailVerificationCode,
       };
       let { success, message } = await submitEmailVerificationCodeApi(data);
       if (!success) {
         return alert(message);
       }
-      state.isVerified_AccountEmail = true;
+      state.isAccountEmailVerified = true;
       alert(message);
     }
   }
 
   componentWillLoad() {
-    state.isActive_Session = checkLoggedInCookie();
+    state.isSessionActive = checkLoggedInCookie();
   }
 
   async componentDidLoad() {
-    if (state.isActive_Session) {
+    if (state.isSessionActive) {
       init_Socket();
       let { success, message, payload } = await Helper_ApiCall_GetAccountDetails_BySession();
       if (!success) {
@@ -126,7 +125,7 @@ export class AppRoot {
   render() {
     return (
       <Host>
-        {!state.isVerified_AccountEmail && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
+        {!state.isAccountEmailVerified && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
 
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
@@ -167,7 +166,7 @@ export class AppRoot {
       <stencil-route
         {...props}
         routeRender={routeRenderProps => {
-          if (state.isActive_Session) {
+          if (state.isSessionActive) {
             return <Component {...props} {...props.componentProps} {...routeRenderProps}></Component>;
           } else {
             return <stencil-router-redirect url="/login"></stencil-router-redirect>;
@@ -183,7 +182,7 @@ export class AppRoot {
       <stencil-route
         {...props}
         routeRender={routeRenderProps => {
-          if (!state.isActive_Session) {
+          if (!state.isSessionActive) {
             return <Component {...props} {...props.componentProps} {...routeRenderProps}></Component>;
           } else {
             return <stencil-router-redirect url="/home"></stencil-router-redirect>;

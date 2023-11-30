@@ -11,7 +11,7 @@ export class VCatchAll {
   @Prop() history: RouterHistory;
 
   componentDidLoad() {
-    if (state.isActive_Session) {
+    if (state.isSessionActive) {
       this.history.push('/home', {});
     } else {
       this.history.push('/login', {});

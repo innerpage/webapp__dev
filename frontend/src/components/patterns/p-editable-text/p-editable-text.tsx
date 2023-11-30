@@ -8,20 +8,26 @@ import { Component, FunctionalComponent, Prop, State, Listen, h } from '@stencil
 export class PEditableText {
   @Prop() type: string;
   @Prop() label: string;
+
   @State() isEditModeOn: boolean = false;
+  @State() isSaveButtonDisabled: boolean = true;
 
   @Listen('buttonClick') async handle_ButtonClick(e) {
     if (e.detail.action === 'startEditing') {
       this.isEditModeOn = true;
+    } else if (e.detail.action === 'cancelEditing') {
+      this.isEditModeOn = false;
     }
   }
 
   EditModeOn: FunctionalComponent = () => (
     <l-row justifyContent="space-between">
-      <e-input></e-input>
+      <e-input type="text" value={this.label}></e-input>
       <div>
-        <e-button variant="light">Cancel</e-button>
-        <e-button>Save</e-button>
+        <e-button variant="light" action="cancelEditing">
+          Cancel
+        </e-button>
+        <e-button disabled={this.isSaveButtonDisabled}>Save</e-button>
       </div>
     </l-row>
   );
