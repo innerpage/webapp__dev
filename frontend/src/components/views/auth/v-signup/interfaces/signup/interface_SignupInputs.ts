@@ -1,6 +1,5 @@
 export interface interface_SignupInputs {
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
   password: string;
 }

@@ -9,8 +9,7 @@ import { Vars } from '../../../../global/script';
   shadow: true,
 })
 export class VSignup {
-  private name_First: string = '';
-  private name_Last: string = '';
+  private name: string = '';
   private email: string = '';
   private password: string = '';
 
@@ -43,10 +42,8 @@ export class VSignup {
   }
 
   @Listen('textInput') handle_TextInput(e) {
-    if (e.detail.name === 'name_First') {
-      this.name_First = e.detail.value;
-    } else if (e.detail.name === 'name_Last') {
-      this.name_Last = e.detail.value;
+    if (e.detail.name === 'name') {
+      this.name = e.detail.value;
     } else if (e.detail.name === 'email') {
       this.email = e.detail.value;
     } else if (e.detail.name === 'password') {
@@ -63,7 +60,7 @@ export class VSignup {
   @State() isActive_Signup_Button: boolean = false;
 
   async handle_Submit_SignupInputs() {
-    let payload_SignupInputs: interface_SignupInputs = generate_Signup_Payload(this.name_First, this.name_Last, this.email, this.password);
+    let payload_SignupInputs: interface_SignupInputs = generate_Signup_Payload(this.name, this.email, this.password);
 
     let { isValid_SignupInputs, message_Validation_SignupInputs } = helper_Validate_SignupInputs(payload_SignupInputs);
     if (!isValid_SignupInputs) {
@@ -99,11 +96,9 @@ export class VSignup {
           <l-spacer value={1}></l-spacer>
           <l-seperator variant="oauth"></l-seperator>
           <l-spacer value={1}></l-spacer>
-          <e-input type="text" name="name_First" placeholder="First name"></e-input>
+          <e-input type="text" name="name" placeholder="Name"></e-input>
           <br />
-          <l-spacer value={1}></l-spacer>
-          <e-input type="text" name="name_Last" placeholder="Last name"></e-input>
-          <br />
+
           <l-spacer value={1}></l-spacer>
           <e-input type="email" name="email" placeholder="Email"></e-input>
           <br />
