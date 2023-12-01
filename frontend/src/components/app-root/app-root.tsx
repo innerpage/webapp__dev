@@ -27,19 +27,12 @@ export class AppRoot {
       this.isMailingEmailVerification = false;
       alert(message);
     } else if (e.detail.action === 'logout') {
-      let { success, message, payload } = await Helper_ApiCall_Account_Logout();
-      if (!success) {
-        return alert(message);
-      }
-      if (!payload.success) {
-        return alert(payload.message);
-      }
-      state.isSessionActive = payload.isSessionActive;
-      state.accountName = '';
-      state.accountEmail = '';
-      state.isAccountEmailVerified = true;
-      this.history.push('/login', {});
+      this.logoutUser();
     }
+  }
+
+  @Listen('logoutUserEvent') handleUserLogout() {
+    this.logoutUser();
   }
 
   @Listen('event_RouteTo') handle_RouteTo(e) {
@@ -101,6 +94,21 @@ export class AppRoot {
       }
       helper_Set_State(payload.accountDetails);
     }
+  }
+
+  async logoutUser() {
+    let { success, message, payload } = await Helper_ApiCall_Account_Logout();
+    if (!success) {
+      return alert(message);
+    }
+    if (!payload.success) {
+      return alert(payload.message);
+    }
+    state.isSessionActive = payload.isSessionActive;
+    state.accountName = '';
+    state.accountEmail = '';
+    state.isAccountEmailVerified = true;
+    this.history.push('/login', {});
   }
 
   disconnectedCallback() {

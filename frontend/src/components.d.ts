@@ -450,6 +450,7 @@ declare namespace LocalJSX {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
     interface VDeleteAccount {
+        "onLogoutUserEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VForgotPassword {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;

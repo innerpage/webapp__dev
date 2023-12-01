@@ -12,6 +12,7 @@ export const Vars = {
     url: document.domain === 'localhost' ? 'http://localhost:4444' : 'https://api.example.com',
     endpoint: {
       account: {
+        delete: 'delete-account',
         details: 'account',
         login: 'login',
         logout: 'logout',
