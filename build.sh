@@ -6,21 +6,13 @@ mkdir prod
 ## Init git in ./prod
 cd prod
 git init
-git remote add origin git@github.com-projckt:projckt/starter_webapp-prod.git
-
-## Build server
-cd ..
-cd dev
-cd server 
-npm run build
-rsync -av dest/ ../../prod
-cp {.gitignore,package.json} ../../prod
+git remote add origin git@github.com-{username}:{username}/{repo_name}-prod.git
 
 ## Build ./frontend
-cd .. 
-cd frontend 
+cd ..
+cd frontend
 npm run build --prerender
-rsync -av --delete www/ ../../prod/www
+rsync -av --delete www/ ../../prod
 
 # Push prod 
 cd ..
@@ -29,9 +21,6 @@ cd prod
 git add --all
 git commit -m "Deploy build `date`"
 git push origin main --force
-
-# Install modules in prod
-npm install 
 
 # Reset
 cd ..

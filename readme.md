@@ -1,6 +1,6 @@
 ## Clone repo
 
-- `git clone git@github.com-projckt:projckt/starter_website-dev.git dev`
+- `git clone git@github.com-projckt:projckt/starter_webapp-dev.git dev`
 - `cd dev`
 
 ## Edit remote
@@ -42,12 +42,3 @@
 ## Edit ./frontend/src/global/script/store/store.ts
 
 - Change `googleClientId`
-
-## Edit ./server/package.json
-
-- Change `name`
-- Change `description`
-
-## Edit ./server/index.ts
-
-- Change server `PORT`
