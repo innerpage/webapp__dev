@@ -16,7 +16,8 @@
 }
 
 .card-half {
-  width: 50%;
+  width: 48%;
+  height: 200px;
 }
 
 .card-quarter {

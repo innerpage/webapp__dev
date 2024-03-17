@@ -28,6 +28,54 @@ export class VHome {
               <div class="card card-quarter"></div>
               <div class="card card-quarter"></div>
             </l-row>
+
+            <l-spacer value={4}></l-spacer>
+
+            <e-text variant="display">Insights</e-text>
+            <l-row justifyContent="space-between">
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+            </l-row>
+            <l-spacer value={2}></l-spacer>
+            <l-row justifyContent="space-between">
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+            </l-row>
+
+            <l-spacer value={4}></l-spacer>
+
+            <e-text variant="display">Data Source</e-text>
+            <l-row justifyContent="space-between">
+              <div class="card card-half"></div>
+              <div class="card card-half"></div>
+            </l-row>
+            <l-spacer value={2}></l-spacer>
+            <l-row justifyContent="space-between">
+              <div class="card card-half"></div>
+              <div class="card card-half"></div>
+            </l-row>
+
+            <l-spacer value={4}></l-spacer>
+            <e-text variant="display">Export</e-text>
+            <l-row justifyContent="space-between">
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+            </l-row>
+            <l-spacer value={2}></l-spacer>
+
+            <l-row justifyContent="space-between">
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+              <div class="card card-quarter"></div>
+            </l-row>
+
             {/* TEMPLATE CODE Ends */}
           </c-main>
         </c-content-area>

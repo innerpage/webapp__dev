@@ -12,7 +12,7 @@ export class PTopbar {
         <l-row justifyContent="space-between">
           <div class="logo"></div>
           <l-row align="centre">
-            <e-button>Log in</e-button>
+            <e-button variant="ghost">Log in</e-button>
             &nbsp;&nbsp;
             <e-button>Sign up</e-button>
           </l-row>

@@ -5,5 +5,5 @@
   height: calc(100vh - 55px);
   overflow-y: auto;
   box-sizing: border-box;
-  padding: 3em 4em;
+  padding: 2em 4em 6em 4em;
 }

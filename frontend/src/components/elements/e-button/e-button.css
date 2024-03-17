@@ -41,7 +41,8 @@ button:disabled {
 
 /* GHOST BUTTON (Default) */
 .ghost--default {
-  border: 1px solid var(--color__grey--lighter);
+  /* border: 1px solid var(--color__grey--lighter); */
+  border: 1px solid var(--color__blue--regular);
   color: var(--color__blue--regular);
 }
 .ghost--default:hover {
