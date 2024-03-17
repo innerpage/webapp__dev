@@ -1,3 +1,14 @@
 :host {
   display: block;
 }
+
+/* TEMPLATE CODE Starts */
+
+.box-full {
+  width: 100%;
+  border: 1px solid var(--color__grey--lighter);
+  height: 300px;
+  border-radius: 0.5em;
+}
+
+/* TEMPLATE CODE Ends */

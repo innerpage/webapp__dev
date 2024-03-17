@@ -16,6 +16,8 @@ export namespace Components {
     }
     interface CCard {
     }
+    interface CContentArea {
+    }
     interface CMain {
     }
     interface CPage {
@@ -77,7 +79,6 @@ export namespace Components {
         "variant": string;
     }
     interface PSidebar {
-        "variant": string;
     }
     interface PSpinner {
         "theme": string;
@@ -137,6 +138,12 @@ declare global {
     var HTMLCCardElement: {
         prototype: HTMLCCardElement;
         new (): HTMLCCardElement;
+    };
+    interface HTMLCContentAreaElement extends Components.CContentArea, HTMLStencilElement {
+    }
+    var HTMLCContentAreaElement: {
+        prototype: HTMLCContentAreaElement;
+        new (): HTMLCContentAreaElement;
     };
     interface HTMLCMainElement extends Components.CMain, HTMLStencilElement {
     }
@@ -334,6 +341,7 @@ declare global {
         "app-root": HTMLAppRootElement;
         "c-banner": HTMLCBannerElement;
         "c-card": HTMLCCardElement;
+        "c-content-area": HTMLCContentAreaElement;
         "c-main": HTMLCMainElement;
         "c-page": HTMLCPageElement;
         "e-button": HTMLEButtonElement;
@@ -377,6 +385,8 @@ declare namespace LocalJSX {
         "theme"?: string;
     }
     interface CCard {
+    }
+    interface CContentArea {
     }
     interface CMain {
     }
@@ -443,7 +453,6 @@ declare namespace LocalJSX {
         "variant"?: string;
     }
     interface PSidebar {
-        "variant"?: string;
     }
     interface PSpinner {
         "theme"?: string;
@@ -498,6 +507,7 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "c-banner": CBanner;
         "c-card": CCard;
+        "c-content-area": CContentArea;
         "c-main": CMain;
         "c-page": CPage;
         "e-button": EButton;
@@ -539,6 +549,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "c-banner": LocalJSX.CBanner & JSXBase.HTMLAttributes<HTMLCBannerElement>;
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
+            "c-content-area": LocalJSX.CContentArea & JSXBase.HTMLAttributes<HTMLCContentAreaElement>;
             "c-main": LocalJSX.CMain & JSXBase.HTMLAttributes<HTMLCMainElement>;
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;

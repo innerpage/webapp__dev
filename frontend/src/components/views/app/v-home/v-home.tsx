@@ -15,22 +15,14 @@ export class VHome {
     return (
       <Host>
         <p-topbar></p-topbar>
-        <l-row>
-          <e-text>Sidebar</e-text>
-          <e-text>Main</e-text>
-        </l-row>
-        {/* <p-sidebar></p-sidebar>
-        <c-main>
-          <e-text variant="heading">
-            <l-row align="flex-end">
-              <ph-house color="var(--color__grey--light)"></ph-house>
-              <l-spacer value={0.25} variant="horizontal"></l-spacer>
-              <e-text>Home</e-text>
-            </l-row>
-          </e-text>
-          <l-spacer value={0.5}></l-spacer>
-          <l-seperator></l-seperator>
-        </c-main> */}
+        <c-content-area>
+          <p-sidebar></p-sidebar>
+          <c-main>
+            {/* TEMPLATE CODE Starts */}
+            <div class="box-full"></div>
+            {/* TEMPLATE CODE Ends */}
+          </c-main>
+        </c-content-area>
       </Host>
     );
   }

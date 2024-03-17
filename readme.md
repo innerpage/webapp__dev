@@ -42,3 +42,11 @@
 ## Edit ./frontend/src/global/script/store/store.ts
 
 - Change `googleClientId`
+
+## Edit ./frontend/src/components/views/app/v-home/v-home.tsx
+
+- Remove `TEMPLATE CODE`
+
+## Edit ./frontend/src/components/views/app/v-home/v-home.css
+
+- Remove `TEMPLATE CODE`

@@ -1,6 +1,9 @@
 :host {
-  display: block;
+  width: 85%;
+  position: fixed;
+  right: 0px;
+  height: calc(100vh - 55px);
+  overflow-y: auto;
   box-sizing: border-box;
-  width: 75vw;
-  margin: 1em auto;
+  padding: 3em 4em;
 }

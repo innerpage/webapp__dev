@@ -3,8 +3,8 @@ button {
   background: none;
   border: 0;
   font-size: 0.9em;
-  padding: 0.75em 1em;
-  border-radius: 0.25em;
+  padding: calc(var(--site__padding) / 1.5) var(--site__padding);
+  border-radius: var(--site__border-radius);
 }
 button:hover {
   cursor: pointer;
