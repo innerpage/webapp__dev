@@ -26,7 +26,7 @@
   --color__grey--dark: #5a5a5a;
   --color__grey--regular: #808080;
   --color__grey--light: #c0c0c0;
-  --color__grey--lighter: #f2f2f2;
+  --color__grey--lighter: rgba(0, 0, 0, 0.1);
   --color__grey--lightest: #f9f9f9;
 
   --color__green--darkest: #00372c;

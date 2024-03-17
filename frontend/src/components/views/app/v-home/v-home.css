@@ -4,11 +4,24 @@
 
 /* TEMPLATE CODE Starts */
 
-.box-full {
-  width: 100%;
+.card {
+  background: white;
   border: 1px solid var(--color__grey--lighter);
-  height: 300px;
   border-radius: 0.5em;
+}
+
+.card-full {
+  width: 100%;
+  height: 300px;
+}
+
+.card-half {
+  width: 50%;
+}
+
+.card-quarter {
+  width: 22.5%;
+  height: 100px;
 }
 
 /* TEMPLATE CODE Ends */
