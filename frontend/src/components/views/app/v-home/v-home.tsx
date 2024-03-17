@@ -14,7 +14,12 @@ export class VHome {
   render() {
     return (
       <Host>
-        <p-sidebar></p-sidebar>
+        <p-topbar></p-topbar>
+        <l-row>
+          <e-text>Sidebar</e-text>
+          <e-text>Main</e-text>
+        </l-row>
+        {/* <p-sidebar></p-sidebar>
         <c-main>
           <e-text variant="heading">
             <l-row align="flex-end">
@@ -25,7 +30,7 @@ export class VHome {
           </e-text>
           <l-spacer value={0.5}></l-spacer>
           <l-seperator></l-seperator>
-        </c-main>
+        </c-main> */}
       </Host>
     );
   }

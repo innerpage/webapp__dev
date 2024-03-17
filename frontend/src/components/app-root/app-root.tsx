@@ -137,30 +137,27 @@ export class AppRoot {
 
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
+            <stencil-route url="/" component="v-home" />
+
             {/* LoggedOut Routes */}
-            <this.Route_LoggedOut url="/login" component="v-login"></this.Route_LoggedOut>
+            {/* <this.Route_LoggedOut url="/login" component="v-login"></this.Route_LoggedOut>
             <this.Route_LoggedOut url="/signup" component="v-signup"></this.Route_LoggedOut>
             <this.Route_LoggedOut url="/forgot-password" component="v-forgot-password"></this.Route_LoggedOut>
-            <this.Route_LoggedOut url="/post-oauth" component="v-post-oauth"></this.Route_LoggedOut>
-
+            <this.Route_LoggedOut url="/post-oauth" component="v-post-oauth"></this.Route_LoggedOut> */}
             {/* LoggedIn Routes */}
-            <this.Route_LoggedIn url="/home" component="v-home"></this.Route_LoggedIn>
+            {/* <this.Route_LoggedIn url="/home" component="v-home"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/page-1" component="v-page-1"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/payment-cancel" component="v-payment-cancel"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/payment-handle/:id_Session" component="v-payment-handle"></this.Route_LoggedIn>
-            <this.Route_LoggedIn url="/checkout/:id_Order" component="v-checkout"></this.Route_LoggedIn>
-
-            <this.Route_LoggedIn url="/billing" component="v-billing"></this.Route_LoggedIn>
+            <this.Route_LoggedIn url="/checkout/:id_Order" component="v-checkout"></this.Route_LoggedIn> */}
+            {/* <this.Route_LoggedIn url="/billing" component="v-billing"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/delete-account" component="v-delete-account"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/profile" component="v-profile"></this.Route_LoggedIn>
             <this.Route_LoggedIn url="/support" component="v-support"></this.Route_LoggedIn>
-            <this.Route_LoggedIn url="/upgrade" component="v-upgrade"></this.Route_LoggedIn>
-
+            <this.Route_LoggedIn url="/upgrade" component="v-upgrade"></this.Route_LoggedIn> */}
             {/* Catch-all Route */}
-            <stencil-route component="v-catch-all" />
-
+            {/* <stencil-route component="v-catch-all" /> */}
             {/* Sample Routes
-            <stencil-route url="/payment-cancel" component="v-payment-cancel" />
             <stencil-route url="/payment-handle/:id_Session" component="v-payment-handle" /> */}
           </stencil-route-switch>
         </stencil-router>

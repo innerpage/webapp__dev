@@ -82,6 +82,8 @@ export namespace Components {
     interface PSpinner {
         "theme": string;
     }
+    interface PTopbar {
+    }
     interface VBilling {
     }
     interface VCatchAll {
@@ -238,6 +240,12 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
+    interface HTMLPTopbarElement extends Components.PTopbar, HTMLStencilElement {
+    }
+    var HTMLPTopbarElement: {
+        prototype: HTMLPTopbarElement;
+        new (): HTMLPTopbarElement;
+    };
     interface HTMLVBillingElement extends Components.VBilling, HTMLStencilElement {
     }
     var HTMLVBillingElement: {
@@ -343,6 +351,7 @@ declare global {
         "p-oauth-button": HTMLPOauthButtonElement;
         "p-sidebar": HTMLPSidebarElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-topbar": HTMLPTopbarElement;
         "v-billing": HTMLVBillingElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
@@ -439,6 +448,8 @@ declare namespace LocalJSX {
     interface PSpinner {
         "theme"?: string;
     }
+    interface PTopbar {
+    }
     interface VBilling {
     }
     interface VCatchAll {
@@ -504,6 +515,7 @@ declare namespace LocalJSX {
         "p-oauth-button": POauthButton;
         "p-sidebar": PSidebar;
         "p-spinner": PSpinner;
+        "p-topbar": PTopbar;
         "v-billing": VBilling;
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
@@ -544,6 +556,7 @@ declare module "@stencil/core" {
             "p-oauth-button": LocalJSX.POauthButton & JSXBase.HTMLAttributes<HTMLPOauthButtonElement>;
             "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-topbar": LocalJSX.PTopbar & JSXBase.HTMLAttributes<HTMLPTopbarElement>;
             "v-billing": LocalJSX.VBilling & JSXBase.HTMLAttributes<HTMLVBillingElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;

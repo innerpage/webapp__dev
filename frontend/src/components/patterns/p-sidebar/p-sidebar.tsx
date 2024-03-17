@@ -12,10 +12,6 @@ export class PSidebar {
 
   Default: FunctionalComponent = () => (
     <div class="sidebar__default">
-      <div class="logo"></div>
-      <l-spacer value={2}></l-spacer>
-      <e-text variant="footnote">MAIN</e-text>
-
       <e-list>
         <e-list-item>
           <e-link url="/home" variant={state.activeView === 'home' ? 'navLinkActive' : 'navLink'}>
@@ -36,7 +32,7 @@ export class PSidebar {
           </e-link>
         </e-list-item>
       </e-list>
-      <l-spacer value={1}></l-spacer>
+      {/* <l-spacer value={1}></l-spacer>
       <l-seperator></l-seperator>
       <l-spacer value={1}></l-spacer>
       <e-text variant="footnote">SETTINGS</e-text>
@@ -68,7 +64,7 @@ export class PSidebar {
             </l-row>
           </e-link>
         </e-list-item>
-      </e-list>
+      </e-list> */}
       {/* <p-user-control></p-user-control> */}
     </div>
   );
