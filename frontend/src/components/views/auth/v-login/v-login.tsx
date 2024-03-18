@@ -24,22 +24,6 @@ export class VLogin {
   })
   success_Auth: EventEmitter;
 
-  @Listen('event_LinkClick') handle_LinkClick(e) {
-    if (e.detail.action === 'signup') {
-      this.event_RouteTo.emit({
-        type: 'push',
-        route: '/signup',
-        data: {},
-      });
-    } else if (e.detail.action === 'forgotPassword') {
-      this.event_RouteTo.emit({
-        type: 'push',
-        route: '/forgot-password',
-        data: {},
-      });
-    }
-  }
-
   @Listen('textInput') handle_TextInput(e) {
     if (e.detail.name === 'email') {
       this.email = e.detail.value;

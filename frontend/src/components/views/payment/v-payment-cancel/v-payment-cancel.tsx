@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Host, Listen, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Host, h } from '@stencil/core';
 import { Vars } from '../../../../global/script';
 
 @Component({
@@ -12,16 +12,6 @@ export class VPaymentCancel {
     bubbles: true,
   })
   event_RouteTo: EventEmitter;
-
-  @Listen('event_LinkClick') handle_LinkClick(e) {
-    if (e.detail.action === 'home') {
-      this.event_RouteTo.emit({
-        type: 'push',
-        route: '/home',
-        data: {},
-      });
-    }
-  }
 
   render() {
     return (

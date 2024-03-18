@@ -43,20 +43,6 @@ export class AppRoot {
     }
   }
 
-  @Listen('event_LinkClick') async handle_LinkClick(e) {
-    if (e.detail.action === 'home') {
-      this.history.push('/home', {});
-    } else if (e.detail.action === 'goBack') {
-      this.history.goBack();
-    } else if (e.detail.action === 'signup') {
-      this.history.push('/signup', {});
-    } else if (e.detail.action === 'forgotPassword') {
-      this.history.push('/forgot-password', {});
-    } else if (e.detail.action === 'login') {
-      this.history.push('/login', {});
-    }
-  }
-
   @Listen('success_Auth') handle_success_Auth(e) {
     helper_Set_State(e.detail.payload);
   }

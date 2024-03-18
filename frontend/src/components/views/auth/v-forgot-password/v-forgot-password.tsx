@@ -57,19 +57,6 @@ export class VForgotPassword {
     }
   }
 
-  @Listen('event_LinkClick') handle_LinkClick(e) {
-    if (e.detail.action === 'goBack') {
-      if (this.state === this.wizard_Steps[this.wizard_Steps.length - 1]) {
-        this.wizard_CurrentStep = this.wizard_CurrentStep - 1;
-        this.state = this.wizard_Steps[this.wizard_CurrentStep];
-        return;
-      }
-      this.event_RouteTo.emit({
-        type: 'goBack',
-      });
-    }
-  }
-
   handle_Submit_SendResetCode = async () => {
     let payload_SendResetCode_Inputs: interface_SendResetCode_Inputs = generate_SendResetCode_Payload(this.email);
 

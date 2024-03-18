@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, State, Host, Listen, Prop, h, FunctionalComponent } from '@stencil/core';
+import { Component, Event, EventEmitter, State, Host, Prop, h, FunctionalComponent } from '@stencil/core';
 import { MatchResults, RouterHistory, injectHistory } from '@stencil/router';
 
 import { helper_Generate_Stripe_SessionCheck_Payload, helper_ApiCall_Stripe_SessionCheck } from './helpers';
@@ -14,16 +14,6 @@ export class VPaymentHandle {
     bubbles: true,
   })
   event_RouteTo: EventEmitter;
-
-  @Listen('event_LinkClick') handle_LinkClick(e) {
-    if (e.detail.action === 'myLibrary') {
-      this.event_RouteTo.emit({
-        type: 'push',
-        route: '/home',
-        data: {},
-      });
-    }
-  }
 
   @Prop() match: MatchResults;
   @Prop() history: RouterHistory;
