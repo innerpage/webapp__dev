@@ -14,7 +14,7 @@ export class PSidebar {
         <l-spacer value={3}></l-spacer>
         <e-list>
           <e-list-item>
-            <e-link url="/home" variant={state.activeView === 'home' ? 'navLinkActive' : 'navLink'}>
+            <e-link url="/" variant={state.activeView === 'home' ? 'navLinkActive' : 'navLink'}>
               <l-row>
                 <ph-house color="var(--color__blue--regular)" weight={state.activeView === 'home' ? 'fill' : 'regular'}></ph-house>
                 <l-spacer value={0.25} variant="horizontal"></l-spacer>

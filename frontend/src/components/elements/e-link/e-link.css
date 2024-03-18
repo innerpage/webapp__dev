@@ -28,7 +28,6 @@ LINK NAV VARIANT
   width: 100%;
   color: var(--color__blue--regular);
   background: var(--color__blue--lightest);
-  border-radius: var(--site__border-radius);
   padding: 0.5em 1em;
 }
 
