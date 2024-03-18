@@ -28,9 +28,7 @@ export class VPage1 {
               <div class="card card-quarter"></div>
               <div class="card card-quarter"></div>
             </l-row>
-
-            <l-spacer value={4}></l-spacer>
-
+            <l-spacer value={2}></l-spacer>
             <l-row justifyContent="space-between">
               <div class="card card-quarter"></div>
               <div class="card card-quarter"></div>
