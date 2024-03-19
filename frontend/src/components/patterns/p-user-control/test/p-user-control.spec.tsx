@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CPage } from '../c-page';
+import { PUserControl } from '../p-user-control';
 
-describe('c-page', () => {
+describe('p-user-control', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [CPage],
-      html: `<c-page></c-page>`,
+      components: [PUserControl],
+      html: `<p-user-control></p-user-control>`,
     });
     expect(page.root).toEqualHtml(`
-      <c-page>
+      <p-user-control>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </c-page>
+      </p-user-control>
     `);
   });
 });

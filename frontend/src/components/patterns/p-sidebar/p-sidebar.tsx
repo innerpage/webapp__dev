@@ -32,10 +32,12 @@ export class PSidebar {
             </e-link>
           </e-list-item>
         </e-list>
-        {/* <l-spacer value={1}></l-spacer>
+
+        {/* 
+        <l-spacer value={1}></l-spacer>
         <l-seperator></l-seperator>
         <l-spacer value={1}></l-spacer>
-        <e-text variant="footnote">SETTINGS</e-text>
+        <e-text variant="footnote">ACCOUNT</e-text>
         <e-list>
           <e-list-item>
             <e-link url="/profile" variant={state.activeView === 'profile' ? 'navLinkActive' : 'navLink'}>

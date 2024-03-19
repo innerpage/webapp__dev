@@ -20,8 +20,6 @@ export namespace Components {
     }
     interface CMain {
     }
-    interface CPage {
-    }
     interface EButton {
         "action": string;
         "active": boolean;
@@ -84,6 +82,8 @@ export namespace Components {
         "theme": string;
     }
     interface PTopbar {
+    }
+    interface PUserControl {
     }
     interface VBilling {
     }
@@ -150,12 +150,6 @@ declare global {
     var HTMLCMainElement: {
         prototype: HTMLCMainElement;
         new (): HTMLCMainElement;
-    };
-    interface HTMLCPageElement extends Components.CPage, HTMLStencilElement {
-    }
-    var HTMLCPageElement: {
-        prototype: HTMLCPageElement;
-        new (): HTMLCPageElement;
     };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
@@ -253,6 +247,12 @@ declare global {
         prototype: HTMLPTopbarElement;
         new (): HTMLPTopbarElement;
     };
+    interface HTMLPUserControlElement extends Components.PUserControl, HTMLStencilElement {
+    }
+    var HTMLPUserControlElement: {
+        prototype: HTMLPUserControlElement;
+        new (): HTMLPUserControlElement;
+    };
     interface HTMLVBillingElement extends Components.VBilling, HTMLStencilElement {
     }
     var HTMLVBillingElement: {
@@ -343,7 +343,6 @@ declare global {
         "c-card": HTMLCCardElement;
         "c-content-area": HTMLCContentAreaElement;
         "c-main": HTMLCMainElement;
-        "c-page": HTMLCPageElement;
         "e-button": HTMLEButtonElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
@@ -360,6 +359,7 @@ declare global {
         "p-sidebar": HTMLPSidebarElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-topbar": HTMLPTopbarElement;
+        "p-user-control": HTMLPUserControlElement;
         "v-billing": HTMLVBillingElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
@@ -389,8 +389,6 @@ declare namespace LocalJSX {
     interface CContentArea {
     }
     interface CMain {
-    }
-    interface CPage {
     }
     interface EButton {
         "action"?: string;
@@ -459,6 +457,8 @@ declare namespace LocalJSX {
     }
     interface PTopbar {
     }
+    interface PUserControl {
+    }
     interface VBilling {
     }
     interface VCatchAll {
@@ -509,7 +509,6 @@ declare namespace LocalJSX {
         "c-card": CCard;
         "c-content-area": CContentArea;
         "c-main": CMain;
-        "c-page": CPage;
         "e-button": EButton;
         "e-input": EInput;
         "e-link": ELink;
@@ -526,6 +525,7 @@ declare namespace LocalJSX {
         "p-sidebar": PSidebar;
         "p-spinner": PSpinner;
         "p-topbar": PTopbar;
+        "p-user-control": PUserControl;
         "v-billing": VBilling;
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
@@ -551,7 +551,6 @@ declare module "@stencil/core" {
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
             "c-content-area": LocalJSX.CContentArea & JSXBase.HTMLAttributes<HTMLCContentAreaElement>;
             "c-main": LocalJSX.CMain & JSXBase.HTMLAttributes<HTMLCMainElement>;
-            "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;
@@ -568,6 +567,7 @@ declare module "@stencil/core" {
             "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-topbar": LocalJSX.PTopbar & JSXBase.HTMLAttributes<HTMLPTopbarElement>;
+            "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
             "v-billing": LocalJSX.VBilling & JSXBase.HTMLAttributes<HTMLVBillingElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;
