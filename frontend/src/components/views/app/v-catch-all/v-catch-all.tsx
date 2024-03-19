@@ -1,6 +1,5 @@
 import { Component, Prop, Host, h } from '@stencil/core';
 import { RouterHistory, injectHistory } from '@stencil/router';
-import { state } from '../../../../global/script';
 
 @Component({
   tag: 'v-catch-all',
@@ -11,11 +10,7 @@ export class VCatchAll {
   @Prop() history: RouterHistory;
 
   componentDidLoad() {
-    if (state.isSessionActive) {
-      this.history.push('/home', {});
-    } else {
-      this.history.push('/login', {});
-    }
+    this.history.push('/', {});
   }
 
   render() {
