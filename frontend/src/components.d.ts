@@ -73,6 +73,8 @@ export namespace Components {
     }
     interface PGallery {
     }
+    interface PModal {
+    }
     interface POauthButton {
         "variant": string;
     }
@@ -223,6 +225,12 @@ declare global {
         prototype: HTMLPGalleryElement;
         new (): HTMLPGalleryElement;
     };
+    interface HTMLPModalElement extends Components.PModal, HTMLStencilElement {
+    }
+    var HTMLPModalElement: {
+        prototype: HTMLPModalElement;
+        new (): HTMLPModalElement;
+    };
     interface HTMLPOauthButtonElement extends Components.POauthButton, HTMLStencilElement {
     }
     var HTMLPOauthButtonElement: {
@@ -355,6 +363,7 @@ declare global {
         "l-spacer": HTMLLSpacerElement;
         "p-editable-text": HTMLPEditableTextElement;
         "p-gallery": HTMLPGalleryElement;
+        "p-modal": HTMLPModalElement;
         "p-oauth-button": HTMLPOauthButtonElement;
         "p-sidebar": HTMLPSidebarElement;
         "p-spinner": HTMLPSpinnerElement;
@@ -446,6 +455,8 @@ declare namespace LocalJSX {
     }
     interface PGallery {
     }
+    interface PModal {
+    }
     interface POauthButton {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
         "variant"?: string;
@@ -521,6 +532,7 @@ declare namespace LocalJSX {
         "l-spacer": LSpacer;
         "p-editable-text": PEditableText;
         "p-gallery": PGallery;
+        "p-modal": PModal;
         "p-oauth-button": POauthButton;
         "p-sidebar": PSidebar;
         "p-spinner": PSpinner;
@@ -563,6 +575,7 @@ declare module "@stencil/core" {
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-editable-text": LocalJSX.PEditableText & JSXBase.HTMLAttributes<HTMLPEditableTextElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
+            "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-oauth-button": LocalJSX.POauthButton & JSXBase.HTMLAttributes<HTMLPOauthButtonElement>;
             "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;

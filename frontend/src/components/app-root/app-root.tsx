@@ -80,6 +80,7 @@ export class AppRoot {
       }
       helper_Set_State(payload.accountDetails);
     }
+    state.isSessionActive = true;
   }
 
   async logoutUser() {
