@@ -7,11 +7,12 @@
   padding: calc(var(--site__padding) / 1.5) var(--site__padding);
   box-sizing: border-box;
   height: 55px;
+  z-index: 9;
 }
 
 .logo {
   width: 150px;
-  height: 30px;
+  height: 32px;
   background: rgba(0, 0, 0, 0.1);
   border-radius: var(--site__border-radius);
 }

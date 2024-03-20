@@ -10,7 +10,7 @@ export class PTopbar {
   render() {
     return (
       <Host>
-        <l-row justifyContent="space-between">
+        <l-row justifyContent="space-between" align="top">
           <div class="logo"></div>
           {state.isSessionActive ? (
             <p-user-control></p-user-control>
