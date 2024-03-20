@@ -14,6 +14,7 @@ export class AppRoot {
   @Prop() history: RouterHistory;
 
   @State() isMailingEmailVerification: boolean = false;
+  @State() modal: string;
 
   private emailVerificationCode: number = -1;
 
@@ -26,6 +27,11 @@ export class AppRoot {
       let { message } = await mailEmailVerificationCodeApi(data);
       this.isMailingEmailVerification = false;
       alert(message);
+    } else if (e.detail.action === 'login' || e.detail.action === 'signup') {
+      state.modal = e.detail.action;
+      state.isModalVisible = true;
+    } else if (e.detail.action === 'closeModal') {
+      state.isModalVisible = false;
     } else if (e.detail.action === 'logout') {
       this.logoutUser();
     }
@@ -80,7 +86,6 @@ export class AppRoot {
       }
       helper_Set_State(payload.accountDetails);
     }
-    state.isSessionActive = true;
   }
 
   async logoutUser() {
@@ -121,11 +126,17 @@ export class AppRoot {
     return (
       <Host>
         {!state.isAccountEmailVerified && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
-
+        <p-modal isVisible={state.isModalVisible} name={state.modal}>
+          {state.modal === 'login' || (state.modal === 'signup' && <p-auth variant={state.modal}></p-auth>)}
+        </p-modal>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
             <stencil-route url="/" component="v-home" exact={true} />
             <stencil-route url="/page-1" component="v-page-1" />
+
+            <stencil-route url="/login" component="v-login" />
+            <stencil-route url="/signup" component="v-signup" />
+            <stencil-route url="/forgot-password" component="v-forgot-password" />
 
             {/* LoggedIn Routes */}
             <this.LoggedInRoute url="/billing" component="v-billing"></this.LoggedInRoute>
@@ -136,6 +147,8 @@ export class AppRoot {
             <this.LoggedInRoute url="/delete-account" component="v-delete-account"></this.LoggedInRoute>
             <this.LoggedInRoute url="/support" component="v-support"></this.LoggedInRoute>
 
+            <this.LoggedOutRoute url="/post-oauth" component="v-post-oauth"></this.LoggedOutRoute>
+
             {/* Catch-all Route */}
             <stencil-route component="v-catch-all" />
 
@@ -143,7 +156,7 @@ export class AppRoot {
             {/* <this.LoggedOutRoute url="/login" component="v-login"></this.LoggedOutRoute>
             <this.LoggedOutRoute url="/signup" component="v-signup"></this.LoggedOutRoute>
             <this.LoggedOutRoute url="/forgot-password" component="v-forgot-password"></this.LoggedOutRoute>
-            <this.LoggedOutRoute url="/post-oauth" component="v-post-oauth"></this.LoggedOutRoute> */}
+             */}
 
             {/* Sample Routes
             <stencil-route url="/payment-handle/:id_Session" component="v-payment-handle" /> */}

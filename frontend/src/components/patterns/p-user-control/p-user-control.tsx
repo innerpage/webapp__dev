@@ -9,8 +9,6 @@ import { gsap } from 'gsap';
   shadow: true,
 })
 export class PUserControl {
-  userControlCardEl!: HTMLCCardElement;
-
   @Listen('buttonClick') async handleButtonClick(e) {
     if (e.detail.action === 'toggleUserControl') {
       this.isExpanded = !this.isExpanded;
@@ -23,6 +21,8 @@ export class PUserControl {
   }
 
   @State() isExpanded: boolean = false;
+
+  userControlCardEl!: HTMLCCardElement;
   private tl: any = gsap.timeline();
 
   expandUserControl() {

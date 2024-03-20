@@ -57,6 +57,7 @@ export namespace Components {
     }
     interface LRow {
         "align": string;
+        "direction": string;
         "justifyContent": string;
         "variant": string;
     }
@@ -67,6 +68,9 @@ export namespace Components {
         "value": number;
         "variant": string;
     }
+    interface PAuth {
+        "variant": string;
+    }
     interface PEditableText {
         "label": string;
         "type": string;
@@ -74,6 +78,8 @@ export namespace Components {
     interface PGallery {
     }
     interface PModal {
+        "isVisible": boolean;
+        "name": string;
     }
     interface POauthButton {
         "variant": string;
@@ -212,6 +218,12 @@ declare global {
     var HTMLLSpacerElement: {
         prototype: HTMLLSpacerElement;
         new (): HTMLLSpacerElement;
+    };
+    interface HTMLPAuthElement extends Components.PAuth, HTMLStencilElement {
+    }
+    var HTMLPAuthElement: {
+        prototype: HTMLPAuthElement;
+        new (): HTMLPAuthElement;
     };
     interface HTMLPEditableTextElement extends Components.PEditableText, HTMLStencilElement {
     }
@@ -361,6 +373,7 @@ declare global {
         "l-row": HTMLLRowElement;
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
+        "p-auth": HTMLPAuthElement;
         "p-editable-text": HTMLPEditableTextElement;
         "p-gallery": HTMLPGalleryElement;
         "p-modal": HTMLPModalElement;
@@ -439,6 +452,7 @@ declare namespace LocalJSX {
     }
     interface LRow {
         "align"?: string;
+        "direction"?: string;
         "justifyContent"?: string;
         "variant"?: string;
     }
@@ -449,6 +463,9 @@ declare namespace LocalJSX {
         "value"?: number;
         "variant"?: string;
     }
+    interface PAuth {
+        "variant"?: string;
+    }
     interface PEditableText {
         "label"?: string;
         "type"?: string;
@@ -456,6 +473,8 @@ declare namespace LocalJSX {
     interface PGallery {
     }
     interface PModal {
+        "isVisible"?: boolean;
+        "name"?: string;
     }
     interface POauthButton {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
@@ -530,6 +549,7 @@ declare namespace LocalJSX {
         "l-row": LRow;
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
+        "p-auth": PAuth;
         "p-editable-text": PEditableText;
         "p-gallery": PGallery;
         "p-modal": PModal;
@@ -573,6 +593,7 @@ declare module "@stencil/core" {
             "l-row": LocalJSX.LRow & JSXBase.HTMLAttributes<HTMLLRowElement>;
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
+            "p-auth": LocalJSX.PAuth & JSXBase.HTMLAttributes<HTMLPAuthElement>;
             "p-editable-text": LocalJSX.PEditableText & JSXBase.HTMLAttributes<HTMLPEditableTextElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
