@@ -82,7 +82,6 @@ export class VSignup {
           <l-spacer value={1}></l-spacer>
           <e-input type="text" name="name" placeholder="Name"></e-input>
           <br />
-
           <l-spacer value={1}></l-spacer>
           <e-input type="email" name="email" placeholder="Email"></e-input>
           <br />

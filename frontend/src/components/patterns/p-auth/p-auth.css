@@ -1,3 +1,15 @@
 :host {
   display: block;
 }
+
+header e-button {
+  padding: 0;
+}
+
+c-card {
+  width: 300px;
+}
+
+e-link {
+  display: inline-block;
+}

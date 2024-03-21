@@ -32,6 +32,9 @@ export class AppRoot {
       state.isModalVisible = true;
     } else if (e.detail.action === 'closeModal') {
       state.isModalVisible = false;
+      setTimeout(() => {
+        state.modal = '';
+      }, 150);
     } else if (e.detail.action === 'logout') {
       this.logoutUser();
     }
@@ -127,7 +130,8 @@ export class AppRoot {
       <Host>
         {!state.isAccountEmailVerified && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
         <p-modal isVisible={state.isModalVisible} name={state.modal}>
-          {state.modal === 'login' || (state.modal === 'signup' && <p-auth variant={state.modal}></p-auth>)}
+          {state.modal === 'login' && <p-auth variant="login"></p-auth>}
+          {state.modal === 'signup' && <p-auth variant="signup"></p-auth>}
         </p-modal>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>

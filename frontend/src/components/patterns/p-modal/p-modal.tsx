@@ -41,9 +41,7 @@ export class PModal {
   render() {
     return (
       <Host ref={el => (this.modalHostEl = el as HTMLDivElement)}>
-        <c-card>
-          <slot></slot>
-        </c-card>
+        <slot></slot>
       </Host>
     );
   }

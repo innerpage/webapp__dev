@@ -39,9 +39,24 @@ button:disabled {
   background: var(--color__red--darkest);
 }
 
+/* LINK */
+.link--default {
+  padding: 0;
+  border: 0;
+  color: var(--color__blue--regular);
+  transition: all 0.25s;
+}
+
+.link--default:hover {
+  color: var(--color__blue--dark);
+}
+
+.link--default:active {
+  color: var(--color__blue--darkest);
+}
+
 /* GHOST BUTTON (Default) */
 .ghost--default {
-  /* border: 1px solid var(--color__grey--lighter); */
   border: 1px solid var(--color__blue--regular);
   color: var(--color__blue--regular);
 }
