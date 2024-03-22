@@ -3,6 +3,5 @@
   position: fixed;
   height: calc(100vh - 55px);
   border-right: 1px solid var(--color__grey--lighter);
-  box-sizing: border-box;
   background: white;
 }

@@ -4,5 +4,4 @@
   border-radius: var(--site__border-radius);
   padding: calc(var(--site__padding) * 1.5);
   background: white;
-  box-sizing: border-box;
 }

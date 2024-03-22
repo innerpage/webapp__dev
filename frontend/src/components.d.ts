@@ -69,7 +69,7 @@ export namespace Components {
         "variant": string;
     }
     interface PAuth {
-        "variant": string;
+        "view": string;
     }
     interface PEditableText {
         "label": string;
@@ -464,7 +464,7 @@ declare namespace LocalJSX {
         "variant"?: string;
     }
     interface PAuth {
-        "variant"?: string;
+        "view"?: string;
     }
     interface PEditableText {
         "label"?: string;

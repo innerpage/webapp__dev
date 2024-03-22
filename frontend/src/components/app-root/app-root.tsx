@@ -27,9 +27,17 @@ export class AppRoot {
       let { message } = await mailEmailVerificationCodeApi(data);
       this.isMailingEmailVerification = false;
       alert(message);
-    } else if (e.detail.action === 'login' || e.detail.action === 'signup') {
-      state.modal = e.detail.action;
-      state.isModalVisible = true;
+    } else if (e.detail.action === 'openLoginModal' || e.detail.action === 'openSignupModal' || e.detail.action === 'openForgotPasswordModal') {
+      if (e.detail.action === 'openLoginModal') {
+        this.openModal('login');
+      } else if (e.detail.action === 'openSignupModal') {
+        this.openModal('signup');
+      } else if (e.detail.action === 'openForgotPasswordModal') {
+        this.openModal('forgotPassword');
+      }
+      if (!state.isModalVisible) {
+        state.isModalVisible = true;
+      }
     } else if (e.detail.action === 'closeModal') {
       state.isModalVisible = false;
       setTimeout(() => {
@@ -106,6 +114,10 @@ export class AppRoot {
     this.history.push('/login', {});
   }
 
+  openModal(name: string) {
+    state.modal = name;
+  }
+
   disconnectedCallback() {
     IO.disconnect();
   }
@@ -129,10 +141,7 @@ export class AppRoot {
     return (
       <Host>
         {!state.isAccountEmailVerified && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
-        <p-modal isVisible={state.isModalVisible} name={state.modal}>
-          {state.modal === 'login' && <p-auth variant="login"></p-auth>}
-          {state.modal === 'signup' && <p-auth variant="signup"></p-auth>}
-        </p-modal>
+        <p-modal isVisible={state.isModalVisible} name={state.modal}></p-modal>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
             <stencil-route url="/" component="v-home" exact={true} />

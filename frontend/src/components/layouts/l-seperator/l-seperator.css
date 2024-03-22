@@ -8,7 +8,6 @@
 #seperator__oauth {
   display: flex;
   width: 100%;
-  box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
 }

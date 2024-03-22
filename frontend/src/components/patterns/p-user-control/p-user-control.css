@@ -6,7 +6,6 @@
 c-card {
   display: none;
   height: 0px;
-  box-sizing: border-box;
   overflow: hidden;
   opacity: 0;
 }

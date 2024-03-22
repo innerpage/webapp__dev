@@ -1,4 +1,4 @@
-import { Component, Prop, State, FunctionalComponent, h } from '@stencil/core';
+import { Component, Prop, State, FunctionalComponent, Host, Watch, h } from '@stencil/core';
 import { Vars } from '../../../global/script';
 
 interface HeaderProps {
@@ -18,14 +18,21 @@ interface FooterProps {
   shadow: true,
 })
 export class PAuth {
-  @Prop() variant: string;
+  @Prop() view: string;
 
   @State() authView: string;
   @State() isLoginButtonActive: boolean = false;
   @State() isSignupButtonActive: boolean = false;
 
+  @Watch('view') watchView(newVal: string, oldVal: string) {
+    if (newVal != oldVal) {
+      this.authView = newVal;
+    }
+    console.log(`this.authView: ${this.authView}`);
+  }
+
   componentWillLoad() {
-    this.authView = this.variant;
+    this.authView = this.view;
   }
 
   ForgotPassword: FunctionalComponent = () => (
@@ -74,67 +81,63 @@ export class PAuth {
     </header>
   );
 
-  Login: FunctionalComponent = () => (
-    <div>
-      <this.Header title="Login" statement="Not registered yet?" action="goToSignupModal" label="Sign up"></this.Header>
-      <l-spacer value={1}></l-spacer>
-      <p-oauth-button></p-oauth-button>
-      <l-spacer value={1}></l-spacer>
-      <l-seperator variant="oauth"></l-seperator>
-      <l-spacer value={1}></l-spacer>
-      <e-input type="email" name="email" placeholder="Email"></e-input>
-      <br />
-      <l-spacer value={1}></l-spacer>
-      <e-input type="password" name="password" placeholder="Password"></e-input>
-      <br />
-      <l-spacer value={1}></l-spacer>
-      <l-row justifyContent="space-between">
-        <e-button variant="link" action="goToForgotPassword">
-          Forgot Password?
-        </e-button>
-        <e-button action="submit_LoginInputs" active={this.isLoginButtonActive}>
-          Login
-        </e-button>
-      </l-row>
-      <this.Footer statement="logging into your account"></this.Footer>
-    </div>
-  );
+  Login: FunctionalComponent = () => [
+    <this.Header title="Login" statement="Not registered yet?" action="openSignupModal" label="Sign up"></this.Header>,
+    <l-spacer value={1}></l-spacer>,
+    <p-oauth-button></p-oauth-button>,
+    <l-spacer value={1}></l-spacer>,
+    <l-seperator variant="oauth"></l-seperator>,
+    <l-spacer value={1}></l-spacer>,
+    <e-input type="email" name="email" placeholder="Email"></e-input>,
+    <br />,
+    <l-spacer value={1}></l-spacer>,
+    <e-input type="password" name="password" placeholder="Password"></e-input>,
+    <br />,
+    <l-spacer value={1}></l-spacer>,
+    <l-row justifyContent="space-between">
+      <e-button variant="link" action="openForgotPasswordModal">
+        Forgot Password?
+      </e-button>
+      <e-button action="submit_LoginInputs" active={this.isLoginButtonActive}>
+        Login
+      </e-button>
+    </l-row>,
+    <this.Footer statement="logging into your account"></this.Footer>,
+  ];
 
-  SignUp: FunctionalComponent = () => (
-    <div>
-      <this.Header title="Sign up" statement="Already have an account?" action="goToLoginModal" label="Log in"></this.Header>
-      <l-spacer value={1}></l-spacer>
-      <p-oauth-button></p-oauth-button>
-      <l-spacer value={1}></l-spacer>
-      <l-seperator variant="oauth"></l-seperator>
-      <l-spacer value={1}></l-spacer>
-      <e-input type="text" name="name" placeholder="Name"></e-input>
-      <br />
-      <l-spacer value={1}></l-spacer>
-      <e-input type="email" name="email" placeholder="Email"></e-input>
-      <br />
-      <l-spacer value={1}></l-spacer>
-      <e-input type="password" name="password" placeholder="Password (Min. 8 letters)"></e-input>
-      <l-spacer value={1}></l-spacer>
-      <l-row justifyContent="space-between">
-        <e-button variant="link" action="goToForgotPassword">
-          Forgot Password?
-        </e-button>
-        <e-button action="submit_SignupInputs" active={this.isSignupButtonActive}>
-          Sign up
-        </e-button>
-      </l-row>
-      <this.Footer statement="signing up"></this.Footer>
-    </div>
-  );
+  SignUp: FunctionalComponent = () => [
+    <this.Header title="Sign up" statement="Already have an account?" action="openLoginModal" label="Log in"></this.Header>,
+    <l-spacer value={1}></l-spacer>,
+    <p-oauth-button></p-oauth-button>,
+    <l-spacer value={1}></l-spacer>,
+    <l-seperator variant="oauth"></l-seperator>,
+    <l-spacer value={1}></l-spacer>,
+    <e-input type="text" name="name" placeholder="Name"></e-input>,
+    <br />,
+    <l-spacer value={1}></l-spacer>,
+    <e-input type="email" name="email" placeholder="Email"></e-input>,
+    <br />,
+    <l-spacer value={1}></l-spacer>,
+    <e-input type="password" name="password" placeholder="Password (Min. 8 letters)"></e-input>,
+    <l-spacer value={1}></l-spacer>,
+    <l-row justifyContent="space-between">
+      <e-button variant="link" action="goToForgotPassword">
+        Forgot Password?
+      </e-button>
+      <e-button action="submit_SignupInputs" active={this.isSignupButtonActive}>
+        Sign up
+      </e-button>
+    </l-row>,
+    <this.Footer statement="signing up"></this.Footer>,
+  ];
 
   render() {
     return (
-      <c-card>
+      <Host>
         {this.authView === 'forgotPassword' && <this.ForgotPassword></this.ForgotPassword>}
         {this.authView === 'login' && <this.Login></this.Login>}
         {this.authView === 'signup' && <this.SignUp></this.SignUp>}
-      </c-card>
+      </Host>
     );
   }
 }

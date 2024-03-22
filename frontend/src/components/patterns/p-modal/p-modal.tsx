@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Host, h } from '@stencil/core';
+import { Component, Prop, State, Watch, Host, h } from '@stencil/core';
 import { gsap } from 'gsap';
 
 @Component({
@@ -10,6 +10,8 @@ export class PModal {
   @Prop() isVisible: boolean = false;
   @Prop() name: string;
 
+  @State() modalName: string;
+
   @Watch('isVisible') watchIsVisible(newVal: boolean, oldVal: boolean) {
     if (newVal != oldVal) {
       if (newVal) {
@@ -20,8 +22,9 @@ export class PModal {
     }
   }
 
-  @Watch('name') watchName(newVal: boolean, oldVal: boolean) {
+  @Watch('name') watchName(newVal: string, oldVal: string) {
     if (newVal != oldVal) {
+      this.modalName = newVal;
     }
   }
 
@@ -41,7 +44,7 @@ export class PModal {
   render() {
     return (
       <Host ref={el => (this.modalHostEl = el as HTMLDivElement)}>
-        <slot></slot>
+        <c-card>{this.modalName === 'login' || this.modalName === 'signup' ? <p-auth view={this.modalName}></p-auth> : ''}</c-card>
       </Host>
     );
   }

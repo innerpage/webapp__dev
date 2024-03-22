@@ -16,11 +16,11 @@ export class PTopbar {
             <p-user-control></p-user-control>
           ) : (
             <l-row align="centre">
-              <e-button variant="ghost" action="login">
+              <e-button variant="ghost" action="openLoginModal">
                 Log in
               </e-button>
               &nbsp;&nbsp;
-              <e-button action="signup">Sign up</e-button>
+              <e-button action="openSignupModal">Sign up</e-button>
             </l-row>
           )}
         </l-row>
