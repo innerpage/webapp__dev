@@ -4,4 +4,5 @@
   height: calc(100vh - 55px);
   border-right: 1px solid var(--color__grey--lighter);
   background: white;
+  box-sizing: border-box;
 }

@@ -7,6 +7,7 @@
   padding: calc(var(--site__padding) / 1.5) var(--site__padding);
   height: 55px;
   z-index: 9;
+  box-sizing: border-box;
 }
 
 .logo {

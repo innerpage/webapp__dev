@@ -3,6 +3,7 @@ a {
   display: inline-block;
   color: var(--color__blue--regular);
   transition: all 0.25s;
+  box-sizing: border-box;
 }
 
 a:hover {

@@ -28,7 +28,6 @@ export class PAuth {
     if (newVal != oldVal) {
       this.authView = newVal;
     }
-    console.log(`this.authView: ${this.authView}`);
   }
 
   componentWillLoad() {
