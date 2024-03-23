@@ -44,7 +44,7 @@ export class PModal {
   render() {
     return (
       <Host ref={el => (this.modalHostEl = el as HTMLDivElement)}>
-        <c-card>{this.modalName === 'login' || this.modalName === 'signup' || this.modalName === 'forgotPassword' ? <p-auth view={this.modalName}></p-auth> : ''}</c-card>
+        <c-card>{this.modalName === 'login' || this.modalName === 'signup' || this.modalName === 'resetPassword' ? <p-auth view={this.modalName}></p-auth> : ''}</c-card>
       </Host>
     );
   }

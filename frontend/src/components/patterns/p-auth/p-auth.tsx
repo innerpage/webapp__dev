@@ -1,4 +1,4 @@
-import { Component, Prop, State, FunctionalComponent, Host, Watch, h } from '@stencil/core';
+import { Component, Prop, State, FunctionalComponent, Host, Listen, Watch, h } from '@stencil/core';
 import { Vars } from '../../../global/script';
 
 interface HeaderProps {
@@ -18,32 +18,112 @@ interface FooterProps {
   shadow: true,
 })
 export class PAuth {
+  @Listen('buttonClick') handle_ButtonClick(e) {
+    if (e.detail.action === 'loginUser') {
+      this.loginUser();
+    } else if (e.detail.action === 'signupUser') {
+      this.signupUser();
+    }
+  }
+
+  @Listen('textInput') handleTextInput(e) {
+    if (e.detail.name === 'email') {
+      this.email = e.detail.value;
+    } else if (e.detail.name === 'password') {
+      this.password = e.detail.value;
+    }
+  }
+
   @Prop() view: string;
 
   @State() authView: string;
   @State() isLoginButtonActive: boolean = false;
   @State() isSignupButtonActive: boolean = false;
+  @State() resetPasswordWizardStep: string = 'init';
+  @State() isSendResetCodeButtonActive: boolean = false;
+  @State() isConfirmPasswordButtonActive: boolean = false;
 
   @Watch('view') watchView(newVal: string, oldVal: string) {
+    this.reset();
     if (newVal != oldVal) {
       this.authView = newVal;
     }
   }
 
+  private name: string = '';
+  private email: string = '';
+  private password: string = '';
+  private passwordResetCode: number = 0;
+  private newPassword: string = '';
+  private newPasswordRepeat: string = '';
+
   componentWillLoad() {
     this.authView = this.view;
   }
 
-  ForgotPassword: FunctionalComponent = () => (
+  loginUser() {}
+
+  signupUser() {}
+
+  reset() {
+    this.name = '';
+    this.email = '';
+    this.password = '';
+    this.passwordResetCode = 0;
+    this.newPassword = '';
+    this.newPasswordRepeat = '';
+    this.isLoginButtonActive = false;
+    this.isSignupButtonActive = false;
+    this.resetPasswordWizardStep = 'init';
+    this.isSendResetCodeButtonActive = false;
+    this.isConfirmPasswordButtonActive = false;
+  }
+
+  ResetPassword: FunctionalComponent = () => [
+    <this.Header title="Reset Password" statement="" action="" label=""></this.Header>,
     <div>
-      <l-row justifyContent="space-between">
-        <e-text variant="display">Forgot Password</e-text>
-        <e-button variant="light" theme="dark" action="closeModal">
-          <ph-x color="var(--color__grey--normal)" size="1em"></ph-x>
-        </e-button>
-      </l-row>
-    </div>
-  );
+      {this.resetPasswordWizardStep === 'init' && <this.ResetPasswordInit></this.ResetPasswordInit>}
+      {this.resetPasswordWizardStep === 'confirm' && <this.ResetPasswordConfirm></this.ResetPasswordConfirm>}
+    </div>,
+  ];
+
+  ResetPasswordInit: FunctionalComponent = () => [
+    <e-text>Step 1 of 2: Verify your email</e-text>,
+    <l-spacer value={1}></l-spacer>,
+    <e-input type="email" name="email" placeholder="Email"></e-input>,
+    <l-spacer value={1}></l-spacer>,
+    <l-row justifyContent="space-between">
+      <e-button action="goBackToLogin" variant="light">
+        Back
+      </e-button>
+      <e-button action="send_ResetCode" active={this.isSendResetCodeButtonActive}>
+        Send reset code
+      </e-button>
+    </l-row>,
+    <l-spacer value={2}></l-spacer>,
+    <l-seperator></l-seperator>,
+    <l-spacer value={0.5}></l-spacer>,
+    <e-text variant="footnote">We will send a reset code if your email is registered with us</e-text>,
+  ];
+
+  ResetPasswordConfirm: FunctionalComponent = () => [
+    <e-text>Step 2 of 2: Provide new password</e-text>,
+    <l-spacer value={1}></l-spacer>,
+    <e-input type="number" name="passwordResetCode" placeholder="Password reset code (check your mail)"></e-input>,
+    <l-spacer value={2}></l-spacer>,
+    <e-input type="password" name="newPassword" placeholder="New password (min 8 chars)"></e-input>,
+    <l-spacer value={1}></l-spacer>,
+    <e-input type="password" name="newPasswordRepeat" placeholder="Repeat new password"></e-input>,
+    <l-spacer value={1}></l-spacer>,
+    <l-row justifyContent="space-between">
+      <e-button action="goBackToResetPasswordInit" variant="light">
+        Back
+      </e-button>
+      <e-button action="confirm_Password" active={this.isConfirmPasswordButtonActive}>
+        Reset password
+      </e-button>
+    </l-row>,
+  ];
 
   Footer: FunctionalComponent<FooterProps> = ({ statement }) => (
     <footer>
@@ -71,12 +151,16 @@ export class PAuth {
           <ph-x color="var(--color__grey--normal)" size="1em"></ph-x>
         </e-button>
       </l-row>
-      <e-text>
-        {statement}{' '}
-        <e-button variant="link" action={action}>
-          {label}
-        </e-button>
-      </e-text>
+      {statement.length > 0 && (
+        <e-text>
+          {statement}{' '}
+          {action.length > 0 && label.length > 0 && (
+            <e-button variant="link" action={action}>
+              {label}
+            </e-button>
+          )}
+        </e-text>
+      )}
     </header>
   );
 
@@ -97,7 +181,7 @@ export class PAuth {
       <e-button variant="link" action="openForgotPasswordModal">
         Forgot Password?
       </e-button>
-      <e-button action="submit_LoginInputs" active={this.isLoginButtonActive}>
+      <e-button action="loginUser" active={this.isLoginButtonActive}>
         Login
       </e-button>
     </l-row>,
@@ -120,10 +204,10 @@ export class PAuth {
     <e-input type="password" name="password" placeholder="Password (Min. 8 letters)"></e-input>,
     <l-spacer value={1}></l-spacer>,
     <l-row justifyContent="space-between">
-      <e-button variant="link" action="goToForgotPassword">
+      <e-button variant="link" action="openForgotPasswordModal">
         Forgot Password?
       </e-button>
-      <e-button action="submit_SignupInputs" active={this.isSignupButtonActive}>
+      <e-button action="signupUser" active={this.isSignupButtonActive}>
         Sign up
       </e-button>
     </l-row>,
@@ -133,7 +217,7 @@ export class PAuth {
   render() {
     return (
       <Host>
-        {this.authView === 'forgotPassword' && <this.ForgotPassword></this.ForgotPassword>}
+        {this.authView === 'resetPassword' && <this.ResetPassword></this.ResetPassword>}
         {this.authView === 'login' && <this.Login></this.Login>}
         {this.authView === 'signup' && <this.SignUp></this.SignUp>}
       </Host>

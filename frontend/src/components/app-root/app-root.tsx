@@ -33,7 +33,7 @@ export class AppRoot {
       } else if (e.detail.action === 'openSignupModal') {
         this.openModal('signup');
       } else if (e.detail.action === 'openForgotPasswordModal') {
-        this.openModal('forgotPassword');
+        this.openModal('resetPassword');
       }
       if (!state.isModalVisible) {
         state.isModalVisible = true;
@@ -41,7 +41,7 @@ export class AppRoot {
     } else if (e.detail.action === 'closeModal') {
       state.isModalVisible = false;
       setTimeout(() => {
-        state.modal = '';
+        this.modal = '';
       }, 150);
     } else if (e.detail.action === 'logout') {
       this.logoutUser();
@@ -115,7 +115,7 @@ export class AppRoot {
   }
 
   openModal(name: string) {
-    state.modal = name;
+    this.modal = name;
   }
 
   disconnectedCallback() {
@@ -141,7 +141,7 @@ export class AppRoot {
     return (
       <Host>
         {!state.isAccountEmailVerified && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
-        <p-modal isVisible={state.isModalVisible} name={state.modal}></p-modal>
+        <p-modal isVisible={state.isModalVisible} name={this.modal}></p-modal>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
             <stencil-route url="/" component="v-home" exact={true} />
