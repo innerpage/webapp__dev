@@ -1,7 +1,7 @@
-import { loginInputsInterface } from '../../../interfaces';
+import { loginPayloadInterface } from '../../../interfaces';
 import { Vars } from '../../../../../../global/script';
 
-export const loginApi = async (loginInputs: loginInputsInterface) => {
+export const loginApi = async (loginInputs: loginPayloadInterface) => {
   let payload: any;
   let success: boolean = false;
 

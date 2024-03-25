@@ -13,7 +13,6 @@ const loginInputsSchema = Joi.object({
 
 export const validateLoginInputs = (loginInputsPayload: object) => {
   let { error } = loginInputsSchema.validate(loginInputsPayload);
-
   if (error) {
     return { success: false, message: `❌ ${error.details[0].message}` };
   } else {

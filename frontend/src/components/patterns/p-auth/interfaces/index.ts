@@ -1,9 +1,9 @@
 // Login
-export { loginInputsInterface } from './login/loginInputsInterface';
+export { loginPayloadInterface } from './login/loginPayloadInterface';
 
 // Signup
-export { signupInputsInterface } from './signup/signupInputsInterface';
+export { signupPayloadInterface } from './signup/signupPayloadInterface';
 
 // Reset Password
-export { sendResetCodeInputsInterface } from './resetPassword/sendRestCodeInputsInterface';
-export { confirmPasswordInputsInterface } from './resetPassword/confirmPasswordInputsInterface';
+export { sendResetCodePayloadInterface } from './resetPassword/sendRestCodePayloadInterface';
+export { confirmPasswordPayloadInterface } from './resetPassword/confirmPasswordPayloadInterface';

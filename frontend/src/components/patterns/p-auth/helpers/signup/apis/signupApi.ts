@@ -1,7 +1,7 @@
-import { signupInputsInterface } from '../../../interfaces';
+import { signupPayloadInterface } from '../../../interfaces';
 import { Vars } from '../../../../../../global/script';
 
-export const signupApi = async (signupInputs: signupInputsInterface) => {
+export const signupApi = async (signupInputs: signupPayloadInterface) => {
   let payload: any;
   let success: boolean = false;
 
