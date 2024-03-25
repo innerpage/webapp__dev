@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import { confirmPasswordPayloadInterface } from '../../../interfaces';
 
 const confirmPasswordInputsSchema = Joi.object({
   passwordResetCode: Joi.number().required().min(1000).max(9999),
@@ -13,8 +14,8 @@ const confirmPasswordInputsSchema = Joi.object({
   newPasswordRepeat: Joi.string().equal(Joi.ref('newPassword')).trim().required(),
 });
 
-export const validateConfirmPasswordInputs = (confirmPasswordInputsPayload: object) => {
-  let { error } = confirmPasswordInputsSchema.validate(confirmPasswordInputsPayload);
+export const validateConfirmPasswordInputs = (confirmPasswordInputs: confirmPasswordPayloadInterface) => {
+  let { error } = confirmPasswordInputsSchema.validate(confirmPasswordInputs);
   if (error) {
     return { success: false, message: error.details[0].message };
   } else {

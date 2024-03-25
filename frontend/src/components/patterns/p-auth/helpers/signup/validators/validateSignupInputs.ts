@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { signupInputsInterface } from '../../../interfaces';
+import { signupPayloadInterface } from '../../../interfaces';
 
 const signupInputsSchema = Joi.object({
   name: Joi.string().required(),
@@ -13,8 +13,8 @@ const signupInputsSchema = Joi.object({
   password: Joi.string().min(8).max(1024).required(),
 });
 
-export const validateSignupInputs = (signupInputsPayload: signupInputsInterface) => {
-  let { error } = signupInputsSchema.validate(signupInputsPayload);
+export const validateSignupInputs = (signupInputs: signupPayloadInterface) => {
+  let { error } = signupInputsSchema.validate(signupInputs);
 
   if (error) {
     return { success: false, message: error.details[0].message };

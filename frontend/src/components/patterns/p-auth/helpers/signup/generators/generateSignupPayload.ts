@@ -1,5 +1,7 @@
+import { signupPayloadInterface } from '../../../interfaces';
+
 export const generateSignupPayload = (name: string, email: string, password: string) => {
-  let signupPayload = {
+  let signupPayload: signupPayloadInterface = {
     name: name.trim(),
     email: email.trim().toLowerCase(),
     password: password.trim(),

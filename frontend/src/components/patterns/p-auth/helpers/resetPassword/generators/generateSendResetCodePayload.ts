@@ -1,5 +1,9 @@
+import { sendResetCodePayloadInterface } from '../../../interfaces';
+
 export const generateSendResetCodePayload = (email: string) => {
-  return {
+  let sendResetCodePayload: sendResetCodePayloadInterface = {
     email: email.trim().toLowerCase(),
   };
+
+  return sendResetCodePayload;
 };
