@@ -14,11 +14,11 @@ const confirmPasswordInputsSchema = Joi.object({
   newPasswordRepeat: Joi.string().equal(Joi.ref('newPassword')).trim().required(),
 });
 
-export const validateConfirmPasswordInputs = (confirmPasswordInputs: confirmPasswordPayloadInterface) => {
-  let { error } = confirmPasswordInputsSchema.validate(confirmPasswordInputs);
+export const validateConfirmPasswordPayload = (confirmPasswordPayload: confirmPasswordPayloadInterface) => {
+  let { error } = confirmPasswordInputsSchema.validate(confirmPasswordPayload);
   if (error) {
-    return { success: false, message: error.details[0].message };
+    return { isValid: false, validationMessage: error.details[0].message };
   } else {
-    return { success: true, message: '' };
+    return { isValid: true, validationMessage: '' };
   }
 };

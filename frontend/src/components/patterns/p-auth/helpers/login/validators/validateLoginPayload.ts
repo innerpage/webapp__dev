@@ -12,11 +12,11 @@ const loginInputsSchema = Joi.object({
   password: Joi.string().min(8).max(1024).required(),
 });
 
-export const validateLoginInputs = (loginInputs: loginPayloadInterface) => {
-  let { error } = loginInputsSchema.validate(loginInputs);
+export const validateLoginPayload = (loginPayload: loginPayloadInterface) => {
+  let { error } = loginInputsSchema.validate(loginPayload);
   if (error) {
-    return { success: false, message: `❌ ${error.details[0].message}` };
+    return { isValid: false, validationMessage: `❌ ${error.details[0].message}` };
   } else {
-    return { success: true, message: '' };
+    return { isValid: true, validationMessage: '' };
   }
 };

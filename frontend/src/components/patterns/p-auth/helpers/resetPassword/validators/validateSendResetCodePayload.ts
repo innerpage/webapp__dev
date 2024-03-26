@@ -11,12 +11,12 @@ const validateSendResetCodeInputsSchema = Joi.object({
     .required(),
 });
 
-export const validateSendResetCodeInputs = (sendResetCodeInputs: sendResetCodePayloadInterface) => {
-  let { error } = validateSendResetCodeInputsSchema.validate(sendResetCodeInputs);
+export const validateSendResetCodePayload = (sendResetCodePayload: sendResetCodePayloadInterface) => {
+  let { error } = validateSendResetCodeInputsSchema.validate(sendResetCodePayload);
 
   if (error) {
-    return { success: false, message: error.details[0].message };
+    return { isValid: false, validationMessage: error.details[0].message };
   } else {
-    return { success: true, message: '' };
+    return { isValid: true, validationMessage: '' };
   }
 };

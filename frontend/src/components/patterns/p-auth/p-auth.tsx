@@ -1,5 +1,20 @@
 import { Component, Prop, State, FunctionalComponent, Host, Listen, Watch, h } from '@stencil/core';
+import {
+  loginApi,
+  generateLoginPayload,
+  validateLoginPayload,
+  confirmPasswordApi,
+  sendResetCodeApi,
+  generateConfirmPasswordPayload,
+  generateSendResetCodePayload,
+  signupApi,
+  generateSignupPayload,
+  validateSignupPayload,
+} from './helpers';
+import { confirmPasswordPayloadInterface, loginPayloadInterface, sendResetCodePayloadInterface, signupPayloadInterface } from './interfaces';
 import { Vars } from '../../../global/script';
+import { validateSendResetCodePayload } from './helpers/resetPassword/validators/validateSendResetCodePayload';
+import { validateConfirmPasswordPayload } from './helpers/resetPassword/validators/validateConfirmPasswordPayload';
 
 interface HeaderProps {
   title: string;
@@ -23,14 +38,26 @@ export class PAuth {
       this.loginUser();
     } else if (e.detail.action === 'signupUser') {
       this.signupUser();
+    } else if (e.detail.action === 'sendResetCode') {
+      this.sendResetCode();
+    } else if (e.detail.action === 'confirmPassword') {
+      this.confirmPassword();
     }
   }
 
   @Listen('textInput') handleTextInput(e) {
-    if (e.detail.name === 'email') {
+    if (e.detail.name === 'name') {
+      this.name = e.detail.value;
+    } else if (e.detail.name === 'email') {
       this.email = e.detail.value;
     } else if (e.detail.name === 'password') {
       this.password = e.detail.value;
+    } else if (e.detail.name === 'passwordResetCode') {
+      this.passwordResetCode = e.detail.value;
+    } else if (e.detail.name === 'newPassword') {
+      this.newPassword = e.detail.value;
+    } else if (e.detail.name === 'newPasswordRepeat') {
+      this.newPasswordRepeat = e.detail.value;
     }
   }
 
@@ -61,9 +88,106 @@ export class PAuth {
     this.authView = this.view;
   }
 
-  loginUser() {}
+  async loginUser() {
+    let loginPayload: loginPayloadInterface = generateLoginPayload(this.email, this.password);
+    let { isValid, validationMessage } = validateLoginPayload(loginPayload);
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+    this.isLoginButtonActive = true;
 
-  signupUser() {}
+    let { success, message, payload } = await loginApi(loginPayload);
+    this.isLoginButtonActive = false;
+
+    if (!success) {
+      return alert(message);
+    }
+
+    if (!payload.success) {
+      return alert(payload.message);
+    }
+
+    // LOGIN THE USER
+    //  this.success_Auth.emit({
+    //    payload: payload_LoginInputs_Submission.payload,
+    //  });
+  }
+
+  async signupUser() {
+    let signupPayload: signupPayloadInterface = generateSignupPayload(this.name, this.email, this.password);
+    let { isValid, validationMessage } = validateSignupPayload(signupPayload);
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+    this.isSignupButtonActive = true;
+
+    let { success, message, payload } = await signupApi(signupPayload);
+    this.isSignupButtonActive = false;
+
+    if (!success) {
+      return alert(message);
+    }
+
+    if (!payload.success) {
+      return alert(payload.message);
+    }
+
+    // SIGNUP USER
+    // this.success_Auth.emit({
+    //   payload: payload_SignupInputs_Submission.payload,
+    // });
+  }
+
+  async sendResetCode() {
+    let sendResetCodePayload: sendResetCodePayloadInterface = generateSendResetCodePayload(this.email);
+    let { isValid, validationMessage } = validateSendResetCodePayload(sendResetCodePayload);
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+
+    this.isSendResetCodeButtonActive = true;
+    let { success, message, payload } = await sendResetCodeApi(sendResetCodePayload);
+    this.isSendResetCodeButtonActive = false;
+
+    if (!success) {
+      return alert(message);
+    }
+    if (!payload.success) {
+      return alert(payload);
+    }
+
+    alert(payload.message);
+
+    // CHANGE TO NEXT STEP OF FORGOT PASSWORD WIZARD
+    // this.wizard_CurrentStep = this.wizard_CurrentStep + 1;
+    // this.state = this.wizard_Steps[this.wizard_CurrentStep];
+  }
+
+  async confirmPassword() {
+    let confirmPasswordPayload: confirmPasswordPayloadInterface = generateConfirmPasswordPayload(this.email, this.newPassword, this.newPasswordRepeat, this.passwordResetCode);
+
+    let { isValid, validationMessage } = validateConfirmPasswordPayload(confirmPasswordPayload);
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+
+    this.isConfirmPasswordButtonActive = true;
+    let { success, message, payload } = await confirmPasswordApi(confirmPasswordPayload);
+    this.isConfirmPasswordButtonActive = false;
+
+    if (!success) {
+      return alert(message);
+    }
+
+    alert(`${payload.message}. Proceed to login`);
+
+    // SWITCH ACTIVE VIEW TO LOGIN
+    // this.event_RouteTo.emit({
+    //   type: 'push',
+    //   route: '/login',
+    //   data: {},
+    // });
+  }
 
   reset() {
     this.name = '';
@@ -82,12 +206,12 @@ export class PAuth {
   ResetPassword: FunctionalComponent = () => [
     <this.Header title="Reset Password" statement="" action="" label=""></this.Header>,
     <div>
-      {this.resetPasswordWizardStep === 'init' && <this.ResetPasswordInit></this.ResetPasswordInit>}
-      {this.resetPasswordWizardStep === 'confirm' && <this.ResetPasswordConfirm></this.ResetPasswordConfirm>}
+      {this.resetPasswordWizardStep === 'init' && <this.SendResetCode></this.SendResetCode>}
+      {this.resetPasswordWizardStep === 'confirm' && <this.ConfirmPassword></this.ConfirmPassword>}
     </div>,
   ];
 
-  ResetPasswordInit: FunctionalComponent = () => [
+  SendResetCode: FunctionalComponent = () => [
     <e-text>Step 1 of 2: Verify your email</e-text>,
     <l-spacer value={1}></l-spacer>,
     <e-input type="email" name="email" placeholder="Email"></e-input>,
@@ -96,7 +220,7 @@ export class PAuth {
       <e-button action="goBackToLogin" variant="light">
         Back
       </e-button>
-      <e-button action="send_ResetCode" active={this.isSendResetCodeButtonActive}>
+      <e-button action="sendResetCode" active={this.isSendResetCodeButtonActive}>
         Send reset code
       </e-button>
     </l-row>,
@@ -106,7 +230,7 @@ export class PAuth {
     <e-text variant="footnote">We will send a reset code if your email is registered with us</e-text>,
   ];
 
-  ResetPasswordConfirm: FunctionalComponent = () => [
+  ConfirmPassword: FunctionalComponent = () => [
     <e-text>Step 2 of 2: Provide new password</e-text>,
     <l-spacer value={1}></l-spacer>,
     <e-input type="number" name="passwordResetCode" placeholder="Password reset code (check your mail)"></e-input>,
