@@ -84,111 +84,6 @@ export class PAuth {
   private newPassword: string = '';
   private newPasswordRepeat: string = '';
 
-  componentWillLoad() {
-    this.authView = this.view;
-  }
-
-  async loginUser() {
-    let loginPayload: loginPayloadInterface = generateLoginPayload(this.email, this.password);
-    let { isValid, validationMessage } = validateLoginPayload(loginPayload);
-    if (!isValid) {
-      return alert(validationMessage);
-    }
-    this.isLoginButtonActive = true;
-
-    let { success, message, payload } = await loginApi(loginPayload);
-    this.isLoginButtonActive = false;
-
-    if (!success) {
-      return alert(message);
-    }
-
-    if (!payload.success) {
-      return alert(payload.message);
-    }
-
-    // LOGIN THE USER
-    //  this.success_Auth.emit({
-    //    payload: payload_LoginInputs_Submission.payload,
-    //  });
-  }
-
-  async signupUser() {
-    let signupPayload: signupPayloadInterface = generateSignupPayload(this.name, this.email, this.password);
-    let { isValid, validationMessage } = validateSignupPayload(signupPayload);
-    if (!isValid) {
-      return alert(validationMessage);
-    }
-    this.isSignupButtonActive = true;
-
-    let { success, message, payload } = await signupApi(signupPayload);
-    this.isSignupButtonActive = false;
-
-    if (!success) {
-      return alert(message);
-    }
-
-    if (!payload.success) {
-      return alert(payload.message);
-    }
-
-    // SIGNUP USER
-    // this.success_Auth.emit({
-    //   payload: payload_SignupInputs_Submission.payload,
-    // });
-  }
-
-  async sendResetCode() {
-    let sendResetCodePayload: sendResetCodePayloadInterface = generateSendResetCodePayload(this.email);
-    let { isValid, validationMessage } = validateSendResetCodePayload(sendResetCodePayload);
-    if (!isValid) {
-      return alert(validationMessage);
-    }
-
-    this.isSendResetCodeButtonActive = true;
-    let { success, message, payload } = await sendResetCodeApi(sendResetCodePayload);
-    this.isSendResetCodeButtonActive = false;
-
-    if (!success) {
-      return alert(message);
-    }
-    if (!payload.success) {
-      return alert(payload);
-    }
-
-    alert(payload.message);
-
-    // CHANGE TO NEXT STEP OF FORGOT PASSWORD WIZARD
-    // this.wizard_CurrentStep = this.wizard_CurrentStep + 1;
-    // this.state = this.wizard_Steps[this.wizard_CurrentStep];
-  }
-
-  async confirmPassword() {
-    let confirmPasswordPayload: confirmPasswordPayloadInterface = generateConfirmPasswordPayload(this.email, this.newPassword, this.newPasswordRepeat, this.passwordResetCode);
-
-    let { isValid, validationMessage } = validateConfirmPasswordPayload(confirmPasswordPayload);
-    if (!isValid) {
-      return alert(validationMessage);
-    }
-
-    this.isConfirmPasswordButtonActive = true;
-    let { success, message, payload } = await confirmPasswordApi(confirmPasswordPayload);
-    this.isConfirmPasswordButtonActive = false;
-
-    if (!success) {
-      return alert(message);
-    }
-
-    alert(`${payload.message}. Proceed to login`);
-
-    // SWITCH ACTIVE VIEW TO LOGIN
-    // this.event_RouteTo.emit({
-    //   type: 'push',
-    //   route: '/login',
-    //   data: {},
-    // });
-  }
-
   reset() {
     this.name = '';
     this.email = '';
@@ -201,6 +96,112 @@ export class PAuth {
     this.resetPasswordWizardStep = 'init';
     this.isSendResetCodeButtonActive = false;
     this.isConfirmPasswordButtonActive = false;
+  }
+
+  componentWillLoad() {
+    this.authView = this.view;
+  }
+
+  async loginUser() {
+    let loginPayload: loginPayloadInterface = generateLoginPayload(this.email, this.password);
+    let { isValid, validationMessage } = validateLoginPayload(loginPayload);
+    if (!isValid) {
+      return alert(`❌ ${validationMessage}`);
+    }
+    this.isLoginButtonActive = true;
+
+    let { success, message, payload } = await loginApi(loginPayload);
+    this.isLoginButtonActive = false;
+
+    if (!success) {
+      return alert(`❌ ${message}`);
+    }
+
+    if (!payload.success) {
+      return alert(`❌ ${payload.message}`);
+    }
+
+    // LOGIN THE USER
+    //  this.success_Auth.emit({
+    //    payload: payload_LoginInputs_Submission.payload,
+    //  });
+  }
+
+  async signupUser() {
+    let signupPayload: signupPayloadInterface = generateSignupPayload(this.name, this.email, this.password);
+    let { isValid, validationMessage } = validateSignupPayload(signupPayload);
+    if (!isValid) {
+      return alert(`❌ ${validationMessage}`);
+    }
+    this.isSignupButtonActive = true;
+
+    let { success, message, payload } = await signupApi(signupPayload);
+    this.isSignupButtonActive = false;
+
+    if (!success) {
+      return alert(`❌ ${message}`);
+    }
+
+    if (!payload.success) {
+      return alert(`❌ ${payload.message}`);
+    }
+
+    // SIGNUP USER
+    // this.success_Auth.emit({
+    //   payload: payload_SignupInputs_Submission.payload,
+    // });
+  }
+
+  async sendResetCode() {
+    let sendResetCodePayload: sendResetCodePayloadInterface = generateSendResetCodePayload(this.email);
+    let { isValid, validationMessage } = validateSendResetCodePayload(sendResetCodePayload);
+    if (!isValid) {
+      return alert(`❌ ${validationMessage}`);
+    }
+
+    this.isSendResetCodeButtonActive = true;
+    let { success, message, payload } = await sendResetCodeApi(sendResetCodePayload);
+    this.isSendResetCodeButtonActive = false;
+
+    if (!success) {
+      return alert(`❌ ${message}`);
+    }
+
+    if (!payload.success) {
+      return alert(`❌ ${payload.message}`);
+    }
+
+    alert(`✅ ${payload.message}`);
+
+    // CHANGE TO NEXT STEP OF FORGOT PASSWORD WIZARD
+    // this.wizard_CurrentStep = this.wizard_CurrentStep + 1;
+    // this.state = this.wizard_Steps[this.wizard_CurrentStep];
+  }
+
+  async confirmPassword() {
+    let confirmPasswordPayload: confirmPasswordPayloadInterface = generateConfirmPasswordPayload(this.email, this.newPassword, this.newPasswordRepeat, this.passwordResetCode);
+
+    let { isValid, validationMessage } = validateConfirmPasswordPayload(confirmPasswordPayload);
+    if (!isValid) {
+      return alert(`❌ ${validationMessage}`);
+    }
+
+    this.isConfirmPasswordButtonActive = true;
+    let { success, message, payload } = await confirmPasswordApi(confirmPasswordPayload);
+    this.isConfirmPasswordButtonActive = false;
+
+    if (!success) {
+      return alert(`❌ ${message}`);
+    }
+
+    alert(`✅ ${payload.message}. Proceed to login`);
+
+    // SWITCH ACTIVE VIEW TO LOGIN
+    // this.event_RouteTo.emit({
+    //   type: 'push',
+    //   route: '/login',
+    //   data: {},
+    // });
   }
 
   ResetPassword: FunctionalComponent = () => [
