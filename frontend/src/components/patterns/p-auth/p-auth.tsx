@@ -106,7 +106,7 @@ export class PAuth {
     let loginPayload: loginPayloadInterface = generateLoginPayload(this.email, this.password);
     let { isValid, validationMessage } = validateLoginPayload(loginPayload);
     if (!isValid) {
-      return alert(`❌ ${validationMessage}`);
+      return alert(validationMessage);
     }
     this.isLoginButtonActive = true;
 

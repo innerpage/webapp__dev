@@ -29,7 +29,7 @@ h2 {
 }
 
 .danger {
-  color: var(--color__red--dark);
+  color: var(--color__red--regular);
 }
 
 .light-grey {

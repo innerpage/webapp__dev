@@ -9,3 +9,11 @@ c-card {
   overflow: hidden;
   opacity: 0;
 }
+
+ph-caret-u,
+ph-caret-down,
+ph-user,
+ph-credit-card,
+ph-sign-out {
+  margin-top: 5px;
+}
