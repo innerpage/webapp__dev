@@ -1,7 +1,8 @@
-import { sendResetCodePayloadInterface } from '../../../interfaces';
+import { emailPayloadInterface } from '../../../../../../global/script/interfaces';
+
 import { Vars } from '../../../../../../global/script';
 
-export const sendResetCodeApi = async (sendResetCodePayload: sendResetCodePayloadInterface) => {
+export const sendResetCodeApi = async (sendResetCodePayload: emailPayloadInterface) => {
   let url: string = `${Vars.api.url}/${Vars.api.endpoint.mail.password.resetCode}`;
   let options: any = {
     method: 'POST',

@@ -5,5 +5,4 @@ export { loginPayloadInterface } from './login/loginPayloadInterface';
 export { signupPayloadInterface } from './signup/signupPayloadInterface';
 
 // Reset Password
-export { sendResetCodePayloadInterface } from './resetPassword/sendRestCodePayloadInterface';
 export { confirmPasswordPayloadInterface } from './resetPassword/confirmPasswordPayloadInterface';

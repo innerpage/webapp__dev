@@ -1,4 +1,4 @@
-import { Component, Prop, State, FunctionalComponent, Host, Listen, Watch, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, State, FunctionalComponent, Host, Listen, Watch, h } from '@stencil/core';
 import {
   loginApi,
   generateLoginPayload,
@@ -6,12 +6,13 @@ import {
   confirmPasswordApi,
   sendResetCodeApi,
   generateConfirmPasswordPayload,
-  generateSendResetCodePayload,
   signupApi,
   generateSignupPayload,
   validateSignupPayload,
 } from './helpers';
-import { confirmPasswordPayloadInterface, loginPayloadInterface, sendResetCodePayloadInterface, signupPayloadInterface } from './interfaces';
+import { emailPayloadInterface } from '../../../global/script/interfaces';
+import { generateEmailPayload } from '../../../global/script/helpers';
+import { confirmPasswordPayloadInterface, loginPayloadInterface, signupPayloadInterface } from './interfaces';
 import { Vars } from '../../../global/script';
 import { validateSendResetCodePayload } from './helpers/resetPassword/validators/validateSendResetCodePayload';
 import { validateConfirmPasswordPayload } from './helpers/resetPassword/validators/validateConfirmPasswordPayload';
@@ -33,6 +34,12 @@ interface FooterProps {
   shadow: true,
 })
 export class PAuth {
+  @Event({
+    eventName: 'authSuccessful',
+    bubbles: true,
+  })
+  authSuccessfulEventEmitter: EventEmitter;
+
   @Listen('buttonClick') handle_ButtonClick(e) {
     if (e.detail.action === 'loginUser') {
       this.loginUser();
@@ -121,10 +128,7 @@ export class PAuth {
       return alert(`❌ ${payload.message}`);
     }
 
-    // LOGIN THE USER
-    //  this.success_Auth.emit({
-    //    payload: payload_LoginInputs_Submission.payload,
-    //  });
+    this.authSuccessfulEventEmitter.emit();
   }
 
   async signupUser() {
@@ -153,7 +157,7 @@ export class PAuth {
   }
 
   async sendResetCode() {
-    let sendResetCodePayload: sendResetCodePayloadInterface = generateSendResetCodePayload(this.email);
+    let sendResetCodePayload: emailPayloadInterface = generateEmailPayload(this.email);
     let { isValid, validationMessage } = validateSendResetCodePayload(sendResetCodePayload);
     if (!isValid) {
       return alert(`❌ ${validationMessage}`);

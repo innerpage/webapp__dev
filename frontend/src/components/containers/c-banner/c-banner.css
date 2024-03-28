@@ -1,5 +1,6 @@
 .default {
   display: block;
+  box-sizing: border-box;
   padding: var(--site__padding);
 }
 
@@ -9,6 +10,9 @@
   left: 0;
   bottom: 0;
   position: fixed;
+  -webkit-box-shadow: 0px -2px 33px 3px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px -2px 33px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px -2px 33px 3px rgba(0, 0, 0, 0.15);
 }
 
 /* THEME */

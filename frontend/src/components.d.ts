@@ -464,6 +464,7 @@ declare namespace LocalJSX {
         "variant"?: string;
     }
     interface PAuth {
+        "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
         "view"?: string;
     }
     interface PEditableText {

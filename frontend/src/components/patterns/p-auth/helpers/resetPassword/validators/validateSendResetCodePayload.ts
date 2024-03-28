@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { sendResetCodePayloadInterface } from '../../../interfaces';
+import { emailPayloadInterface } from '../../../../../../global/script/interfaces';
 
 const validateSendResetCodeInputsSchema = Joi.object({
   email: Joi.string()
@@ -11,7 +11,7 @@ const validateSendResetCodeInputsSchema = Joi.object({
     .required(),
 });
 
-export const validateSendResetCodePayload = (sendResetCodePayload: sendResetCodePayloadInterface) => {
+export const validateSendResetCodePayload = (sendResetCodePayload: emailPayloadInterface) => {
   let { error } = validateSendResetCodeInputsSchema.validate(sendResetCodePayload);
 
   if (error) {

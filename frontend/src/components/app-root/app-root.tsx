@@ -1,9 +1,9 @@
 import { Component, FunctionalComponent, Prop, Host, Listen, State, h } from '@stencil/core';
 import { RouterHistory, injectHistory } from '@stencil/router';
 import { state, IO, init_Socket } from '../../global/script';
-import { helper_Set_State, mailEmailVerificationCodeApi, submitEmailVerificationCodeApi } from './helpers';
+import { helper_Set_State, submitEmailVerificationCodeApi } from './helpers';
 import { Helper_ApiCall_GetAccountDetails_BySession, Helper_ApiCall_Account_Logout } from '../../global/script/helpers';
-import { checkLoggedInCookie } from './helpers';
+import { getLoggedInCookie } from './helpers';
 
 @Component({
   tag: 'app-root',
@@ -13,20 +13,29 @@ import { checkLoggedInCookie } from './helpers';
 export class AppRoot {
   @Prop() history: RouterHistory;
 
-  @State() isMailingEmailVerification: boolean = false;
+  @State() isMailEmailVerificationLinkButtonActive: boolean = false;
   @State() modal: string;
 
   private emailVerificationCode: number = -1;
 
+  @Listen('authSuccessful') authSuccessfulListener() {
+    this.getCookies();
+    this.getAccountDetails();
+    this.closeModal();
+  }
+
   @Listen('buttonClick') async handle_ButtonClick(e) {
-    if (e.detail.action === 'mailEmailVerificationCode') {
-      let data = {
-        email: state.accountEmail,
-      };
-      this.isMailingEmailVerification = true;
-      let { message } = await mailEmailVerificationCodeApi(data);
-      this.isMailingEmailVerification = false;
-      alert(message);
+    if (e.detail.action === 'mailEmailVerificationLink') {
+      // let data = {
+      //   email: state.accountEmail,
+      // };
+      // this.isMailingEmailVerification = true;
+      // let { message } = await mailEmailVerificationCodeApi(data);
+      // this.isMailingEmailVerification = false;
+      // alert(message);
+      console.log('mailEmailVerificationLink');
+    } else if (e.detail.action === 'mailEmailVerificationLink') {
+      console.log('Send email verification link');
     } else if (e.detail.action === 'openLoginModal' || e.detail.action === 'openSignupModal' || e.detail.action === 'openForgotPasswordModal') {
       if (e.detail.action === 'openLoginModal') {
         this.openModal('login');
@@ -39,10 +48,7 @@ export class AppRoot {
         state.isModalVisible = true;
       }
     } else if (e.detail.action === 'closeModal') {
-      state.isModalVisible = false;
-      setTimeout(() => {
-        this.modal = '';
-      }, 150);
+      this.closeModal();
     } else if (e.detail.action === 'logout') {
       this.logoutUser();
     }
@@ -84,19 +90,33 @@ export class AppRoot {
   }
 
   componentWillLoad() {
-    state.isSessionActive = checkLoggedInCookie();
+    this.getCookies();
   }
 
-  async componentDidLoad() {
+  componentDidLoad() {
+    init_Socket();
     if (state.isSessionActive) {
-      init_Socket();
-      let { success, message, payload } = await Helper_ApiCall_GetAccountDetails_BySession();
-      if (!success) {
-        this.history.push('/login', {});
-        return console.log(message);
-      }
-      helper_Set_State(payload.accountDetails);
+      this.getAccountDetails();
     }
+  }
+
+  closeModal() {
+    state.isModalVisible = false;
+    setTimeout(() => {
+      this.modal = '';
+    }, 150);
+  }
+
+  getCookies() {
+    state.isSessionActive = getLoggedInCookie();
+  }
+
+  async getAccountDetails() {
+    let { success, message, payload } = await Helper_ApiCall_GetAccountDetails_BySession();
+    if (!success) {
+      return alert(message);
+    }
+    helper_Set_State(payload.accountDetails);
   }
 
   async logoutUser() {
@@ -124,15 +144,16 @@ export class AppRoot {
 
   EmailVerificationBanner: FunctionalComponent = () => (
     <c-banner theme="danger">
-      <l-row justifyContent="space-between">
+      <l-row justifyContent="space-around">
         <l-row>
-          <e-text>Enter email verification code</e-text>
+          <e-text>
+            <strong>{state.accountEmail}</strong> is not yet verified
+          </e-text>
           <l-spacer variant="horizontal" value={0.5}></l-spacer>
-          <e-input type="number" name="emailVerificationCodeInput" placeholder="4-digit code"></e-input>
+          <e-button action="mailEmailVerificationLink" active={this.isMailEmailVerificationLinkButtonActive}>
+            Verify email
+          </e-button>{' '}
         </l-row>
-        <e-button action="mailEmailVerificationCode" active={this.isMailingEmailVerification}>
-          Send verification code
-        </e-button>
       </l-row>
     </c-banner>
   );
@@ -140,7 +161,6 @@ export class AppRoot {
   render() {
     return (
       <Host>
-        {!state.isAccountEmailVerified && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
         <p-modal isVisible={state.isModalVisible} name={this.modal}></p-modal>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
@@ -175,6 +195,7 @@ export class AppRoot {
             <stencil-route url="/payment-handle/:id_Session" component="v-payment-handle" /> */}
           </stencil-route-switch>
         </stencil-router>
+        {!state.isAccountEmailVerified && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
       </Host>
     );
   }
