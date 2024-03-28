@@ -4,17 +4,19 @@ import {
   generateLoginPayload,
   validateLoginPayload,
   confirmPasswordApi,
-  sendResetCodeApi,
   generateConfirmPasswordPayload,
   signupApi,
   generateSignupPayload,
   validateSignupPayload,
 } from './helpers';
-import { emailPayloadInterface } from '../../../global/script/interfaces';
-import { generateEmailPayload } from '../../../global/script/helpers';
+import { mailPayloadInterface } from '../../../global/script/interfaces';
+import { generateMailPayload } from '../../../global/script/helpers';
+import { validateMailPayload } from '../../../global/script/helpers';
+import { mailApi } from '../../../global/script/helpers';
+
 import { confirmPasswordPayloadInterface, loginPayloadInterface, signupPayloadInterface } from './interfaces';
 import { Vars } from '../../../global/script';
-import { validateSendResetCodePayload } from './helpers/resetPassword/validators/validateSendResetCodePayload';
+// import { validateSendResetCodePayload } from './helpers/resetPassword/validators/validateSendResetCodePayload';
 import { validateConfirmPasswordPayload } from './helpers/resetPassword/validators/validateConfirmPasswordPayload';
 
 interface HeaderProps {
@@ -157,14 +159,14 @@ export class PAuth {
   }
 
   async sendResetCode() {
-    let sendResetCodePayload: emailPayloadInterface = generateEmailPayload(this.email);
-    let { isValid, validationMessage } = validateSendResetCodePayload(sendResetCodePayload);
+    let mailEmailVerificationLinkPayload: mailPayloadInterface = generateMailPayload(this.email, 'emailVerificationLink');
+    let { isValid, validationMessage } = validateMailPayload(mailEmailVerificationLinkPayload);
     if (!isValid) {
       return alert(`❌ ${validationMessage}`);
     }
 
     this.isSendResetCodeButtonActive = true;
-    let { success, message, payload } = await sendResetCodeApi(sendResetCodePayload);
+    let { success, message, payload } = await mailApi(mailEmailVerificationLinkPayload);
     this.isSendResetCodeButtonActive = false;
 
     if (!success) {

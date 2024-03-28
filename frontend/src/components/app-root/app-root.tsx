@@ -4,6 +4,9 @@ import { state, IO, init_Socket } from '../../global/script';
 import { helper_Set_State, submitEmailVerificationCodeApi } from './helpers';
 import { Helper_ApiCall_GetAccountDetails_BySession, Helper_ApiCall_Account_Logout } from '../../global/script/helpers';
 import { getLoggedInCookie } from './helpers';
+import { mailPayloadInterface } from '../../global/script/interfaces';
+import { generateMailPayload, validateMailPayload } from '../../global/script/helpers';
+import { mailApi } from '../../global/script/helpers';
 
 @Component({
   tag: 'app-root',
@@ -26,16 +29,25 @@ export class AppRoot {
 
   @Listen('buttonClick') async handle_ButtonClick(e) {
     if (e.detail.action === 'mailEmailVerificationLink') {
-      // let data = {
-      //   email: state.accountEmail,
-      // };
-      // this.isMailingEmailVerification = true;
-      // let { message } = await mailEmailVerificationCodeApi(data);
-      // this.isMailingEmailVerification = false;
-      // alert(message);
-      console.log('mailEmailVerificationLink');
-    } else if (e.detail.action === 'mailEmailVerificationLink') {
-      console.log('Send email verification link');
+      let mailEmailVerificationLinkPayload: mailPayloadInterface = generateMailPayload(state.accountEmail, 'emailVerificationLink');
+      let { isValid, validationMessage } = validateMailPayload(mailEmailVerificationLinkPayload);
+      if (!isValid) {
+        return alert(`❌ ${validationMessage}`);
+      }
+
+      this.isMailEmailVerificationLinkButtonActive = true;
+      let { success, message, payload } = await mailApi(mailEmailVerificationLinkPayload);
+      this.isMailEmailVerificationLinkButtonActive = false;
+
+      if (!success) {
+        return alert(`❌ ${message}`);
+      }
+
+      if (!payload.success) {
+        return alert(`❌ ${payload.message}`);
+      }
+
+      alert(`✅ ${payload.message}`);
     } else if (e.detail.action === 'openLoginModal' || e.detail.action === 'openSignupModal' || e.detail.action === 'openForgotPasswordModal') {
       if (e.detail.action === 'openLoginModal') {
         this.openModal('login');

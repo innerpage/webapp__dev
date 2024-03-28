@@ -1,16 +1,16 @@
-import { emailPayloadInterface } from '../../../../../../global/script/interfaces';
+import { mailPayloadInterface } from '../../interfaces';
+import { Vars } from '../../';
 
-import { Vars } from '../../../../../../global/script';
-
-export const sendResetCodeApi = async (sendResetCodePayload: emailPayloadInterface) => {
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.mail.password.resetCode}`;
+export const mailApi = async (mailPayload: mailPayloadInterface) => {
+  //   let url: string = `${Vars.api.url}/${Vars.api.endpoint.mail.password.resetCode}`;
+  let url: string = '';
   let options: any = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify(sendResetCodePayload),
+    body: JSON.stringify(mailPayload),
   };
 
   let payload: any;

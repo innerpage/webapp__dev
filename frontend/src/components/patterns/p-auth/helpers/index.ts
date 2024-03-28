@@ -5,7 +5,6 @@ export { validateLoginPayload } from './login/validators/validateLoginPayload';
 
 // Reset Password
 export { confirmPasswordApi } from './resetPassword/apis/confirmPasswordApi';
-export { sendResetCodeApi } from './resetPassword/apis/sendResetCodeApi';
 export { generateConfirmPasswordPayload } from './resetPassword/generators/generateConfirmPasswordPayload';
 
 // Signup
