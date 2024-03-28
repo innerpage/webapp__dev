@@ -1,7 +1,3 @@
-// API
-export { mailEmailVerificationCodeApi } from './api/mailEmailVerificationCodeApi';
-export { submitEmailVerificationCodeApi } from './api/submitEmailVerificationCodeApi';
-
 // COOKIE
 export { getLoggedInCookie } from './cookie/getLoggedInCookie';
 

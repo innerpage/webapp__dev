@@ -1,7 +1,7 @@
 import { Component, FunctionalComponent, Prop, Host, Listen, State, h } from '@stencil/core';
 import { RouterHistory, injectHistory } from '@stencil/router';
 import { state, IO, init_Socket } from '../../global/script';
-import { helper_Set_State, submitEmailVerificationCodeApi } from './helpers';
+import { helper_Set_State } from './helpers';
 import { Helper_ApiCall_GetAccountDetails_BySession, Helper_ApiCall_Account_Logout } from '../../global/script/helpers';
 import { getLoggedInCookie } from './helpers';
 import { mailPayloadInterface } from '../../global/script/interfaces';
@@ -18,8 +18,6 @@ export class AppRoot {
 
   @State() isMailEmailVerificationLinkButtonActive: boolean = false;
   @State() modal: string;
-
-  private emailVerificationCode: number = -1;
 
   @Listen('authSuccessful') authSuccessfulListener() {
     this.getCookies();
@@ -80,25 +78,6 @@ export class AppRoot {
 
   @Listen('success_Auth') handle_success_Auth(e) {
     helper_Set_State(e.detail.payload);
-  }
-
-  @Listen('textInput') async handle_TextInput(e) {
-    if (e.detail.name === 'emailVerificationCodeInput') {
-      this.emailVerificationCode = e.detail.value;
-      if (this.emailVerificationCode < 1000 || this.emailVerificationCode > 10000) {
-        return;
-      }
-      let data = {
-        email: state.accountEmail,
-        emailVerificationCode: this.emailVerificationCode,
-      };
-      let { success, message } = await submitEmailVerificationCodeApi(data);
-      if (!success) {
-        return alert(message);
-      }
-      state.isAccountEmailVerified = true;
-      alert(message);
-    }
   }
 
   componentWillLoad() {

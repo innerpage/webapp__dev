@@ -2,7 +2,6 @@ import Joi from 'joi';
 import { confirmPasswordPayloadInterface } from '../../../interfaces';
 
 const confirmPasswordInputsSchema = Joi.object({
-  passwordResetCode: Joi.number().required().min(1000).max(9999),
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .min(5)

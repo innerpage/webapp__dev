@@ -16,7 +16,6 @@ import { mailApi } from '../../../global/script/helpers';
 
 import { confirmPasswordPayloadInterface, loginPayloadInterface, signupPayloadInterface } from './interfaces';
 import { Vars } from '../../../global/script';
-// import { validateSendResetCodePayload } from './helpers/resetPassword/validators/validateSendResetCodePayload';
 import { validateConfirmPasswordPayload } from './helpers/resetPassword/validators/validateConfirmPasswordPayload';
 
 interface HeaderProps {
@@ -47,8 +46,8 @@ export class PAuth {
       this.loginUser();
     } else if (e.detail.action === 'signupUser') {
       this.signupUser();
-    } else if (e.detail.action === 'sendResetCode') {
-      this.sendResetCode();
+    } else if (e.detail.action === 'mailPasswordResetLink') {
+      this.mailPasswordResetLink();
     } else if (e.detail.action === 'confirmPassword') {
       this.confirmPassword();
     }
@@ -61,8 +60,6 @@ export class PAuth {
       this.email = e.detail.value;
     } else if (e.detail.name === 'password') {
       this.password = e.detail.value;
-    } else if (e.detail.name === 'passwordResetCode') {
-      this.passwordResetCode = e.detail.value;
     } else if (e.detail.name === 'newPassword') {
       this.newPassword = e.detail.value;
     } else if (e.detail.name === 'newPasswordRepeat') {
@@ -76,7 +73,7 @@ export class PAuth {
   @State() isLoginButtonActive: boolean = false;
   @State() isSignupButtonActive: boolean = false;
   @State() resetPasswordWizardStep: string = 'init';
-  @State() isSendResetCodeButtonActive: boolean = false;
+  @State() isMailPasswordResetLinkButtonActive: boolean = false;
   @State() isConfirmPasswordButtonActive: boolean = false;
 
   @Watch('view') watchView(newVal: string, oldVal: string) {
@@ -89,7 +86,6 @@ export class PAuth {
   private name: string = '';
   private email: string = '';
   private password: string = '';
-  private passwordResetCode: number = 0;
   private newPassword: string = '';
   private newPasswordRepeat: string = '';
 
@@ -97,13 +93,12 @@ export class PAuth {
     this.name = '';
     this.email = '';
     this.password = '';
-    this.passwordResetCode = 0;
     this.newPassword = '';
     this.newPasswordRepeat = '';
     this.isLoginButtonActive = false;
     this.isSignupButtonActive = false;
     this.resetPasswordWizardStep = 'init';
-    this.isSendResetCodeButtonActive = false;
+    this.isMailPasswordResetLinkButtonActive = false;
     this.isConfirmPasswordButtonActive = false;
   }
 
@@ -158,16 +153,16 @@ export class PAuth {
     // });
   }
 
-  async sendResetCode() {
-    let mailEmailVerificationLinkPayload: mailPayloadInterface = generateMailPayload(this.email, 'emailVerificationLink');
+  async mailPasswordResetLink() {
+    let mailEmailVerificationLinkPayload: mailPayloadInterface = generateMailPayload(this.email, 'passwordResetLink');
     let { isValid, validationMessage } = validateMailPayload(mailEmailVerificationLinkPayload);
     if (!isValid) {
       return alert(`❌ ${validationMessage}`);
     }
 
-    this.isSendResetCodeButtonActive = true;
+    this.isMailPasswordResetLinkButtonActive = true;
     let { success, message, payload } = await mailApi(mailEmailVerificationLinkPayload);
-    this.isSendResetCodeButtonActive = false;
+    this.isMailPasswordResetLinkButtonActive = false;
 
     if (!success) {
       return alert(`❌ ${message}`);
@@ -185,7 +180,7 @@ export class PAuth {
   }
 
   async confirmPassword() {
-    let confirmPasswordPayload: confirmPasswordPayloadInterface = generateConfirmPasswordPayload(this.email, this.newPassword, this.newPasswordRepeat, this.passwordResetCode);
+    let confirmPasswordPayload: confirmPasswordPayloadInterface = generateConfirmPasswordPayload(this.email, this.newPassword, this.newPasswordRepeat);
 
     let { isValid, validationMessage } = validateConfirmPasswordPayload(confirmPasswordPayload);
     if (!isValid) {
@@ -213,12 +208,12 @@ export class PAuth {
   ResetPassword: FunctionalComponent = () => [
     <this.Header title="Reset Password" statement="" action="" label=""></this.Header>,
     <div>
-      {this.resetPasswordWizardStep === 'init' && <this.SendResetCode></this.SendResetCode>}
+      {this.resetPasswordWizardStep === 'init' && <this.SendResetLink></this.SendResetLink>}
       {this.resetPasswordWizardStep === 'confirm' && <this.ConfirmPassword></this.ConfirmPassword>}
     </div>,
   ];
 
-  SendResetCode: FunctionalComponent = () => [
+  SendResetLink: FunctionalComponent = () => [
     <e-text>Step 1 of 2: Verify your email</e-text>,
     <l-spacer value={1}></l-spacer>,
     <e-input type="email" name="email" placeholder="Email"></e-input>,
@@ -227,21 +222,19 @@ export class PAuth {
       <e-button action="goBackToLogin" variant="light">
         Back
       </e-button>
-      <e-button action="sendResetCode" active={this.isSendResetCodeButtonActive}>
-        Send reset code
+      <e-button action="mailPasswordResetLink" active={this.isMailPasswordResetLinkButtonActive}>
+        Send reset link
       </e-button>
     </l-row>,
     <l-spacer value={2}></l-spacer>,
     <l-seperator></l-seperator>,
     <l-spacer value={0.5}></l-spacer>,
-    <e-text variant="footnote">We will send a reset code if your email is registered with us</e-text>,
+    <e-text variant="footnote">We will send a password reset link if your email is registered with us</e-text>,
   ];
 
   ConfirmPassword: FunctionalComponent = () => [
     <e-text>Step 2 of 2: Provide new password</e-text>,
     <l-spacer value={1}></l-spacer>,
-    <e-input type="number" name="passwordResetCode" placeholder="Password reset code (check your mail)"></e-input>,
-    <l-spacer value={2}></l-spacer>,
     <e-input type="password" name="newPassword" placeholder="New password (min 8 chars)"></e-input>,
     <l-spacer value={1}></l-spacer>,
     <e-input type="password" name="newPasswordRepeat" placeholder="Repeat new password"></e-input>,

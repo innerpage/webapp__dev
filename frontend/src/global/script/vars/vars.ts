@@ -29,10 +29,10 @@ export const Vars = {
       },
       mail: {
         email: {
-          verificationCode: 'mail-email-verification-code',
+          verificationLink: 'mail-email-verification-link',
         },
         password: {
-          resetCode: 'mail-password-reset-code',
+          resetLink: 'mail-password-reset-link',
         },
       },
       checkout: {

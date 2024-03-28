@@ -104,11 +104,7 @@ export namespace Components {
     }
     interface VDeleteAccount {
     }
-    interface VForgotPassword {
-    }
     interface VHome {
-    }
-    interface VLogin {
     }
     interface VPage1 {
     }
@@ -122,8 +118,6 @@ export namespace Components {
         "history": RouterHistory;
     }
     interface VProfile {
-    }
-    interface VSignup {
     }
     interface VSupport {
     }
@@ -297,23 +291,11 @@ declare global {
         prototype: HTMLVDeleteAccountElement;
         new (): HTMLVDeleteAccountElement;
     };
-    interface HTMLVForgotPasswordElement extends Components.VForgotPassword, HTMLStencilElement {
-    }
-    var HTMLVForgotPasswordElement: {
-        prototype: HTMLVForgotPasswordElement;
-        new (): HTMLVForgotPasswordElement;
-    };
     interface HTMLVHomeElement extends Components.VHome, HTMLStencilElement {
     }
     var HTMLVHomeElement: {
         prototype: HTMLVHomeElement;
         new (): HTMLVHomeElement;
-    };
-    interface HTMLVLoginElement extends Components.VLogin, HTMLStencilElement {
-    }
-    var HTMLVLoginElement: {
-        prototype: HTMLVLoginElement;
-        new (): HTMLVLoginElement;
     };
     interface HTMLVPage1Element extends Components.VPage1, HTMLStencilElement {
     }
@@ -344,12 +326,6 @@ declare global {
     var HTMLVProfileElement: {
         prototype: HTMLVProfileElement;
         new (): HTMLVProfileElement;
-    };
-    interface HTMLVSignupElement extends Components.VSignup, HTMLStencilElement {
-    }
-    var HTMLVSignupElement: {
-        prototype: HTMLVSignupElement;
-        new (): HTMLVSignupElement;
     };
     interface HTMLVSupportElement extends Components.VSupport, HTMLStencilElement {
     }
@@ -386,15 +362,12 @@ declare global {
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
         "v-delete-account": HTMLVDeleteAccountElement;
-        "v-forgot-password": HTMLVForgotPasswordElement;
         "v-home": HTMLVHomeElement;
-        "v-login": HTMLVLoginElement;
         "v-page-1": HTMLVPage1Element;
         "v-payment-cancel": HTMLVPaymentCancelElement;
         "v-payment-handle": HTMLVPaymentHandleElement;
         "v-post-oauth": HTMLVPostOauthElement;
         "v-profile": HTMLVProfileElement;
-        "v-signup": HTMLVSignupElement;
         "v-support": HTMLVSupportElement;
     }
 }
@@ -503,14 +476,7 @@ declare namespace LocalJSX {
     interface VDeleteAccount {
         "onLogoutUserEvent"?: (event: CustomEvent<any>) => void;
     }
-    interface VForgotPassword {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-    }
     interface VHome {
-    }
-    interface VLogin {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-        "onSuccess_Auth"?: (event: CustomEvent<any>) => void;
     }
     interface VPage1 {
     }
@@ -527,10 +493,6 @@ declare namespace LocalJSX {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
     interface VProfile {
-    }
-    interface VSignup {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-        "onSuccess_Auth"?: (event: CustomEvent<any>) => void;
     }
     interface VSupport {
     }
@@ -563,15 +525,12 @@ declare namespace LocalJSX {
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
         "v-delete-account": VDeleteAccount;
-        "v-forgot-password": VForgotPassword;
         "v-home": VHome;
-        "v-login": VLogin;
         "v-page-1": VPage1;
         "v-payment-cancel": VPaymentCancel;
         "v-payment-handle": VPaymentHandle;
         "v-post-oauth": VPostOauth;
         "v-profile": VProfile;
-        "v-signup": VSignup;
         "v-support": VSupport;
     }
 }
@@ -607,15 +566,12 @@ declare module "@stencil/core" {
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;
             "v-delete-account": LocalJSX.VDeleteAccount & JSXBase.HTMLAttributes<HTMLVDeleteAccountElement>;
-            "v-forgot-password": LocalJSX.VForgotPassword & JSXBase.HTMLAttributes<HTMLVForgotPasswordElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
-            "v-login": LocalJSX.VLogin & JSXBase.HTMLAttributes<HTMLVLoginElement>;
             "v-page-1": LocalJSX.VPage1 & JSXBase.HTMLAttributes<HTMLVPage1Element>;
             "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
             "v-payment-handle": LocalJSX.VPaymentHandle & JSXBase.HTMLAttributes<HTMLVPaymentHandleElement>;
             "v-post-oauth": LocalJSX.VPostOauth & JSXBase.HTMLAttributes<HTMLVPostOauthElement>;
             "v-profile": LocalJSX.VProfile & JSXBase.HTMLAttributes<HTMLVProfileElement>;
-            "v-signup": LocalJSX.VSignup & JSXBase.HTMLAttributes<HTMLVSignupElement>;
             "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
         }
     }
