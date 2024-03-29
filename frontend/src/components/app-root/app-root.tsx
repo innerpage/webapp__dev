@@ -122,7 +122,7 @@ export class AppRoot {
     state.accountName = '';
     state.accountEmail = '';
     state.isAccountEmailVerified = true;
-    this.history.push('/login', {});
+    this.history.push('/', {});
   }
 
   openModal(name: string) {
@@ -157,10 +157,6 @@ export class AppRoot {
           <stencil-route-switch scrollTopOffset={0}>
             <stencil-route url="/" component="v-home" exact={true} />
             <stencil-route url="/page-1" component="v-page-1" />
-
-            <stencil-route url="/login" component="v-login" />
-            <stencil-route url="/signup" component="v-signup" />
-            <stencil-route url="/forgot-password" component="v-forgot-password" />
 
             {/* LoggedIn Routes */}
             <this.LoggedInRoute url="/billing" component="v-billing"></this.LoggedInRoute>

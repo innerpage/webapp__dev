@@ -69,13 +69,13 @@ export class PUserControl {
             <l-seperator></l-seperator>
             <l-spacer value={0.5}></l-spacer>
             <e-list-item>
-              <e-link url="/billing">
+              <e-button variant="link" action="logout">
                 <l-row>
                   <ph-sign-out color="var(--color__red--regular)"></ph-sign-out>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text theme="danger">Logout</e-text>
                 </l-row>
-              </e-link>
+              </e-button>
             </e-list-item>
           </e-list>
         </c-card>
