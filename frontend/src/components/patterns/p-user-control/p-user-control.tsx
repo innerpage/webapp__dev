@@ -38,7 +38,7 @@ export class PUserControl {
   render() {
     return (
       <Host>
-        <e-button variant="light" action="toggleUserControl">
+        <e-button variant="link" action="toggleUserControl">
           <l-row align="center">
             <e-text>{state.accountName.split(' ')[0]}</e-text>
             <l-spacer value={0.5} variant="horizontal"></l-spacer>
