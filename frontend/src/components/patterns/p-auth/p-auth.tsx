@@ -124,7 +124,6 @@ export class PAuth {
     if (!payload.success) {
       return alert(`❌ ${payload.message}`);
     }
-
     this.authSuccessfulEventEmitter.emit();
   }
 
@@ -147,10 +146,7 @@ export class PAuth {
       return alert(`❌ ${payload.message}`);
     }
 
-    // SIGNUP USER
-    // this.success_Auth.emit({
-    //   payload: payload_SignupInputs_Submission.payload,
-    // });
+    this.authSuccessfulEventEmitter.emit();
   }
 
   async mailPasswordResetLink() {
