@@ -9,6 +9,7 @@ const validateMailPayloadSchema = Joi.object({
     .lowercase()
     .trim()
     .required(),
+  type: Joi.string().trim().required(),
 });
 
 export const validateMailPayload = (mailPayload: mailPayloadInterface) => {
