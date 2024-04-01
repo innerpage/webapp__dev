@@ -8,13 +8,18 @@ export const mailApi = async (mailPayload: mailPayloadInterface) => {
   } else if (mailPayload.type === 'passwordResetLink') {
     url = `${Vars.api.url}/${Vars.api.endpoint.mail.password.resetLink}`;
   }
+
+  let body: any = {
+    email: mailPayload.email,
+  };
+
   let options: any = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify(mailPayload),
+    body: JSON.stringify(body),
   };
 
   let payload: any;

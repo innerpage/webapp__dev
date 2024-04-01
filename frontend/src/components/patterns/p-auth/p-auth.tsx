@@ -118,11 +118,11 @@ export class PAuth {
     this.isLoginButtonActive = false;
 
     if (!success) {
-      return alert(`❌ ${message}`);
+      return alert(message);
     }
 
     if (!payload.success) {
-      return alert(`❌ ${payload.message}`);
+      return alert(payload.message);
     }
     this.authSuccessfulEventEmitter.emit();
   }
@@ -131,7 +131,7 @@ export class PAuth {
     let signupPayload: signupPayloadInterface = generateSignupPayload(this.name, this.email, this.password);
     let { isValid, validationMessage } = validateSignupPayload(signupPayload);
     if (!isValid) {
-      return alert(`❌ ${validationMessage}`);
+      return alert(validationMessage);
     }
     this.isSignupButtonActive = true;
 
@@ -139,11 +139,11 @@ export class PAuth {
     this.isSignupButtonActive = false;
 
     if (!success) {
-      return alert(`❌ ${message}`);
+      return alert(message);
     }
 
     if (!payload.success) {
-      return alert(`❌ ${payload.message}`);
+      return alert(payload.message);
     }
 
     this.authSuccessfulEventEmitter.emit();
@@ -153,7 +153,7 @@ export class PAuth {
     let mailEmailVerificationLinkPayload: mailPayloadInterface = generateMailPayload(this.email, 'passwordResetLink');
     let { isValid, validationMessage } = validateMailPayload(mailEmailVerificationLinkPayload);
     if (!isValid) {
-      return alert(`❌ ${validationMessage}`);
+      return alert(validationMessage);
     }
 
     this.isMailPasswordResetLinkButtonActive = true;
@@ -161,14 +161,14 @@ export class PAuth {
     this.isMailPasswordResetLinkButtonActive = false;
 
     if (!success) {
-      return alert(`❌ ${message}`);
+      return alert(message);
     }
 
     if (!payload.success) {
-      return alert(`❌ ${payload.message}`);
+      return alert(payload.message);
     }
 
-    alert(`✅ ${payload.message}`);
+    alert(payload.message);
 
     // CHANGE TO NEXT STEP OF FORGOT PASSWORD WIZARD
     // this.wizard_CurrentStep = this.wizard_CurrentStep + 1;
@@ -180,7 +180,7 @@ export class PAuth {
 
     let { isValid, validationMessage } = validateConfirmPasswordPayload(confirmPasswordPayload);
     if (!isValid) {
-      return alert(`❌ ${validationMessage}`);
+      return alert(validationMessage);
     }
 
     this.isConfirmPasswordButtonActive = true;
@@ -188,10 +188,10 @@ export class PAuth {
     this.isConfirmPasswordButtonActive = false;
 
     if (!success) {
-      return alert(`❌ ${message}`);
+      return alert(message);
     }
 
-    alert(`✅ ${payload.message}. Proceed to login`);
+    alert(`${payload.message}. Proceed to login`);
 
     // SWITCH ACTIVE VIEW TO LOGIN
     // this.event_RouteTo.emit({

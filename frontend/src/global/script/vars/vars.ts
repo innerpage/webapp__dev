@@ -28,12 +28,8 @@ export const Vars = {
         },
       },
       mail: {
-        email: {
-          verificationLink: 'mail-email-verification-link',
-        },
-        password: {
-          resetLink: 'mail-password-reset-link',
-        },
+        email: { verificationLink: 'mail-email-verification-link' },
+        password: { resetLink: 'mail-password-reset-link' },
       },
       checkout: {
         stripe: {

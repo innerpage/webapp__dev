@@ -30,7 +30,7 @@ export class AppRoot {
       let mailEmailVerificationLinkPayload: mailPayloadInterface = generateMailPayload(state.accountEmail, 'emailVerificationLink');
       let { isValid, validationMessage } = validateMailPayload(mailEmailVerificationLinkPayload);
       if (!isValid) {
-        return alert(`❌ ${validationMessage}`);
+        return alert(validationMessage);
       }
 
       this.isMailEmailVerificationLinkButtonActive = true;
@@ -38,14 +38,14 @@ export class AppRoot {
       this.isMailEmailVerificationLinkButtonActive = false;
 
       if (!success) {
-        return alert(`❌ ${message}`);
+        return alert(message);
       }
 
       if (!payload.success) {
-        return alert(`❌ ${payload.message}`);
+        return alert(payload.message);
       }
 
-      alert(`✅ ${payload.message}`);
+      alert(payload.message);
     } else if (e.detail.action === 'openLoginModal' || e.detail.action === 'openSignupModal' || e.detail.action === 'openForgotPasswordModal') {
       if (e.detail.action === 'openLoginModal') {
         this.openModal('login');
