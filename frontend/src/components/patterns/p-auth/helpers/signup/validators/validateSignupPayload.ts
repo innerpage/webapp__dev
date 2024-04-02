@@ -17,7 +17,7 @@ export const validateSignupPayload = (signupPayload: signupPayloadInterface) => 
   let { error } = signupInputsSchema.validate(signupPayload);
 
   if (error) {
-    return { isValid: false, validationMessage: error.details[0].message };
+    return { isValid: false, validationMessage: `❌ ${error.details[0].message}` };
   } else {
     return { isValid: true, validationMessage: '' };
   }
