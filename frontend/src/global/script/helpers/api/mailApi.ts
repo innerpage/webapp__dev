@@ -35,11 +35,11 @@ export const mailApi = async (mailPayload: mailPayloadInterface) => {
       message: 'Failed to send password reset link',
       payload: {},
     };
-  } else {
-    return {
-      success: true,
-      message: 'Password reset link sent',
-      payload: payload,
-    };
   }
+
+  return {
+    success: true,
+    message: 'Password reset link sent',
+    payload: payload,
+  };
 };
