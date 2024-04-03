@@ -107,8 +107,8 @@ button:disabled {
 .lds-ring div {
   display: block;
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   margin: 2px;
   border: 2px solid #fff;
   border-radius: 50%;

@@ -39,7 +39,7 @@ export const mailApi = async (mailPayload: mailPayloadInterface) => {
 
   return {
     success: true,
-    message: `${Vars.emoji.greenTick} Password reset link sent`,
+    message: payload.message,
     payload: payload,
   };
 };
