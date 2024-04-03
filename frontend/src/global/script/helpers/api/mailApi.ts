@@ -32,14 +32,14 @@ export const mailApi = async (mailPayload: mailPayloadInterface) => {
   if (!success) {
     return {
       success: false,
-      message: 'Failed to send password reset link',
+      message: `${Vars.emoji.redCross} Could not send password reset link. Kindly contact ${Vars.support.email}`,
       payload: {},
     };
   }
 
   return {
     success: true,
-    message: 'Password reset link sent',
+    message: `${Vars.emoji.greenTick} Password reset link sent`,
     payload: payload,
   };
 };
