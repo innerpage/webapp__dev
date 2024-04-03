@@ -21,7 +21,7 @@ export class AppRoot {
 
   @Listen('authSuccessful') authSuccessfulListener() {
     this.getCookies();
-    this.getAccountDetails();
+    this.initSession();
     this.closeModal();
   }
 
@@ -85,9 +85,8 @@ export class AppRoot {
   }
 
   componentDidLoad() {
-    init_Socket();
     if (state.isSessionActive) {
-      this.getAccountDetails();
+      this.initSession();
     }
   }
 
@@ -102,12 +101,13 @@ export class AppRoot {
     state.isSessionActive = getLoggedInCookie();
   }
 
-  async getAccountDetails() {
+  async initSession() {
     let { success, message, payload } = await Helper_ApiCall_GetAccountDetails_BySession();
     if (!success) {
       return alert(message);
     }
     helper_Set_State(payload.accountDetails);
+    init_Socket();
   }
 
   async logoutUser() {
