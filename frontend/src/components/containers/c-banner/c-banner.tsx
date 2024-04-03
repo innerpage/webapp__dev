@@ -7,7 +7,7 @@ import { Component, Prop, h } from '@stencil/core';
 })
 export class CBanner {
   @Prop() theme: string = 'default';
-  @Prop() position: string = 'bottom';
+  @Prop() position: string = 'inline';
 
   private styleClasses: string = 'default';
 
@@ -18,6 +18,8 @@ export class CBanner {
   generate_Styles() {
     if (this.theme === 'danger') {
       this.styleClasses = this.styleClasses + ` theme--danger`;
+    } else if (this.theme === 'success') {
+      this.styleClasses = this.styleClasses + ` theme--success`;
     }
 
     if (this.position === 'bottom') {

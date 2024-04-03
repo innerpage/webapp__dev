@@ -46,8 +46,13 @@ export class AppRoot {
       }
 
       alert(payload.message);
-    } else if (e.detail.action === 'openLoginModal' || e.detail.action === 'openSignupModal' || e.detail.action === 'openForgotPasswordModal') {
-      if (e.detail.action === 'openLoginModal') {
+    } else if (
+      e.detail.action === 'openLoginModal' ||
+      e.detail.action === 'openSignupModal' ||
+      e.detail.action === 'openForgotPasswordModal' ||
+      e.detail.action === 'goBackToLogin'
+    ) {
+      if (e.detail.action === 'openLoginModal' || e.detail.action === 'goBackToLogin') {
         this.openModal('login');
       } else if (e.detail.action === 'openSignupModal') {
         this.openModal('signup');
@@ -134,7 +139,7 @@ export class AppRoot {
   }
 
   EmailVerificationBanner: FunctionalComponent = () => (
-    <c-banner theme="danger">
+    <c-banner position="bottom" theme="danger">
       <l-row justifyContent="space-around">
         <l-row>
           <e-text>

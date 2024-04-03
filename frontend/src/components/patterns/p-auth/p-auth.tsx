@@ -17,6 +17,7 @@ import { mailApi } from '../../../global/script/helpers';
 import { confirmPasswordPayloadInterface, loginPayloadInterface, signupPayloadInterface } from './interfaces';
 import { Vars } from '../../../global/script';
 import { validateConfirmPasswordPayload } from './helpers/resetPassword/validators/validateConfirmPasswordPayload';
+import { gsap } from 'gsap';
 
 interface HeaderProps {
   title: string;
@@ -67,12 +68,13 @@ export class PAuth {
     }
   }
 
+  BannerEl: HTMLCBannerElement;
+
   @Prop() view: string;
 
   @State() authView: string;
   @State() isLoginButtonActive: boolean = false;
   @State() isSignupButtonActive: boolean = false;
-  @State() resetPasswordWizardStep: string = 'init';
   @State() isMailPasswordResetLinkButtonActive: boolean = false;
   @State() isConfirmPasswordButtonActive: boolean = false;
 
@@ -88,6 +90,7 @@ export class PAuth {
   private password: string = '';
   private newPassword: string = '';
   private newPasswordRepeat: string = '';
+  private tl: any = gsap.timeline();
 
   reset() {
     this.name = '';
@@ -97,82 +100,12 @@ export class PAuth {
     this.newPasswordRepeat = '';
     this.isLoginButtonActive = false;
     this.isSignupButtonActive = false;
-    this.resetPasswordWizardStep = 'init';
     this.isMailPasswordResetLinkButtonActive = false;
     this.isConfirmPasswordButtonActive = false;
   }
 
   componentWillLoad() {
     this.authView = this.view;
-  }
-
-  async loginUser() {
-    let loginPayload: loginPayloadInterface = generateLoginPayload(this.email, this.password);
-    let { isValid, validationMessage } = validateLoginPayload(loginPayload);
-    if (!isValid) {
-      return alert(validationMessage);
-    }
-    this.isLoginButtonActive = true;
-
-    let { success, message, payload } = await loginApi(loginPayload);
-    this.isLoginButtonActive = false;
-
-    if (!success) {
-      return alert(message);
-    }
-
-    if (!payload.success) {
-      return alert(payload.message);
-    }
-    this.authSuccessfulEventEmitter.emit();
-  }
-
-  async signupUser() {
-    let signupPayload: signupPayloadInterface = generateSignupPayload(this.name, this.email, this.password);
-    let { isValid, validationMessage } = validateSignupPayload(signupPayload);
-    if (!isValid) {
-      return alert(validationMessage);
-    }
-    this.isSignupButtonActive = true;
-
-    let { success, message, payload } = await signupApi(signupPayload);
-    this.isSignupButtonActive = false;
-
-    if (!success) {
-      return alert(message);
-    }
-
-    if (!payload.success) {
-      return alert(payload.message);
-    }
-
-    this.authSuccessfulEventEmitter.emit();
-  }
-
-  async mailPasswordResetLink() {
-    let mailEmailVerificationLinkPayload: mailPayloadInterface = generateMailPayload(this.email, 'passwordResetLink');
-    let { isValid, validationMessage } = validateMailPayload(mailEmailVerificationLinkPayload);
-    if (!isValid) {
-      return alert(validationMessage);
-    }
-
-    this.isMailPasswordResetLinkButtonActive = true;
-    let { success, message, payload } = await mailApi(mailEmailVerificationLinkPayload);
-    this.isMailPasswordResetLinkButtonActive = false;
-
-    if (!success) {
-      return alert(message);
-    }
-
-    if (!payload.success) {
-      return alert(payload.message);
-    }
-
-    alert(payload.message);
-
-    // CHANGE TO NEXT STEP OF FORGOT PASSWORD WIZARD
-    // this.wizard_CurrentStep = this.wizard_CurrentStep + 1;
-    // this.state = this.wizard_Steps[this.wizard_CurrentStep];
   }
 
   async confirmPassword() {
@@ -201,32 +134,84 @@ export class PAuth {
     // });
   }
 
-  ResetPassword: FunctionalComponent = () => [
-    <this.Header title="Reset Password" statement="" action="" label=""></this.Header>,
-    <div>
-      {this.resetPasswordWizardStep === 'init' && <this.SendResetLink></this.SendResetLink>}
-      {this.resetPasswordWizardStep === 'confirm' && <this.ConfirmPassword></this.ConfirmPassword>}
-    </div>,
-  ];
+  hideMailPasswordResetLinkSuccessBanner() {
+    this.tl.to(this.BannerEl, { height: '0px', opacity: 0, duration: 0.15 });
+  }
 
-  SendResetLink: FunctionalComponent = () => [
-    <e-text>Step 1 of 2: Verify your email</e-text>,
-    <l-spacer value={1}></l-spacer>,
-    <e-input type="email" name="email" placeholder="Email"></e-input>,
-    <l-spacer value={1}></l-spacer>,
-    <l-row justifyContent="space-between">
-      <e-button action="goBackToLogin" variant="light">
-        Back
-      </e-button>
-      <e-button action="mailPasswordResetLink" active={this.isMailPasswordResetLinkButtonActive}>
-        Send reset link
-      </e-button>
-    </l-row>,
-    <l-spacer value={2}></l-spacer>,
-    <l-seperator></l-seperator>,
-    <l-spacer value={0.5}></l-spacer>,
-    <e-text variant="footnote">We will send a password reset link if your email is registered with us</e-text>,
-  ];
+  async loginUser() {
+    let loginPayload: loginPayloadInterface = generateLoginPayload(this.email, this.password);
+    let { isValid, validationMessage } = validateLoginPayload(loginPayload);
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+    this.isLoginButtonActive = true;
+
+    let { success, message, payload } = await loginApi(loginPayload);
+    this.isLoginButtonActive = false;
+
+    if (!success) {
+      return alert(message);
+    }
+
+    if (!payload.success) {
+      return alert(payload.message);
+    }
+    this.authSuccessfulEventEmitter.emit();
+  }
+
+  async mailPasswordResetLink() {
+    let mailEmailVerificationLinkPayload: mailPayloadInterface = generateMailPayload(this.email, 'passwordResetLink');
+    let { isValid, validationMessage } = validateMailPayload(mailEmailVerificationLinkPayload);
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+
+    this.isMailPasswordResetLinkButtonActive = true;
+    this.hideMailPasswordResetLinkSuccessBanner();
+    let { success, message, payload } = await mailApi(mailEmailVerificationLinkPayload);
+    this.isMailPasswordResetLinkButtonActive = false;
+
+    if (!success) {
+      return alert(message);
+    }
+
+    if (!payload.success) {
+      return alert(payload.message);
+    }
+
+    this.showMailPasswordResetLinkSuccessBanner();
+    alert(payload.message);
+
+    // CHANGE TO NEXT STEP OF FORGOT PASSWORD WIZARD
+    // this.wizard_CurrentStep = this.wizard_CurrentStep + 1;
+    // this.state = this.wizard_Steps[this.wizard_CurrentStep];
+  }
+
+  async signupUser() {
+    let signupPayload: signupPayloadInterface = generateSignupPayload(this.name, this.email, this.password);
+    let { isValid, validationMessage } = validateSignupPayload(signupPayload);
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+    this.isSignupButtonActive = true;
+
+    let { success, message, payload } = await signupApi(signupPayload);
+    this.isSignupButtonActive = false;
+
+    if (!success) {
+      return alert(message);
+    }
+
+    if (!payload.success) {
+      return alert(payload.message);
+    }
+
+    this.authSuccessfulEventEmitter.emit();
+  }
+
+  showMailPasswordResetLinkSuccessBanner() {
+    this.tl.to(this.BannerEl, { height: 'auto', opacity: 1, duration: 0.15 });
+  }
 
   ConfirmPassword: FunctionalComponent = () => [
     <e-text>Step 2 of 2: Provide new password</e-text>,
@@ -306,6 +291,28 @@ export class PAuth {
       </e-button>
     </l-row>,
     <this.Footer statement="logging into your account"></this.Footer>,
+  ];
+
+  ResetPassword: FunctionalComponent = () => [
+    <this.Header title="Reset Password" statement="" action="" label=""></this.Header>,
+    <c-banner theme="success" ref={el => (this.BannerEl = el as HTMLCBannerElement)}>
+      <e-text>Please check your inbox</e-text>
+    </c-banner>,
+    <l-spacer value={1}></l-spacer>,
+    <e-input type="email" name="email" placeholder="Email"></e-input>,
+    <l-spacer value={1}></l-spacer>,
+    <l-row justifyContent="space-between">
+      <e-button action="goBackToLogin" variant="light">
+        Back
+      </e-button>
+      <e-button action="mailPasswordResetLink" active={this.isMailPasswordResetLinkButtonActive}>
+        Send reset link
+      </e-button>
+    </l-row>,
+    <l-spacer value={2}></l-spacer>,
+    <l-seperator></l-seperator>,
+    <l-spacer value={0.5}></l-spacer>,
+    <e-text variant="footnote">We will send a password reset link if your email is registered with us</e-text>,
   ];
 
   SignUp: FunctionalComponent = () => [

@@ -14,3 +14,10 @@ c-card {
 e-link {
   display: inline-block;
 }
+
+c-banner {
+  display: block;
+  height: 0px;
+  overflow: hidden;
+  opacity: 0;
+}

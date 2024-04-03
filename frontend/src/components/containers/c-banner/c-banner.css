@@ -2,6 +2,7 @@
   display: block;
   box-sizing: border-box;
   padding: var(--site__padding);
+  border-radius: var(--site__border-radius);
 }
 
 /* POSITION */
@@ -19,5 +20,11 @@
 .theme--danger {
   background: var(--color__red--lightest);
   color: var(--color__red--dark);
-  border: 1px solid var(--color__red--lightest);
+  border: 1px solid var(--color__red--lighter);
+}
+
+.theme--success {
+  background: var(--color__green--lightest);
+  color: var(--color__green--dark);
+  border: 1px solid var(--color__green--lighter);
 }
