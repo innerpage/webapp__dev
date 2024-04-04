@@ -6,11 +6,11 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class PSpinner {
-  @Prop() theme: string = 'default';
+  @Prop() theme: string = 'light';
 
   render() {
     return (
-      <div class={`${this.theme}`}>
+      <div class={`spinner spinner--${this.theme}`}>
         <div></div>
         <div></div>
         <div></div>

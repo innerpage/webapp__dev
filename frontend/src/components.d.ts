@@ -121,6 +121,10 @@ export namespace Components {
     }
     interface VSupport {
     }
+    interface VVerification {
+        "history": RouterHistory;
+        "match": MatchResults;
+    }
 }
 declare global {
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
@@ -333,6 +337,12 @@ declare global {
         prototype: HTMLVSupportElement;
         new (): HTMLVSupportElement;
     };
+    interface HTMLVVerificationElement extends Components.VVerification, HTMLStencilElement {
+    }
+    var HTMLVVerificationElement: {
+        prototype: HTMLVVerificationElement;
+        new (): HTMLVVerificationElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "c-banner": HTMLCBannerElement;
@@ -369,6 +379,7 @@ declare global {
         "v-post-oauth": HTMLVPostOauthElement;
         "v-profile": HTMLVProfileElement;
         "v-support": HTMLVSupportElement;
+        "v-verification": HTMLVVerificationElement;
     }
 }
 declare namespace LocalJSX {
@@ -496,6 +507,11 @@ declare namespace LocalJSX {
     }
     interface VSupport {
     }
+    interface VVerification {
+        "history"?: RouterHistory;
+        "match"?: MatchResults;
+        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+    }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "c-banner": CBanner;
@@ -532,6 +548,7 @@ declare namespace LocalJSX {
         "v-post-oauth": VPostOauth;
         "v-profile": VProfile;
         "v-support": VSupport;
+        "v-verification": VVerification;
     }
 }
 export { LocalJSX as JSX };
@@ -573,6 +590,7 @@ declare module "@stencil/core" {
             "v-post-oauth": LocalJSX.VPostOauth & JSXBase.HTMLAttributes<HTMLVPostOauthElement>;
             "v-profile": LocalJSX.VProfile & JSXBase.HTMLAttributes<HTMLVProfileElement>;
             "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
+            "v-verification": LocalJSX.VVerification & JSXBase.HTMLAttributes<HTMLVVerificationElement>;
         }
     }
 }

@@ -36,9 +36,6 @@ export class VCheckout {
   @State() isDisabled_ConfirmAndPay_Button: boolean = true;
 
   private data_Checkout: any;
-  // private title_Publication: string = '';
-  // private edition_Publication: string = '';
-  // private title_Document: string = '';
   private id_Product: string = '';
   private name_Product: string = '';
   private subscription_Type: string = '';

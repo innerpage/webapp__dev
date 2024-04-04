@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+p-spinner {
+  margin-top: 0.5em;
+  margin-right: 0.75em;
+}

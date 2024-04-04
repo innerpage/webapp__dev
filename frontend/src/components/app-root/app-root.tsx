@@ -162,6 +162,7 @@ export class AppRoot {
           <stencil-route-switch scrollTopOffset={0}>
             <stencil-route url="/" component="v-home" exact={true} />
             <stencil-route url="/page-1" component="v-page-1" />
+            <stencil-route url="/verification/:type/:code" component="v-verification" />
 
             {/* LoggedIn Routes */}
             <this.LoggedInRoute url="/billing" component="v-billing"></this.LoggedInRoute>
@@ -176,12 +177,6 @@ export class AppRoot {
 
             {/* Catch-all Route */}
             <stencil-route component="v-catch-all" />
-
-            {/* LoggedOut Routes */}
-            {/* <this.LoggedOutRoute url="/login" component="v-login"></this.LoggedOutRoute>
-            <this.LoggedOutRoute url="/signup" component="v-signup"></this.LoggedOutRoute>
-            <this.LoggedOutRoute url="/forgot-password" component="v-forgot-password"></this.LoggedOutRoute>
-             */}
 
             {/* Sample Routes
             <stencil-route url="/payment-handle/:id_Session" component="v-payment-handle" /> */}

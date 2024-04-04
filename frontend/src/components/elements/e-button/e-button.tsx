@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, FunctionalComponent, Watch, Prop, State, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Watch, Prop, State, h } from '@stencil/core';
 
 @Component({
   tag: 'e-button',
@@ -47,19 +47,10 @@ export class EButton {
     this.styleClasses = `${this.variant}--${this.theme} ${this.size}`;
   }
 
-  Spinner: FunctionalComponent = () => (
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  );
-
   render() {
     return (
       <button class={`${this.styleClasses} ${this.inAction && 'in-action'}`} onClick={e => this.handle_ButtonClick(e)} disabled={this.disabled || this.inAction}>
-        {this.inAction ? <this.Spinner></this.Spinner> : <slot />}
+        {this.inAction ? <p-spinner></p-spinner> : <slot />}
       </button>
     );
   }
