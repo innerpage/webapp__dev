@@ -6,6 +6,7 @@ export { validateLoginPayload } from './login/validators/validateLoginPayload';
 // Reset Password
 export { confirmPasswordApi } from './resetPassword/apis/confirmPasswordApi';
 export { generateConfirmPasswordPayload } from './resetPassword/generators/generateConfirmPasswordPayload';
+export { validateConfirmPasswordPayload } from './resetPassword/validators/validateConfirmPasswordPayload';
 
 // Signup
 export { signupApi } from './signup/apis/signupApi';

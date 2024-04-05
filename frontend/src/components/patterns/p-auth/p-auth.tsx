@@ -1,22 +1,12 @@
 import { Component, Event, EventEmitter, Prop, State, FunctionalComponent, Host, Listen, Watch, h } from '@stencil/core';
-import {
-  loginApi,
-  generateLoginPayload,
-  validateLoginPayload,
-  confirmPasswordApi,
-  generateConfirmPasswordPayload,
-  signupApi,
-  generateSignupPayload,
-  validateSignupPayload,
-} from './helpers';
+import { loginApi, generateLoginPayload, validateLoginPayload, signupApi, generateSignupPayload, validateSignupPayload } from './helpers';
 import { mailPayloadInterface } from '../../../global/script/interfaces';
 import { generateMailPayload } from '../../../global/script/helpers';
 import { validateMailPayload } from '../../../global/script/helpers';
 import { mailApi } from '../../../global/script/helpers';
 
-import { confirmPasswordPayloadInterface, loginPayloadInterface, signupPayloadInterface } from './interfaces';
+import { loginPayloadInterface, signupPayloadInterface } from './interfaces';
 import { Vars } from '../../../global/script';
-import { validateConfirmPasswordPayload } from './helpers/resetPassword/validators/validateConfirmPasswordPayload';
 import { gsap } from 'gsap';
 
 interface HeaderProps {
@@ -49,8 +39,6 @@ export class PAuth {
       this.signupUser();
     } else if (e.detail.action === 'mailPasswordResetLink') {
       this.mailPasswordResetLink();
-    } else if (e.detail.action === 'confirmPassword') {
-      this.confirmPassword();
     }
   }
 
@@ -61,10 +49,6 @@ export class PAuth {
       this.email = e.detail.value;
     } else if (e.detail.name === 'password') {
       this.password = e.detail.value;
-    } else if (e.detail.name === 'newPassword') {
-      this.newPassword = e.detail.value;
-    } else if (e.detail.name === 'newPasswordRepeat') {
-      this.newPasswordRepeat = e.detail.value;
     }
   }
 
@@ -88,16 +72,12 @@ export class PAuth {
   private name: string = '';
   private email: string = '';
   private password: string = '';
-  private newPassword: string = '';
-  private newPasswordRepeat: string = '';
   private tl: any = gsap.timeline();
 
   reset() {
     this.name = '';
     this.email = '';
     this.password = '';
-    this.newPassword = '';
-    this.newPasswordRepeat = '';
     this.isLoginButtonActive = false;
     this.isSignupButtonActive = false;
     this.isMailPasswordResetLinkButtonActive = false;
@@ -106,32 +86,6 @@ export class PAuth {
 
   componentWillLoad() {
     this.authView = this.view;
-  }
-
-  async confirmPassword() {
-    let confirmPasswordPayload: confirmPasswordPayloadInterface = generateConfirmPasswordPayload(this.email, this.newPassword, this.newPasswordRepeat);
-
-    let { isValid, validationMessage } = validateConfirmPasswordPayload(confirmPasswordPayload);
-    if (!isValid) {
-      return alert(validationMessage);
-    }
-
-    this.isConfirmPasswordButtonActive = true;
-    let { success, message, payload } = await confirmPasswordApi(confirmPasswordPayload);
-    this.isConfirmPasswordButtonActive = false;
-
-    if (!success) {
-      return alert(message);
-    }
-
-    alert(`${payload.message}. Proceed to login`);
-
-    // SWITCH ACTIVE VIEW TO LOGIN
-    // this.event_RouteTo.emit({
-    //   type: 'push',
-    //   route: '/login',
-    //   data: {},
-    // });
   }
 
   hideMailPasswordResetLinkSuccessBanner() {
