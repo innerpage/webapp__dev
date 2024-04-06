@@ -23,9 +23,7 @@ export const Vars = {
         },
         signup: 'signup',
         password: 'password',
-        email: {
-          verification: 'verify-email',
-        },
+        verification: 'verify',
       },
       mail: {
         verificationLink: 'mail-verification-link',

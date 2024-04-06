@@ -1,15 +1,15 @@
-import { confirmPasswordPayloadInterface } from '../../../interfaces';
+import { emailVerificationPayloadInterface } from '../../interfaces';
 import { Vars } from '../../../../../../global/script';
 
-export const confirmPasswordApi = async (confirmPasswordPayload: confirmPasswordPayloadInterface) => {
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account.password}`;
+export const verifyEmailApi = async (emailVerificationPayload: emailVerificationPayloadInterface) => {
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account.verification}`;
   let options: any = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify(confirmPasswordPayload),
+    body: JSON.stringify(emailVerificationPayload),
   };
 
   let payload: any;
@@ -27,14 +27,14 @@ export const confirmPasswordApi = async (confirmPasswordPayload: confirmPassword
   if (!success) {
     return {
       success: false,
-      message: `${Vars.emoji.redCross} Failed to confirm password`,
+      message: `${Vars.emoji.redCross} Failed to verify email`,
       payload: {},
     };
   }
 
   return {
     success: true,
-    message: payload.message,
+    message: `${Vars.emoji.greenTick} ${payload.message}`,
     payload: payload,
   };
 };

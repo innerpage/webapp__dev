@@ -3,6 +3,8 @@ import { MatchResults, RouterHistory, injectHistory } from '@stencil/router';
 import { Vars } from '../../../../global/script';
 import { confirmPasswordPayloadInterface } from '../../../patterns/p-auth/interfaces';
 import { generateConfirmPasswordPayload, validateConfirmPasswordPayload, confirmPasswordApi } from '../../../patterns/p-auth/helpers';
+import { emailVerificationPayloadInterface } from './interfaces';
+import { generateEmailVerificationPayload, validateEmailVerificationPayload, verifyEmailApi } from './helpers';
 
 @Component({
   tag: 'v-verify',
@@ -32,33 +34,32 @@ export class VVerify {
   @Prop() match: MatchResults;
   @Prop() history: RouterHistory;
 
-  @State() isCodeVerified: boolean = false;
+  @State() isEmailVerified: boolean = false;
+  @State() isDataFetched: boolean = false;
   @State() isPasswordResetButtonActive: boolean = false;
   @State() passwordResetStep: string = 'submission';
   @State() isPasswordResetSuccessful: boolean = false;
 
   private type: string;
   private code: string;
-  private email: string;
-  private isVerificationSuccessful: boolean = false;
   private newPassword: string = '';
   private newPasswordRepeat: string = '';
 
   componentWillLoad() {
-    if (!this.match.params.type || !this.match.params.code || !this.match.params.email) {
+    if (!this.match.params.type || !this.match.params.code) {
       return this.event_RouteTo.emit({
         type: 'push',
         route: '/',
         data: {},
       });
     }
+
     this.type = this.match.params.type.trim();
     this.code = this.match.params.code.trim();
-    this.email = this.match.params.email.trim();
   }
 
   componentDidLoad() {
-    this.verifyCode();
+    this.verifyEmail();
   }
 
   async confirmPassword() {
@@ -77,19 +78,32 @@ export class VVerify {
       return alert(message);
     }
 
+    this.isPasswordResetSuccessful = true;
+
     alert(`${payload.message}. Proceed to login`);
   }
 
-  async verifyCode() {}
+  async verifyEmail() {
+    let emailVerificationPayload: emailVerificationPayloadInterface = generateEmailVerificationPayload(this.type, this.code);
+    let { isValid, validationMessage } = validateEmailVerificationPayload(emailVerificationPayload);
+    if (!isValid) {
+      this.isDataFetched = true;
+      return alert(validationMessage);
+    }
 
-  DataFetchedView: FunctionalComponent = () => (
-    <div>
-      {this.type === 'email' && <this.EmailVerificationView></this.EmailVerificationView>}
-      {this.type === 'password-reset' && <this.PasswordResetView></this.PasswordResetView>}
-    </div>
-  );
+    let { success, message } = await verifyEmailApi(emailVerificationPayload);
+    this.isDataFetched = true;
 
-  DataNotFetchedView: FunctionalComponent = () => (
+    if (!success) {
+      return alert(message);
+    }
+
+    this.isEmailVerified = true;
+  }
+
+  DataFetchedView: FunctionalComponent = () => <div>{this.isEmailVerified ? <this.SuccessView></this.SuccessView> : <this.FailureView></this.FailureView>}</div>;
+
+  DataFetchingView: FunctionalComponent = () => (
     <l-row align="center">
       <p-spinner theme="dark"></p-spinner>
       <e-text>Verifying..</e-text>
@@ -97,23 +111,25 @@ export class VVerify {
   );
 
   EmailVerificationView: FunctionalComponent = () => (
-    <c-banner theme={!this.isVerificationSuccessful ? 'danger' : 'success'}>
-      {!this.isVerificationSuccessful ? (
-        <e-text>
-          <strong>Email verification failed</strong>
-          <l-row>
-            Kindly try verifying again or contact&nbsp;
-            <e-link variant="email" url={`mailto:${Vars.support.email}`}>
-              {Vars.support.email}
-            </e-link>{' '}
-          </l-row>
-        </e-text>
-      ) : (
-        <e-text>
-          <strong>Email verification successful</strong>
-          <e-link url="/">Continue to home</e-link>
-        </e-text>
-      )}
+    <c-banner theme="success">
+      <e-text>
+        <strong>Email verification successful</strong>
+        <e-link url="/">Continue to home</e-link>
+      </e-text>
+    </c-banner>
+  );
+
+  FailureView: FunctionalComponent = () => (
+    <c-banner theme="danger">
+      <e-text>
+        <strong>Email verification failed</strong>
+        <l-row>
+          Kindly try verifying again or contact&nbsp;
+          <e-link variant="email" url={`mailto:${Vars.support.email}`}>
+            {Vars.support.email}
+          </e-link>{' '}
+        </l-row>
+      </e-text>
     </c-banner>
   );
 
@@ -160,8 +176,15 @@ export class VVerify {
     </l-row>,
   ];
 
+  SuccessView: FunctionalComponent = () => (
+    <div>
+      {this.type === 'email' && <this.EmailVerificationView></this.EmailVerificationView>}
+      {this.type === 'password-reset' && <this.PasswordResetView></this.PasswordResetView>}
+    </div>
+  );
+
   render() {
-    return <Host>{this.isCodeVerified ? <this.DataFetchedView></this.DataFetchedView> : <this.DataNotFetchedView></this.DataNotFetchedView>}</Host>;
+    return <Host>{this.isDataFetched ? <this.DataFetchedView></this.DataFetchedView> : <this.DataFetchingView></this.DataFetchingView>}</Host>;
   }
 }
 
