@@ -162,7 +162,7 @@ export class AppRoot {
           <stencil-route-switch scrollTopOffset={0}>
             <stencil-route url="/" component="v-home" exact={true} />
             <stencil-route url="/page-1" component="v-page-1" />
-            <stencil-route url="/verification/:type/:code" component="v-verification" />
+            <stencil-route url="/verify/:type/:email/:code" component="v-verification" />
 
             {/* LoggedIn Routes */}
             <this.LoggedInRoute url="/billing" component="v-billing"></this.LoggedInRoute>

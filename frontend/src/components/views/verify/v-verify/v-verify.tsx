@@ -1,15 +1,15 @@
 import { Component, Event, EventEmitter, Listen, FunctionalComponent, State, Prop, Host, h } from '@stencil/core';
 import { MatchResults, RouterHistory, injectHistory } from '@stencil/router';
-import { Vars } from '../../../global/script';
-import { confirmPasswordPayloadInterface } from '../../patterns/p-auth/interfaces';
-import { generateConfirmPasswordPayload, validateConfirmPasswordPayload, confirmPasswordApi } from '../../patterns/p-auth/helpers';
+import { Vars } from '../../../../global/script';
+import { confirmPasswordPayloadInterface } from '../../../patterns/p-auth/interfaces';
+import { generateConfirmPasswordPayload, validateConfirmPasswordPayload, confirmPasswordApi } from '../../../patterns/p-auth/helpers';
 
 @Component({
-  tag: 'v-verification',
-  styleUrl: 'v-verification.css',
+  tag: 'v-verify',
+  styleUrl: 'v-verify.css',
   shadow: true,
 })
-export class VVerification {
+export class VVerify {
   @Event({
     eventName: 'event_RouteTo',
     bubbles: true,
@@ -32,19 +32,20 @@ export class VVerification {
   @Prop() match: MatchResults;
   @Prop() history: RouterHistory;
 
-  @State() isDataFetched: boolean = false;
+  @State() isCodeVerified: boolean = false;
   @State() isPasswordResetButtonActive: boolean = false;
   @State() passwordResetStep: string = 'submission';
   @State() isPasswordResetSuccessful: boolean = false;
 
   private type: string;
   private code: string;
+  private email: string;
   private isVerificationSuccessful: boolean = false;
   private newPassword: string = '';
   private newPasswordRepeat: string = '';
 
   componentWillLoad() {
-    if (!this.match.params.type || !this.match.params.code) {
+    if (!this.match.params.type || !this.match.params.code || !this.match.params.email) {
       return this.event_RouteTo.emit({
         type: 'push',
         route: '/',
@@ -53,9 +54,12 @@ export class VVerification {
     }
     this.type = this.match.params.type.trim();
     this.code = this.match.params.code.trim();
+    this.email = this.match.params.email.trim();
   }
 
-  componentDidLoad() {}
+  componentDidLoad() {
+    this.verifyCode();
+  }
 
   async confirmPassword() {
     let confirmPasswordPayload: confirmPasswordPayloadInterface = generateConfirmPasswordPayload(this.newPassword, this.newPasswordRepeat);
@@ -75,6 +79,8 @@ export class VVerification {
 
     alert(`${payload.message}. Proceed to login`);
   }
+
+  async verifyCode() {}
 
   DataFetchedView: FunctionalComponent = () => (
     <div>
@@ -155,8 +161,8 @@ export class VVerification {
   ];
 
   render() {
-    return <Host>{this.isDataFetched ? <this.DataFetchedView></this.DataFetchedView> : <this.DataNotFetchedView></this.DataNotFetchedView>}</Host>;
+    return <Host>{this.isCodeVerified ? <this.DataFetchedView></this.DataFetchedView> : <this.DataNotFetchedView></this.DataNotFetchedView>}</Host>;
   }
 }
 
-injectHistory(VVerification);
+injectHistory(VVerify);
