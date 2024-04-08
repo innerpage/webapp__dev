@@ -27,7 +27,7 @@ export const verifyEmailApi = async (emailVerificationPayload: emailVerification
   if (!success) {
     return {
       success: false,
-      message: `${Vars.emoji.redCross} Failed to verify email`,
+      message: `${Vars.emoji.redCross} ${payload.message}`,
       payload: {},
     };
   }

@@ -23,6 +23,12 @@
   border: 1px solid var(--color__red--lighter);
 }
 
+.theme--warning {
+  background: var(--color__orange--lightest);
+  color: var(--color__orange--dark);
+  border: 1px solid var(--color__orange--lighter);
+}
+
 .theme--success {
   background: var(--color__green--lightest);
   color: var(--color__green--dark);

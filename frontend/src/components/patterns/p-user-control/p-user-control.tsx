@@ -41,7 +41,7 @@ export class PUserControl {
         <e-button variant="link" action="toggleUserControl">
           <l-row align="center">
             <e-text>{state.accountName.split(' ')[0]}</e-text>
-            <l-spacer value={0.5} variant="horizontal"></l-spacer>
+            <l-spacer value={0.25} variant="horizontal"></l-spacer>
             {this.isExpanded ? <ph-caret-up></ph-caret-up> : <ph-caret-down></ph-caret-down>}
           </l-row>
         </e-button>

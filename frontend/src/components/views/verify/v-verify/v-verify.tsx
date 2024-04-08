@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, Listen, FunctionalComponent, State, Prop, Host, h } from '@stencil/core';
 import { MatchResults, RouterHistory, injectHistory } from '@stencil/router';
-import { Vars } from '../../../../global/script';
+import { Vars, state } from '../../../../global/script';
 import { confirmPasswordPayloadInterface } from '../../../patterns/p-auth/interfaces';
 import { generateConfirmPasswordPayload, validateConfirmPasswordPayload, confirmPasswordApi } from '../../../patterns/p-auth/helpers';
 import { emailVerificationPayloadInterface } from './interfaces';
@@ -34,7 +34,6 @@ export class VVerify {
   @Prop() match: MatchResults;
   @Prop() history: RouterHistory;
 
-  @State() isEmailVerified: boolean = false;
   @State() isDataFetched: boolean = false;
   @State() isPasswordResetButtonActive: boolean = false;
   @State() passwordResetStep: string = 'submission';
@@ -80,7 +79,7 @@ export class VVerify {
 
     this.isPasswordResetSuccessful = true;
 
-    alert(`${payload.message}. Proceed to login`);
+    alert(`${payload.message}`);
   }
 
   async verifyEmail() {
@@ -95,13 +94,14 @@ export class VVerify {
     this.isDataFetched = true;
 
     if (!success) {
+      state.isEmailVerified = false;
       return alert(message);
     }
 
-    this.isEmailVerified = true;
+    state.isEmailVerified = true;
   }
 
-  DataFetchedView: FunctionalComponent = () => <div>{this.isEmailVerified ? <this.SuccessView></this.SuccessView> : <this.FailureView></this.FailureView>}</div>;
+  DataFetchedView: FunctionalComponent = () => <div>{state.isEmailVerified ? <this.SuccessView></this.SuccessView> : <this.FailureView></this.FailureView>}</div>;
 
   DataFetchingView: FunctionalComponent = () => (
     <l-row align="center">
@@ -113,23 +113,30 @@ export class VVerify {
   EmailVerificationView: FunctionalComponent = () => (
     <c-banner theme="success">
       <e-text>
-        <strong>Email verification successful</strong>
-        <e-link url="/">Continue to home</e-link>
+        <strong>Email verified</strong>
+        {!state.isSessionActive ? (
+          <e-button variant="link" action="proceedToLogin">
+            Proceed to login
+          </e-button>
+        ) : (
+          <e-link url="/">Proceed to dashboard</e-link>
+        )}
       </e-text>
     </c-banner>
   );
 
   FailureView: FunctionalComponent = () => (
-    <c-banner theme="danger">
+    <c-banner theme="warning">
       <e-text>
-        <strong>Email verification failed</strong>
-        <l-row>
-          Kindly try verifying again or contact&nbsp;
-          <e-link variant="email" url={`mailto:${Vars.support.email}`}>
-            {Vars.support.email}
-          </e-link>{' '}
-        </l-row>
+        <l-row>Email is already verified or the verification failed</l-row>
       </e-text>
+      {!state.isSessionActive ? (
+        <e-button variant="link" action="proceedToLogin">
+          Proceed to login
+        </e-button>
+      ) : (
+        <e-link url="/">Proceed to dashboard</e-link>
+      )}
     </c-banner>
   );
 

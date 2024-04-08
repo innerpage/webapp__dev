@@ -16,11 +16,7 @@ export class CBanner {
   }
 
   generate_Styles() {
-    if (this.theme === 'danger') {
-      this.styleClasses = this.styleClasses + ` theme--danger`;
-    } else if (this.theme === 'success') {
-      this.styleClasses = this.styleClasses + ` theme--success`;
-    }
+    this.styleClasses = this.styleClasses + ` theme--${this.theme}`;
 
     if (this.position === 'bottom') {
       this.styleClasses = this.styleClasses + ` position--bottom`;

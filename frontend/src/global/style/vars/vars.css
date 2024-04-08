@@ -37,6 +37,14 @@
   --color__green--lighter: #e6f8f4;
   --color__green--lightest: #f2fcfa;
 
+  --color__orange--darkest: #45260a;
+  --color__orange--darker: #8a4c14;
+  --color__orange--dark: #a15818;
+  --color__orange--regular: #e98b38;
+  --color__orange--light: #f3bf91;
+  --color__orange--lighter: #f8d8bd;
+  --color__orange--lightest: #fdf2e9;
+
   --color__red--darkest: #400e0f;
   --color__red--darker: #6b1819;
   --color__red--dark: #962222;

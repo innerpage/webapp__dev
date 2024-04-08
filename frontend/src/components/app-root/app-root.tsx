@@ -59,13 +59,13 @@ export class AppRoot {
       } else if (e.detail.action === 'openForgotPasswordModal') {
         this.openModal('resetPassword');
       }
-      if (!state.isModalVisible) {
-        state.isModalVisible = true;
-      }
     } else if (e.detail.action === 'closeModal') {
       this.closeModal();
     } else if (e.detail.action === 'logout') {
       this.logoutUser();
+    } else if (e.detail.action === 'proceedToLogin') {
+      this.history.push('/', {});
+      this.openModal('login');
     }
   }
 
@@ -126,12 +126,15 @@ export class AppRoot {
     state.isSessionActive = payload.isSessionActive;
     state.accountName = '';
     state.accountEmail = '';
-    state.isAccountEmailVerified = true;
+    state.isEmailVerified = true;
     this.history.push('/', {});
   }
 
   openModal(name: string) {
     this.modal = name;
+    if (!state.isModalVisible) {
+      state.isModalVisible = true;
+    }
   }
 
   disconnectedCallback() {
@@ -164,7 +167,6 @@ export class AppRoot {
             <stencil-route url="/page-1" component="v-page-1" />
             <stencil-route url="/verify/:type/:code" component="v-verify" />
 
-            {/* LoggedIn Routes */}
             <this.LoggedInRoute url="/billing" component="v-billing"></this.LoggedInRoute>
             <this.LoggedInRoute url="/profile" component="v-profile"></this.LoggedInRoute>
             <this.LoggedInRoute url="/payment-cancel" component="v-payment-cancel"></this.LoggedInRoute>
@@ -175,14 +177,10 @@ export class AppRoot {
 
             <this.LoggedOutRoute url="/post-oauth" component="v-post-oauth"></this.LoggedOutRoute>
 
-            {/* Catch-all Route */}
             <stencil-route component="v-catch-all" />
-
-            {/* Sample Routes
-            <stencil-route url="/payment-handle/:id_Session" component="v-payment-handle" /> */}
           </stencil-route-switch>
         </stencil-router>
-        {!state.isAccountEmailVerified && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
+        {state.isSessionActive && !state.isEmailVerified && <this.EmailVerificationBanner></this.EmailVerificationBanner>}
       </Host>
     );
   }
