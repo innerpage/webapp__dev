@@ -24,16 +24,8 @@ export const confirmPasswordApi = async (confirmPasswordPayload: confirmPassword
       console.log(error);
     });
 
-  if (!success) {
-    return {
-      success: false,
-      message: `${Vars.emoji.redCross} Failed to confirm password`,
-      payload: {},
-    };
-  }
-
   return {
-    success: true,
+    success: success,
     message: payload.message,
     payload: payload,
   };

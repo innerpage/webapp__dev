@@ -29,16 +29,8 @@ export const mailApi = async (mailPayload: mailPayloadInterface) => {
       console.log(error);
     });
 
-  if (!success) {
-    return {
-      success: false,
-      message: `${Vars.emoji.redCross} Could not send password reset link. Kindly contact ${Vars.support.email}`,
-      payload: {},
-    };
-  }
-
   return {
-    success: true,
+    success: success,
     message: payload.message,
     payload: payload,
   };

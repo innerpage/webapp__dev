@@ -129,16 +129,8 @@ export class PAuth {
       return alert(message);
     }
 
-    if (!payload.success) {
-      return alert(payload.message);
-    }
-
     this.showMailPasswordResetLinkSuccessBanner();
     alert(payload.message);
-
-    // CHANGE TO NEXT STEP OF FORGOT PASSWORD WIZARD
-    // this.wizard_CurrentStep = this.wizard_CurrentStep + 1;
-    // this.state = this.wizard_Steps[this.wizard_CurrentStep];
   }
 
   async signupUser() {
