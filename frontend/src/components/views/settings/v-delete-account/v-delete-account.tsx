@@ -42,7 +42,7 @@ export class VDeleteAccount {
           </e-text>
           <l-spacer value={0.5}></l-spacer>
           <l-row justifyContent="space-between" align="center">
-            <e-link url="/">Back</e-link>
+            <e-link url="/profile">Back</e-link>
             <e-button action="deleteAccount" theme="danger" active={this.isDeletingAccount}>
               Yes, delete my account
             </e-button>
