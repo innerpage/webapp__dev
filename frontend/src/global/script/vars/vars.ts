@@ -11,19 +11,14 @@ export const Vars = {
   api: {
     url: document.domain === 'localhost' ? 'http://localhost:4444' : 'https://api.example.com',
     endpoint: {
-      account: {
-        delete: 'delete-account',
-        details: 'account',
-        login: 'login',
-        logout: 'logout',
-        oauth: {
-          google: {
-            getProfile: 'google-oauth',
-          },
-        },
-        signup: 'signup',
-        password: 'password',
-        verification: 'verify',
+      account: 'account',
+      login: 'login',
+      logout: 'logout',
+      signup: 'signup',
+      password: 'password',
+      verify: 'verify',
+      oauth: {
+        google: 'google-oauth',
       },
       mail: {
         verificationLink: 'mail-verification-link',

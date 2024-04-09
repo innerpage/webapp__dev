@@ -15,13 +15,13 @@ export class VDeleteAccount {
 
   @Listen('buttonClick') async handle_ButtonClick(e) {
     if (e.detail.action === 'deleteAccount') {
-      this.handleAccountDeletion();
+      this.deleteAccount();
     }
   }
 
   @State() isDeletingAccount: boolean = false;
 
-  async handleAccountDeletion() {
+  async deleteAccount() {
     this.isDeletingAccount = true;
     let { success, message } = await deleteAccountApiCall();
     this.isDeletingAccount = false;
@@ -38,12 +38,15 @@ export class VDeleteAccount {
         <main>
           <e-text variant="display">Are you sure?</e-text>
           <e-text>
-            <u>Deleting your account is an irreversible step</u>. Your account and data will be <u>lost forever</u>. Do you still want to delete your account?
+            <u>Deleting your account is an irreversible step</u>. Your account and data will be <u>lost forever</u>. Do you still want to proceed?
           </e-text>
           <l-spacer value={0.5}></l-spacer>
-          <e-button action="deleteAccount" theme="danger" active={this.isDeletingAccount}>
-            Yes, delete my account
-          </e-button>
+          <l-row justifyContent="space-between" align="center">
+            <e-link url="/">Back</e-link>
+            <e-button action="deleteAccount" theme="danger" active={this.isDeletingAccount}>
+              Yes, delete my account
+            </e-button>
+          </l-row>
         </main>
       </Host>
     );

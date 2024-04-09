@@ -20,6 +20,7 @@ export class VVerify {
 
   @Listen('buttonClick') handleButtonClick(e) {
     if (e.detail.action === 'confirmPassword') {
+      this.confirmPassword();
     }
   }
 
@@ -38,9 +39,11 @@ export class VVerify {
   @State() isPasswordResetButtonActive: boolean = false;
   @State() passwordResetStep: string = 'submission';
   @State() isPasswordResetSuccessful: boolean = false;
+  @State() failureMessage: string = '';
 
   private type: string;
   private code: string;
+  private email: string;
   private newPassword: string = '';
   private newPasswordRepeat: string = '';
 
@@ -62,7 +65,7 @@ export class VVerify {
   }
 
   async confirmPassword() {
-    let confirmPasswordPayload: confirmPasswordPayloadInterface = generateConfirmPasswordPayload(this.newPassword, this.newPasswordRepeat);
+    let confirmPasswordPayload: confirmPasswordPayloadInterface = generateConfirmPasswordPayload(this.email, this.newPassword, this.newPasswordRepeat);
 
     let { isValid, validationMessage } = validateConfirmPasswordPayload(confirmPasswordPayload);
     if (!isValid) {
@@ -70,16 +73,16 @@ export class VVerify {
     }
 
     this.isPasswordResetButtonActive = true;
-    let { success, message, payload } = await confirmPasswordApi(confirmPasswordPayload);
+    let { success, message } = await confirmPasswordApi(confirmPasswordPayload);
     this.isPasswordResetButtonActive = false;
 
     if (!success) {
+      this.failureMessage = message;
       return alert(message);
     }
 
+    this.passwordResetStep = 'confirmation';
     this.isPasswordResetSuccessful = true;
-
-    alert(`${payload.message}`);
   }
 
   async verifyEmail() {
@@ -90,14 +93,16 @@ export class VVerify {
       return alert(validationMessage);
     }
 
-    let { success, message } = await verifyEmailApi(emailVerificationPayload);
+    let { success, message, payload } = await verifyEmailApi(emailVerificationPayload);
     this.isDataFetched = true;
 
     if (!success) {
       state.isEmailVerified = false;
-      return alert(message);
+      this.failureMessage = message;
+      return;
     }
 
+    this.email = payload.email;
     state.isEmailVerified = true;
   }
 
@@ -128,7 +133,7 @@ export class VVerify {
   FailureView: FunctionalComponent = () => (
     <c-banner theme="warning">
       <e-text>
-        <l-row>Email is already verified or the verification failed</l-row>
+        <l-row>{this.failureMessage}</l-row>
       </e-text>
       {!state.isSessionActive ? (
         <e-button variant="link" action="proceedToLogin">
@@ -142,12 +147,21 @@ export class VVerify {
 
   PasswordResetView: FunctionalComponent = () => (
     <div>
-      {this.passwordResetStep === 'submission' && <this.PasswordResetSubmission></this.PasswordResetSubmission>}
-      {this.passwordResetStep === 'confirmation' && <this.PasswordResetConfirmation></this.PasswordResetConfirmation>}
+      {this.passwordResetStep === 'submission' && (
+        <div>
+          <c-banner theme="success">
+            <e-text>
+              <strong>Email verified</strong>
+            </e-text>
+          </c-banner>
+          <this.SubmitNewPassword></this.SubmitNewPassword>
+        </div>
+      )}
+      {this.passwordResetStep === 'confirmation' && <this.ConfirmNewPassword></this.ConfirmNewPassword>}
     </div>
   );
 
-  PasswordResetConfirmation: FunctionalComponent = () => (
+  ConfirmNewPassword: FunctionalComponent = () => (
     <c-banner theme={!this.isPasswordResetSuccessful ? 'danger' : 'success'}>
       {!this.isPasswordResetSuccessful ? (
         <e-text>
@@ -162,13 +176,16 @@ export class VVerify {
       ) : (
         <e-text>
           <strong>Password reset successful</strong>
-          <e-link url="/">Continue to login</e-link>
+          <br />
+          <e-button variant="link" action="proceedToLogin">
+            Proceed to login
+          </e-button>{' '}
         </e-text>
       )}
     </c-banner>
   );
 
-  PasswordResetSubmission: FunctionalComponent = () => [
+  SubmitNewPassword: FunctionalComponent = () => [
     <e-text variant="display">Reset password</e-text>,
     <l-spacer value={1}></l-spacer>,
     <e-input type="password" name="newPassword" placeholder="New password (min 8 chars)"></e-input>,
@@ -191,7 +208,17 @@ export class VVerify {
   );
 
   render() {
-    return <Host>{this.isDataFetched ? <this.DataFetchedView></this.DataFetchedView> : <this.DataFetchingView></this.DataFetchingView>}</Host>;
+    return (
+      <Host>
+        <div>
+          <div class="logo"></div>
+          <l-spacer value={1}></l-spacer>
+          <l-seperator></l-seperator>
+          <l-spacer value={2}></l-spacer>
+          {this.isDataFetched ? <this.DataFetchedView></this.DataFetchedView> : <this.DataFetchingView></this.DataFetchingView>}
+        </div>
+      </Host>
+    );
   }
 }
 

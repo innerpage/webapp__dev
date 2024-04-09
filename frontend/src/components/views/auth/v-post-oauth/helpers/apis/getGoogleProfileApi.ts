@@ -4,7 +4,7 @@ import { Vars } from '../../../../../../global/script';
 export const getGoogleProfileApi = async (getGoogleProfilePayload: getGoogleProfilePayloadInterface) => {
   let backendPayload: any;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account.oauth.google.getProfile}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.oauth.google}`;
   let options: any = {
     method: 'POST',
     headers: {

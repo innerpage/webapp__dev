@@ -2,7 +2,7 @@ import { emailVerificationPayloadInterface } from '../../interfaces';
 import { Vars } from '../../../../../../global/script';
 
 export const verifyEmailApi = async (emailVerificationPayload: emailVerificationPayloadInterface) => {
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account.verification}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.verify}`;
   let options: any = {
     method: 'POST',
     headers: {
@@ -24,17 +24,9 @@ export const verifyEmailApi = async (emailVerificationPayload: emailVerification
       console.log(error);
     });
 
-  if (!success) {
-    return {
-      success: false,
-      message: `${Vars.emoji.redCross} ${payload.message}`,
-      payload: {},
-    };
-  }
-
   return {
-    success: true,
-    message: `${Vars.emoji.greenTick} ${payload.message}`,
-    payload: payload,
+    success: success,
+    message: payload.message,
+    payload: payload.payload,
   };
 };

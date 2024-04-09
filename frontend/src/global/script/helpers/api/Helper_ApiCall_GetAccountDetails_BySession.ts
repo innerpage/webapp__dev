@@ -3,7 +3,7 @@ import { Vars } from '../..';
 export const Helper_ApiCall_GetAccountDetails_BySession = async () => {
   let backendPayload_GetAccountDetails_BySession: any;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account.details}`;
+  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account}`;
   let options: any = {
     method: 'GET',
     headers: {

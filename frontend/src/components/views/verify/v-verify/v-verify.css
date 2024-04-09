@@ -13,3 +13,10 @@ p-spinner {
 c-banner {
   width: 300px;
 }
+
+.logo {
+  width: 200px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: var(--site__border-radius);
+}

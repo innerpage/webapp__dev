@@ -60,7 +60,6 @@ export class PAuth {
   @State() isLoginButtonActive: boolean = false;
   @State() isSignupButtonActive: boolean = false;
   @State() isMailPasswordResetLinkButtonActive: boolean = false;
-  @State() isConfirmPasswordButtonActive: boolean = false;
 
   @Watch('view') watchView(newVal: string, oldVal: string) {
     this.reset();
@@ -81,7 +80,6 @@ export class PAuth {
     this.isLoginButtonActive = false;
     this.isSignupButtonActive = false;
     this.isMailPasswordResetLinkButtonActive = false;
-    this.isConfirmPasswordButtonActive = false;
   }
 
   componentWillLoad() {
@@ -158,23 +156,6 @@ export class PAuth {
   showMailPasswordResetLinkSuccessBanner() {
     this.tl.to(this.BannerEl, { height: 'auto', opacity: 1, duration: 0.15 });
   }
-
-  ConfirmPassword: FunctionalComponent = () => [
-    <e-text>Step 2 of 2: Provide new password</e-text>,
-    <l-spacer value={1}></l-spacer>,
-    <e-input type="password" name="newPassword" placeholder="New password (min 8 chars)"></e-input>,
-    <l-spacer value={1}></l-spacer>,
-    <e-input type="password" name="newPasswordRepeat" placeholder="Repeat new password"></e-input>,
-    <l-spacer value={1}></l-spacer>,
-    <l-row justifyContent="space-between">
-      <e-button action="goBackToResetPasswordInit" variant="light">
-        Back
-      </e-button>
-      <e-button action="confirm_Password" active={this.isConfirmPasswordButtonActive}>
-        Reset password
-      </e-button>
-    </l-row>,
-  ];
 
   Footer: FunctionalComponent<FooterProps> = ({ statement }) => (
     <footer>
