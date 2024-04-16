@@ -22,7 +22,9 @@ export class AppRoot {
   @Listen('authSuccessful') authSuccessfulListener() {
     this.getCookies();
     this.initSession();
-    this.closeModal();
+    if (state.isModalVisible) {
+      this.closeModal();
+    }
   }
 
   @Listen('buttonClick') async handle_ButtonClick(e) {

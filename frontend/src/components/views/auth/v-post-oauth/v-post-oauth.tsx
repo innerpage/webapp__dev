@@ -2,7 +2,6 @@ import { Component, Event, EventEmitter, FunctionalComponent, State, Prop, Host,
 import { getGoogleProfilePayloadGenerator, getGoogleProfileApi } from './helpers';
 import { getGoogleProfilePayloadInterface } from './interfaces';
 import { RouterHistory, injectHistory } from '@stencil/router';
-import { helper_Set_State } from '../../../app-root/helpers';
 
 @Component({
   tag: 'v-post-oauth',
@@ -10,6 +9,12 @@ import { helper_Set_State } from '../../../app-root/helpers';
   shadow: true,
 })
 export class VPostOauth {
+  @Event({
+    eventName: 'authSuccessful',
+    bubbles: true,
+  })
+  authSuccessfulEventEmitter: EventEmitter;
+
   @Event({
     eventName: 'event_RouteTo',
     bubbles: true,
@@ -30,19 +35,22 @@ export class VPostOauth {
 
   async getGoogleProfile(token: string) {
     let getGoogleProfilePayload: getGoogleProfilePayloadInterface = getGoogleProfilePayloadGenerator(token);
-    let { success, payload } = await getGoogleProfileApi(getGoogleProfilePayload);
+    let { success } = await getGoogleProfileApi(getGoogleProfilePayload);
 
     if (!success) {
       this.compState = 'error';
       return;
     }
 
-    helper_Set_State(payload);
-    this.event_RouteTo.emit({
-      type: 'push',
-      route: '/home',
-      data: {},
-    });
+    this.authSuccessfulEventEmitter.emit();
+
+    setTimeout(() => {
+      this.event_RouteTo.emit({
+        type: 'push',
+        route: '/',
+        data: {},
+      });
+    }, 1000);
   }
 
   Loader: FunctionalComponent = () => (

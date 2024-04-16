@@ -501,6 +501,7 @@ declare namespace LocalJSX {
     }
     interface VPostOauth {
         "history"?: RouterHistory;
+        "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
     }
     interface VProfile {
