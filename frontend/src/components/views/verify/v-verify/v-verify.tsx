@@ -119,19 +119,22 @@ export class VVerify {
     <c-banner theme="success">
       <e-text>
         <strong>Email verified</strong>
-        {!state.isSessionActive ? (
-          <e-button variant="link" action="proceedToLogin">
-            Proceed to login
-          </e-button>
-        ) : (
-          <e-link url="/">Proceed to dashboard</e-link>
-        )}
       </e-text>
+      {!state.isSessionActive ? (
+        <e-button variant="link" action="proceedToLogin">
+          Proceed to login
+        </e-button>
+      ) : (
+        <e-link url="/">Proceed to dashboard</e-link>
+      )}
     </c-banner>
   );
 
   FailureView: FunctionalComponent = () => (
     <c-banner theme="warning">
+      <e-text>
+        <strong>⚠️ Invalid verification link</strong>
+      </e-text>
       <e-text>
         <l-row>{this.failureMessage}</l-row>
       </e-text>
