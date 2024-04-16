@@ -7,9 +7,10 @@
 
 #seperator__oauth {
   display: flex;
-  width: 100%;
+  width: 50%;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
 }
 
 #seperator__oauth c-text {
@@ -19,6 +20,6 @@
 }
 
 .seperator__oauth--lines {
-  width: 40%;
+  width: 35%;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
