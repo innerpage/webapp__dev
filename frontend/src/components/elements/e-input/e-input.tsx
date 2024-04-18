@@ -49,7 +49,7 @@ export class EInput {
 
   render() {
     if (this.type === 'email' || this.type === 'number' || this.type === 'password' || this.type === 'text') {
-      return <input style={this.styleObject_Textbox} type={this.type} placeholder={this.placeholder} onInput={e => this.handle_AlphanumericInput(e)} />;
+      return <input style={this.styleObject_Textbox} type={this.type} placeholder={this.placeholder} onInput={e => this.handle_AlphanumericInput(e)} value={this.value} />;
     } else if (this.type === 'radio') {
       return (
         <l-row>

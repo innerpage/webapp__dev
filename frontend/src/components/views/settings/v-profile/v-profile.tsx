@@ -52,9 +52,9 @@ export class VProfile {
             <l-spacer value={1}></l-spacer>
             <e-link url="/delete-account" theme="danger">
               <l-row>
-                <ph-trash weight={state.activeView === 'page1' ? 'fill' : 'regular'}></ph-trash>
+                <ph-trash color="var(--color__red--regular)" weight={state.activeView === 'page1' ? 'fill' : 'regular'}></ph-trash>
                 <l-spacer value={0.25} variant="horizontal"></l-spacer>
-                <e-text> Delete your account and data</e-text>
+                <e-text> Delete account and data</e-text>
               </l-row>
             </e-link>
           </c-main>{' '}

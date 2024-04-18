@@ -20,17 +20,20 @@ export class PEditableText {
     }
   }
 
-  EditModeOn: FunctionalComponent = () => (
-    <l-row justifyContent="space-between">
-      <e-input type="text" value={this.label}></e-input>
+  EditModeOn: FunctionalComponent = () => [
+    <e-input type="text" value={this.label}></e-input>,
+    <l-spacer value={1}></l-spacer>,
+    <l-row>
+      <div></div>
       <div>
         <e-button variant="light" action="cancelEditing">
           Cancel
         </e-button>
+        &nbsp;&nbsp;
         <e-button disabled={this.isSaveButtonDisabled}>Save</e-button>
       </div>
-    </l-row>
-  );
+    </l-row>,
+  ];
 
   EditModeOff: FunctionalComponent = () => (
     <l-row justifyContent="space-between">
