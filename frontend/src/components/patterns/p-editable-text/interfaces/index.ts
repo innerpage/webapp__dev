@@ -1,1 +1,1 @@
-export { accountUpdatePayloadInterface } from './accountUpdatePayloadInterface';
+export { accountUpdatePayloadInterface } from './account/accountUpdatePayloadInterface';

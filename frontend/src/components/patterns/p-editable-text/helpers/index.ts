@@ -1,9 +1,8 @@
+// Apis
+export { accountUpdateApiCall } from './account/apis/accountUpdateApiCall';
+
 // Generators
-export { generateEmailUpdatePayload } from './generators/generateEmailUpdatePayload';
-export { generateNameUpdatePayload } from './generators/generateNameUpdatePayload';
-export { generatePasswordUpdatePayload } from './generators/generatePasswordUpdatePayload';
+export { generateAccountUpdatePayload } from './account/generators/generateAccountUpdatePayload';
 
 // Validators
-export { validateEmailUpdatePayload } from './validators/validateEmailUpdatePayload';
-export { validateNameUpdatePayload } from './validators/validateNameUpdatePayload';
-export { validatePasswordUpdatePayload } from './validators/validatePasswordUpdatePayload';
+export { validateAccountUpdatePayload } from './account/validators/validateAccountUpdatePayload';
