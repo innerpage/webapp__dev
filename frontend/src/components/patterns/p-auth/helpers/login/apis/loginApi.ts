@@ -27,11 +27,11 @@ export const loginApi = async (loginPayload: loginPayloadInterface) => {
 
   if (!success) {
     return { success: false, message: payload.message, payload: {} };
-  } else {
-    return {
-      success: true,
-      message: payload.message,
-      payload: payload,
-    };
   }
+
+  return {
+    success: true,
+    message: payload.message,
+    payload: payload,
+  };
 };
