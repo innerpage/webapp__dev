@@ -65,6 +65,15 @@ export class PUserControl {
                 </l-row>
               </e-link>
             </e-list-item>
+            <e-list-item>
+              <e-link url="/support">
+                <l-row align="center">
+                  <ph-headset color="var(--color__blue--regular)"></ph-headset>
+                  <l-spacer value={0.25} variant="horizontal"></l-spacer>
+                  <e-text>Support</e-text>
+                </l-row>
+              </e-link>
+            </e-list-item>
             <l-spacer value={0.5}></l-spacer>
             <l-seperator></l-seperator>
             <l-spacer value={0.5}></l-spacer>

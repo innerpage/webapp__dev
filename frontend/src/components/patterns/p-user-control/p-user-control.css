@@ -1,6 +1,5 @@
 :host {
   display: block;
-  text-align: right;
 }
 
 c-card {
@@ -20,6 +19,7 @@ ph-caret-up,
 ph-caret-down,
 ph-user,
 ph-credit-card,
+ph-headset,
 ph-sign-out {
   margin-top: 3px;
 }

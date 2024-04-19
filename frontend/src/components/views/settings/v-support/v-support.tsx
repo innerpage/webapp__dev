@@ -14,29 +14,20 @@ export class VSupport {
   render() {
     return (
       <Host>
-        <p-sidebar></p-sidebar>
-        <c-main>
-          <e-text variant="heading">
-            <l-row align="flex-end">
-              <ph-phone color="var(--color__grey--light)"></ph-phone>
-              <l-spacer value={0.25} variant="horizontal"></l-spacer>
-              <e-text>Support</e-text>
-            </l-row>
-          </e-text>
-          <l-spacer value={0.5}></l-spacer>
-          <l-seperator></l-seperator>
-          <l-spacer value={2}></l-spacer>
-          <c-card>
-            <e-text>
-              <l-row>
-                To report bugs or request new features, kindly drop a mail at:&nbsp;
-                <e-link variant="email" url={`mailto:${Vars.support.email}`}>
-                  {Vars.support.email}
-                </e-link>
-              </l-row>
-            </e-text>
-          </c-card>
-        </c-main>
+        <p-topbar></p-topbar>
+        <c-content-area>
+          <p-sidebar></p-sidebar>
+          <c-main>
+            <e-text variant="heading">Support</e-text>
+            <l-spacer value={1}></l-spacer>
+            <c-card>
+              <e-text>To report bugs or request new features, kindly write to us at:&nbsp;</e-text>
+              <e-link variant="email" url={`mailto:${Vars.support.email}`}>
+                {Vars.support.email}
+              </e-link>
+            </c-card>
+          </c-main>
+        </c-content-area>
       </Host>
     );
   }

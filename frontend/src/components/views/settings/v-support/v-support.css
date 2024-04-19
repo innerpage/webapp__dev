@@ -2,6 +2,10 @@
   display: flex;
 }
 
+c-card {
+  width: 280px;
+}
+
 .text-row {
   display: flex;
   align-items: flex-end;
