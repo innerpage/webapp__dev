@@ -11,7 +11,7 @@ a:hover {
 }
 
 a:active {
-  color: var(--color__blue--darkest);
+  opacity: 0.2;
 }
 
 /* -------------

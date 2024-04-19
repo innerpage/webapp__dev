@@ -50,7 +50,7 @@ export class PUserControl {
             <e-list-item>
               <e-link url="/profile">
                 <l-row align="center">
-                  <ph-user color="var(--color__blue--regular)" weight={state.activeView === 'profile' ? 'fill' : 'regular'}></ph-user>
+                  <ph-user color="var(--color__blue--regular)"></ph-user>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text>Profile</e-text>
                 </l-row>
@@ -59,7 +59,7 @@ export class PUserControl {
             <e-list-item>
               <e-link url="/billing">
                 <l-row align="center">
-                  <ph-credit-card color="var(--color__blue--regular)" weight={state.activeView === 'billing' ? 'fill' : 'regular'}></ph-credit-card>
+                  <ph-credit-card color="var(--color__blue--regular)"></ph-credit-card>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text>Billing</e-text>
                 </l-row>
@@ -71,9 +71,9 @@ export class PUserControl {
             <e-list-item>
               <e-button variant="link" action="logout">
                 <l-row>
-                  <ph-sign-out color="var(--color__red--regular)"></ph-sign-out>
+                  <ph-sign-out color="var(--color__blue--regular)"></ph-sign-out>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
-                  <e-text theme="danger">Logout</e-text>
+                  <e-text>Logout</e-text>
                 </l-row>
               </e-button>
             </e-list-item>

@@ -7,7 +7,8 @@ import { Component, FunctionalComponent, Prop, State, Listen, h } from '@stencil
 })
 export class PEditableText {
   @Prop() type: string;
-  @Prop() label: string;
+  @Prop() value: string;
+  @Prop() name: string;
 
   @State() isEditModeOn: boolean = false;
   @State() isSaveButtonDisabled: boolean = true;
@@ -20,8 +21,18 @@ export class PEditableText {
     }
   }
 
+  @Listen('textInput') handleTextInput(e) {
+    if (e.detail.name === 'newValue') {
+      this.newValue = e.detail.value;
+      if (this.newValue != this.value) {
+      }
+    }
+  }
+
+  private newValue: string;
+
   EditModeOn: FunctionalComponent = () => [
-    <e-input type="text" value={this.label}></e-input>,
+    <e-input type="text" name="newValue" value={this.value}></e-input>,
     <l-spacer value={1}></l-spacer>,
     <l-row>
       <div></div>
@@ -37,10 +48,10 @@ export class PEditableText {
 
   EditModeOff: FunctionalComponent = () => (
     <l-row justifyContent="space-between">
-      {this.type === 'text' && <e-text>{this.label}</e-text>}
+      {this.type === 'text' && <e-text>{this.value}</e-text>}
       {this.type === 'link' && (
-        <e-link variant="email" url={`mailto:${this.label}`}>
-          {this.label}
+        <e-link variant="email" url={`mailto:${this.value}`}>
+          {this.value}
         </e-link>
       )}
       <e-button variant="light" action="startEditing">

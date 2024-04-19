@@ -72,8 +72,9 @@ export namespace Components {
         "view": string;
     }
     interface PEditableText {
-        "label": string;
+        "name": string;
         "type": string;
+        "value": string;
     }
     interface PGallery {
     }
@@ -452,8 +453,9 @@ declare namespace LocalJSX {
         "view"?: string;
     }
     interface PEditableText {
-        "label"?: string;
+        "name"?: string;
         "type"?: string;
+        "value"?: string;
     }
     interface PGallery {
     }
