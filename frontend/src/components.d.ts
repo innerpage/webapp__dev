@@ -454,6 +454,7 @@ declare namespace LocalJSX {
     }
     interface PEditableText {
         "name"?: string;
+        "onSaveEdit"?: (event: CustomEvent<any>) => void;
         "type"?: string;
         "value"?: string;
     }

@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, Listen, h } from '@stencil/core';
 import { state } from '../../../../global/script';
 
 @Component({
@@ -7,6 +7,10 @@ import { state } from '../../../../global/script';
   shadow: true,
 })
 export class VProfile {
+  @Listen('saveEdit') updateTextListener(e) {
+    console.log(`${e.detail.name}: ${e.detail.value}`);
+  }
+
   componentWillLoad() {
     state.activeView = 'profile';
   }
@@ -22,17 +26,20 @@ export class VProfile {
             <l-spacer value={1}></l-spacer>
             <c-card>
               <e-text variant="footnote">NAME</e-text>
+              <l-spacer value={0.5}></l-spacer>
               <p-editable-text type="text" value={state.accountName} name="name"></p-editable-text>
               <l-spacer value={1}></l-spacer>
               <l-seperator></l-seperator>
               <l-spacer value={1}></l-spacer>
               <e-text variant="footnote">EMAIL</e-text>
+              <l-spacer value={0.5}></l-spacer>
               <p-editable-text type="link" value={`${state.accountEmail}`} name="email"></p-editable-text>
               <l-spacer value={1}></l-spacer>
               <l-seperator></l-seperator>
               <l-spacer value={1}></l-spacer>
               <e-text variant="footnote">PASSWORD</e-text>
-              <p-editable-text type="text" value="********" name="password"></p-editable-text>
+              <l-spacer value={0.5}></l-spacer>
+              <p-editable-text type="password" value="********" name="password"></p-editable-text>
             </c-card>
             <l-spacer value={1}></l-spacer>
             <e-link url="/delete-account" theme="danger">
