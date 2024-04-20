@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { accountUpdatePayloadInterface } from '../../../interfaces';
+import { accountUpdatePayloadInterface } from '../../interfaces';
 
 const accountUpdatePayloadSchema = Joi.object({
   type: Joi.string().valid('name', 'email', 'password').required(),

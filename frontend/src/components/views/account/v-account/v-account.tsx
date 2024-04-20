@@ -1,4 +1,6 @@
-import { Component, Host, Listen, h } from '@stencil/core';
+import { Component, Host, State, Listen, h } from '@stencil/core';
+import { accountUpdatePayloadInterface } from './interfaces';
+import { generateAccountUpdatePayload, validateAccountUpdatePayload, accountUpdateApiCall } from './helpers';
 import { state } from '../../../../global/script';
 
 @Component({
@@ -7,12 +9,35 @@ import { state } from '../../../../global/script';
   shadow: true,
 })
 export class VAccount {
-  @Listen('saveEdit') updateTextListener(e) {
-    console.log(`${e.detail.name}: ${e.detail.value}`);
+  @Listen('saveEdit') saveEditListener(e) {
+    this.saveEdit(e.detail.name, e.detail.value);
   }
 
+  @State() isEditSaved: boolean = false;
+
   componentWillLoad() {
-    state.activeView = 'profile';
+    state.activeView = 'account';
+  }
+
+  async saveEdit(name: string, value: string) {
+    let accountUpdatePayload: accountUpdatePayloadInterface = generateAccountUpdatePayload(name, value);
+    let { isValid, validationMessage } = validateAccountUpdatePayload(accountUpdatePayload);
+
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+
+    this.isEditSaved = false;
+
+    let { success, message, payload } = await accountUpdateApiCall(accountUpdatePayload);
+
+    this.isEditSaved = true;
+
+    if (!success) {
+      return alert(message);
+    }
+
+    return alert(payload.message);
   }
 
   render() {
@@ -27,19 +52,19 @@ export class VAccount {
             <c-card>
               <e-text variant="footnote">NAME</e-text>
               <l-spacer value={0.5}></l-spacer>
-              <p-editable-text type="text" value={state.accountName} name="name"></p-editable-text>
+              <p-editable-text type="text" value={state.accountName} name="name" isEdited={this.isEditSaved}></p-editable-text>
               <l-spacer value={1}></l-spacer>
               <l-seperator></l-seperator>
               <l-spacer value={1}></l-spacer>
               <e-text variant="footnote">EMAIL</e-text>
               <l-spacer value={0.5}></l-spacer>
-              <p-editable-text type="link" value={`${state.accountEmail}`} name="email"></p-editable-text>
+              <p-editable-text type="link" value={`${state.accountEmail}`} name="email" isEdited={this.isEditSaved}></p-editable-text>
               <l-spacer value={1}></l-spacer>
               <l-seperator></l-seperator>
               <l-spacer value={1}></l-spacer>
               <e-text variant="footnote">PASSWORD</e-text>
               <l-spacer value={0.5}></l-spacer>
-              <p-editable-text type="password" value="********" name="password"></p-editable-text>
+              <p-editable-text type="password" value="********" name="password" isEdited={this.isEditSaved}></p-editable-text>
             </c-card>
             <l-spacer value={1}></l-spacer>
             <e-link url="/delete-account" theme="danger">

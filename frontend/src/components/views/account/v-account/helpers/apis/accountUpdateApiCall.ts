@@ -1,4 +1,4 @@
-import { accountUpdatePayloadInterface } from '../../../interfaces';
+import { accountUpdatePayloadInterface } from '../../interfaces';
 import { Vars } from '../../../../../../global/script';
 
 export const accountUpdateApiCall = async (accountUpdatePayload: accountUpdatePayloadInterface) => {

@@ -72,6 +72,7 @@ export namespace Components {
         "view": string;
     }
     interface PEditableText {
+        "isEdited": boolean;
         "name": string;
         "type": string;
         "value": string;
@@ -453,6 +454,7 @@ declare namespace LocalJSX {
         "view"?: string;
     }
     interface PEditableText {
+        "isEdited"?: boolean;
         "name"?: string;
         "onSaveEdit"?: (event: CustomEvent<any>) => void;
         "type"?: string;

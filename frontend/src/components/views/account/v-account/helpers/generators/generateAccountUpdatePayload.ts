@@ -1,4 +1,4 @@
-import { accountUpdatePayloadInterface } from '../../../interfaces';
+import { accountUpdatePayloadInterface } from '../../interfaces';
 
 export const generateAccountUpdatePayload = (type: string, value: string) => {
   let accountUpdatePayload: accountUpdatePayloadInterface = {

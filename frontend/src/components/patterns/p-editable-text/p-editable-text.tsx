@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, FunctionalComponent, Prop, State, Listen, h } from '@stencil/core';
+import { Component, Event, EventEmitter, FunctionalComponent, Prop, State, Listen, Watch, h } from '@stencil/core';
 
 @Component({
   tag: 'p-editable-text',
@@ -6,18 +6,11 @@ import { Component, Event, EventEmitter, FunctionalComponent, Prop, State, Liste
   shadow: true,
 })
 export class PEditableText {
-  @Prop() type: string;
-  @Prop() name: string;
-  @Prop() value: string;
-
   @Event({
     eventName: 'saveEdit',
     bubbles: true,
   })
   saveEditEvent: EventEmitter;
-
-  @State() isEditModeOn: boolean = false;
-  @State() isSaveButtonDisabled: boolean = true;
 
   @Listen('buttonClick') async handle_ButtonClick(e) {
     if (e.detail.action === 'startEditMode') {
@@ -38,10 +31,27 @@ export class PEditableText {
     } else if (e.detail.name === 'newValueRepeat') {
       this.newValueRepeat = e.detail.value;
     }
-    this.setSaveButtonStatus();
+    this.setSaveButtonState();
   }
 
-  setSaveButtonStatus() {
+  @Prop() type: string;
+  @Prop() name: string;
+  @Prop() value: string;
+  @Prop() isEdited: boolean = false;
+
+  @State() isEditModeOn: boolean = false;
+  @State() isSaveButtonDisabled: boolean = true;
+  @State() isSaveButtonActive: boolean = false;
+
+  @Watch('isEdited') isEditedWatched(newVal: boolean, oldVal: boolean) {
+    if (newVal != oldVal) {
+      if (this.isSaveButtonActive) {
+        this.isSaveButtonActive = false;
+      }
+    }
+  }
+
+  setSaveButtonState() {
     if (!this.newValue) {
       this.isSaveButtonDisabled = true;
       return;
@@ -83,7 +93,7 @@ export class PEditableText {
           Cancel
         </e-button>
         &nbsp;&nbsp;
-        <e-button disabled={this.isSaveButtonDisabled} action="saveEdit">
+        <e-button disabled={this.isSaveButtonDisabled} action="saveEdit" active={this.isSaveButtonActive}>
           Save
         </e-button>
       </div>
