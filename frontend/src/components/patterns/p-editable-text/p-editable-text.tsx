@@ -42,7 +42,7 @@ export class PEditableText {
   }
 
   setSaveButtonStatus() {
-    if (!this.newValue || !this.newValueRepeat) {
+    if (!this.newValue) {
       this.isSaveButtonDisabled = true;
       return;
     }
