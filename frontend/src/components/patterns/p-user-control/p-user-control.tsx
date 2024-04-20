@@ -48,11 +48,11 @@ export class PUserControl {
         <c-card ref={el => (this.userControlCardEl = el as HTMLCCardElement)}>
           <e-list>
             <e-list-item>
-              <e-link url="/profile">
+              <e-link url="/account">
                 <l-row align="center">
                   <ph-user color="var(--color__blue--regular)"></ph-user>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
-                  <e-text>Profile</e-text>
+                  <e-text>Account</e-text>
                 </l-row>
               </e-link>
             </e-list-item>

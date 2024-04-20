@@ -94,6 +94,8 @@ export namespace Components {
     }
     interface PUserControl {
     }
+    interface VAccount {
+    }
     interface VBilling {
     }
     interface VCatchAll {
@@ -117,8 +119,6 @@ export namespace Components {
     }
     interface VPostOauth {
         "history": RouterHistory;
-    }
-    interface VProfile {
     }
     interface VSupport {
     }
@@ -272,6 +272,12 @@ declare global {
         prototype: HTMLPUserControlElement;
         new (): HTMLPUserControlElement;
     };
+    interface HTMLVAccountElement extends Components.VAccount, HTMLStencilElement {
+    }
+    var HTMLVAccountElement: {
+        prototype: HTMLVAccountElement;
+        new (): HTMLVAccountElement;
+    };
     interface HTMLVBillingElement extends Components.VBilling, HTMLStencilElement {
     }
     var HTMLVBillingElement: {
@@ -326,12 +332,6 @@ declare global {
         prototype: HTMLVPostOauthElement;
         new (): HTMLVPostOauthElement;
     };
-    interface HTMLVProfileElement extends Components.VProfile, HTMLStencilElement {
-    }
-    var HTMLVProfileElement: {
-        prototype: HTMLVProfileElement;
-        new (): HTMLVProfileElement;
-    };
     interface HTMLVSupportElement extends Components.VSupport, HTMLStencilElement {
     }
     var HTMLVSupportElement: {
@@ -369,6 +369,7 @@ declare global {
         "p-spinner": HTMLPSpinnerElement;
         "p-topbar": HTMLPTopbarElement;
         "p-user-control": HTMLPUserControlElement;
+        "v-account": HTMLVAccountElement;
         "v-billing": HTMLVBillingElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-checkout": HTMLVCheckoutElement;
@@ -378,7 +379,6 @@ declare global {
         "v-payment-cancel": HTMLVPaymentCancelElement;
         "v-payment-handle": HTMLVPaymentHandleElement;
         "v-post-oauth": HTMLVPostOauthElement;
-        "v-profile": HTMLVProfileElement;
         "v-support": HTMLVSupportElement;
         "v-verify": HTMLVVerifyElement;
     }
@@ -477,6 +477,8 @@ declare namespace LocalJSX {
     }
     interface PUserControl {
     }
+    interface VAccount {
+    }
     interface VBilling {
     }
     interface VCatchAll {
@@ -506,8 +508,6 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
         "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-    }
-    interface VProfile {
     }
     interface VSupport {
     }
@@ -541,6 +541,7 @@ declare namespace LocalJSX {
         "p-spinner": PSpinner;
         "p-topbar": PTopbar;
         "p-user-control": PUserControl;
+        "v-account": VAccount;
         "v-billing": VBilling;
         "v-catch-all": VCatchAll;
         "v-checkout": VCheckout;
@@ -550,7 +551,6 @@ declare namespace LocalJSX {
         "v-payment-cancel": VPaymentCancel;
         "v-payment-handle": VPaymentHandle;
         "v-post-oauth": VPostOauth;
-        "v-profile": VProfile;
         "v-support": VSupport;
         "v-verify": VVerify;
     }
@@ -583,6 +583,7 @@ declare module "@stencil/core" {
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-topbar": LocalJSX.PTopbar & JSXBase.HTMLAttributes<HTMLPTopbarElement>;
             "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
+            "v-account": LocalJSX.VAccount & JSXBase.HTMLAttributes<HTMLVAccountElement>;
             "v-billing": LocalJSX.VBilling & JSXBase.HTMLAttributes<HTMLVBillingElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;
@@ -592,7 +593,6 @@ declare module "@stencil/core" {
             "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
             "v-payment-handle": LocalJSX.VPaymentHandle & JSXBase.HTMLAttributes<HTMLVPaymentHandleElement>;
             "v-post-oauth": LocalJSX.VPostOauth & JSXBase.HTMLAttributes<HTMLVPostOauthElement>;
-            "v-profile": LocalJSX.VProfile & JSXBase.HTMLAttributes<HTMLVProfileElement>;
             "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
             "v-verify": LocalJSX.VVerify & JSXBase.HTMLAttributes<HTMLVVerifyElement>;
         }

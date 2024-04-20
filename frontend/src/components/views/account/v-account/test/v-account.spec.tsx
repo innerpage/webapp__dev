@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { VProfile } from '../v-profile';
+import { VAccount } from '../v-account';
 
-describe('v-profile', () => {
+describe('v-account', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [VProfile],
-      html: `<v-profile></v-profile>`,
+      components: [VAccount],
+      html: `<v-account></v-account>`,
     });
     expect(page.root).toEqualHtml(`
-      <v-profile>
+      <v-account>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </v-profile>
+      </v-account>
     `);
   });
 });

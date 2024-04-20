@@ -2,11 +2,11 @@ import { Component, Host, Listen, h } from '@stencil/core';
 import { state } from '../../../../global/script';
 
 @Component({
-  tag: 'v-profile',
-  styleUrl: 'v-profile.css',
+  tag: 'v-account',
+  styleUrl: 'v-account.css',
   shadow: true,
 })
-export class VProfile {
+export class VAccount {
   @Listen('saveEdit') updateTextListener(e) {
     console.log(`${e.detail.name}: ${e.detail.value}`);
   }
@@ -22,7 +22,7 @@ export class VProfile {
         <c-content-area>
           <p-sidebar></p-sidebar>
           <c-main>
-            <e-text variant="heading">Profile</e-text>
+            <e-text variant="heading">Account</e-text>
             <l-spacer value={1}></l-spacer>
             <c-card>
               <e-text variant="footnote">NAME</e-text>

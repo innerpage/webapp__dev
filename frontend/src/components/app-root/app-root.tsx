@@ -170,11 +170,11 @@ export class AppRoot {
             <stencil-route url="/verify/:type/:code" component="v-verify" />
 
             <this.LoggedInRoute url="/billing" component="v-billing"></this.LoggedInRoute>
-            <this.LoggedInRoute url="/profile" component="v-profile"></this.LoggedInRoute>
+            <this.LoggedInRoute url="/account" component="v-account"></this.LoggedInRoute>
+            <this.LoggedInRoute url="/delete-account" component="v-delete-account"></this.LoggedInRoute>
             <this.LoggedInRoute url="/payment-cancel" component="v-payment-cancel"></this.LoggedInRoute>
             <this.LoggedInRoute url="/payment-handle/:id_Session" component="v-payment-handle"></this.LoggedInRoute>
             <this.LoggedInRoute url="/checkout/:id_Order" component="v-checkout"></this.LoggedInRoute>
-            <this.LoggedInRoute url="/delete-account" component="v-delete-account"></this.LoggedInRoute>
             <this.LoggedInRoute url="/support" component="v-support"></this.LoggedInRoute>
 
             <this.LoggedOutRoute url="/post-oauth" component="v-post-oauth"></this.LoggedOutRoute>

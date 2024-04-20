@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, State, Host, Listen, h } from '@stencil/core';
-import { deleteAccountApiCall } from './helpers/';
+import { deleteAccountApiCall } from './helpers';
 
 @Component({
   tag: 'v-delete-account',
