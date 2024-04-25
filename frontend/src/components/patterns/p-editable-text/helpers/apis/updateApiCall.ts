@@ -1,15 +1,20 @@
-import { accountUpdatePayloadInterface } from '../../interfaces';
-import { Vars } from '../../../../../../global/script';
+import { updatePayloadInterface } from '../../interfaces';
+import { Vars } from '../../../../../global/script';
 
-export const accountUpdateApiCall = async (accountUpdatePayload: accountUpdatePayloadInterface) => {
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account}`;
+export const updateApiCall = async (updatePayload: updatePayloadInterface) => {
+  let url: string = '';
+
+  if (updatePayload.filter === 'name' || updatePayload.filter === 'email' || updatePayload.filter === 'password') {
+    url = `${Vars.api.url}/${Vars.api.endpoint.account}`;
+  }
+
   let options: any = {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify(accountUpdatePayload),
+    body: JSON.stringify(updatePayload),
   };
 
   let payload: any;
