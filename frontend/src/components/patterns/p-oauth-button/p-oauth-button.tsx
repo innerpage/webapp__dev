@@ -7,7 +7,7 @@ import { state } from '../../../global/script';
   shadow: true,
 })
 export class POauthButton {
-  googleOauthButton!: HTMLDivElement;
+  googleOauthButtonEl!: HTMLDivElement;
 
   @Event({
     eventName: 'event_RouteTo',
@@ -63,7 +63,7 @@ export class POauthButton {
         },
       });
 
-      await this._window.google.accounts.id.renderButton(this.googleOauthButton, {
+      await this._window.google.accounts.id.renderButton(this.googleOauthButtonEl, {
         type: 'standard',
         theme: 'outline',
         size: 'large',
@@ -76,7 +76,7 @@ export class POauthButton {
 
   render() {
     if (this.variant === 'google') {
-      return <div ref={el => (this.googleOauthButton = el as HTMLDivElement)}></div>;
+      return <div ref={el => (this.googleOauthButtonEl = el as HTMLDivElement)}></div>;
     }
   }
 }

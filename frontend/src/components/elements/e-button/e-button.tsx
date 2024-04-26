@@ -6,6 +6,8 @@ import { Component, Event, EventEmitter, Watch, Prop, State, h } from '@stencil/
   shadow: true,
 })
 export class EButton {
+  buttonEl!: HTMLButtonElement;
+
   @Prop() action: string;
   @Prop() value: any;
   @Prop() variant: string = 'primary';
@@ -15,6 +17,8 @@ export class EButton {
   @Prop() theme: string = 'default';
 
   @State() inAction: boolean = false;
+  @State() width: string = '';
+  @State() height: string = '';
 
   @Event({
     eventName: 'buttonClick',
@@ -43,13 +47,24 @@ export class EButton {
     this.generate_StyleClasses();
   }
 
+  componentDidLoad() {
+    this.width = `${this.buttonEl.getBoundingClientRect().width}px`;
+    this.height = `${this.buttonEl.getBoundingClientRect().height}px`;
+  }
+
   generate_StyleClasses() {
     this.styleClasses = `${this.variant}--${this.theme} ${this.size}`;
   }
 
   render() {
     return (
-      <button class={`${this.styleClasses} ${this.inAction && 'in-action'}`} onClick={e => this.handle_ButtonClick(e)} disabled={this.disabled || this.inAction}>
+      <button
+        class={`${this.styleClasses} ${this.inAction && 'in-action'}`}
+        onClick={e => this.handle_ButtonClick(e)}
+        disabled={this.disabled || this.inAction}
+        ref={el => (this.buttonEl = el as HTMLButtonElement)}
+        style={{ width: this.width, height: this.height }}
+      >
         {this.inAction ? <p-spinner></p-spinner> : <slot />}
       </button>
     );
