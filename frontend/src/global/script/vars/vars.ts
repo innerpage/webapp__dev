@@ -32,8 +32,4 @@ export const Vars = {
       },
     },
   },
-  emoji: {
-    redCross: '❌',
-    greenTick: '✅',
-  },
 };
