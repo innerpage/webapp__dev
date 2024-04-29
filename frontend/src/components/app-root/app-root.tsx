@@ -113,7 +113,7 @@ export class AppRoot {
     if (!success) {
       return alert(message);
     }
-    helper_Set_State(payload.accountDetails);
+    helper_Set_State(payload);
     init_Socket();
   }
 
