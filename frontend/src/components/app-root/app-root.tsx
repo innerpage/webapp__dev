@@ -1,8 +1,8 @@
 import { Component, FunctionalComponent, Prop, Host, Listen, State, h } from '@stencil/core';
 import { RouterHistory, injectHistory } from '@stencil/router';
 import { state, IO, init_Socket } from '../../global/script';
-import { helper_Set_State } from './helpers';
-import { Helper_ApiCall_GetAccountDetails_BySession, Helper_ApiCall_Account_Logout } from '../../global/script/helpers';
+import { setState } from './helpers';
+import { getAccountDetailsBySessionApi, accountLogoutApi } from '../../global/script/helpers';
 import { getLoggedInCookie } from './helpers';
 import { mailPayloadInterface } from '../../global/script/interfaces';
 import { generateMailPayload, validateMailPayload } from '../../global/script/helpers';
@@ -84,7 +84,7 @@ export class AppRoot {
   }
 
   @Listen('success_Auth') handle_success_Auth(e) {
-    helper_Set_State(e.detail.payload);
+    setState(e.detail.payload);
   }
 
   componentWillLoad() {
@@ -109,16 +109,16 @@ export class AppRoot {
   }
 
   async initSession() {
-    let { success, message, payload } = await Helper_ApiCall_GetAccountDetails_BySession();
+    let { success, message, payload } = await getAccountDetailsBySessionApi();
     if (!success) {
       return alert(message);
     }
-    helper_Set_State(payload);
+    setState(payload);
     init_Socket();
   }
 
   async logoutUser() {
-    let { success, message, payload } = await Helper_ApiCall_Account_Logout();
+    let { success, message, payload } = await accountLogoutApi();
     if (!success) {
       return alert(message);
     }

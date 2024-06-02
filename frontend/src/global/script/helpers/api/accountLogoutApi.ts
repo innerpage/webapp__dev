@@ -1,6 +1,6 @@
-import { ApiVar } from '../../../../global/script';
+import { ApiVar } from '../..';
 
-export const Helper_ApiCall_Account_Logout = async () => {
+export const accountLogoutApi = async () => {
   let payload_Logout_Submission: any;
   let isSuccess_Logout_Submission: boolean = false;
 

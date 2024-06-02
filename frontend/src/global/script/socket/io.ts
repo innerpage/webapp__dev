@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import { Vars, ApiVar, state } from '../../../global/script';
+import { ApiVar, state } from '../../../global/script';
 
 export let IO: any;
 

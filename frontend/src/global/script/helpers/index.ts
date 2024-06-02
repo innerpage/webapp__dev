@@ -1,6 +1,6 @@
 // API
-export { Helper_ApiCall_GetAccountDetails_BySession } from './api/Helper_ApiCall_GetAccountDetails_BySession';
-export { Helper_ApiCall_Account_Logout } from './api/Helper_ApiCall_Account_Logout';
+export { getAccountDetailsBySessionApi } from './api/getAccountDetailsBySessionApi';
+export { accountLogoutApi } from './api/accountLogoutApi';
 export { mailApi } from './api/mailApi';
 
 // Generators

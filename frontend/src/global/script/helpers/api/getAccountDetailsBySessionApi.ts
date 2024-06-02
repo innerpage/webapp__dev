@@ -1,6 +1,6 @@
 import { ApiVar } from '../..';
 
-export const Helper_ApiCall_GetAccountDetails_BySession = async () => {
+export const getAccountDetailsBySessionApi = async () => {
   let backendPayload_GetAccountDetails_BySession: any;
 
   let url: string = `${ApiVar.url}${ApiVar.endpoint.account.details}`;
