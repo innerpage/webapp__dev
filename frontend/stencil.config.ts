@@ -8,7 +8,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
-      baseUrl: '/',
+      baseUrl: 'https://app.example.com',
     },
   ],
 };
