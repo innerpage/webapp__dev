@@ -1,4 +1,4 @@
-export const helper_Generate_GetPrice_Payload = (id_Price: string) => {
+export const generateGetStripePricePayload = (id_Price: string) => {
   let payload_GetPrice_Payload = {
     id_Price: id_Price,
   };

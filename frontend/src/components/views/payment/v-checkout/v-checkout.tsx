@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, Prop, FunctionalComponent, Listen, State, Host, h } from '@stencil/core';
 import { MatchResults, RouterHistory, injectHistory } from '@stencil/router';
 
-import { helper_Generate_Create_StripeSession_Payload, helper_ApiCall_Create_StripeSession } from './helpers';
+import { generateCreateStripeSessionPayload, createStripeSessionApi } from './helpers';
 
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -85,9 +85,9 @@ export class VCheckout {
   }
 
   async create_Checkout_Session() {
-    let payload_Create_Stripe_CheckoutSession: any = helper_Generate_Create_StripeSession_Payload(this.id_Product);
+    let payload_Create_Stripe_CheckoutSession: any = generateCreateStripeSessionPayload(this.id_Product);
     this.isActive_ConfirmAndPay_Button = true;
-    let { success, message, payload } = await helper_ApiCall_Create_StripeSession(payload_Create_Stripe_CheckoutSession);
+    let { success, message, payload } = await createStripeSessionApi(payload_Create_Stripe_CheckoutSession);
     this.isActive_ConfirmAndPay_Button = false;
     if (!success) {
       return alert(message);

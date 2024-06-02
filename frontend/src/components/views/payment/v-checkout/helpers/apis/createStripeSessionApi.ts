@@ -1,6 +1,6 @@
 import { ApiVar } from '../../../../../../global/script';
 
-export const helper_ApiCall_Create_StripeSession = async payload_Create_Stripe_CheckoutSession => {
+export const createStripeSessionApi = async payload_Create_Stripe_CheckoutSession => {
   let backendPayload_Create_Stripe_CheckoutSession: any;
 
   let url: string = `${ApiVar.url}${ApiVar.endpoint.payment.stripe.session.create}`;

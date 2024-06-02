@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, State, Host, Prop, h, FunctionalComponent } from '@stencil/core';
 import { MatchResults, RouterHistory, injectHistory } from '@stencil/router';
 
-import { helper_Generate_Stripe_SessionCheck_Payload, helper_ApiCall_Stripe_SessionCheck } from './helpers';
+import { generateCheckStripeSessionPayload, checkStripeSessionApi } from './helpers';
 
 @Component({
   tag: 'v-payment-handle',
@@ -42,8 +42,8 @@ export class VPaymentHandle {
   }
 
   async fetch_ViewData() {
-    let payload_Stripe_SessionCheck: any = helper_Generate_Stripe_SessionCheck_Payload(this.id_Session);
-    let { success, message, payload } = await helper_ApiCall_Stripe_SessionCheck(payload_Stripe_SessionCheck);
+    let payload_Stripe_SessionCheck: any = generateCheckStripeSessionPayload(this.id_Session);
+    let { success, message, payload } = await checkStripeSessionApi(payload_Stripe_SessionCheck);
 
     if (!success) {
       return alert(message);
