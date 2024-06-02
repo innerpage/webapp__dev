@@ -1,11 +1,11 @@
 import { mailPayloadInterface } from '../../interfaces';
-import { Vars } from '../../';
+import { ApiVar } from '../../';
 
 export const mailApi = async (mailPayload: mailPayloadInterface) => {
   let url: string = '';
 
   if (mailPayload.type === 'emailVerificationLink' || mailPayload.type === 'passwordResetLink') {
-    url = `${Vars.api.url}/${Vars.api.endpoint.mail.verificationLink}`;
+    url = `${ApiVar.url}${ApiVar.endpoint.mail.verificationLink}`;
   }
 
   let options: any = {

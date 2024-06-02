@@ -26,7 +26,7 @@ export class VPaymentCancel {
             Please try purchasing again. If money was deducted <br />
             from your account/card, kindly write a mail to us at:
           </e-text>
-          <e-link url={`mailto:${Vars.support.email}`}>{Vars.support.email}</e-link>
+          <e-link url={`mailto:${Vars.app.contact.email}`}>{Vars.app.contact.email}</e-link>
           <l-spacer value={1}></l-spacer>
           <e-link url="/">Go to account</e-link>
         </c-card>

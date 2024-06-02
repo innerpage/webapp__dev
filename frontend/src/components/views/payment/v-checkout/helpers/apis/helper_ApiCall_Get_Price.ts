@@ -1,9 +1,9 @@
-import { Vars } from '../../../../../../global/script';
+import { ApiVar } from '../../../../../../global/script';
 
 export const helper_ApiCall_Get_Price = async payload_Get_Price_Inputs => {
   let backendPayload_Get_Price: any;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.checkout.stripe.get_Price}?${new URLSearchParams(payload_Get_Price_Inputs)}`;
+  let url: string = `${ApiVar.url}${ApiVar.endpoint.payment.stripe.price.get}?${new URLSearchParams(payload_Get_Price_Inputs)}`;
 
   let options: any = {
     method: 'GET',

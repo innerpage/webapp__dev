@@ -35,9 +35,9 @@
 
 - Change `baseUrl` in `outputTargets`
 
-## Edit ./frontend/src/global/script/vars/vars.ts
+## Edit ./frontend/src/global/script/vars/ApiVar.ts
 
-- Change `api.url` for production
+- Change `url` for production
 
 ## Edit ./frontend/src/global/script/store/store.ts
 

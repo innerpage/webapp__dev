@@ -1,10 +1,10 @@
 import { getGoogleProfilePayloadInterface } from '../../interfaces';
-import { Vars } from '../../../../../../global/script';
+import { ApiVar } from '../../../../../../global/script';
 
 export const getGoogleProfileApi = async (getGoogleProfilePayload: getGoogleProfilePayloadInterface) => {
   let backendPayload: any;
 
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.oauth.google}`;
+  let url: string = `${ApiVar.url}${ApiVar.endpoint.account.auth.oauth.google}`;
   let options: any = {
     method: 'POST',
     headers: {

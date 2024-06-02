@@ -1,8 +1,8 @@
 import { confirmPasswordPayloadInterface } from '../../../interfaces';
-import { Vars } from '../../../../../../global/script';
+import { ApiVar } from '../../../../../../global/script';
 
 export const confirmPasswordApi = async (confirmPasswordPayload: confirmPasswordPayloadInterface) => {
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.password}`;
+  let url: string = `${ApiVar.url}${ApiVar.endpoint.account.password}`;
   let options: any = {
     method: 'PUT',
     headers: {

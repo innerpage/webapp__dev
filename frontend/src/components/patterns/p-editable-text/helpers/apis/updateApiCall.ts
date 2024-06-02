@@ -1,11 +1,11 @@
 import { updatePayloadInterface } from '../../interfaces';
-import { Vars } from '../../../../../global/script';
+import { ApiVar } from '../../../../../global/script';
 
 export const updateApiCall = async (updatePayload: updatePayloadInterface) => {
   let url: string = '';
 
   if (updatePayload.filter === 'name' || updatePayload.filter === 'email' || updatePayload.filter === 'password') {
-    url = `${Vars.api.url}/${Vars.api.endpoint.account}`;
+    url = `${ApiVar.url}${ApiVar.endpoint.account.details}`;
   }
 
   let options: any = {

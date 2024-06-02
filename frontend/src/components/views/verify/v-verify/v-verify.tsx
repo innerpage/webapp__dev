@@ -171,8 +171,8 @@ export class VVerify {
           <strong>Password reset failed</strong>
           <l-row>
             Kindly try again or contact&nbsp;
-            <e-link variant="email" url={`mailto:${Vars.support.email}`}>
-              {Vars.support.email}
+            <e-link variant="email" url={`mailto:${Vars.app.contact.email}`}>
+              {Vars.app.contact.email}
             </e-link>{' '}
           </l-row>
         </e-text>

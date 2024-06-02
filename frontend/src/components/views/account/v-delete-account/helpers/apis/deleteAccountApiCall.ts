@@ -1,9 +1,9 @@
-import { Vars } from '../../../../../../global/script';
+import { ApiVar } from '../../../../../../global/script';
 
 export const deleteAccountApiCall = async () => {
   let isAccountDeletionSuccessful: boolean = false;
   let accountDeletionReturnObject: any;
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.account}`;
+  let url: string = `${ApiVar.url}${ApiVar.endpoint.account.details}`;
   let options: any = {
     method: 'DELETE',
     headers: {

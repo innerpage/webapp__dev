@@ -1,8 +1,8 @@
 import { signupPayloadInterface } from '../../../interfaces';
-import { Vars } from '../../../../../../global/script';
+import { ApiVar } from '../../../../../../global/script';
 
 export const signupApi = async (signupPayload: signupPayloadInterface) => {
-  let url: string = `${Vars.api.url}/${Vars.api.endpoint.signup}`;
+  let url: string = `${ApiVar.url}${ApiVar.endpoint.account.auth.signup}`;
   let options: any = {
     method: 'POST',
     headers: {

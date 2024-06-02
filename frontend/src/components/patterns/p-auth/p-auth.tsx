@@ -164,11 +164,11 @@ export class PAuth {
       <l-spacer value={0.5}></l-spacer>
       <e-text variant="footnote">
         By {statement}, you accept our{' '}
-        <e-link variant="externalLink" url={Vars.legal.url.termsAndConditions}>
+        <e-link variant="externalLink" url={Vars.app.policy.tos.url}>
           terms of service
         </e-link>{' '}
         &{' '}
-        <e-link variant="externalLink" url={Vars.legal.url.privacyPolicy}>
+        <e-link variant="externalLink" url={Vars.app.policy.privacy.url}>
           privacy policy
         </e-link>
       </e-text>{' '}
