@@ -14,7 +14,7 @@ export class EInput {
     eventName: 'textInput',
     bubbles: true,
   })
-  event_TextInput: EventEmitter;
+  textInputEvent: EventEmitter;
 
   @Prop() label: string;
   @Prop() type: string;
@@ -23,25 +23,25 @@ export class EInput {
   @Prop() value: string;
   @Prop() checked: boolean = false;
 
-  private styleObject_Textbox: LooseObject = {};
+  private textboxStyleObject: LooseObject = {};
 
   componentWillLoad() {
     if (this.type === 'email' || this.type === 'number' || this.type === 'password' || this.type === 'text') {
-      this.generate_StyleObject_Textbox();
+      this.generateTextboxStyleObject();
     }
   }
 
-  generate_StyleObject_Textbox() {
-    this.styleObject_Textbox.padding = '0.75em';
-    this.styleObject_Textbox.border = '1px solid rgba(0, 0, 0, 0.1)';
-    this.styleObject_Textbox.borderRadius = '0.25em';
-    this.styleObject_Textbox.fontSize = '0.9em';
-    this.styleObject_Textbox.width = '100%';
-    this.styleObject_Textbox.boxSizing = 'border-box';
+  generateTextboxStyleObject() {
+    this.textboxStyleObject.padding = '0.75em';
+    this.textboxStyleObject.border = '1px solid rgba(0, 0, 0, 0.1)';
+    this.textboxStyleObject.borderRadius = '0.25em';
+    this.textboxStyleObject.fontSize = '0.9em';
+    this.textboxStyleObject.width = '100%';
+    this.textboxStyleObject.boxSizing = 'border-box';
   }
 
-  handle_AlphanumericInput(e) {
-    this.event_TextInput.emit({
+  handleAlphaNumericInput(e) {
+    this.textInputEvent.emit({
       name: this.name,
       value: e.target.value.trim(),
     });
@@ -49,7 +49,7 @@ export class EInput {
 
   render() {
     if (this.type === 'email' || this.type === 'number' || this.type === 'password' || this.type === 'text') {
-      return <input style={this.styleObject_Textbox} type={this.type} placeholder={this.placeholder} onInput={e => this.handle_AlphanumericInput(e)} value={this.value} />;
+      return <input style={this.textboxStyleObject} type={this.type} placeholder={this.placeholder} onInput={e => this.handleAlphaNumericInput(e)} value={this.value} />;
     } else if (this.type === 'radio') {
       return (
         <l-row>

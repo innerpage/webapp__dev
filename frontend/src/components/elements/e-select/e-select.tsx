@@ -7,38 +7,38 @@ import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
 })
 export class ESelect {
   @Event({
-    eventName: 'event_selectInput',
+    eventName: 'selectInputEvent',
     bubbles: true,
   })
-  event_SelectInput: EventEmitter;
+  selectInputEvent: EventEmitter;
 
   @Prop() options: any;
   @Prop() name: string;
 
   private styleClasses: string = 'default';
-  private parsed_Options: any;
+  private parsedOptions: any;
 
   componentWillLoad() {
-    this.generate_StyleClasses();
-    this.parse_OptionsString();
+    this.generateStyles();
+    this.parseOptionsString();
     this.init();
   }
 
-  generate_StyleClasses() {}
+  generateStyles() {}
 
-  parse_OptionsString() {
-    this.parsed_Options = JSON.parse(this.options);
+  parseOptionsString() {
+    this.parsedOptions = JSON.parse(this.options);
   }
 
   init() {
-    this.event_SelectInput.emit({
+    this.selectInputEvent.emit({
       name: this.name,
-      value: this.parsed_Options[0].id.trim(),
+      value: this.parsedOptions[0].id.trim(),
     });
   }
 
-  handle_SelectInput(e) {
-    this.event_SelectInput.emit({
+  handleSelectInput(e) {
+    this.selectInputEvent.emit({
       name: this.name,
       value: e.target.value.trim(),
     });
@@ -46,8 +46,8 @@ export class ESelect {
 
   render() {
     return (
-      <select class={this.styleClasses} onChange={e => this.handle_SelectInput(e)}>
-        {this.parsed_Options.map(option => (
+      <select class={this.styleClasses} onChange={e => this.handleSelectInput(e)}>
+        {this.parsedOptions.map(option => (
           <option value={option.id}>{option.title}</option>
         ))}
       </select>

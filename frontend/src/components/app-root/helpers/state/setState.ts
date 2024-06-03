@@ -1,8 +1,8 @@
 import { state } from '../../../../global/script';
 
-export const setState = payload_AccountDetails => {
-  state.accountName = payload_AccountDetails.name;
-  state.accountEmail = payload_AccountDetails.email;
-  state.isEmailVerified = payload_AccountDetails.isEmailVerified;
-  state.isSessionActive = payload_AccountDetails.isSessionActive;
+export const setState = accountDetailsPayload => {
+  state.accountName = accountDetailsPayload.name;
+  state.accountEmail = accountDetailsPayload.email;
+  state.isEmailVerified = accountDetailsPayload.isEmailVerified;
+  state.isSessionActive = accountDetailsPayload.isSessionActive;
 };

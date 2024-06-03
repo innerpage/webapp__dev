@@ -1,6 +1,6 @@
 import { Component, FunctionalComponent, Prop, Host, Listen, State, h } from '@stencil/core';
 import { RouterHistory, injectHistory } from '@stencil/router';
-import { state, IO, init_Socket } from '../../global/script';
+import { state, IO, initSocket } from '../../global/script';
 import { setState } from './helpers';
 import { getAccountDetailsBySessionApi, accountLogoutApi } from '../../global/script/helpers';
 import { getLoggedInCookie } from './helpers';
@@ -27,7 +27,7 @@ export class AppRoot {
     }
   }
 
-  @Listen('buttonClick') async handle_ButtonClick(e) {
+  @Listen('buttonClick') async handleButtonClick(e) {
     if (e.detail.action === 'mailEmailVerificationLink') {
       let mailEmailVerificationLinkPayload: mailPayloadInterface = generateMailPayload(state.accountEmail, 'emailVerificationLink');
       let { isValid, validationMessage } = validateMailPayload(mailEmailVerificationLinkPayload);
@@ -75,7 +75,7 @@ export class AppRoot {
     this.logoutUser();
   }
 
-  @Listen('event_RouteTo') handle_RouteTo(e) {
+  @Listen('routeToEvent') handleRouteToEvent(e) {
     if (e.detail.type === 'push') {
       this.history.push(e.detail.route, e.detail.data);
     } else if (e.detail.type === 'goBack') {
@@ -83,7 +83,7 @@ export class AppRoot {
     }
   }
 
-  @Listen('success_Auth') handle_success_Auth(e) {
+  @Listen('authSuccess') handleAuthSuccessEvent(e) {
     setState(e.detail.payload);
   }
 
@@ -114,7 +114,7 @@ export class AppRoot {
       return alert(message);
     }
     setState(payload);
-    init_Socket();
+    initSocket();
   }
 
   async logoutUser() {
@@ -173,8 +173,8 @@ export class AppRoot {
             <this.LoggedInRoute url="/account" component="v-account"></this.LoggedInRoute>
             <this.LoggedInRoute url="/delete-account" component="v-delete-account"></this.LoggedInRoute>
             <this.LoggedInRoute url="/payment-cancel" component="v-payment-cancel"></this.LoggedInRoute>
-            <this.LoggedInRoute url="/payment-handle/:id_Session" component="v-payment-handle"></this.LoggedInRoute>
-            <this.LoggedInRoute url="/checkout/:id_Order" component="v-checkout"></this.LoggedInRoute>
+            <this.LoggedInRoute url="/payment-handle/:sessionId" component="v-payment-handle"></this.LoggedInRoute>
+            <this.LoggedInRoute url="/checkout/:orderId" component="v-checkout"></this.LoggedInRoute>
             <this.LoggedInRoute url="/support" component="v-support"></this.LoggedInRoute>
 
             <this.LoggedOutRoute url="/post-oauth" component="v-post-oauth"></this.LoggedOutRoute>

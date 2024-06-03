@@ -1,7 +1,7 @@
-export const generateGetStripePricePayload = (id_Price: string) => {
-  let payload_GetPrice_Payload = {
-    id_Price: id_Price,
+export const generateGetStripePricePayload = (priceId: string) => {
+  let getPricePayload = {
+    priceId: priceId,
   };
 
-  return payload_GetPrice_Payload;
+  return getPricePayload;
 };

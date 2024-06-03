@@ -427,7 +427,7 @@ declare namespace LocalJSX {
     }
     interface ESelect {
         "name"?: string;
-        "onEvent_selectInput"?: (event: CustomEvent<any>) => void;
+        "onSelectInputEvent"?: (event: CustomEvent<any>) => void;
         "options"?: any;
     }
     interface EText {
@@ -464,7 +464,7 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     interface POauthButton {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
         "variant"?: string;
     }
     interface PSidebar {
@@ -486,7 +486,7 @@ declare namespace LocalJSX {
     interface VCheckout {
         "history"?: RouterHistory;
         "match"?: MatchResults;
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VDeleteAccount {
         "onLogoutUserEvent"?: (event: CustomEvent<any>) => void;
@@ -496,24 +496,24 @@ declare namespace LocalJSX {
     interface VPage1 {
     }
     interface VPaymentCancel {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VPaymentHandle {
         "history"?: RouterHistory;
         "match"?: MatchResults;
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VPostOauth {
         "history"?: RouterHistory;
         "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VSupport {
     }
     interface VVerify {
         "history"?: RouterHistory;
         "match"?: MatchResults;
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;

@@ -1,7 +1,7 @@
 import { ApiVar } from '../..';
 
 export const getAccountDetailsBySessionApi = async () => {
-  let backendPayload_GetAccountDetails_BySession: any;
+  let getAccountDetailsBySessionReturnObj: any;
 
   let url: string = `${ApiVar.url}${ApiVar.endpoint.account.details}`;
   let options: any = {
@@ -15,15 +15,15 @@ export const getAccountDetailsBySessionApi = async () => {
   await fetch(url, options)
     .then(response => response.json())
     .then(data => {
-      backendPayload_GetAccountDetails_BySession = data;
+      getAccountDetailsBySessionReturnObj = data;
     })
     .catch(error => {
       console.log(error);
     });
 
   return {
-    success: backendPayload_GetAccountDetails_BySession.success,
-    message: backendPayload_GetAccountDetails_BySession.message,
-    payload: backendPayload_GetAccountDetails_BySession.payload,
+    success: getAccountDetailsBySessionReturnObj.success,
+    message: getAccountDetailsBySessionReturnObj.message,
+    payload: getAccountDetailsBySessionReturnObj.payload,
   };
 };

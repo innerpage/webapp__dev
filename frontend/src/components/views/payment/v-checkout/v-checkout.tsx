@@ -16,16 +16,16 @@ export class VCheckout {
   @State() isFetched_ViewData: boolean = false;
 
   @Event({
-    eventName: 'event_RouteTo',
+    eventName: 'routeToEvent',
     bubbles: true,
   })
-  event_RouteTo: EventEmitter;
+  routeToEvent: EventEmitter;
 
   @Listen('buttonClick') handle_ButtonClick(e) {
     if (e.detail.action === 'action_Create_CheckoutSession') {
       this.create_Checkout_Session();
     } else if (e.detail.action === 'goBack') {
-      this.event_RouteTo.emit({
+      this.routeToEvent.emit({
         type: 'goBack',
         data: {},
       });
@@ -47,7 +47,7 @@ export class VCheckout {
 
   componentWillLoad() {
     if (!this.match.params.id_Product) {
-      this.event_RouteTo.emit({
+      this.routeToEvent.emit({
         type: 'push',
         route: '/home',
         data: {},

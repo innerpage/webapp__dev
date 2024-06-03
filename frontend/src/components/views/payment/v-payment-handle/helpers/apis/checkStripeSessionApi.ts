@@ -1,7 +1,7 @@
 import { ApiVar } from '../../../../../../global/script';
 
-export const checkStripeSessionApi = async payload_Stripe_SessionCheck => {
-  let backendPayload_Stripe_SessionCheck: any;
+export const checkStripeSessionApi = async stripeSessionCheckPayload => {
+  let returnObj: any;
 
   let url: string = `${ApiVar.url}${ApiVar.endpoint.payment.stripe.session.check}`;
   let options: any = {
@@ -10,21 +10,21 @@ export const checkStripeSessionApi = async payload_Stripe_SessionCheck => {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify(payload_Stripe_SessionCheck),
+    body: JSON.stringify(stripeSessionCheckPayload),
   };
 
   await fetch(url, options)
     .then(response => response.json())
     .then(data => {
-      backendPayload_Stripe_SessionCheck = data;
+      returnObj = data;
     })
     .catch(error => {
       console.log(error);
     });
 
   return {
-    success: backendPayload_Stripe_SessionCheck.success,
-    message: backendPayload_Stripe_SessionCheck.message,
-    payload: backendPayload_Stripe_SessionCheck.payload,
+    success: returnObj.success,
+    message: returnObj.message,
+    payload: returnObj.payload,
   };
 };

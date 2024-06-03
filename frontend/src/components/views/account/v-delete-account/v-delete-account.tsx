@@ -13,7 +13,7 @@ export class VDeleteAccount {
   })
   logoutUserEventEmitter: EventEmitter;
 
-  @Listen('buttonClick') async handle_ButtonClick(e) {
+  @Listen('buttonClick') async handleButtonClickEvent(e) {
     if (e.detail.action === 'deleteAccount') {
       this.deleteAccount();
     }

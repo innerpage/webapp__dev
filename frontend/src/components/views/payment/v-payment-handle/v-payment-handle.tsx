@@ -10,51 +10,51 @@ import { generateCheckStripeSessionPayload, checkStripeSessionApi } from './help
 })
 export class VPaymentHandle {
   @Event({
-    eventName: 'event_RouteTo',
+    eventName: 'routeToEvent',
     bubbles: true,
   })
-  event_RouteTo: EventEmitter;
+  routeToEvent: EventEmitter;
 
   @Prop() match: MatchResults;
   @Prop() history: RouterHistory;
 
-  @State() isFetched_ViewData: boolean = false;
+  @State() isViewDataFetched: boolean = false;
 
-  private id_Session: string;
-  private title_Purchase: string;
+  private sessionId: string;
+  private titlePurchase: string;
 
   componentWillLoad() {
-    if (!this.match.params.id_Session) {
-      this.event_RouteTo.emit({
+    if (!this.match.params.sessionId) {
+      this.routeToEvent.emit({
         type: 'push',
         route: '/home',
         data: {},
       });
     }
 
-    this.id_Session = this.match.params.id_Session.trim();
+    this.sessionId = this.match.params.sessionId.trim();
   }
 
   componentDidLoad() {
     setTimeout(() => {
-      this.fetch_ViewData();
+      this.fetchViewData();
     }, 3000);
   }
 
-  async fetch_ViewData() {
-    let payload_Stripe_SessionCheck: any = generateCheckStripeSessionPayload(this.id_Session);
-    let { success, message, payload } = await checkStripeSessionApi(payload_Stripe_SessionCheck);
+  async fetchViewData() {
+    let checkStripeSessionPayload: any = generateCheckStripeSessionPayload(this.sessionId);
+    let { success, message, payload } = await checkStripeSessionApi(checkStripeSessionPayload);
 
     if (!success) {
       return alert(message);
     }
 
-    this.title_Purchase = payload.title_Purchase;
+    this.titlePurchase = payload.titlePurchase;
 
-    this.isFetched_ViewData = true;
+    this.isViewDataFetched = true;
   }
 
-  UI_Skel: FunctionalComponent = () => (
+  Skel: FunctionalComponent = () => (
     <c-card>
       <e-text>
         <strong>Confirming payment..</strong>
@@ -65,15 +65,14 @@ export class VPaymentHandle {
     </c-card>
   );
 
-  UI_Default: FunctionalComponent = () => (
+  Default: FunctionalComponent = () => (
     <c-card>
       <e-text variant="display" theme="success">
         Payment Successful
       </e-text>
-      {/* <h1 class="text--success">Payment Successful</h1> */}
       <l-spacer value={1}></l-spacer>
       <e-text>
-        You have upgraded to <strong>{this.title_Purchase} Plan</strong>
+        You have upgraded to <strong>{this.titlePurchase} Plan</strong>
       </e-text>
       <l-spacer value={1}></l-spacer>
       <e-link url="/">Go to account</e-link>
@@ -81,7 +80,7 @@ export class VPaymentHandle {
   );
 
   render() {
-    return <Host>{this.isFetched_ViewData ? <this.UI_Default></this.UI_Default> : <this.UI_Skel></this.UI_Skel>}</Host>;
+    return <Host>{this.isViewDataFetched ? <this.Default></this.Default> : <this.Skel></this.Skel>}</Host>;
   }
 }
 

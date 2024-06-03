@@ -10,19 +10,19 @@ export class POauthButton {
   googleOauthButtonEl!: HTMLDivElement;
 
   @Event({
-    eventName: 'event_RouteTo',
+    eventName: 'routeToEvent',
     bubbles: true,
   })
-  event_RouteTo: EventEmitter;
+  routeToEvent: EventEmitter;
 
   @Prop() variant: string = 'google';
 
   @State() isGoogleOauthLoaded: boolean = false;
 
-  private _window: any;
+  private window: any;
 
   componentDidLoad() {
-    this._window = window as any;
+    this.window = window as any;
     this.initGoogleOauth();
   }
 
@@ -49,10 +49,10 @@ export class POauthButton {
         return;
       }
 
-      await this._window.google.accounts.id.initialize({
+      await this.window.google.accounts.id.initialize({
         client_id: state.googleClientId,
         callback: response => {
-          this.event_RouteTo.emit({
+          this.routeToEvent.emit({
             type: 'push',
             route: '/post-oauth',
             data: {
@@ -63,7 +63,7 @@ export class POauthButton {
         },
       });
 
-      await this._window.google.accounts.id.renderButton(this.googleOauthButtonEl, {
+      await this.window.google.accounts.id.renderButton(this.googleOauthButtonEl, {
         type: 'standard',
         theme: 'outline',
         size: 'large',

@@ -8,10 +8,10 @@ import { Vars } from '../../../../global/script';
 })
 export class VPaymentCancel {
   @Event({
-    eventName: 'event_RouteTo',
+    eventName: 'routeToEvent',
     bubbles: true,
   })
-  event_RouteTo: EventEmitter;
+  routeToEvent: EventEmitter;
 
   render() {
     return (

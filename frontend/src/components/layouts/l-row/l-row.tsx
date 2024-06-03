@@ -18,10 +18,10 @@ export class LRow {
   private styleObject: LooseObject = {};
 
   componentWillLoad() {
-    this.generate_StyleObject();
+    this.generateStyleObject();
   }
 
-  generate_StyleObject() {
+  generateStyleObject() {
     // this.styleObject.width = '100%';
     this.styleObject.display = 'flex';
     this.styleObject.alignItems = this.align;

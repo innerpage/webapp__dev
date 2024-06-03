@@ -12,10 +12,10 @@ export class CBanner {
   private styleClasses: string = 'default';
 
   componentWillLoad() {
-    this.generate_Styles();
+    this.generateStyles();
   }
 
-  generate_Styles() {
+  generateStyles() {
     this.styleClasses = this.styleClasses + ` theme--${this.theme}`;
 
     if (this.position === 'bottom') {

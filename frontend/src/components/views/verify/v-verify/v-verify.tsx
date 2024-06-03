@@ -13,10 +13,10 @@ import { generateEmailVerificationPayload, validateEmailVerificationPayload, ver
 })
 export class VVerify {
   @Event({
-    eventName: 'event_RouteTo',
+    eventName: 'routeToEvent',
     bubbles: true,
   })
-  event_RouteTo: EventEmitter;
+  routeToEvent: EventEmitter;
 
   @Listen('buttonClick') handleButtonClick(e) {
     if (e.detail.action === 'confirmPassword') {
@@ -49,7 +49,7 @@ export class VVerify {
 
   componentWillLoad() {
     if (!this.match.params.type || !this.match.params.code) {
-      return this.event_RouteTo.emit({
+      return this.routeToEvent.emit({
         type: 'push',
         route: '/',
         data: {},

@@ -32,7 +32,7 @@ export class PAuth {
   })
   authSuccessfulEventEmitter: EventEmitter;
 
-  @Listen('buttonClick') handle_ButtonClick(e) {
+  @Listen('buttonClick') handleButtonClickEvent(e) {
     if (e.detail.action === 'loginUser') {
       this.loginUser();
     } else if (e.detail.action === 'signupUser') {

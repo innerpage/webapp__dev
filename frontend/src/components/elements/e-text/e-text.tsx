@@ -13,10 +13,10 @@ export class EText {
   private styleClasses: string;
 
   componentWillLoad() {
-    this.generate_StyleClasses();
+    this.generateStyles();
   }
 
-  generate_StyleClasses() {
+  generateStyles() {
     this.styleClasses = `${this.variant} ${this.theme} ${this.weight}`;
   }
 

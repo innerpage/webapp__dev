@@ -22,17 +22,17 @@ export class EButton {
     eventName: 'buttonClick',
     bubbles: true,
   })
-  event_ButtonClick: EventEmitter;
+  buttonClickEventEmitter: EventEmitter;
 
-  @Watch('active') watch_ActionStatus(val_New: boolean, val_Old: boolean) {
-    if (val_New != val_Old) {
-      this.inAction = val_New;
+  @Watch('active') actionWatcher(newVal: boolean, oldVal: boolean) {
+    if (newVal != oldVal) {
+      this.inAction = newVal;
     }
   }
 
-  private handle_ButtonClick(e) {
+  private handleButtonClick(e) {
     e.preventDefault();
-    this.event_ButtonClick.emit({
+    this.buttonClickEventEmitter.emit({
       action: this.action,
       value: this.value,
     });
@@ -42,10 +42,10 @@ export class EButton {
 
   componentWillLoad() {
     this.inAction = this.active;
-    this.generate_StyleClasses();
+    this.generateStyles();
   }
 
-  generate_StyleClasses() {
+  generateStyles() {
     this.styleClasses = `${this.variant}--${this.theme} ${this.size}`;
   }
 
@@ -53,7 +53,7 @@ export class EButton {
     return (
       <button
         class={`${this.styleClasses} ${this.inAction && 'in-action'}`}
-        onClick={e => this.handle_ButtonClick(e)}
+        onClick={e => this.handleButtonClick(e)}
         disabled={this.disabled || this.inAction}
         ref={el => (this.buttonEl = el as HTMLButtonElement)}
       >

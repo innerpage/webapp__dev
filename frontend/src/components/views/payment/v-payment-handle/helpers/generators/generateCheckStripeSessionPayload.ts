@@ -1,7 +1,7 @@
-export const generateCheckStripeSessionPayload = (id_Session: string) => {
-  let payload_Stripe_SessionCheck = {
-    id_Session: id_Session.trim(),
+export const generateCheckStripeSessionPayload = (sessionId: string) => {
+  let checkStripeSessionPayload = {
+    sessionId: sessionId.trim(),
   };
 
-  return payload_Stripe_SessionCheck;
+  return checkStripeSessionPayload;
 };

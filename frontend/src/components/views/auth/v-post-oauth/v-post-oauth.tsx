@@ -16,10 +16,10 @@ export class VPostOauth {
   authSuccessfulEventEmitter: EventEmitter;
 
   @Event({
-    eventName: 'event_RouteTo',
+    eventName: 'routeToEvent',
     bubbles: true,
   })
-  event_RouteTo: EventEmitter;
+  routeToEvent: EventEmitter;
 
   @Prop() history: RouterHistory;
 
@@ -45,7 +45,7 @@ export class VPostOauth {
     this.authSuccessfulEventEmitter.emit();
 
     setTimeout(() => {
-      this.event_RouteTo.emit({
+      this.routeToEvent.emit({
         type: 'push',
         route: '/',
         data: {},

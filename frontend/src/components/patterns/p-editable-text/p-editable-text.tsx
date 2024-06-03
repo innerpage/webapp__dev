@@ -9,7 +9,7 @@ import { state } from '../../../global/script';
   shadow: true,
 })
 export class PEditableText {
-  @Listen('buttonClick') async handle_ButtonClick(e) {
+  @Listen('buttonClick') async handleButtonClickEvent(e) {
     if (e.detail.action === 'startEditMode') {
       this.isEditModeOn = true;
     } else if (e.detail.action === 'cancelEditMode') {
