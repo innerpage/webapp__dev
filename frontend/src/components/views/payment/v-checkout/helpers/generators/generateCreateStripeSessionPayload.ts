@@ -1,7 +1,7 @@
-export const generateCreateStripeSessionPayload = (id_Document: string) => {
-  let payload_Create_Stripe_CheckoutSession = {
-    id_Document: id_Document,
+export const generateCreateStripeSessionPayload = (documentId: string) => {
+  let createStripeCheckoutSessionPayload = {
+    documentId: documentId,
   };
 
-  return payload_Create_Stripe_CheckoutSession;
+  return createStripeCheckoutSessionPayload;
 };

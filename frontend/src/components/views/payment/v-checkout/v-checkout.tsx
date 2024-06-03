@@ -13,7 +13,7 @@ import { loadStripe } from '@stripe/stripe-js';
 export class VCheckout {
   @Prop() match: MatchResults;
   @Prop() history: RouterHistory;
-  @State() isFetched_ViewData: boolean = false;
+  @State() isViewDataFetched: boolean = false;
 
   @Event({
     eventName: 'routeToEvent',
@@ -21,9 +21,9 @@ export class VCheckout {
   })
   routeToEvent: EventEmitter;
 
-  @Listen('buttonClick') handle_ButtonClick(e) {
-    if (e.detail.action === 'action_Create_CheckoutSession') {
-      this.create_Checkout_Session();
+  @Listen('buttonClick') handleButtonClickEvent(e) {
+    if (e.detail.action === 'createCheckoutSession') {
+      this.createStripeCheckoutSession();
     } else if (e.detail.action === 'goBack') {
       this.routeToEvent.emit({
         type: 'goBack',
@@ -32,21 +32,21 @@ export class VCheckout {
     }
   }
 
-  @State() isActive_ConfirmAndPay_Button: boolean = false;
-  @State() isDisabled_ConfirmAndPay_Button: boolean = true;
+  @State() isConfirmAndPayButtonActive: boolean = false;
+  @State() isConfirmAndPayButtonDisabled: boolean = true;
 
-  private data_Checkout: any;
-  private id_Product: string = '';
-  private name_Product: string = '';
-  private subscription_Type: string = '';
-  private price_Currency: string = '';
-  private price_Product: number = 0;
-  private price_Total: number = 0;
-  private stripe_Key_Public: string = '';
+  private payload: any;
+  private productId: string = '';
+  private productName: string = '';
+  private subscriptionType: string = '';
+  private currency: string = '';
+  private price: number = 0;
+  private total: number = 0;
+  private stripePublicKey: string = '';
   private stripe: any;
 
   componentWillLoad() {
-    if (!this.match.params.id_Product) {
+    if (!this.match.params.productId) {
       this.routeToEvent.emit({
         type: 'push',
         route: '/home',
@@ -54,41 +54,41 @@ export class VCheckout {
       });
     }
 
-    this.id_Product = this.match.params.id_Product.trim();
+    this.productId = this.match.params.productId.trim();
   }
 
   componentDidLoad() {
-    this.fetch_ViewData();
+    this.fetchViewData();
   }
 
-  async fetch_ViewData() {
+  async fetchViewData() {
     // Get price
     let payload = {};
 
-    this.data_Checkout = payload;
-    this.init_ViewData();
-    this.init_Stripe();
+    this.payload = payload;
+    this.initViewData();
+    this.initStripe();
 
-    this.isFetched_ViewData = true;
+    this.isViewDataFetched = true;
   }
 
-  init_ViewData() {
-    this.name_Product = this.data_Checkout.product.name;
-    this.price_Currency = this.data_Checkout.price.currency;
-    this.price_Product = this.data_Checkout.price.value;
-    this.stripe_Key_Public = this.data_Checkout.gateway.stripe_Key_Public;
+  initViewData() {
+    this.productName = this.payload.product.name;
+    this.currency = this.payload.price.currency;
+    this.price = this.payload.price.value;
+    this.stripePublicKey = this.payload.gateway.stripePublicKey;
   }
 
-  async init_Stripe() {
-    this.stripe = await loadStripe(this.stripe_Key_Public!);
-    this.isDisabled_ConfirmAndPay_Button = false;
+  async initStripe() {
+    this.stripe = await loadStripe(this.stripePublicKey!);
+    this.isConfirmAndPayButtonDisabled = false;
   }
 
-  async create_Checkout_Session() {
-    let payload_Create_Stripe_CheckoutSession: any = generateCreateStripeSessionPayload(this.id_Product);
-    this.isActive_ConfirmAndPay_Button = true;
-    let { success, message, payload } = await createStripeSessionApi(payload_Create_Stripe_CheckoutSession);
-    this.isActive_ConfirmAndPay_Button = false;
+  async createStripeCheckoutSession() {
+    let createStripeCheckoutSessionPayload: any = generateCreateStripeSessionPayload(this.productId);
+    this.isConfirmAndPayButtonActive = true;
+    let { success, message, payload } = await createStripeSessionApi(createStripeCheckoutSessionPayload);
+    this.isConfirmAndPayButtonActive = false;
     if (!success) {
       return alert(message);
     }
@@ -99,7 +99,7 @@ export class VCheckout {
     console.warn(error.message);
   }
 
-  ui_Skel_Lines: FunctionalComponent = () => (
+  SkelLines: FunctionalComponent = () => (
     <div>
       <l-spacer value={1}></l-spacer>
       <div class="skel__line"></div>
@@ -111,24 +111,24 @@ export class VCheckout {
     </div>
   );
 
-  ui_Details: FunctionalComponent = () => (
+  Details: FunctionalComponent = () => (
     <div>
-      <e-text variant="subHeading">{this.name_Product}</e-text>
-      <e-text>{this.subscription_Type}</e-text>
+      <e-text variant="subHeading">{this.productName}</e-text>
+      <e-text>{this.subscriptionType}</e-text>
       <l-spacer value={0.5}></l-spacer>
       <l-seperator></l-seperator>
     </div>
   );
 
-  ui_Summary: FunctionalComponent = () => (
+  Summary: FunctionalComponent = () => (
     <div>
       {' '}
       <table>
         <tr>
           <td>Item cost</td>
           <td>
-            {this.price_Currency}
-            {this.price_Product}
+            {this.currency}
+            {this.price}
           </td>
         </tr>
         <tr>
@@ -137,8 +137,8 @@ export class VCheckout {
           </td>
           <td>
             <strong>
-              {this.price_Currency}
-              {this.price_Total}
+              {this.currency}
+              {this.total}
             </strong>
           </td>
         </tr>
@@ -150,26 +150,26 @@ export class VCheckout {
     return (
       <Host>
         <c-card>
-          {this.isFetched_ViewData ? (
+          {this.isViewDataFetched ? (
             <div>
-              <this.ui_Details></this.ui_Details>
+              <this.Details></this.Details>
               <l-spacer value={0.25}></l-spacer>
-              <this.ui_Summary></this.ui_Summary>
+              <this.Summary></this.Summary>
               <l-spacer value={0.5}></l-spacer>
               <e-text variant="footnote">Item cost includes GST</e-text>
             </div>
           ) : (
             <div>
-              <this.ui_Skel_Lines></this.ui_Skel_Lines>
+              <this.SkelLines></this.SkelLines>
               <l-spacer value={2}></l-spacer>
-              <this.ui_Skel_Lines></this.ui_Skel_Lines>
+              <this.SkelLines></this.SkelLines>
             </div>
           )}
 
           <l-spacer value={2}></l-spacer>
           <l-row justifyContent="space-between">
             <e-button action="goBack">Back</e-button>
-            <e-button action="action_Create_CheckoutSession" disabled={this.isDisabled_ConfirmAndPay_Button} active={this.isActive_ConfirmAndPay_Button}>
+            <e-button action="createCheckoutSession" disabled={this.isConfirmAndPayButtonDisabled} active={this.isConfirmAndPayButtonActive}>
               Confirm & pay
             </e-button>
           </l-row>

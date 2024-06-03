@@ -1,9 +1,9 @@
 import { ApiVar } from '../../../../../../global/script';
 
-export const getStripePriceApi = async payload_Get_Price_Inputs => {
-  let backendPayload_Get_Price: any;
+export const getStripePriceApi = async getPricePayload => {
+  let returnObj: any;
 
-  let url: string = `${ApiVar.url}${ApiVar.endpoint.payment.stripe.price.get}?${new URLSearchParams(payload_Get_Price_Inputs)}`;
+  let url: string = `${ApiVar.url}${ApiVar.endpoint.payment.stripe.price.get}?${new URLSearchParams(getPricePayload)}`;
 
   let options: any = {
     method: 'GET',
@@ -16,15 +16,15 @@ export const getStripePriceApi = async payload_Get_Price_Inputs => {
   await fetch(url, options)
     .then(response => response.json())
     .then(data => {
-      backendPayload_Get_Price = data;
+      returnObj = data;
     })
     .catch(error => {
       console.log(error);
     });
 
   return {
-    success: backendPayload_Get_Price.success,
-    message: backendPayload_Get_Price.message,
-    payload: backendPayload_Get_Price.payload,
+    success: returnObj.success,
+    message: returnObj.message,
+    payload: returnObj.payload,
   };
 };

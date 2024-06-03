@@ -1,8 +1,8 @@
 import { ApiVar } from '../../../../../../global/script';
 
 export const deleteAccountApiCall = async () => {
-  let isAccountDeletionSuccessful: boolean = false;
-  let accountDeletionReturnObject: any;
+  let isSuccess: boolean = false;
+  let returnObj: any;
   let url: string = `${ApiVar.url}${ApiVar.endpoint.account.details}`;
   let options: any = {
     method: 'DELETE',
@@ -15,16 +15,16 @@ export const deleteAccountApiCall = async () => {
   await fetch(url, options)
     .then(response => response.json())
     .then(data => {
-      accountDeletionReturnObject = data;
-      isAccountDeletionSuccessful = accountDeletionReturnObject.success;
+      returnObj = data;
+      isSuccess = returnObj.success;
     })
     .catch(error => {
       console.log(error);
     });
 
   return {
-    success: isAccountDeletionSuccessful,
-    message: accountDeletionReturnObject.message,
-    payload: accountDeletionReturnObject.payload,
+    success: isSuccess,
+    message: returnObj.message,
+    payload: returnObj.payload,
   };
 };
