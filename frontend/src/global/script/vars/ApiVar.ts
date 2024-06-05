@@ -1,5 +1,12 @@
 export const ApiVar = {
   url: document.domain === 'localhost' ? 'http://localhost:4444' : 'https://api.example.com',
+  keys: {
+    oauth: {
+      google: {
+        clientId: '411214741221-lpl9pf804a1qb5a0t4dvgavfeh6k3l14.apps.googleusercontent.com',
+      },
+    },
+  },
   endpoint: {
     account: {
       details: '/account',

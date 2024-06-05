@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Prop, State, h } from '@stencil/core';
-import { state } from '../../../global/script';
+import { ApiVar } from '../../../global/script';
 
 @Component({
   tag: 'p-oauth-button',
@@ -50,7 +50,7 @@ export class POauthButton {
       }
 
       await this.window.google.accounts.id.initialize({
-        client_id: state.googleClientId,
+        client_id: ApiVar.keys.oauth.google.clientId,
         callback: response => {
           this.routeToEvent.emit({
             type: 'push',

@@ -3,7 +3,7 @@
 - `git clone git@github.com-projckt:projckt/starter_webapp-dev.git dev`
 - `cd dev`
 
-## Edit remote
+## Edit remote of cloned repo
 
 - `git remote set-url origin git@github.com-{username}:{username}/{repo_name}-dev.git`
 
@@ -20,16 +20,15 @@
 - Change `name`
 - Change `description`
 
-## Edit `<meta>` and `<title>`
+## Edit ./frontend/src/index.html
 
-- Change `<meta name="description">` in ./frontend/src/index.html
+- Change `<meta name="description">`
 - Change `<title></title>`
 
 ## Edit ./frontend/src/manifest.json
 
 - Change `name`
 - Change `short_name`
-- Change `font-family` (Optional)
 
 ## Edit ./frontend/stencil.config.ts
 
@@ -37,16 +36,5 @@
 
 ## Edit ./frontend/src/global/script/vars/ApiVar.ts
 
-- Change `url` for production
-
-## Edit ./frontend/src/global/script/store/store.ts
-
-- Change `googleClientId`
-
-## Edit ./frontend/src/components/views/app/v-home/v-home.tsx
-
-- Remove `TEMPLATE CODE`
-
-## Edit ./frontend/src/components/views/app/v-home/v-home.css
-
-- Remove `TEMPLATE CODE`
+- Change `ApiVar.url` for production
+- Change `ApiVar.keys.oauth.google.clientId`
