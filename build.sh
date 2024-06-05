@@ -1,21 +1,29 @@
+## Delete old files
+rm -rf ../prod server/dest
+mkdir ../prod
+
+## Build server
+npm run --prefix server build
+rsync -av --delete server/dest/ ../prod
+cp server/{.gitignore,package.json,.env} ../prod
+
 ## Build ./frontend
-cd frontend
-npm run build --prerender
-rsync -av --delete www/ ../../prod
+npm run --prefix frontend build 
+rsync -av --delete frontend/www/ ../prod/www
+
+## Init prod
+npm --prefix ../prod install
 
 ## Init git in ./prod
-cd ..
-cd ..
-cd prod
-git init
-git remote add origin git@github.com-{username}:{username}/{repo_name}-prod.git
+git init ../prod
+# git -C ../prod remote add origin git@github.com-{username}:{username}/{repo_name}-prod.git
+git -C ../prod remote add origin git@github.com-projckt:projckt/starter_webapp-prod.git
 
 ## Push prod 
-git add --all
-git commit -m "Deploy build `date`"
-git push origin main --force
+git -C ../prod add --all
+git -C ../prod commit -m "Deploy build `date`"
+git -C ../prod push origin main --force
 
-# Reset
-cd ..
-cd dev
+
+
 
