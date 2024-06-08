@@ -5,7 +5,7 @@
 
 ## Edit remote of cloned repo
 
-- `git remote set-url origin git@github.com-{username}:{username}/{repo_name}-dev.git`
+- Change to `git remote set-url origin git@github.com-{username}:{username}/{repo_name}__dev.git`
 
 ## Install dependencies
 
@@ -13,7 +13,7 @@
 
 ## Edit ./build.sh
 
-- Change production repo to `git@github.com-{username}:{username}/{repo_name}-prod.git`
+- Change production repo to `git@github.com-{username}:{username}/{repo_name}__prod.git`
 
 ## Edit ./frontend/package.json
 
