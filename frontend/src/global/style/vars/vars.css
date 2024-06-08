@@ -3,10 +3,11 @@
   --font-size--display: 1.5em;
   --font-size--heading: 1.25em;
   --font-size--footnote: 0.8em;
-
   --font-weight--display: 700;
   --font-weight--heading: 500;
   --font-weight--body: 400;
+  --font-family: "IBM Plex Sans", sans-serif;
+
   --padding: 1em;
   --border-radius: 0.5em;
   --line-height: 1.8;
