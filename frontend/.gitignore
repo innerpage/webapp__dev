@@ -17,8 +17,14 @@ log.txt
 .vscode/
 .sass-cache/
 .versions/
+.editorconfig
+.prettierrc.json
 node_modules/
 $RECYCLE.BIN/
+www/
+dist/
+LICENSE
+package-lock.json
 
 .DS_Store
 Thumbs.db
