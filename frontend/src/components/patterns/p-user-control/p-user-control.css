@@ -12,7 +12,7 @@ c-card {
   -moz-box-shadow: 0px -2px 33px 1px rgba(0, 0, 0, 0.15);
   box-shadow: 0px -2px 33px 1px rgba(0, 0, 0, 0.15);
   right: 0.5em;
-  padding-bottom: var(--site__padding);
+  padding-bottom: var(--padding);
 }
 
 ph-caret-up,

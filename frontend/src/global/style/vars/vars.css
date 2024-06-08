@@ -1,15 +1,15 @@
 :root {
-  --site__font-size--body: 15px;
-  --site__font-size--display: 1.5em;
-  --site__font-size--heading: 1.25em;
-  --site__font-size--footnote: 0.8em;
+  --font-size--body: 16px;
+  --font-size--display: 1.5em;
+  --font-size--heading: 1.25em;
+  --font-size--footnote: 0.8em;
 
-  --site__font-weight--display: 700;
-  --site__font-weight--heading: 500;
-  --site__font-weight--body: 400;
-  --site__padding: 1em;
-  --site__border-radius: 0.5em;
-  --site__line-height: 1.8;
+  --font-weight--display: 700;
+  --font-weight--heading: 500;
+  --font-weight--body: 400;
+  --padding: 1em;
+  --border-radius: 0.5em;
+  --line-height: 1.8;
 
   --color__site--background: #121212;
 

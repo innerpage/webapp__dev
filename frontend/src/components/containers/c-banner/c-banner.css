@@ -1,8 +1,8 @@
 .default {
   display: block;
   box-sizing: border-box;
-  padding: var(--site__padding);
-  border-radius: var(--site__border-radius);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
 }
 
 /* POSITION */

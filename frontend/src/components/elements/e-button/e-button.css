@@ -3,8 +3,8 @@ button {
   background: none;
   border: 0;
   font-size: 0.9em;
-  padding: calc(var(--site__padding) / 1.5) var(--site__padding);
-  border-radius: var(--site__border-radius);
+  padding: calc(var(--padding) / 1.5) var(--padding);
+  border-radius: var(--border-radius);
   transition: all 0.25s;
 }
 

@@ -1,9 +1,9 @@
-@import 'reset/reset.css';
-@import 'vars/vars.css';
+@import "reset/reset.css";
+@import "vars/vars.css";
 
 body {
-  font-size: var(--site__font-size--body);
+  font-size: var(--font-size--body);
   color: var(--color__grey--dark);
-  font-family: 'IBM Plex Sans', sans-serif;
-  line-height: var(--site__line-height);
+  font-family: "IBM Plex Sans", sans-serif;
+  line-height: var(--line-height);
 }

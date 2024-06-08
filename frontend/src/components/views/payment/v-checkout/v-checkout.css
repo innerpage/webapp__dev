@@ -13,10 +13,10 @@ c-card {
   width: 100%;
   height: 150px;
   background: wheat;
-  border-radius: var(--site__border-radius);
+  border-radius: var(--border-radius);
 }
 
-input[type='radio']:hover {
+input[type="radio"]:hover {
   cursor: pointer;
 }
 
@@ -41,7 +41,12 @@ td {
   height: 10px;
   border-radius: 0.25em;
   background: #ccc;
-  background-image: linear-gradient(90deg, #f4f4f4 0px, rgba(229, 229, 229, 0.8) 40%, #f4f4f4 100%);
+  background-image: linear-gradient(
+    90deg,
+    #f4f4f4 0px,
+    rgba(229, 229, 229, 0.8) 40%,
+    #f4f4f4 100%
+  );
   background-size: 200%;
   animation: skel-shine 1s infinite ease-out;
 }
