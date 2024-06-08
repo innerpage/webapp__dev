@@ -24,11 +24,14 @@
 
 - Change `<meta name="description">`
 - Change `<title></title>`
+- Change `/add/link/to/icon.png`
+- Change `/add/link/to/favicon.ico`
 
 ## Edit ./frontend/src/manifest.json
 
 - Change `name`
 - Change `short_name`
+- Change `icons.src`
 
 ## Edit ./frontend/stencil.config.ts
 
