@@ -1,37 +1,38 @@
-import { mailPayloadInterface } from '../../interfaces';
-import { ApiVar } from '../../';
+import { MailPayloadInterface } from "../../interfaces";
+import { Var } from "../..";
 
-export const mailApi = async (mailPayload: mailPayloadInterface) => {
-  let url: string = '';
+export const MailApi = async (payload: MailPayloadInterface) => {
+  let url: string = "";
 
-  if (mailPayload.type === 'emailVerificationLink' || mailPayload.type === 'passwordResetLink') {
-    url = `${ApiVar.url}${ApiVar.endpoint.mail.verificationLink}`;
+  if (
+    payload.type === "emailVerificationLink" ||
+    payload.type === "passwordResetLink"
+  ) {
+    url = `${Var.api.url}${Var.api.endpoint.mail.verificationLink}`;
   }
 
   let options: any = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
-    body: JSON.stringify(mailPayload),
+    credentials: "include",
+    body: JSON.stringify(payload),
   };
 
-  let payload: any;
-  let success: boolean = false;
+  let returnObj: any;
   await fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
-      payload = data;
-      success = payload.success;
+    .then((response) => response.json())
+    .then((data) => {
+      returnObj = data;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 
   return {
-    success: success,
-    message: payload.message,
-    payload: payload,
+    success: returnObj.success,
+    message: returnObj.message,
+    payload: returnObj.payload,
   };
 };

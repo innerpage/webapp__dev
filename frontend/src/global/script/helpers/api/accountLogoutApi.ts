@@ -1,31 +1,29 @@
-import { ApiVar } from '../..';
+import { Var } from "../..";
 
-export const accountLogoutApi = async () => {
-  let logoutPayload: any;
-  let isLoggedOut: boolean = false;
+export const AccountLogoutApi = async () => {
+  let returnObj: any;
 
-  let url: string = `${ApiVar.url}${ApiVar.endpoint.account.auth.logout}`;
+  let url: string = `${Var.api.url}${Var.api.endpoint.account.auth.logout}`;
   let options: any = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
   };
 
   await fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
-      logoutPayload = data;
-      isLoggedOut = true;
+    .then((response) => response.json())
+    .then((data) => {
+      returnObj = data;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 
-  if (!isLoggedOut) {
-    return { success: false, message: logoutPayload.message, payload: {} };
-  } else {
-    return { success: true, message: logoutPayload.message, payload: logoutPayload };
-  }
+  return {
+    success: returnObj.success,
+    message: returnObj.message,
+    payload: returnObj.payload,
+  };
 };

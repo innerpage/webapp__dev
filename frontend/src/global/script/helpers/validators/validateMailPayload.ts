@@ -1,5 +1,5 @@
-import Joi from 'joi';
-import { mailPayloadInterface } from '../../interfaces';
+import Joi from "joi";
+import { MailPayloadInterface } from "../../interfaces";
 
 const validateMailPayloadSchema = Joi.object({
   email: Joi.string()
@@ -12,12 +12,15 @@ const validateMailPayloadSchema = Joi.object({
   type: Joi.string().trim().required(),
 });
 
-export const validateMailPayload = (mailPayload: mailPayloadInterface) => {
+export const validateMailPayload = (mailPayload: MailPayloadInterface) => {
   let { error } = validateMailPayloadSchema.validate(mailPayload);
 
   if (error) {
-    return { isValid: false, validationMessage: `❌ ${error.details[0].message}` };
+    return {
+      isValid: false,
+      validationMessage: `❌ ${error.details[0].message}`,
+    };
   } else {
-    return { isValid: true, validationMessage: '' };
+    return { isValid: true, validationMessage: "" };
   }
 };

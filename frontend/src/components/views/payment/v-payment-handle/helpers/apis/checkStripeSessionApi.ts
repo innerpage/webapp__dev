@@ -1,24 +1,24 @@
-import { ApiVar } from '../../../../../../global/script';
+import { Var } from "../../../../../../global/script";
 
-export const checkStripeSessionApi = async stripeSessionCheckPayload => {
+export const checkStripeSessionApi = async (stripeSessionCheckPayload) => {
   let returnObj: any;
 
-  let url: string = `${ApiVar.url}${ApiVar.endpoint.payment.stripe.session.check}`;
+  let url: string = `${Var.api.url}${Var.api.endpoint.payment.stripe.session.check}`;
   let options: any = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(stripeSessionCheckPayload),
   };
 
   await fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       returnObj = data;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 

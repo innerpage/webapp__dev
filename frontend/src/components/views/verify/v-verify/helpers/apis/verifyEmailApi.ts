@@ -1,26 +1,28 @@
-import { emailVerificationPayloadInterface } from '../../interfaces';
-import { ApiVar } from '../../../../../../global/script';
+import { emailVerificationPayloadInterface } from "../../interfaces";
+import { Var } from "../../../../../../global/script";
 
-export const verifyEmailApi = async (emailVerificationPayload: emailVerificationPayloadInterface) => {
-  let url: string = `${ApiVar.url}${ApiVar.endpoint.mail.verificationLink}`;
+export const verifyEmailApi = async (
+  emailVerificationPayload: emailVerificationPayloadInterface
+) => {
+  let url: string = `${Var.api.url}${Var.api.endpoint.mail.verificationLink}`;
   let options: any = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(emailVerificationPayload),
   };
 
   let payload: any;
   let success: boolean = false;
   await fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       payload = data;
       success = payload.success;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 

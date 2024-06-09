@@ -1,5 +1,4 @@
 export { state as Store } from "./store/store";
-export { Vars } from "./vars/vars";
-export { Io } from "./socket/io";
-export { InitSocket } from "./socket/io";
-export { ApiVar } from "./vars/ApiVar";
+export { Io } from "./socket/Io";
+export { InitSocket } from "./socket/Io";
+export { Var } from "./vars/var";

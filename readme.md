@@ -37,7 +37,7 @@
 
 - Change `baseUrl` in `outputTargets`
 
-## Edit ./frontend/src/global/script/vars/ApiVar.ts
+## Edit ./frontend/src/global/script/vars/Var.ts
 
-- Change `ApiVar.url` for production
-- Change `ApiVar.keys.oauth.google.clientId`
+- Change `Var.api.url` for production
+- Change `Var.keys.oauth.google.clientId`

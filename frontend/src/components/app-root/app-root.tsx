@@ -10,17 +10,17 @@ import {
 import { RouterHistory, injectHistory } from "@stencil/router";
 import { Store, Io, InitSocket } from "../../global/script";
 import { setStore } from "./helpers";
-import {
-  getAccountDetailsBySessionApi,
-  accountLogoutApi,
-} from "../../global/script/helpers";
-import { getLoggedInCookie } from "./helpers";
-import { mailPayloadInterface } from "../../global/script/interfaces";
+import { MailApi } from "../../global/script/helpers";
+import { getSessionCookie } from "./helpers";
+import { MailPayloadInterface } from "../../global/script/interfaces";
 import {
   generateMailPayload,
   validateMailPayload,
 } from "../../global/script/helpers";
-import { mailApi } from "../../global/script/helpers";
+import {
+  AccountDetailsBySessionApi,
+  AccountLogoutApi,
+} from "../../global/script/helpers";
 
 @Component({
   tag: "app-root",
@@ -30,7 +30,7 @@ import { mailApi } from "../../global/script/helpers";
 export class AppRoot {
   @Prop() history: RouterHistory;
 
-  @State() isMailEmailVerificationLinkButtonActive: boolean = false;
+  @State() isMailingEmailVerificationLink: boolean = false;
   @State() modal: string;
 
   @Listen("authSuccessful") authSuccessfulListener() {
@@ -43,7 +43,7 @@ export class AppRoot {
 
   @Listen("buttonClick") async handleButtonClick(e) {
     if (e.detail.action === "mailEmailVerificationLink") {
-      let mailEmailVerificationLinkPayload: mailPayloadInterface =
+      let mailEmailVerificationLinkPayload: MailPayloadInterface =
         generateMailPayload(Store.accountEmail, "emailVerificationLink");
       let { isValid, validationMessage } = validateMailPayload(
         mailEmailVerificationLinkPayload
@@ -52,11 +52,11 @@ export class AppRoot {
         return alert(validationMessage);
       }
 
-      this.isMailEmailVerificationLinkButtonActive = true;
-      let { success, message, payload } = await mailApi(
+      this.isMailingEmailVerificationLink = true;
+      let { success, message, payload } = await MailApi(
         mailEmailVerificationLinkPayload
       );
-      this.isMailEmailVerificationLinkButtonActive = false;
+      this.isMailingEmailVerificationLink = false;
 
       if (!success) {
         return alert(message);
@@ -127,11 +127,11 @@ export class AppRoot {
   }
 
   getCookies() {
-    Store.isSessionActive = getLoggedInCookie();
+    Store.isSessionActive = getSessionCookie();
   }
 
   async initSession() {
-    let { success, message, payload } = await getAccountDetailsBySessionApi();
+    let { success, message, payload } = await AccountDetailsBySessionApi();
     if (!success) {
       return alert(message);
     }
@@ -140,7 +140,7 @@ export class AppRoot {
   }
 
   async logoutUser() {
-    let { success, message, payload } = await accountLogoutApi();
+    let { success, message, payload } = await AccountLogoutApi();
     if (!success) {
       return alert(message);
     }
@@ -175,7 +175,7 @@ export class AppRoot {
           <l-spacer variant="horizontal" value={0.5}></l-spacer>
           <e-button
             action="mailEmailVerificationLink"
-            active={this.isMailEmailVerificationLinkButtonActive}
+            active={this.isMailingEmailVerificationLink}
           >
             Verify email
           </e-button>{" "}

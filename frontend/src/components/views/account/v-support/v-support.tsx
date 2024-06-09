@@ -1,5 +1,5 @@
 import { Component, Host, h } from "@stencil/core";
-import { Vars, Store } from "../../../../global/script";
+import { Var, Store } from "../../../../global/script";
 
 @Component({
   tag: "v-support",
@@ -25,8 +25,8 @@ export class VSupport {
                 To report bugs or request new features, kindly write to us
                 at:&nbsp;
               </e-text>
-              <e-link variant="email" url={`mailto:${Vars.app.contact.email}`}>
-                {Vars.app.contact.email}
+              <e-link variant="email" url={`mailto:${Var.app.contact.email}`}>
+                {Var.app.contact.email}
               </e-link>
             </c-card>
           </c-main>

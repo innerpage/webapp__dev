@@ -1,26 +1,28 @@
-import { confirmPasswordPayloadInterface } from '../../../interfaces';
-import { ApiVar } from '../../../../../../global/script';
+import { confirmPasswordPayloadInterface } from "../../../interfaces";
+import { Var } from "../../../../../../global/script";
 
-export const confirmPasswordApi = async (confirmPasswordPayload: confirmPasswordPayloadInterface) => {
-  let url: string = `${ApiVar.url}${ApiVar.endpoint.account.password}`;
+export const confirmPasswordApi = async (
+  confirmPasswordPayload: confirmPasswordPayloadInterface
+) => {
+  let url: string = `${Var.api.url}${Var.api.endpoint.account.password}`;
   let options: any = {
-    method: 'PUT',
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(confirmPasswordPayload),
   };
 
   let payload: any;
   let success: boolean = false;
   await fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       payload = data;
       success = payload.success;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 

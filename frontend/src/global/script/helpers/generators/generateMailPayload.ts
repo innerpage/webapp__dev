@@ -1,7 +1,7 @@
-import { mailPayloadInterface } from '../../interfaces';
+import { MailPayloadInterface } from "../../interfaces";
 
 export const generateMailPayload = (email: string, type: string) => {
-  let emaiPayload: mailPayloadInterface = {
+  let emaiPayload: MailPayloadInterface = {
     email: email.trim().toLowerCase(),
     type: type,
   };

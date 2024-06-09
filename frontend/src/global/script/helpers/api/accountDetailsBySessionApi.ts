@@ -1,12 +1,9 @@
-import { Var } from "../../../../../../global/script";
+import { Var } from "../..";
 
-export const getStripePriceApi = async (getPricePayload) => {
+export const AccountDetailsBySessionApi = async () => {
   let returnObj: any;
 
-  let url: string = `${Var.api.url}${
-    Var.api.endpoint.payment.stripe.price.get
-  }?${new URLSearchParams(getPricePayload)}`;
-
+  let url: string = `${Var.api.url}${Var.api.endpoint.account.details}`;
   let options: any = {
     method: "GET",
     headers: {

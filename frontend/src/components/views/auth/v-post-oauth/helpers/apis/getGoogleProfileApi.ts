@@ -1,25 +1,27 @@
-import { getGoogleProfilePayloadInterface } from '../../interfaces';
-import { ApiVar } from '../../../../../../global/script';
+import { getGoogleProfilePayloadInterface } from "../../interfaces";
+import { Var } from "../../../../../../global/script";
 
-export const getGoogleProfileApi = async (getGoogleProfilePayload: getGoogleProfilePayloadInterface) => {
+export const getGoogleProfileApi = async (
+  getGoogleProfilePayload: getGoogleProfilePayloadInterface
+) => {
   let backendPayload: any;
 
-  let url: string = `${ApiVar.url}${ApiVar.endpoint.account.auth.oauth.google}`;
+  let url: string = `${Var.api.url}${Var.api.endpoint.account.auth.oauth.google}`;
   let options: any = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(getGoogleProfilePayload),
   };
 
   await fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       backendPayload = data;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 

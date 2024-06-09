@@ -10,7 +10,7 @@ import {
   h,
 } from "@stencil/core";
 import { MatchResults, RouterHistory, injectHistory } from "@stencil/router";
-import { Vars, Store } from "../../../../global/script";
+import { Var, Store } from "../../../../global/script";
 import { confirmPasswordPayloadInterface } from "../../../patterns/p-auth/interfaces";
 import {
   generateConfirmPasswordPayload,
@@ -211,8 +211,8 @@ export class VVerify {
           <strong>Password reset failed</strong>
           <l-row>
             Kindly try again or contact&nbsp;
-            <e-link variant="email" url={`mailto:${Vars.app.contact.email}`}>
-              {Vars.app.contact.email}
+            <e-link variant="email" url={`mailto:${Var.app.contact.email}`}>
+              {Var.app.contact.email}
             </e-link>{" "}
           </l-row>
         </e-text>

@@ -1,1 +1,1 @@
-export { mailPayloadInterface } from './mail/mailPayloadInterface';
+export { MailPayloadInterface } from "./mail/mailPayloadInterface";

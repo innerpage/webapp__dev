@@ -1,14 +1,14 @@
-import { loginPayloadInterface } from '../../../interfaces';
-import { ApiVar } from '../../../../../../global/script';
+import { loginPayloadInterface } from "../../../interfaces";
+import { Var } from "../../../../../../global/script";
 
 export const loginApi = async (loginPayload: loginPayloadInterface) => {
-  let url: string = `${ApiVar.url}${ApiVar.endpoint.account.auth.login}`;
+  let url: string = `${Var.api.url}${Var.api.endpoint.account.auth.login}`;
   let options: any = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(loginPayload),
   };
 
@@ -16,12 +16,12 @@ export const loginApi = async (loginPayload: loginPayloadInterface) => {
   let success: boolean = false;
 
   await fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       payload = data;
       success = payload.success;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 

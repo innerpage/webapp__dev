@@ -1,24 +1,24 @@
-import { ApiVar } from '../../../../../../global/script';
+import { Var } from "../../../../../../global/script";
 
 export const deleteAccountApiCall = async () => {
   let isSuccess: boolean = false;
   let returnObj: any;
-  let url: string = `${ApiVar.url}${ApiVar.endpoint.account.details}`;
+  let url: string = `${Var.api.url}${Var.api.endpoint.account.details}`;
   let options: any = {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
   };
 
   await fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       returnObj = data;
       isSuccess = returnObj.success;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 

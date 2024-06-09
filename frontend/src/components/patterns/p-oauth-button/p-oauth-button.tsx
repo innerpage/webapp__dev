@@ -1,21 +1,21 @@
-import { Component, Event, EventEmitter, Prop, State, h } from '@stencil/core';
-import { ApiVar } from '../../../global/script';
+import { Component, Event, EventEmitter, Prop, State, h } from "@stencil/core";
+import { Var } from "../../../global/script";
 
 @Component({
-  tag: 'p-oauth-button',
-  styleUrl: 'p-oauth-button.css',
+  tag: "p-oauth-button",
+  styleUrl: "p-oauth-button.css",
   shadow: true,
 })
 export class POauthButton {
   googleOauthButtonEl!: HTMLDivElement;
 
   @Event({
-    eventName: 'routeToEvent',
+    eventName: "routeToEvent",
     bubbles: true,
   })
   routeToEvent: EventEmitter;
 
-  @Prop() variant: string = 'google';
+  @Prop() variant: string = "google";
 
   @State() isGoogleOauthLoaded: boolean = false;
 
@@ -27,8 +27,8 @@ export class POauthButton {
   }
 
   loadScript(src) {
-    return new Promise(resolve => {
-      const script = document.createElement('script');
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
       script.src = src;
       script.onload = () => {
         resolve(true);
@@ -42,41 +42,50 @@ export class POauthButton {
 
   async initGoogleOauth() {
     if (!this.isGoogleOauthLoaded) {
-      const isScriptLoaded = await this.loadScript('https://accounts.google.com/gsi/client');
+      const isScriptLoaded = await this.loadScript(
+        "https://accounts.google.com/gsi/client"
+      );
 
       if (!isScriptLoaded) {
-        console.log('Failed to load Google Oauth script');
+        console.log("Failed to load Google Oauth script");
         return;
       }
 
       await this.window.google.accounts.id.initialize({
-        client_id: ApiVar.keys.oauth.google.clientId,
-        callback: response => {
+        client_id: Var.keys.oauth.google.clientId,
+        callback: (response) => {
           this.routeToEvent.emit({
-            type: 'push',
-            route: '/post-oauth',
+            type: "push",
+            route: "/post-oauth",
             data: {
-              type: 'google',
+              type: "google",
               token: response.credential,
             },
           });
         },
       });
 
-      await this.window.google.accounts.id.renderButton(this.googleOauthButtonEl, {
-        type: 'standard',
-        theme: 'outline',
-        size: 'large',
-        width: 300,
-      });
+      await this.window.google.accounts.id.renderButton(
+        this.googleOauthButtonEl,
+        {
+          type: "standard",
+          theme: "outline",
+          size: "large",
+          width: 300,
+        }
+      );
 
       this.isGoogleOauthLoaded = true;
     }
   }
 
   render() {
-    if (this.variant === 'google') {
-      return <div ref={el => (this.googleOauthButtonEl = el as HTMLDivElement)}></div>;
+    if (this.variant === "google") {
+      return (
+        <div
+          ref={(el) => (this.googleOauthButtonEl = el as HTMLDivElement)}
+        ></div>
+      );
     }
   }
 }

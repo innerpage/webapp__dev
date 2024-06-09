@@ -13,7 +13,6 @@
   --line-height: 1.8;
 
   --color__site--background: #121212;
-
   --color__blue--darkest: #032844;
   --color__blue--darker: #054272;
   --color__blue--dark: #065c9f;
@@ -21,7 +20,6 @@
   --color__blue--light: #84c2f1;
   --color__blue--lighter: #e6f3fc;
   --color__blue--lightest: #f3f9fe;
-
   --color__grey--darkest: #262626;
   --color__grey--darker: #404040;
   --color__grey--dark: #5a5a5a;
@@ -29,7 +27,6 @@
   --color__grey--light: #c0c0c0;
   --color__grey--lighter: rgba(0, 0, 0, 0.1);
   --color__grey--lightest: #f9f9f9;
-
   --color__green--darkest: #00372c;
   --color__green--darker: #005c4a;
   --color__green--dark: #008168;
@@ -37,7 +34,6 @@
   --color__green--light: #80dcca;
   --color__green--lighter: #e6f8f4;
   --color__green--lightest: #f2fcfa;
-
   --color__orange--darkest: #45260a;
   --color__orange--darker: #8a4c14;
   --color__orange--dark: #a15818;
@@ -45,7 +41,6 @@
   --color__orange--light: #f3bf91;
   --color__orange--lighter: #f8d8bd;
   --color__orange--lightest: #fdf2e9;
-
   --color__red--darkest: #400e0f;
   --color__red--darker: #6b1819;
   --color__red--dark: #962222;
