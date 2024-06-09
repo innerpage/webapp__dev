@@ -1,14 +1,14 @@
-import { Component, Host, h } from '@stencil/core';
-import { state } from '../../../../global/script';
+import { Component, Host, h } from "@stencil/core";
+import { Store } from "../../../../global/script";
 
 @Component({
-  tag: 'v-billing',
-  styleUrl: 'v-billing.css',
+  tag: "v-billing",
+  styleUrl: "v-billing.css",
   shadow: true,
 })
 export class VBilling {
   componentWillLoad() {
-    state.activeView = 'billing';
+    Store.activeView = "billing";
   }
 
   render() {

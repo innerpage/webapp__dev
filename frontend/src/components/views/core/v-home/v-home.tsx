@@ -1,14 +1,14 @@
-import { Component, Host, FunctionalComponent, h } from '@stencil/core';
-import { state } from '../../../../global/script';
+import { Component, Host, FunctionalComponent, h } from "@stencil/core";
+import { Store } from "../../../../global/script";
 
 @Component({
-  tag: 'v-home',
-  styleUrl: 'v-home.css',
+  tag: "v-home",
+  styleUrl: "v-home.css",
   shadow: true,
 })
 export class VHome {
   componentWillLoad() {
-    state.activeView = 'home';
+    Store.activeView = "home";
   }
 
   LoggedInView: FunctionalComponent = () => (
@@ -95,7 +95,11 @@ export class VHome {
         <p-topbar></p-topbar>
         <c-content-area>
           <p-sidebar></p-sidebar>
-          {state.isSessionActive ? <this.LoggedInView></this.LoggedInView> : <this.LoggedOutView></this.LoggedOutView>}
+          {Store.isSessionActive ? (
+            <this.LoggedInView></this.LoggedInView>
+          ) : (
+            <this.LoggedOutView></this.LoggedOutView>
+          )}
         </c-content-area>
       </Host>
     );

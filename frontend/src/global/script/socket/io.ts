@@ -1,12 +1,12 @@
-import io from 'socket.io-client';
-import { ApiVar, state } from '../../../global/script';
+import io from "socket.io-client";
+import { ApiVar, Store } from "../../../global/script";
 
-export let IO: any;
+export let Io: any;
 
-export const initSocket = async () => {
-  IO = await io(ApiVar.url, {
+export const InitSocket = async () => {
+  Io = await io(ApiVar.url, {
     query: {
-      email: state.accountEmail,
+      email: Store.accountEmail,
     },
   });
 };

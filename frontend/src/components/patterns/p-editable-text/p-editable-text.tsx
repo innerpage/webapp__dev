@@ -1,28 +1,39 @@
-import { Component, FunctionalComponent, Prop, State, Listen, h } from '@stencil/core';
-import { updatePayloadInterface } from './interfaces';
-import { generateUpdatePayload, validateUpdatePayload, updateApiCall } from './helpers';
-import { state } from '../../../global/script';
+import {
+  Component,
+  FunctionalComponent,
+  Prop,
+  State,
+  Listen,
+  h,
+} from "@stencil/core";
+import { updatePayloadInterface } from "./interfaces";
+import {
+  generateUpdatePayload,
+  validateUpdatePayload,
+  updateApiCall,
+} from "./helpers";
+import { Store } from "../../../global/script";
 
 @Component({
-  tag: 'p-editable-text',
-  styleUrl: 'p-editable-text.css',
+  tag: "p-editable-text",
+  styleUrl: "p-editable-text.css",
   shadow: true,
 })
 export class PEditableText {
-  @Listen('buttonClick') async handleButtonClickEvent(e) {
-    if (e.detail.action === 'startEditMode') {
+  @Listen("buttonClick") async handleButtonClickEvent(e) {
+    if (e.detail.action === "startEditMode") {
       this.isEditModeOn = true;
-    } else if (e.detail.action === 'cancelEditMode') {
+    } else if (e.detail.action === "cancelEditMode") {
       this.isEditModeOn = false;
-    } else if (e.detail.action === 'saveUpdate') {
+    } else if (e.detail.action === "saveUpdate") {
       this.saveUpdate();
     }
   }
 
-  @Listen('textInput') handleTextInput(e) {
-    if (e.detail.name === 'newValue') {
+  @Listen("textInput") handleTextInput(e) {
+    if (e.detail.name === "newValue") {
       this.newValue = e.detail.value;
-    } else if (e.detail.name === 'newValueRepeat') {
+    } else if (e.detail.name === "newValueRepeat") {
       this.newValueRepeat = e.detail.value;
     }
     this.setSaveButtonState();
@@ -42,7 +53,7 @@ export class PEditableText {
       return;
     }
 
-    if (this.name === 'password') {
+    if (this.name === "password") {
       if (this.newValue != this.newValueRepeat) {
         this.isSaveButtonDisabled = true;
       } else {
@@ -58,7 +69,10 @@ export class PEditableText {
   }
 
   async saveUpdate() {
-    let updatePayload: updatePayloadInterface = generateUpdatePayload(this.name, this.newValue);
+    let updatePayload: updatePayloadInterface = generateUpdatePayload(
+      this.name,
+      this.newValue
+    );
     let { isValid, validationMessage } = validateUpdatePayload(updatePayload);
     if (!isValid) {
       return alert(validationMessage);
@@ -71,11 +85,11 @@ export class PEditableText {
       return alert(message);
     }
 
-    if (this.name === 'name') {
-      state.accountName = this.newValue;
-    } else if (this.name === 'email') {
-      state.accountEmail = this.newValue;
-      state.isEmailVerified = false;
+    if (this.name === "name") {
+      Store.accountName = this.newValue;
+    } else if (this.name === "email") {
+      Store.accountEmail = this.newValue;
+      Store.isEmailVerified = false;
     }
 
     return alert(payload.message);
@@ -85,11 +99,19 @@ export class PEditableText {
   private newValueRepeat: string;
 
   EditModeOn: FunctionalComponent = () => [
-    this.name === 'password' ? (
+    this.name === "password" ? (
       <div>
-        <e-input type="password" name="newValue" placeholder="New password"></e-input>
+        <e-input
+          type="password"
+          name="newValue"
+          placeholder="New password"
+        ></e-input>
         <l-spacer value={0.5}></l-spacer>
-        <e-input type="password" name="newValueRepeat" placeholder="Re-type new password"></e-input>
+        <e-input
+          type="password"
+          name="newValueRepeat"
+          placeholder="Re-type new password"
+        ></e-input>
       </div>
     ) : (
       <e-input type="text" name="newValue" value={this.value}></e-input>
@@ -102,7 +124,11 @@ export class PEditableText {
           Cancel
         </e-button>
         &nbsp;&nbsp;
-        <e-button disabled={this.isSaveButtonDisabled} action="saveUpdate" active={this.isSaveButtonActive}>
+        <e-button
+          disabled={this.isSaveButtonDisabled}
+          action="saveUpdate"
+          active={this.isSaveButtonActive}
+        >
           Save
         </e-button>
       </div>
@@ -111,9 +137,9 @@ export class PEditableText {
 
   EditModeOff: FunctionalComponent = () => (
     <l-row justifyContent="space-between">
-      {this.type === 'text' && <e-text>{this.value}</e-text>}
-      {this.type === 'password' && <e-text>{this.value}</e-text>}
-      {this.type === 'link' && (
+      {this.type === "text" && <e-text>{this.value}</e-text>}
+      {this.type === "password" && <e-text>{this.value}</e-text>}
+      {this.type === "link" && (
         <e-link variant="email" url={`mailto:${this.value}`}>
           {this.value}
         </e-link>

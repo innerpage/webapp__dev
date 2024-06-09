@@ -1,14 +1,14 @@
-import { Component, Host, h } from '@stencil/core';
-import { state } from '../../../../global/script';
+import { Component, Host, h } from "@stencil/core";
+import { Store } from "../../../../global/script";
 
 @Component({
-  tag: 'v-page-1',
-  styleUrl: 'v-page-1.css',
+  tag: "v-page-1",
+  styleUrl: "v-page-1.css",
   shadow: true,
 })
 export class VPage1 {
   componentWillLoad() {
-    state.activeView = 'page1';
+    Store.activeView = "page1";
   }
 
   render() {

@@ -1,9 +1,9 @@
-import { Component, Host, h } from '@stencil/core';
-import { state } from '../../../global/script';
+import { Component, Host, h } from "@stencil/core";
+import { Store } from "../../../global/script";
 
 @Component({
-  tag: 'p-topbar',
-  styleUrl: 'p-topbar.css',
+  tag: "p-topbar",
+  styleUrl: "p-topbar.css",
   shadow: true,
 })
 export class PTopbar {
@@ -12,7 +12,7 @@ export class PTopbar {
       <Host>
         <l-row justifyContent="space-between" align="center">
           <div class="logo"></div>
-          {state.isSessionActive ? (
+          {Store.isSessionActive ? (
             <p-user-control></p-user-control>
           ) : (
             <l-row align="centre">

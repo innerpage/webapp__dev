@@ -1,5 +1,5 @@
-// COOKIE
-export { getLoggedInCookie } from './cookie/getLoggedInCookie';
+// Cookie
+export { getLoggedInCookie } from "./cookie/getLoggedInCookie";
 
-// STATE
-export { setState } from './state/setState';
+// Store
+export { setStore } from "./store/setStore";
