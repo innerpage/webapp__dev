@@ -1,55 +1,68 @@
-import { Component, Event, EventEmitter, Prop, FunctionalComponent, Listen, State, Host, h } from '@stencil/core';
-import { MatchResults, RouterHistory, injectHistory } from '@stencil/router';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  Prop,
+  FunctionalComponent,
+  Listen,
+  State,
+  Host,
+  h,
+} from "@stencil/core";
+import { MatchResults, RouterHistory, injectHistory } from "@stencil/router";
 
-import { generateCreateStripeSessionPayload, createStripeSessionApi } from './helpers';
+import {
+  generateCreateStripeSessionPayload,
+  createStripeSessionApi,
+} from "./helpers";
 
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe } from "@stripe/stripe-js";
 
 @Component({
-  tag: 'v-checkout',
-  styleUrl: 'v-checkout.css',
+  tag: "v-checkout",
+  styleUrl: "v-checkout.css",
   shadow: true,
 })
 export class VCheckout {
   @Prop() match: MatchResults;
   @Prop() history: RouterHistory;
+
   @State() isViewDataFetched: boolean = false;
+  @State() isConfirmAndPayButtonActive: boolean = false;
+  @State() isConfirmAndPayButtonDisabled: boolean = true;
 
   @Event({
-    eventName: 'routeToEvent',
+    eventName: "routeToEvent",
     bubbles: true,
   })
   routeToEvent: EventEmitter;
 
-  @Listen('buttonClick') handleButtonClickEvent(e) {
-    if (e.detail.action === 'createCheckoutSession') {
+  @Listen("buttonClick") handleButtonClickEvent(e) {
+    if (e.detail.action === "createCheckoutSession") {
       this.createStripeCheckoutSession();
-    } else if (e.detail.action === 'goBack') {
+    } else if (e.detail.action === "goBack") {
       this.routeToEvent.emit({
-        type: 'goBack',
+        type: "goBack",
         data: {},
       });
     }
   }
 
-  @State() isConfirmAndPayButtonActive: boolean = false;
-  @State() isConfirmAndPayButtonDisabled: boolean = true;
-
   private payload: any;
-  private productId: string = '';
-  private productName: string = '';
-  private subscriptionType: string = '';
-  private currency: string = '';
+  private productId: string = "";
+  private productName: string = "";
+  private subscriptionType: string = "";
+  private currency: string = "";
   private price: number = 0;
   private total: number = 0;
-  private stripePublicKey: string = '';
+  private stripePublicKey: string = "";
   private stripe: any;
 
   componentWillLoad() {
     if (!this.match.params.productId) {
       this.routeToEvent.emit({
-        type: 'push',
-        route: '/home',
+        type: "push",
+        route: "/home",
         data: {},
       });
     }
@@ -85,9 +98,12 @@ export class VCheckout {
   }
 
   async createStripeCheckoutSession() {
-    let createStripeCheckoutSessionPayload: any = generateCreateStripeSessionPayload(this.productId);
+    let createStripeCheckoutSessionPayload: any =
+      generateCreateStripeSessionPayload(this.productId);
     this.isConfirmAndPayButtonActive = true;
-    let { success, message, payload } = await createStripeSessionApi(createStripeCheckoutSessionPayload);
+    let { success, message, payload } = await createStripeSessionApi(
+      createStripeCheckoutSessionPayload
+    );
     this.isConfirmAndPayButtonActive = false;
     if (!success) {
       return alert(message);
@@ -122,7 +138,7 @@ export class VCheckout {
 
   Summary: FunctionalComponent = () => (
     <div>
-      {' '}
+      {" "}
       <table>
         <tr>
           <td>Item cost</td>
@@ -169,7 +185,11 @@ export class VCheckout {
           <l-spacer value={2}></l-spacer>
           <l-row justifyContent="space-between">
             <e-button action="goBack">Back</e-button>
-            <e-button action="createCheckoutSession" disabled={this.isConfirmAndPayButtonDisabled} active={this.isConfirmAndPayButtonActive}>
+            <e-button
+              action="createCheckoutSession"
+              disabled={this.isConfirmAndPayButtonDisabled}
+              active={this.isConfirmAndPayButtonActive}
+            >
               Confirm & pay
             </e-button>
           </l-row>
