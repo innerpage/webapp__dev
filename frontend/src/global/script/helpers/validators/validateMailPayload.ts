@@ -1,7 +1,7 @@
 import Joi from "joi";
 import { MailPayloadInterface } from "../../interfaces";
 
-const validateMailPayloadSchema = Joi.object({
+const ValidateMailPayloadSchema = Joi.object({
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .min(5)
@@ -12,8 +12,8 @@ const validateMailPayloadSchema = Joi.object({
   type: Joi.string().trim().required(),
 });
 
-export const validateMailPayload = (mailPayload: MailPayloadInterface) => {
-  let { error } = validateMailPayloadSchema.validate(mailPayload);
+export const ValidateMailPayload = (mailPayload: MailPayloadInterface) => {
+  let { error } = ValidateMailPayloadSchema.validate(mailPayload);
 
   if (error) {
     return {

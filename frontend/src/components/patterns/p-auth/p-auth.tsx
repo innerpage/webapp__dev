@@ -19,8 +19,8 @@ import {
   validateSignupPayload,
 } from "./helpers";
 import { MailPayloadInterface } from "../../../global/script/interfaces";
-import { generateMailPayload } from "../../../global/script/helpers";
-import { validateMailPayload } from "../../../global/script/helpers";
+import { GenerateMailPayload } from "../../../global/script/helpers";
+import { ValidateMailPayload } from "../../../global/script/helpers";
 import { MailApi } from "../../../global/script/helpers";
 
 import { loginPayloadInterface, signupPayloadInterface } from "./interfaces";
@@ -134,8 +134,8 @@ export class PAuth {
 
   async mailPasswordResetLink() {
     let mailEmailVerificationLinkPayload: MailPayloadInterface =
-      generateMailPayload(this.email, "passwordResetLink");
-    let { isValid, validationMessage } = validateMailPayload(
+      GenerateMailPayload(this.email, "passwordResetLink");
+    let { isValid, validationMessage } = ValidateMailPayload(
       mailEmailVerificationLinkPayload
     );
     if (!isValid) {

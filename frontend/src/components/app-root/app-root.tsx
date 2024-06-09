@@ -14,8 +14,8 @@ import { MailApi } from "../../global/script/helpers";
 import { getSessionCookie } from "./helpers";
 import { MailPayloadInterface } from "../../global/script/interfaces";
 import {
-  generateMailPayload,
-  validateMailPayload,
+  GenerateMailPayload,
+  ValidateMailPayload,
 } from "../../global/script/helpers";
 import {
   AccountDetailsBySessionApi,
@@ -44,8 +44,8 @@ export class AppRoot {
   @Listen("buttonClick") async handleButtonClick(e) {
     if (e.detail.action === "mailEmailVerificationLink") {
       let mailEmailVerificationLinkPayload: MailPayloadInterface =
-        generateMailPayload(Store.accountEmail, "emailVerificationLink");
-      let { isValid, validationMessage } = validateMailPayload(
+        GenerateMailPayload(Store.accountEmail, "emailVerificationLink");
+      let { isValid, validationMessage } = ValidateMailPayload(
         mailEmailVerificationLinkPayload
       );
       if (!isValid) {

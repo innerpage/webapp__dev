@@ -1,11 +1,26 @@
 export const Var = {
   app: {
+    name: "",
     contact: {
       email: "mail@example.com",
     },
+    domain: "",
     policy: {
-      tos: { url: "https://google.com" },
-      privacy: { url: "https://facebook.com" },
+      tos: {
+        url: "",
+      },
+      privacy: {
+        url: "",
+      },
+      cancellationAndRefund: {
+        url: "",
+      },
+    },
+    url: "",
+    owner: {
+      name: "",
+      website: { url: "" },
+      contact: { address: "", email: "" },
     },
   },
   api: {
