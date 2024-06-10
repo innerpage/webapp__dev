@@ -12,8 +12,8 @@ const ValidateMailPayloadSchema = Joi.object({
   type: Joi.string().trim().required(),
 });
 
-export const ValidateMailPayload = (mailPayload: MailPayloadInterface) => {
-  let { error } = ValidateMailPayloadSchema.validate(mailPayload);
+export const ValidateMailPayload = (payload: MailPayloadInterface) => {
+  let { error } = ValidateMailPayloadSchema.validate(payload);
 
   if (error) {
     return {

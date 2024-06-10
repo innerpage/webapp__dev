@@ -1,6 +1,6 @@
 // API
 export { AccountDetailsBySessionApi } from "./api/accountDetailsBySessionApi";
-export { AccountLogoutApi } from "./api/accountLogoutApi";
+export { LogoutApi } from "./api/LogoutApi";
 export { MailApi } from "./api/mailApi";
 
 // Generators

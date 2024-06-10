@@ -24,6 +24,6 @@ export const AccountDetailsBySessionApi = async () => {
   return {
     success: returnObj.success,
     message: returnObj.message,
-    payload: returnObj.payload,
+    data: returnObj.payload,
   };
 };

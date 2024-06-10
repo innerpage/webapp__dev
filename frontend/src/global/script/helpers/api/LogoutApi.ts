@@ -1,6 +1,6 @@
 import { Var } from "../..";
 
-export const AccountLogoutApi = async () => {
+export const LogoutApi = async () => {
   let returnObj: any;
 
   let url: string = `${Var.api.url}${Var.api.endpoint.account.auth.logout}`;
@@ -24,6 +24,6 @@ export const AccountLogoutApi = async () => {
   return {
     success: returnObj.success,
     message: returnObj.message,
-    payload: returnObj.payload,
+    data: returnObj.payload,
   };
 };

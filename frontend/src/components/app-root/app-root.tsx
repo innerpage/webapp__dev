@@ -19,7 +19,7 @@ import {
 } from "../../global/script/helpers";
 import {
   AccountDetailsBySessionApi,
-  AccountLogoutApi,
+  LogoutApi,
 } from "../../global/script/helpers";
 
 @Component({
@@ -62,39 +62,28 @@ export class AppRoot {
         return alert(message);
       }
 
-      if (!payload.success) {
-        return alert(payload.message);
-      }
-
       alert(payload.message);
     } else if (
       e.detail.action === "openLoginModal" ||
-      e.detail.action === "openSignupModal" ||
-      e.detail.action === "openForgotPasswordModal" ||
       e.detail.action === "goBackToLogin"
     ) {
-      if (
-        e.detail.action === "openLoginModal" ||
-        e.detail.action === "goBackToLogin"
-      ) {
-        this.openModal("login");
-      } else if (e.detail.action === "openSignupModal") {
-        this.openModal("signup");
-      } else if (e.detail.action === "openForgotPasswordModal") {
-        this.openModal("resetPassword");
-      }
+      this.openModal("login");
+    } else if (e.detail.action === "openSignupModal") {
+      this.openModal("signup");
+    } else if (e.detail.action === "openForgotPasswordModal") {
+      this.openModal("resetPassword");
     } else if (e.detail.action === "closeModal") {
       this.closeModal();
     } else if (e.detail.action === "logout") {
-      this.logoutUser();
+      this.logout();
     } else if (e.detail.action === "proceedToLogin") {
       this.history.push("/", {});
       this.openModal("login");
     }
   }
 
-  @Listen("logoutUserEvent") handleUserLogout() {
-    this.logoutUser();
+  @Listen("logoutEvent") handleLogout() {
+    this.logout();
   }
 
   @Listen("routeToEvent") handleRouteToEvent(e) {
@@ -131,23 +120,20 @@ export class AppRoot {
   }
 
   async initSession() {
-    let { success, message, payload } = await AccountDetailsBySessionApi();
+    let { success, message, data } = await AccountDetailsBySessionApi();
     if (!success) {
       return alert(message);
     }
-    setStore(payload);
+    setStore(data);
     InitSocket();
   }
 
-  async logoutUser() {
-    let { success, message, payload } = await AccountLogoutApi();
+  async logout() {
+    let { success, message, data } = await LogoutApi();
     if (!success) {
       return alert(message);
     }
-    if (!payload.success) {
-      return alert(payload.message);
-    }
-    Store.isSessionActive = payload.isSessionActive;
+    Store.isSessionActive = data.isSessionActive;
     Store.accountName = "";
     Store.accountEmail = "";
     Store.isEmailVerified = true;
@@ -196,49 +182,50 @@ export class AppRoot {
 
             <stencil-route url="/verify/:type/:code" component="v-verify" />
 
-            <this.LoggedInRoute
+            <this.SessionRoute
               url="/billing"
               component="v-billing"
-            ></this.LoggedInRoute>
+            ></this.SessionRoute>
 
-            <this.LoggedInRoute
+            <this.SessionRoute
               url="/account"
               component="v-account"
-            ></this.LoggedInRoute>
+            ></this.SessionRoute>
 
-            <this.LoggedInRoute
+            <this.SessionRoute
               url="/delete-account"
               component="v-delete-account"
-            ></this.LoggedInRoute>
+            ></this.SessionRoute>
 
-            <this.LoggedInRoute
+            <this.SessionRoute
               url="/payment-cancel"
               component="v-payment-cancel"
-            ></this.LoggedInRoute>
+            ></this.SessionRoute>
 
-            <this.LoggedInRoute
+            <this.SessionRoute
               url="/payment-handle/:sessionId"
               component="v-payment-handle"
-            ></this.LoggedInRoute>
+            ></this.SessionRoute>
 
-            <this.LoggedInRoute
+            <this.SessionRoute
               url="/checkout/:orderId"
               component="v-checkout"
-            ></this.LoggedInRoute>
+            ></this.SessionRoute>
 
-            <this.LoggedInRoute
+            <this.SessionRoute
               url="/support"
               component="v-support"
-            ></this.LoggedInRoute>
+            ></this.SessionRoute>
 
-            <this.LoggedOutRoute
+            <this.NonSessionRoute
               url="/post-oauth"
               component="v-post-oauth"
-            ></this.LoggedOutRoute>
+            ></this.NonSessionRoute>
 
             <stencil-route component="v-catch-all" />
           </stencil-route-switch>
         </stencil-router>
+
         {Store.isSessionActive && !Store.isEmailVerified && (
           <this.EmailVerificationBanner></this.EmailVerificationBanner>
         )}
@@ -246,7 +233,7 @@ export class AppRoot {
     );
   }
 
-  LoggedInRoute = ({ component, ...props }: { [key: string]: any }) => {
+  SessionRoute = ({ component, ...props }: { [key: string]: any }) => {
     const Component = component;
     return (
       <stencil-route
@@ -270,7 +257,7 @@ export class AppRoot {
     );
   };
 
-  LoggedOutRoute = ({ component, ...props }: { [key: string]: any }) => {
+  NonSessionRoute = ({ component, ...props }: { [key: string]: any }) => {
     const Component = component;
     return (
       <stencil-route
