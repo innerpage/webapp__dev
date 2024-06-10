@@ -16,8 +16,7 @@ export class CBanner {
   }
 
   generateClasses() {
-    this.classes = this.classes + ` banner__theme--${this.theme}`;
-    this.classes = this.classes + ` banner__position--${this.position}`;
+    this.classes = `banner banner__theme--${this.theme} banner__position--${this.position}`;
   }
 
   render() {

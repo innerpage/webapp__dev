@@ -1,8 +1,16 @@
-import { Component, Event, EventEmitter, Watch, Prop, State, h } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  Watch,
+  Prop,
+  State,
+  h,
+} from "@stencil/core";
 
 @Component({
-  tag: 'e-button',
-  styleUrl: 'e-button.css',
+  tag: "e-button",
+  styleUrl: "e-button.css",
   shadow: true,
 })
 export class EButton {
@@ -10,23 +18,25 @@ export class EButton {
 
   @Prop() action: string;
   @Prop() value: any;
-  @Prop() variant: string = 'primary';
-  @Prop() size: string = 'default';
+  @Prop() variant: string = "primary";
+  @Prop() size: string = "default";
   @Prop() disabled: boolean = false;
   @Prop() active: boolean = false;
-  @Prop() theme: string = 'default';
+  @Prop() theme: string = "default";
 
-  @State() inAction: boolean = false;
+  @State() isActive: boolean = false;
+  @State() classes: string = "";
 
   @Event({
-    eventName: 'buttonClick',
+    eventName: "buttonClick",
     bubbles: true,
   })
   buttonClickEventEmitter: EventEmitter;
 
-  @Watch('active') actionWatcher(newVal: boolean, oldVal: boolean) {
+  @Watch("active") actionWatcher(newVal: boolean, oldVal: boolean) {
     if (newVal != oldVal) {
-      this.inAction = newVal;
+      this.isActive = newVal;
+      this.generateClasses();
     }
   }
 
@@ -38,26 +48,27 @@ export class EButton {
     });
   }
 
-  private styleClasses: string = '';
-
   componentWillLoad() {
-    this.inAction = this.active;
-    this.generateStyles();
+    this.isActive = this.active;
+    this.generateClasses();
   }
 
-  generateStyles() {
-    this.styleClasses = `${this.variant}--${this.theme} ${this.size}`;
+  generateClasses() {
+    this.classes = `button__${this.variant}--${this.theme} button__${this.size}--${this.theme}`;
+    if (this.isActive) {
+      this.classes = `${this.classes} button--active`;
+    }
   }
 
   render() {
     return (
       <button
-        class={`${this.styleClasses} ${this.inAction && 'in-action'}`}
-        onClick={e => this.handleButtonClick(e)}
-        disabled={this.disabled || this.inAction}
-        ref={el => (this.buttonEl = el as HTMLButtonElement)}
+        class={this.classes}
+        onClick={(e) => this.handleButtonClick(e)}
+        disabled={this.disabled || this.isActive}
+        ref={(el) => (this.buttonEl = el as HTMLButtonElement)}
       >
-        {this.inAction ? <p-spinner></p-spinner> : <slot />}
+        {this.isActive ? <p-spinner></p-spinner> : <slot />}
       </button>
     );
   }

@@ -1,4 +1,4 @@
-/* BUTTON INIT */
+/* Default */
 button {
   background: none;
   border: 0;
@@ -7,86 +7,83 @@ button {
   border-radius: var(--border-radius);
   transition: all 0.25s;
 }
-
 button:hover {
   cursor: pointer;
 }
-
 button:active {
   opacity: 0.4;
 }
-
 button:disabled {
   opacity: 0.3;
   pointer-events: none;
 }
 
-/* PRIMARY BUTTON (Default) */
-.primary--default {
+/* Primary Button (Default) */
+.button__primary--default {
   font-weight: 600;
   background: var(--color__blue--regular);
   color: white;
 }
-.primary--default:hover {
+.button__primary--default:hover {
   background: var(--color__blue--dark);
 }
-.primary--default:active {
-  background: var(--color__blue--darkest);
+.button__primary--default:active {
+  background: var(--color__blue--light);
 }
-
-/* PRIMARY BUTTON (Danger) */
-.primary--danger {
+.button__primary--danger {
   background: var(--color__red--regular);
   color: white;
 }
-.primary--danger:hover {
+.button__primary--danger:hover {
   background: var(--color__red--dark);
 }
-
-/* LINK */
-.link--default {
-  padding: 0;
-  border: 0;
-  color: var(--color__blue--regular);
-  transition: all 0.25s;
+.button__primary--danger:active {
+  background: var(--color__red--light);
 }
 
-.link--default:hover {
-  color: var(--color__blue--dark);
-}
-
-/* GHOST BUTTON (Default) */
-.ghost--default {
+/* Ghost Button (Default) */
+.button__ghost--default {
   border: 1px solid var(--color__blue--regular);
   color: var(--color__blue--regular);
 }
-.ghost--default:hover {
+.button__ghost--default:hover {
   background: var(--color__blue--lightest);
 }
+.button__ghost--default:active {
+  color: var(--color__blue--lighter);
+}
 
-/* LIGHT BUTTON (Default) */
-.light--default {
+/* Link Button */
+.button__link--default {
+  padding: 0;
+  border: 0;
   color: var(--color__blue--regular);
 }
-.light--default:hover {
+.button__link--default:hover {
+  color: var(--color__blue--dark);
+}
+.button__link--default:active {
+  color: var(--color__blue--light);
+}
+
+/* Light Button (Default) */
+.button__light--default {
+  color: var(--color__blue--regular);
+}
+.button__light--default:hover {
   background: var(--color__blue--lightest);
 }
-
-/* LIGHT BUTTON (Default) */
-.light--dark {
-  color: var(--color__grey--lightest);
-}
-.light--dark:hover {
-  background: rgba(255, 255, 255, 0.3);
+.button__light--default:active {
+  color: var(--color__blue--lighter);
 }
 
-/* WIDE BUTTON (Default) */
-.wide--default {
+/* Wide Button (Default) */
+.button__wide--default {
   display: block;
   width: 100%;
 }
 
-/* BUTTON SPINNER (in action) */
-.in-action {
+/* Active Button (In action) */
+.button--active {
   padding: 0.3em 0.8em;
 }
