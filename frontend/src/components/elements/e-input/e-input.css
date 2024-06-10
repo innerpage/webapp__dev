@@ -1,4 +1,10 @@
-e-input input {
-  padding: 1em;
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: var(--padding);
+  border: var(--border);
   border-radius: var(--border-radius);
+  font-size: 1em;
 }
