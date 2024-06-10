@@ -1,31 +1,28 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h } from "@stencil/core";
 
 @Component({
-  tag: 'c-banner',
-  styleUrl: 'c-banner.css',
+  tag: "c-banner",
+  styleUrl: "c-banner.css",
   shadow: true,
 })
 export class CBanner {
-  @Prop() theme: string = 'default';
-  @Prop() position: string = 'inline';
+  @Prop() theme: string = "default";
+  @Prop() position: string = "inline";
 
-  private styleClasses: string = 'default';
+  private classes: string = "banner";
 
   componentWillLoad() {
-    this.generateStyles();
+    this.generateClasses();
   }
 
-  generateStyles() {
-    this.styleClasses = this.styleClasses + ` theme--${this.theme}`;
-
-    if (this.position === 'bottom') {
-      this.styleClasses = this.styleClasses + ` position--bottom`;
-    }
+  generateClasses() {
+    this.classes = this.classes + ` banner__theme--${this.theme}`;
+    this.classes = this.classes + ` banner__position--${this.position}`;
   }
 
   render() {
     return (
-      <div class={this.styleClasses}>
+      <div class={this.classes}>
         <slot></slot>
       </div>
     );

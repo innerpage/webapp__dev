@@ -1,12 +1,13 @@
-.default {
+/* Default */
+.banner {
   display: block;
   box-sizing: border-box;
   padding: var(--padding);
   border-radius: var(--border-radius);
 }
 
-/* POSITION */
-.position--bottom {
+/* Position */
+.banner__position--bottom {
   width: 100%;
   left: 0;
   bottom: 0;
@@ -16,20 +17,20 @@
   box-shadow: 0px -2px 33px 3px rgba(0, 0, 0, 0.15);
 }
 
-/* THEME */
-.theme--danger {
+/* Theme */
+.banner__theme--danger {
   background: var(--color__red--lightest);
   color: var(--color__red--dark);
   border: 1px solid var(--color__red--lighter);
 }
 
-.theme--warning {
+.banner__theme--warning {
   background: var(--color__orange--lightest);
   color: var(--color__orange--dark);
   border: 1px solid var(--color__orange--lighter);
 }
 
-.theme--success {
+.banner__theme--success {
   background: var(--color__green--lightest);
   color: var(--color__green--dark);
   border: 1px solid var(--color__green--lighter);
