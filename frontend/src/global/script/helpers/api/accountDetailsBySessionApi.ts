@@ -1,8 +1,6 @@
 import { Var } from "../..";
 
 export const AccountDetailsBySessionApi = async () => {
-  let returnObj: any;
-
   let url: string = `${Var.api.url}${Var.api.endpoint.account.details}`;
   let options: any = {
     method: "GET",
@@ -12,18 +10,19 @@ export const AccountDetailsBySessionApi = async () => {
     credentials: "include",
   };
 
+  let returnData: any;
   await fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-      returnObj = data;
+      returnData = data;
     })
     .catch((error) => {
       console.log(error);
     });
 
   return {
-    success: returnObj.success,
-    message: returnObj.message,
-    data: returnObj.payload,
+    success: returnData.success,
+    message: returnData.message,
+    payload: returnData.payload,
   };
 };

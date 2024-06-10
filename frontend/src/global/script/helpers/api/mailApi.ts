@@ -3,7 +3,6 @@ import { Var } from "../..";
 
 export const MailApi = async (payload: MailPayloadInterface) => {
   let url: string = "";
-
   if (
     payload.type === "emailVerificationLink" ||
     payload.type === "passwordResetLink"
@@ -20,19 +19,19 @@ export const MailApi = async (payload: MailPayloadInterface) => {
     body: JSON.stringify(payload),
   };
 
-  let returnObj: any;
+  let returnData: any;
   await fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-      returnObj = data;
+      returnData = data;
     })
     .catch((error) => {
       console.log(error);
     });
 
   return {
-    success: returnObj.success,
-    message: returnObj.message,
-    payload: returnObj.payload,
+    success: returnData.success,
+    message: returnData.message,
+    payload: returnData.payload,
   };
 };

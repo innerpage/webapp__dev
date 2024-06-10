@@ -1,6 +1,6 @@
-export const generateCreateStripeSessionPayload = (documentId: string) => {
+export const generateCreateStripeSessionPayload = (productId: string) => {
   let createStripeCheckoutSessionPayload = {
-    documentId: documentId,
+    productId: productId,
   };
 
   return createStripeCheckoutSessionPayload;

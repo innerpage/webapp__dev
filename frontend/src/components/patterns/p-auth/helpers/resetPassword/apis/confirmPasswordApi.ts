@@ -2,7 +2,7 @@ import { confirmPasswordPayloadInterface } from "../../../interfaces";
 import { Var } from "../../../../../../global/script";
 
 export const confirmPasswordApi = async (
-  confirmPasswordPayload: confirmPasswordPayloadInterface
+  payload: confirmPasswordPayloadInterface
 ) => {
   let url: string = `${Var.api.url}${Var.api.endpoint.account.password}`;
   let options: any = {
@@ -11,24 +11,22 @@ export const confirmPasswordApi = async (
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify(confirmPasswordPayload),
+    body: JSON.stringify(payload),
   };
 
-  let payload: any;
-  let success: boolean = false;
+  let returnData: any;
   await fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-      payload = data;
-      success = payload.success;
+      returnData = data;
     })
     .catch((error) => {
       console.log(error);
     });
 
   return {
-    success: success,
-    message: payload.message,
-    payload: payload,
+    success: returnData.success,
+    message: returnData.message,
+    payload: returnData.payload,
   };
 };

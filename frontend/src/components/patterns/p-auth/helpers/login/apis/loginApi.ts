@@ -1,7 +1,7 @@
 import { loginPayloadInterface } from "../../../interfaces";
 import { Var } from "../../../../../../global/script";
 
-export const loginApi = async (loginPayload: loginPayloadInterface) => {
+export const loginApi = async (payload: loginPayloadInterface) => {
   let url: string = `${Var.api.url}${Var.api.endpoint.account.auth.login}`;
   let options: any = {
     method: "POST",
@@ -9,29 +9,22 @@ export const loginApi = async (loginPayload: loginPayloadInterface) => {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify(loginPayload),
+    body: JSON.stringify(payload),
   };
 
-  let payload: any;
-  let success: boolean = false;
-
+  let returnData: any;
   await fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-      payload = data;
-      success = payload.success;
+      returnData = data;
     })
     .catch((error) => {
       console.log(error);
     });
 
-  if (!success) {
-    return { success: false, message: payload.message, payload: {} };
-  }
-
   return {
-    success: true,
-    message: payload.message,
-    payload: payload,
+    success: returnData.success,
+    message: returnData.message,
+    // payload: returnData.payload,
   };
 };

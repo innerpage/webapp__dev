@@ -1,8 +1,6 @@
 import { Var } from "../../../../../../global/script";
 
-export const createStripeSessionApi = async (createStripeSessionPayload) => {
-  let returnObj: any;
-
+export const createStripeSessionApi = async (payload) => {
   let url: string = `${Var.api.url}${Var.api.endpoint.payment.stripe.session.create}`;
   let options: any = {
     method: "POST",
@@ -10,21 +8,22 @@ export const createStripeSessionApi = async (createStripeSessionPayload) => {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify(createStripeSessionPayload),
+    body: JSON.stringify(payload),
   };
 
+  let returnData: any;
   await fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-      returnObj = data;
+      returnData = data;
     })
     .catch((error) => {
       console.log(error);
     });
 
   return {
-    success: returnObj.success,
-    message: returnObj.message,
-    payload: returnObj.payload,
+    success: returnData.success,
+    message: returnData.message,
+    payload: returnData.payload,
   };
 };

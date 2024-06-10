@@ -14,21 +14,19 @@ export const verifyEmailApi = async (
     body: JSON.stringify(emailVerificationPayload),
   };
 
-  let payload: any;
-  let success: boolean = false;
+  let returnData: any;
   await fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-      payload = data;
-      success = payload.success;
+      returnData = data;
     })
     .catch((error) => {
       console.log(error);
     });
 
   return {
-    success: success,
-    message: payload.message,
-    payload: payload.payload,
+    success: returnData.success,
+    message: returnData.message,
+    payload: returnData.payload,
   };
 };

@@ -51,18 +51,10 @@ export class AppRoot {
       if (!isValid) {
         return alert(validationMessage);
       }
-
       this.isMailingEmailVerificationLink = true;
-      let { success, message, payload } = await MailApi(
-        mailEmailVerificationLinkPayload
-      );
+      let { message } = await MailApi(mailEmailVerificationLinkPayload);
       this.isMailingEmailVerificationLink = false;
-
-      if (!success) {
-        return alert(message);
-      }
-
-      alert(payload.message);
+      alert(message);
     } else if (
       e.detail.action === "openLoginModal" ||
       e.detail.action === "goBackToLogin"
@@ -120,20 +112,20 @@ export class AppRoot {
   }
 
   async initSession() {
-    let { success, message, data } = await AccountDetailsBySessionApi();
+    let { success, message, payload } = await AccountDetailsBySessionApi();
     if (!success) {
       return alert(message);
     }
-    setStore(data);
+    setStore(payload);
     InitSocket();
   }
 
   async logout() {
-    let { success, message, data } = await LogoutApi();
+    let { success, message, payload } = await LogoutApi();
     if (!success) {
       return alert(message);
     }
-    Store.isSessionActive = data.isSessionActive;
+    Store.isSessionActive = payload.isSessionActive;
     Store.accountName = "";
     Store.accountEmail = "";
     Store.isEmailVerified = true;

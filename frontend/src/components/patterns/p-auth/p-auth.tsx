@@ -119,16 +119,13 @@ export class PAuth {
     }
     this.isLoginButtonActive = true;
 
-    let { success, message, payload } = await loginApi(loginPayload);
+    let { success, message } = await loginApi(loginPayload);
     this.isLoginButtonActive = false;
 
     if (!success) {
       return alert(message);
     }
 
-    if (!payload.success) {
-      return alert(payload.message);
-    }
     this.authSuccessfulEventEmitter.emit();
   }
 
@@ -144,9 +141,7 @@ export class PAuth {
 
     this.isMailPasswordResetLinkButtonActive = true;
     this.hideMailPasswordResetLinkSuccessBanner();
-    let { success, message, payload } = await MailApi(
-      mailEmailVerificationLinkPayload
-    );
+    let { success, message } = await MailApi(mailEmailVerificationLinkPayload);
     this.isMailPasswordResetLinkButtonActive = false;
 
     if (!success) {
@@ -154,7 +149,7 @@ export class PAuth {
     }
 
     this.showMailPasswordResetLinkSuccessBanner();
-    alert(payload.message);
+    alert(message);
   }
 
   async signupUser() {
@@ -169,15 +164,11 @@ export class PAuth {
     }
     this.isSignupButtonActive = true;
 
-    let { success, message, payload } = await signupApi(signupPayload);
+    let { success, message } = await signupApi(signupPayload);
     this.isSignupButtonActive = false;
 
     if (!success) {
       return alert(message);
-    }
-
-    if (!payload.success) {
-      return alert(payload.message);
     }
 
     this.authSuccessfulEventEmitter.emit();
