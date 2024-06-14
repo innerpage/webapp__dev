@@ -33,8 +33,43 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:wght@400;600&display=swap"
       rel="stylesheet"
     />
+
+    <style type="text/css">
+      #mobile-blocker {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 99;
+        padding: 2em;
+        background: white;
+      }
+
+      #mobile-blocker h1 {
+        line-height: 1.2;
+      }
+
+      #mobile-blocker p {
+        line-height: 1.5;
+      }
+
+      @media only screen and (max-width: 760px) {
+        #mobile-blocker {
+          display: block;
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="mobile-blocker">
+      <h1>We are optimizing for mobile & almost done..</h1>
+      <br />
+      <p>
+        Please access <a href="https://example.com">example.com</a> from a
+        desktop or laptop browser for now. The mobile optimizations will be live
+        shortly.
+      </p>
+    </div>
     <app-root></app-root>
   </body>
 </html>

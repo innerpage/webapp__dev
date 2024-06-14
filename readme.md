@@ -27,6 +27,8 @@
 - Change `/add/link/to/icon.png`
 - Change `/add/link/to/favicon.ico`
 
+## Remove mobile-blocker in ./frontend/src/index.html
+
 ## Edit ./frontend/src/manifest.json
 
 - Change `name`
