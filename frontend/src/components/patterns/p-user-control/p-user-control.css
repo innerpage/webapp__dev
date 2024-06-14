@@ -15,6 +15,10 @@ c-card {
   padding-bottom: var(--padding);
 }
 
+e-link {
+  font-size: 0.95em;
+}
+
 ph-caret-up,
 ph-caret-down,
 ph-user,

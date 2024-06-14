@@ -1,10 +1,13 @@
-import { emailVerificationPayloadInterface } from '../../interfaces';
+import { emailVerificationPayloadInterface } from "../../interfaces";
 
-export const generateEmailVerificationPayload = (type: string, code: string) => {
-  let emailVerificationPayload: emailVerificationPayloadInterface = {
+export const generateEmailVerificationPayload = (
+  type: string,
+  code: string
+) => {
+  let payload: emailVerificationPayloadInterface = {
     type: type,
     code: code,
   };
 
-  return emailVerificationPayload;
+  return payload;
 };

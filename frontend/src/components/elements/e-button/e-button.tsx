@@ -33,7 +33,7 @@ export class EButton {
   })
   buttonClickEventEmitter: EventEmitter;
 
-  @Watch("active") actionWatcher(newVal: boolean, oldVal: boolean) {
+  @Watch("active") actionPropWatcher(newVal: boolean, oldVal: boolean) {
     if (newVal != oldVal) {
       this.isActive = newVal;
       this.generateClasses();
@@ -54,7 +54,7 @@ export class EButton {
   }
 
   generateClasses() {
-    this.classes = `button__${this.variant}--${this.theme} button__${this.size}--${this.theme}`;
+    this.classes = `button__${this.variant}--${this.theme} button__${this.size}`;
     if (this.isActive) {
       this.classes = `${this.classes} button--active`;
     }

@@ -1,18 +1,16 @@
 :host {
   display: block;
-  width: 300px;
+  width: 250px;
 }
 
 header e-button {
   padding: 0;
 }
 
-c-card {
-  width: 300px;
-}
-
-e-link {
-  display: inline-block;
+e-input {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 c-banner {

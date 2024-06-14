@@ -1,74 +1,62 @@
-a {
-  text-decoration: none;
+:host {
   display: inline-block;
-  color: var(--color__blue--regular);
-  transition: all 0.25s;
-  box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: var(--color__blue--regular);
+  transition: all 0.25s;
+}
 a:hover {
   color: var(--color__blue--dark);
 }
-
 a:active {
-  opacity: 0.2;
+  color: var(--color__blue--light);
 }
 
-/* -------------
-LINK NAV VARIANT
-------------- */
-
-.link__nav a {
-  width: 100%;
-  padding: calc(var(--padding) / 2) var(--padding);
+/* Nav link */
+.link__nav--default a {
+  width: 12.5vw;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.25em 1em;
 }
-
-.link__nav--active a {
-  width: 100%;
+.link__nav--default-active a {
+  display: block;
+  box-sizing: border-box;
+  width: 12.5vw;
   color: var(--color__blue--regular);
   background: var(--color__blue--lightest);
-  padding: 0.5em 1em;
+  padding: 0.25em 1em;
 }
 
-/* --------------
-LINK CARD VARIANT
--------------- */
-
-.link__card a {
+/* Card link */
+.link__card--default a {
   width: 100%;
   border-radius: var(--border-radius);
   padding: calc(var(--padding) / 2) var(--padding);
-  border: 1px solid var(--color__grey--lighter);
+  border: var(--border);
 }
-
-.link__card a:hover {
+.link__card--default a:hover {
   background: var(--color__blue--lightest);
 }
 
-/* -------------
-LINK TAB VARIANT
-------------- */
-.link__tab {
+/* Tab link */
+.link__tab--default {
   margin-right: 3em;
 }
-
-.link__tab--active {
+.link__tab--default-active {
   margin-right: 3em;
   border-bottom: 2px solid var(--color__blue--regular);
 }
 
-/* ---------
-DANGER THEME
---------- */
-
-.danger a {
+/* Danger theme */
+.link__default--danger a {
   color: var(--color__red--regular);
 }
-
-.danger a:hover {
+.link__default--danger a:hover {
   color: var(--color__red--dark);
 }
-
-.danger a:active {
-  color: var(--color__red--darkest);
+.link__default--danger a:active {
+  color: var(--color__red--light);
 }

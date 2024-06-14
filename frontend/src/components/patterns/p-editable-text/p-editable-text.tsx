@@ -10,7 +10,7 @@ import { updatePayloadInterface } from "./interfaces";
 import {
   generateUpdatePayload,
   validateUpdatePayload,
-  updateApiCall,
+  accountUpdateApi,
 } from "./helpers";
 import { Store } from "../../../global/script";
 
@@ -45,14 +45,13 @@ export class PEditableText {
 
   @State() isEditModeOn: boolean = false;
   @State() isSaveButtonDisabled: boolean = true;
-  @State() isSaveButtonActive: boolean = false;
+  @State() isSavingEdit: boolean = false;
 
   setSaveButtonState() {
     if (!this.newValue) {
       this.isSaveButtonDisabled = true;
       return;
     }
-
     if (this.name === "password") {
       if (this.newValue != this.newValueRepeat) {
         this.isSaveButtonDisabled = true;
@@ -77,9 +76,9 @@ export class PEditableText {
     if (!isValid) {
       return alert(validationMessage);
     }
-    this.isSaveButtonActive = true;
-    let { success, message, payload } = await updateApiCall(updatePayload);
-    this.isSaveButtonActive = false;
+    this.isSavingEdit = true;
+    let { success, message } = await accountUpdateApi(updatePayload);
+    this.isSavingEdit = false;
     this.isEditModeOn = false;
     if (!success) {
       return alert(message);
@@ -92,34 +91,37 @@ export class PEditableText {
       Store.isEmailVerified = false;
     }
 
-    return alert(payload.message);
+    return alert(message);
   }
 
   private newValue: string;
   private newValueRepeat: string;
 
+  EditModeForPassword: FunctionalComponent = () => [
+    <e-input
+      type="password"
+      name="newValue"
+      placeholder="New password"
+    ></e-input>,
+    <l-spacer value={0.5}></l-spacer>,
+    <e-input
+      type="password"
+      name="newValueRepeat"
+      placeholder="Re-type new password"
+    ></e-input>,
+  ];
+
   EditModeOn: FunctionalComponent = () => [
+    <l-spacer value={0.5}></l-spacer>,
     this.name === "password" ? (
-      <div>
-        <e-input
-          type="password"
-          name="newValue"
-          placeholder="New password"
-        ></e-input>
-        <l-spacer value={0.5}></l-spacer>
-        <e-input
-          type="password"
-          name="newValueRepeat"
-          placeholder="Re-type new password"
-        ></e-input>
-      </div>
+      <this.EditModeForPassword></this.EditModeForPassword>
     ) : (
       <e-input type="text" name="newValue" value={this.value}></e-input>
     ),
     <l-spacer value={1}></l-spacer>,
-    <l-row>
+    <l-row direction="row-reverse">
       <div></div>
-      <div>
+      <l-row>
         <e-button variant="light" action="cancelEditMode">
           Cancel
         </e-button>
@@ -127,11 +129,11 @@ export class PEditableText {
         <e-button
           disabled={this.isSaveButtonDisabled}
           action="saveUpdate"
-          active={this.isSaveButtonActive}
+          active={this.isSavingEdit}
         >
           Save
         </e-button>
-      </div>
+      </l-row>
     </l-row>,
   ];
 

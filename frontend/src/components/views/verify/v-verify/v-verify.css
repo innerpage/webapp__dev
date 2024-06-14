@@ -11,12 +11,6 @@ p-spinner {
 }
 
 c-banner {
-  width: 300px;
-}
-
-.logo {
-  width: 200px;
-  height: 40px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: var(--border-radius);
+  display: block;
+  width: 250px;
 }

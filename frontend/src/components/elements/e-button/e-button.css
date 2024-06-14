@@ -2,16 +2,13 @@
 button {
   background: none;
   border: 0;
-  font-size: 0.9em;
-  padding: calc(var(--padding) / 1.5) var(--padding);
+  font-size: 1em;
   border-radius: var(--border-radius);
   transition: all 0.25s;
+  padding: calc(var(--padding) / 1.6) calc(var(--padding) / 1.5);
 }
 button:hover {
   cursor: pointer;
-}
-button:active {
-  opacity: 0.4;
 }
 button:disabled {
   opacity: 0.3;
@@ -21,6 +18,7 @@ button:disabled {
 /* Primary Button (Default) */
 .button__primary--default {
   font-weight: 600;
+  border: 1px solid var(--color__blue--regular);
   background: var(--color__blue--regular);
   color: white;
 }
@@ -77,13 +75,17 @@ button:disabled {
   color: var(--color__blue--lighter);
 }
 
-/* Wide Button (Default) */
-.button__wide--default {
+/*  Button size */
+.button__wide {
   display: block;
   width: 100%;
 }
 
-/* Active Button (In action) */
+.button__small {
+  padding: calc(var(--padding) / 2) calc(var(--padding) / 1.5);
+}
+
+/* Active Button */
 .button--active {
-  padding: 0.3em 0.8em;
+  padding: calc(var(--padding) / 2) calc(var(--padding) / 1.5);
 }

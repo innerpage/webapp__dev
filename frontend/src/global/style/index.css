@@ -1,9 +1,9 @@
 @import "reset/reset.css";
-@import "vars/vars.css";
+@import "var/var.css";
 
 body {
-  font-size: var(--font-size--body);
+  font-size: var(--font-size__body);
   color: var(--color__grey--dark);
-  font-family: var(--font-family);
+  font-family: var(--font-family__sans-serif);
   line-height: var(--line-height);
 }

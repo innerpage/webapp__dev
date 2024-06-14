@@ -41,6 +41,10 @@ export class AppRoot {
     }
   }
 
+  @Listen("closeModal") closeModalListener() {
+    this.closeModal();
+  }
+
   @Listen("buttonClick") async handleButtonClick(e) {
     if (e.detail.action === "mailEmailVerificationLink") {
       let mailEmailVerificationLinkPayload: MailPayloadInterface =

@@ -1,8 +1,8 @@
 // APIs
-export { verifyEmailApi } from './apis/verifyEmailApi';
+export { verifyEmailApi } from "./apis/verifyEmailApi";
 
 // Generators
-export { generateEmailVerificationPayload } from './generators/generateEmailVerificationPayload';
+export { generateEmailVerificationPayload } from "./generators/generateEmailVerificationPayload";
 
 // Validators
-export { validateEmailVerificationPayload } from './validators/validateEmailVerificationPayload';
+export { validateEmailVerificationPayload } from "./validators/validateEmailVerificationPayload";

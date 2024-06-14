@@ -18,8 +18,9 @@ export class VPage1 {
         <c-content-area>
           <p-sidebar></p-sidebar>
           <c-main>
-            {/* TEMPLATE CODE Starts */}
+            {/* Template */}
             <e-text variant="display">Page 1</e-text>
+            <l-spacer value={2}></l-spacer>
             <div class="card card-full"></div>
             <l-spacer value={2}></l-spacer>
             <l-row justifyContent="space-between">
@@ -42,9 +43,7 @@ export class VPage1 {
               <div class="card card-quarter"></div>
               <div class="card card-quarter"></div>
             </l-row>
-
             <l-spacer value={4}></l-spacer>
-
             <l-row justifyContent="space-between">
               <div class="card card-half"></div>
               <div class="card card-half"></div>
@@ -54,7 +53,6 @@ export class VPage1 {
               <div class="card card-half"></div>
               <div class="card card-half"></div>
             </l-row>
-
             <l-spacer value={4}></l-spacer>
             <l-row justifyContent="space-between">
               <div class="card card-quarter"></div>
@@ -63,15 +61,13 @@ export class VPage1 {
               <div class="card card-quarter"></div>
             </l-row>
             <l-spacer value={2}></l-spacer>
-
             <l-row justifyContent="space-between">
               <div class="card card-quarter"></div>
               <div class="card card-quarter"></div>
               <div class="card card-quarter"></div>
               <div class="card card-quarter"></div>
             </l-row>
-
-            {/* TEMPLATE CODE Ends */}
+            {/* Template */}
           </c-main>
         </c-content-area>
       </Host>

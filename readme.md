@@ -37,11 +37,12 @@
 
 - Change `baseUrl` in `outputTargets`
 
-## Edit ./frontend/src/global/script/vars/Var.ts
+## Edit ./frontend/src/global/script/var/Var.ts
 
 - Change `Var.app.name`
 - Change `Var.app.domain`
 - Change `Var.app.contact.email`
+- Change `Var.app.logo.rectangle.colour`
 - Change `Var.app.policy.tos.url`, `Var.app.policy.privacy.url` & `Var.app.policy.cancellationAndRefund.url`
 - Change `Var.app.owner.name`, `Var.app.owner.website.url`, `Var.app.owner.contact.address` & `Var.app.owner.contact.email`
 - Change `Var.app.url`

@@ -8,11 +8,8 @@ import {
   Host,
   h,
 } from "@stencil/core";
-import {
-  getGoogleProfilePayloadGenerator,
-  getGoogleProfileApi,
-} from "./helpers";
-import { getGoogleProfilePayloadInterface } from "./interfaces";
+import { googleProfilePayloadGenerator, googleProfileApi } from "./helpers";
+import { googleProfilePayloadInterface } from "./interfaces";
 import { RouterHistory, injectHistory } from "@stencil/router";
 
 @Component({
@@ -28,13 +25,18 @@ export class VPostOauth {
   authSuccessfulEventEmitter: EventEmitter;
 
   @Event({
+    eventName: "closeModal",
+    bubbles: true,
+  })
+  closeModalEventEmitter: EventEmitter;
+
+  @Event({
     eventName: "routeToEvent",
     bubbles: true,
   })
   routeToEvent: EventEmitter;
 
   @Prop() history: RouterHistory;
-
   @State() activeView: string = "fetching";
 
   componentDidLoad() {
@@ -46,11 +48,12 @@ export class VPostOauth {
   }
 
   async getGoogleProfile(token: string) {
-    let getGoogleProfilePayload: getGoogleProfilePayloadInterface =
-      getGoogleProfilePayloadGenerator(token);
-    let { success } = await getGoogleProfileApi(getGoogleProfilePayload);
+    let googleProfilePayload: googleProfilePayloadInterface =
+      googleProfilePayloadGenerator(token);
+    let { success } = await googleProfileApi(googleProfilePayload);
 
     if (!success) {
+      this.closeModalEventEmitter.emit();
       this.activeView = "error";
       return;
     }
@@ -68,7 +71,8 @@ export class VPostOauth {
 
   Loader: FunctionalComponent = () => (
     <l-row align="center">
-      <p-spinner></p-spinner>&nbsp;&nbsp;
+      <p-spinner></p-spinner>
+      <l-spacer value={1}></l-spacer>
       <e-text>Fetching profile info..</e-text>
     </l-row>
   );

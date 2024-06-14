@@ -1,7 +1,7 @@
 import { updatePayloadInterface } from "../../interfaces";
 import { Var } from "../../../../../global/script";
 
-export const updateApiCall = async (payload: updatePayloadInterface) => {
+export const accountUpdateApi = async (payload: updatePayloadInterface) => {
   let url: string = `${Var.api.url}${Var.api.endpoint.account.details}`;
 
   let options: any = {

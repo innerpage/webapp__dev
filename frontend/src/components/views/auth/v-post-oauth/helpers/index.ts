@@ -1,5 +1,5 @@
 // API
-export { getGoogleProfileApi } from './apis/getGoogleProfileApi';
+export { googleProfileApi } from "./apis/googleProfileApi";
 
-// GENERATORS
-export { getGoogleProfilePayloadGenerator } from './generators/getGoogleProfilePayloadGenerator';
+// Generators
+export { googleProfilePayloadGenerator } from "./generators/googleProfilePayloadGenerator";

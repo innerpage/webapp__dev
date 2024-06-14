@@ -3,8 +3,37 @@ input[type="number"],
 input[type="password"],
 input[type="text"] {
   width: 100%;
-  padding: var(--padding);
-  border: var(--border);
+  padding: calc(var(--padding) / 1.6) calc(var(--padding) / 1.5);
+  border: var(--border__input);
   border-radius: var(--border-radius);
   font-size: 1em;
+  box-sizing: border-box;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: var(--color__grey--light);
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: var(--color__grey--light);
+  opacity: 1;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: var(--color__grey--light);
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--color__grey--light);
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--color__grey--light);
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: var(--color__grey--light);
 }

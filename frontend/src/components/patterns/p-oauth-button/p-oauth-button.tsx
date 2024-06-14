@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, State, h } from "@stencil/core";
+import { Component, Event, EventEmitter, Prop, Host, h } from "@stencil/core";
 import { Var } from "../../../global/script";
 
 @Component({
@@ -7,8 +7,6 @@ import { Var } from "../../../global/script";
   shadow: true,
 })
 export class POauthButton {
-  googleOauthButtonEl!: HTMLDivElement;
-
   @Event({
     eventName: "routeToEvent",
     bubbles: true,
@@ -17,12 +15,11 @@ export class POauthButton {
 
   @Prop() variant: string = "google";
 
-  @State() isGoogleOauthLoaded: boolean = false;
-
+  googleOauthButtonEl!: HTMLDivElement;
   private window: any;
 
   componentDidLoad() {
-    this.window = window as any;
+    this.window = window;
     this.initGoogleOauth();
   }
 
@@ -41,51 +38,49 @@ export class POauthButton {
   }
 
   async initGoogleOauth() {
-    if (!this.isGoogleOauthLoaded) {
-      const isScriptLoaded = await this.loadScript(
-        "https://accounts.google.com/gsi/client"
-      );
+    const isScriptLoaded = await this.loadScript(
+      "https://accounts.google.com/gsi/client"
+    );
 
-      if (!isScriptLoaded) {
-        console.log("Failed to load Google Oauth script");
-        return;
-      }
-
-      await this.window.google.accounts.id.initialize({
-        client_id: Var.keys.oauth.google.clientId,
-        callback: (response) => {
-          this.routeToEvent.emit({
-            type: "push",
-            route: "/post-oauth",
-            data: {
-              type: "google",
-              token: response.credential,
-            },
-          });
-        },
-      });
-
-      await this.window.google.accounts.id.renderButton(
-        this.googleOauthButtonEl,
-        {
-          type: "standard",
-          theme: "outline",
-          size: "large",
-          width: 300,
-        }
-      );
-
-      this.isGoogleOauthLoaded = true;
+    if (!isScriptLoaded) {
+      console.log("Failed to load GSI client");
+      return;
     }
+
+    await this.window.google.accounts.id.initialize({
+      client_id: Var.keys.oauth.google.clientId,
+      callback: (response) => {
+        this.routeToEvent.emit({
+          type: "push",
+          route: "/post-oauth",
+          data: {
+            type: "google",
+            token: response.credential,
+          },
+        });
+      },
+    });
+
+    await this.window.google.accounts.id.renderButton(
+      this.googleOauthButtonEl,
+      {
+        type: "standard",
+        theme: "outline",
+        size: "large",
+        width: 250,
+      }
+    );
   }
 
   render() {
-    if (this.variant === "google") {
-      return (
-        <div
-          ref={(el) => (this.googleOauthButtonEl = el as HTMLDivElement)}
-        ></div>
-      );
-    }
+    return (
+      <Host>
+        {this.variant === "google" && (
+          <div
+            ref={(el) => (this.googleOauthButtonEl = el as HTMLDivElement)}
+          ></div>
+        )}
+      </Host>
+    );
   }
 }

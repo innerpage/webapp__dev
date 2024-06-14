@@ -11,10 +11,11 @@ export class VHome {
     Store.activeView = "home";
   }
 
-  LoggedInView: FunctionalComponent = () => (
+  SessionView: FunctionalComponent = () => (
     <c-main>
-      {/* TEMPLATE CODE Starts */}
+      {/* Template */}
       <e-text variant="display">Overview</e-text>
+      <l-spacer value={2}></l-spacer>
       <div class="card card-full"></div>
       <l-spacer value={2}></l-spacer>
       <l-row justifyContent="space-between">
@@ -27,6 +28,7 @@ export class VHome {
       <l-spacer value={4}></l-spacer>
 
       <e-text variant="display">Insights</e-text>
+      <l-spacer value={2}></l-spacer>
       <l-row justifyContent="space-between">
         <div class="card card-quarter"></div>
         <div class="card card-quarter"></div>
@@ -44,6 +46,7 @@ export class VHome {
       <l-spacer value={4}></l-spacer>
 
       <e-text variant="display">Data Source</e-text>
+      <l-spacer value={2}></l-spacer>
       <l-row justifyContent="space-between">
         <div class="card card-half"></div>
         <div class="card card-half"></div>
@@ -56,6 +59,7 @@ export class VHome {
 
       <l-spacer value={4}></l-spacer>
       <e-text variant="display">Export</e-text>
+      <l-spacer value={2}></l-spacer>
       <l-row justifyContent="space-between">
         <div class="card card-quarter"></div>
         <div class="card card-quarter"></div>
@@ -71,13 +75,14 @@ export class VHome {
         <div class="card card-quarter"></div>
       </l-row>
 
-      {/* TEMPLATE CODE Ends */}
+      {/* Template */}
     </c-main>
   );
 
-  LoggedOutView: FunctionalComponent = () => (
+  NonSessionView: FunctionalComponent = () => (
     <c-main>
       <e-text variant="display">Benefits</e-text>
+      <l-spacer value={2}></l-spacer>
       <div class="card card-full"></div>
       <l-spacer value={2}></l-spacer>
       <l-row justifyContent="space-between">
@@ -96,9 +101,9 @@ export class VHome {
         <c-content-area>
           <p-sidebar></p-sidebar>
           {Store.isSessionActive ? (
-            <this.LoggedInView></this.LoggedInView>
+            <this.SessionView></this.SessionView>
           ) : (
-            <this.LoggedOutView></this.LoggedOutView>
+            <this.NonSessionView></this.NonSessionView>
           )}
         </c-content-area>
       </Host>

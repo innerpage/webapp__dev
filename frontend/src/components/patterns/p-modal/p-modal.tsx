@@ -1,18 +1,18 @@
-import { Component, Prop, State, Watch, Host, h } from '@stencil/core';
-import { gsap } from 'gsap';
+import { Component, Prop, State, Watch, Host, h } from "@stencil/core";
+import { gsap } from "gsap";
 
 @Component({
-  tag: 'p-modal',
-  styleUrl: 'p-modal.css',
+  tag: "p-modal",
+  styleUrl: "p-modal.css",
   shadow: true,
 })
 export class PModal {
   @Prop() isVisible: boolean = false;
   @Prop() name: string;
 
-  @State() modalName: string;
+  @State() activeModal: string;
 
-  @Watch('isVisible') watchIsVisible(newVal: boolean, oldVal: boolean) {
+  @Watch("isVisible") watchIsVisible(newVal: boolean, oldVal: boolean) {
     if (newVal != oldVal) {
       if (newVal) {
         this.showModal();
@@ -22,9 +22,9 @@ export class PModal {
     }
   }
 
-  @Watch('name') watchName(newVal: string, oldVal: string) {
+  @Watch("name") watchName(newVal: string, oldVal: string) {
     if (newVal != oldVal) {
-      this.modalName = newVal;
+      this.activeModal = newVal;
     }
   }
 
@@ -32,19 +32,21 @@ export class PModal {
   private tl: any = gsap.timeline();
 
   showModal() {
-    this.tl.to(this.modalHostEl, { display: 'flex', duration: 0 });
+    this.tl.to(this.modalHostEl, { display: "flex", duration: 0 });
     this.tl.to(this.modalHostEl, { opacity: 1, duration: 0.15 });
   }
 
   hideModal() {
     this.tl.to(this.modalHostEl, { opacity: 0, duration: 0.15 });
-    this.tl.to(this.modalHostEl, { display: 'none', duration: 0 });
+    this.tl.to(this.modalHostEl, { display: "none", duration: 0 });
   }
 
   render() {
     return (
-      <Host ref={el => (this.modalHostEl = el as HTMLDivElement)}>
-        <c-card>{this.modalName === 'login' || this.modalName === 'signup' || this.modalName === 'resetPassword' ? <p-auth view={this.modalName}></p-auth> : ''}</c-card>
+      <Host ref={(el) => (this.modalHostEl = el as HTMLDivElement)}>
+        <c-card>
+          <p-auth view={this.activeModal}></p-auth>
+        </c-card>
       </Host>
     );
   }

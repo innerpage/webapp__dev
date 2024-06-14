@@ -2,16 +2,16 @@ import { emailVerificationPayloadInterface } from "../../interfaces";
 import { Var } from "../../../../../../global/script";
 
 export const verifyEmailApi = async (
-  emailVerificationPayload: emailVerificationPayloadInterface
+  payload: emailVerificationPayloadInterface
 ) => {
-  let url: string = `${Var.api.url}${Var.api.endpoint.mail.verificationLink}`;
+  let url: string = `${Var.api.url}${Var.api.endpoint.verify.email}`;
   let options: any = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify(emailVerificationPayload),
+    body: JSON.stringify(payload),
   };
 
   let returnData: any;

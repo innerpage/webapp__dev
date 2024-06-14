@@ -1,4 +1,4 @@
-export const getGoogleProfilePayloadGenerator = (token: string) => {
+export const googleProfilePayloadGenerator = (token: string) => {
   let getGoogleProfilePayload = {
     token: token,
   };

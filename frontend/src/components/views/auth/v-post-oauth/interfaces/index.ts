@@ -1,1 +1,1 @@
-export { getGoogleProfilePayloadInterface } from './google/getGoogleProfilePayloadInterface';
+export { googleProfilePayloadInterface } from "./google/googleProfilePayloadInterface";

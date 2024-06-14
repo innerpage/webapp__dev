@@ -29,6 +29,11 @@ export namespace Components {
         "value": any;
         "variant": string;
     }
+    interface EImg {
+        "src": string;
+        "variant": string;
+        "width": string;
+    }
     interface EInput {
         "checked": boolean;
         "label": string;
@@ -38,6 +43,7 @@ export namespace Components {
         "value": string;
     }
     interface ELink {
+        "active": boolean;
         "theme": string;
         "url": string;
         "variant": string;
@@ -163,6 +169,12 @@ declare global {
     var HTMLEButtonElement: {
         prototype: HTMLEButtonElement;
         new (): HTMLEButtonElement;
+    };
+    interface HTMLEImgElement extends Components.EImg, HTMLStencilElement {
+    }
+    var HTMLEImgElement: {
+        prototype: HTMLEImgElement;
+        new (): HTMLEImgElement;
     };
     interface HTMLEInputElement extends Components.EInput, HTMLStencilElement {
     }
@@ -351,6 +363,7 @@ declare global {
         "c-content-area": HTMLCContentAreaElement;
         "c-main": HTMLCMainElement;
         "e-button": HTMLEButtonElement;
+        "e-img": HTMLEImgElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
         "e-list": HTMLEListElement;
@@ -407,6 +420,11 @@ declare namespace LocalJSX {
         "value"?: any;
         "variant"?: string;
     }
+    interface EImg {
+        "src"?: string;
+        "variant"?: string;
+        "width"?: string;
+    }
     interface EInput {
         "checked"?: boolean;
         "label"?: string;
@@ -417,6 +435,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface ELink {
+        "active"?: boolean;
         "theme"?: string;
         "url"?: string;
         "variant"?: string;
@@ -489,7 +508,7 @@ declare namespace LocalJSX {
         "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VDeleteAccount {
-        "onLogoutUserEvent"?: (event: CustomEvent<any>) => void;
+        "onLogoutEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VHome {
     }
@@ -506,6 +525,7 @@ declare namespace LocalJSX {
     interface VPostOauth {
         "history"?: RouterHistory;
         "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
+        "onCloseModal"?: (event: CustomEvent<any>) => void;
         "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VSupport {
@@ -522,6 +542,7 @@ declare namespace LocalJSX {
         "c-content-area": CContentArea;
         "c-main": CMain;
         "e-button": EButton;
+        "e-img": EImg;
         "e-input": EInput;
         "e-link": ELink;
         "e-list": EList;
@@ -564,6 +585,7 @@ declare module "@stencil/core" {
             "c-content-area": LocalJSX.CContentArea & JSXBase.HTMLAttributes<HTMLCContentAreaElement>;
             "c-main": LocalJSX.CMain & JSXBase.HTMLAttributes<HTMLCMainElement>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
+            "e-img": LocalJSX.EImg & JSXBase.HTMLAttributes<HTMLEImgElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;
             "e-list": LocalJSX.EList & JSXBase.HTMLAttributes<HTMLEListElement>;

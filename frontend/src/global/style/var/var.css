@@ -1,16 +1,18 @@
 :root {
-  --font-size--body: 16px;
-  --font-size--display: 1.5em;
-  --font-size--heading: 1.25em;
-  --font-size--footnote: 0.8em;
-  --font-weight--display: 700;
-  --font-weight--heading: 500;
-  --font-weight--body: 400;
-  --font-family: "IBM Plex Sans", sans-serif;
+  --font-size__body: 15px;
+  --font-size__display: 1.5em;
+  --font-size__heading: 1.25em;
+  --font-size__footnote: 0.8em;
+  --font-weight__display: 700;
+  --font-weight__heading: 500;
+  --font-weight__body: 400;
+  --font-family__sans-serif: "IBM Plex Sans", sans-serif;
+  --font-family__serif: "IBM Plex Serif", serif;
 
   --padding: 1em;
   --border: 1px solid rgba(0, 0, 0, 0.1);
-  --border-radius: 0.5em;
+  --border__input: 1px solid rgba(0, 0, 0, 0.2);
+  --border-radius: 0.25em;
   --line-height: 1.8;
 
   --color__site--background: #121212;

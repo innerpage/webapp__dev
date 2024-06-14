@@ -1,10 +1,10 @@
-import { loginPayloadInterface } from '../../../interfaces';
+import { loginPayloadInterface } from "../../../interfaces";
 
 export const generateLoginPayload = (email: string, password: string) => {
-  let loginPayload: loginPayloadInterface = {
+  let payload: loginPayloadInterface = {
     email: email.trim().toLowerCase(),
     password: password.trim(),
   };
 
-  return loginPayload;
+  return payload;
 };

@@ -1,10 +1,14 @@
-import { signupPayloadInterface } from '../../../interfaces';
+import { signupPayloadInterface } from "../../../interfaces";
 
-export const generateSignupPayload = (name: string, email: string, password: string) => {
-  let signupPayload: signupPayloadInterface = {
+export const generateSignupPayload = (
+  name: string,
+  email: string,
+  password: string
+) => {
+  let payload: signupPayloadInterface = {
     name: name.trim(),
     email: email.trim().toLowerCase(),
     password: password.trim(),
   };
-  return signupPayload;
+  return payload;
 };

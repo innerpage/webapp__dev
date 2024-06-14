@@ -1,7 +1,6 @@
 /* Default */
 .banner {
   display: block;
-  box-sizing: border-box;
   padding: var(--padding);
   border-radius: var(--border-radius);
 }

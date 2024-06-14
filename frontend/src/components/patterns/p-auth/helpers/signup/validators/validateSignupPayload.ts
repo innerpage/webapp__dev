@@ -1,7 +1,7 @@
-import Joi from 'joi';
-import { signupPayloadInterface } from '../../../interfaces';
+import Joi from "joi";
+import { signupPayloadInterface } from "../../../interfaces";
 
-const signupInputsSchema = Joi.object({
+const signupPayloadSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string()
     .email({ tlds: { allow: false } })
@@ -13,12 +13,17 @@ const signupInputsSchema = Joi.object({
   password: Joi.string().min(8).max(1024).required(),
 });
 
-export const validateSignupPayload = (signupPayload: signupPayloadInterface) => {
-  let { error } = signupInputsSchema.validate(signupPayload);
+export const validateSignupPayload = (
+  signupPayload: signupPayloadInterface
+) => {
+  let { error } = signupPayloadSchema.validate(signupPayload);
 
   if (error) {
-    return { isValid: false, validationMessage: `❌ ${error.details[0].message}` };
+    return {
+      isValid: false,
+      validationMessage: `❌ ${error.details[0].message}`,
+    };
   } else {
-    return { isValid: true, validationMessage: '' };
+    return { isValid: true, validationMessage: "" };
   }
 };

@@ -22,34 +22,31 @@ export class VAccount {
             <l-spacer value={1}></l-spacer>
             <c-card>
               <e-text variant="footnote">NAME</e-text>
-              <l-spacer value={0.5}></l-spacer>
               <p-editable-text
                 type="text"
                 value={Store.accountName}
                 name="name"
               ></p-editable-text>
-              <l-spacer value={1}></l-spacer>
+              <l-spacer value={1.25}></l-spacer>
               <l-seperator></l-seperator>
-              <l-spacer value={1}></l-spacer>
+              <l-spacer value={1.25}></l-spacer>
               <e-text variant="footnote">EMAIL</e-text>
-              <l-spacer value={0.5}></l-spacer>
               <p-editable-text
                 type="link"
                 value={`${Store.accountEmail}`}
                 name="email"
               ></p-editable-text>
-              <l-spacer value={1}></l-spacer>
+              <l-spacer value={1.25}></l-spacer>
               <l-seperator></l-seperator>
-              <l-spacer value={1}></l-spacer>
+              <l-spacer value={1.25}></l-spacer>
               <e-text variant="footnote">PASSWORD</e-text>
-              <l-spacer value={0.5}></l-spacer>
               <p-editable-text
                 type="password"
                 value="********"
                 name="password"
               ></p-editable-text>
             </c-card>
-            <l-spacer value={1}></l-spacer>
+            <l-spacer value={1.5}></l-spacer>
             <e-link url="/delete-account" theme="danger">
               <l-row>
                 <ph-trash

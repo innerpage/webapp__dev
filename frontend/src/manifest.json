@@ -5,7 +5,7 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "link/to/icon.png",
+      "src": "https://res.cloudinary.com/projcktold/image/upload/v1718195337/Starter/Webapp/Webapp_Starter_Square_Logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

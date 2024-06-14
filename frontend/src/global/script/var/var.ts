@@ -1,26 +1,36 @@
 export const Var = {
   app: {
-    name: "",
+    name: "Projckt WebApp",
     contact: {
-      email: "mail@example.com",
+      email: "projckt@gmail.com",
+      url: "https://projckt.com/support",
     },
-    domain: "",
+    domain: "projckt.com",
+    logo: {
+      rectangle: {
+        colour:
+          "https://res.cloudinary.com/projcktold/image/upload/v1718190583/Starter/Webapp/Webapp_Logo.png",
+      },
+    },
     policy: {
       tos: {
-        url: "",
+        url: "https://projckt.com/terms-of-service",
       },
       privacy: {
-        url: "",
+        url: "https://projckt.com/privacy-policy",
       },
       cancellationAndRefund: {
-        url: "",
+        url: "https://projckt.com/cancellation",
       },
     },
-    url: "",
+    url: "https://projckt.com",
     owner: {
-      name: "",
-      website: { url: "" },
-      contact: { address: "", email: "" },
+      name: "Projckt",
+      website: { url: "https://projckt.com" },
+      contact: {
+        address: "Guwahati, Assam, India",
+        email: "projckt@gmail.com",
+      },
     },
   },
   api: {
@@ -54,6 +64,9 @@ export const Var = {
             get: "/stripe-get-price",
           },
         },
+      },
+      verify: {
+        email: "/verify-email",
       },
     },
   },

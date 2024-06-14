@@ -124,8 +124,8 @@ export class VVerify {
     let { success, message, payload } = await verifyEmailApi(
       emailVerificationPayload
     );
-    this.isViewDataFetched = true;
 
+    this.isViewDataFetched = true;
     if (!success) {
       Store.isEmailVerified = false;
       this.failureMessage = message;
@@ -158,12 +158,13 @@ export class VVerify {
       <e-text>
         <strong>Email verified</strong>
       </e-text>
+      <l-spacer value={0.5}></l-spacer>
       {!Store.isSessionActive ? (
         <e-button variant="link" action="proceedToLogin">
           Proceed to login
         </e-button>
       ) : (
-        <e-link url="/">Proceed to dashboard</e-link>
+        <e-link url="/">Go to dashboard</e-link>
       )}
     </c-banner>
   );
@@ -171,18 +172,33 @@ export class VVerify {
   FailureView: FunctionalComponent = () => (
     <c-banner theme="warning">
       <e-text>
-        <strong>⚠️ Invalid verification link</strong>
+        <strong>{this.failureMessage}</strong>
       </e-text>
-      <e-text>
-        <l-row>{this.failureMessage}</l-row>
-      </e-text>
-      {!Store.isSessionActive ? (
-        <e-button variant="link" action="proceedToLogin">
-          Proceed to login
-        </e-button>
-      ) : (
-        <e-link url="/">Proceed to dashboard</e-link>
-      )}
+      {/* <e-text>
+        {this.failureMessage}. If this issue persists, kindly report to us at{" "}
+        <e-link variant="email" url={`mailto:${Var.app.contact.email}`}>
+          {Var.app.contact.email}
+        </e-link>
+      </e-text> */}
+      <l-spacer value={1.5}></l-spacer>
+      <l-row>
+        {!Store.isSessionActive ? (
+          <e-button variant="link" action="proceedToLogin">
+            Go to login
+          </e-button>
+        ) : (
+          <div>
+            <e-button action="mailEmailVerificationLink" variant="link">
+              Re-send verification link
+            </e-button>
+            <e-link variant="externalLink" url={Var.app.contact.url}>
+              Contact Us
+            </e-link>
+            <br />
+            <e-link url="/">Go to dashboard</e-link>
+          </div>
+        )}
+      </l-row>
     </c-banner>
   );
 
@@ -195,6 +211,7 @@ export class VVerify {
               <strong>Email verified</strong>
             </e-text>
           </c-banner>
+          <l-spacer value={1}></l-spacer>
           <this.SubmitNewPassword></this.SubmitNewPassword>
         </div>
       )}
@@ -269,10 +286,8 @@ export class VVerify {
     return (
       <Host>
         <div>
-          <div class="logo"></div>
+          <e-img src={Var.app.logo.rectangle.colour} width="10em"></e-img>
           <l-spacer value={1}></l-spacer>
-          <l-seperator></l-seperator>
-          <l-spacer value={2}></l-spacer>
           {this.isViewDataFetched ? (
             <this.DataFetchedView></this.DataFetchedView>
           ) : (

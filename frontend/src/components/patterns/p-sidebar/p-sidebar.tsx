@@ -11,16 +11,14 @@ export class PSidebar {
   render() {
     return (
       <Host>
-        <l-spacer value={3}></l-spacer>
         <e-list>
           <e-list-item>
             <e-link
               url="/"
-              variant={
-                Store.activeView === "home" ? "navLinkActive" : "navLink"
-              }
+              variant="nav"
+              active={Store.activeView === "home" ? true : false}
             >
-              <l-row>
+              <l-row justifyContent="normal">
                 <ph-house
                   color="var(--color__blue--regular)"
                   weight={Store.activeView === "home" ? "fill" : "regular"}
@@ -33,11 +31,10 @@ export class PSidebar {
           <e-list-item>
             <e-link
               url="/page-1"
-              variant={
-                Store.activeView === "page1" ? "navLinkActive" : "navLink"
-              }
+              variant="nav"
+              active={Store.activeView === "page1" ? true : false}
             >
-              <l-row>
+              <l-row justifyContent="normal">
                 <ph-file
                   color="var(--color__blue--regular)"
                   weight={Store.activeView === "page1" ? "fill" : "regular"}
