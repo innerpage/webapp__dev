@@ -1,1 +1,1 @@
-export { deleteAccountApiCall } from './apis/deleteAccountApiCall';
+export { deleteAccountApi } from "./apis/deleteAccountApi";

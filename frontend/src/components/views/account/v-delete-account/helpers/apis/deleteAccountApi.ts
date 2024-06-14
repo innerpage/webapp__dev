@@ -1,6 +1,6 @@
 import { Var } from "../../../../../../global/script";
 
-export const deleteAccountApiCall = async () => {
+export const deleteAccountApi = async () => {
   let url: string = `${Var.api.url}${Var.api.endpoint.account.details}`;
   let options: any = {
     method: "DELETE",

@@ -7,7 +7,7 @@ import {
   Listen,
   h,
 } from "@stencil/core";
-import { deleteAccountApiCall } from "./helpers";
+import { deleteAccountApi } from "./helpers";
 
 @Component({
   tag: "v-delete-account",
@@ -31,7 +31,7 @@ export class VDeleteAccount {
 
   async deleteAccount() {
     this.isDeletingAccount = true;
-    let { success, message } = await deleteAccountApiCall();
+    let { success, message } = await deleteAccountApi();
     this.isDeletingAccount = false;
     alert(message);
     if (!success) {
