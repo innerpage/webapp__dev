@@ -7,7 +7,7 @@ npm run --prefix server build
 rsync -av --delete server/dest/ ../prod
 cp server/{.gitignore,package.json,.env} ../prod
 
-## Build ./frontend
+## Build frontend
 npm run --prefix frontend build 
 rsync -av --delete frontend/www/ ../prod/www
 
