@@ -5,7 +5,7 @@ mkdir ../prod
 ## Build ./server
 npm run --prefix server build
 rsync -av --delete server/dest/ ../prod
-cp server/{.gitignore,package.json,.env} ../prod
+cp server/{.gitignore,package.json,.env,.env-bak} ../prod
 
 ## Build ./frontend
 npm run --prefix frontend build 
