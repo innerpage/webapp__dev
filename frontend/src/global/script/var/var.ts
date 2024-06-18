@@ -5,7 +5,7 @@ export const Var = {
       email: "innerpage.journal@gmail.com",
       url: "https://innerpage.org/contact-us",
     },
-    domain: "innerpage.com",
+    domain: "innerpage.org",
     logo: {
       rectangle: {
         black:
