@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults, RouterHistory } from "@stencil/router";
+import { RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AppRoot {
         "history": RouterHistory;
@@ -104,27 +104,13 @@ export namespace Components {
     interface VCatchAll {
         "history": RouterHistory;
     }
-    interface VCheckout {
-        "history": RouterHistory;
-        "match": MatchResults;
-    }
     interface VDeleteAccount {
     }
     interface VHome {
     }
     interface VPage1 {
     }
-    interface VPaymentCancel {
-    }
-    interface VPaymentHandle {
-        "history": RouterHistory;
-        "match": MatchResults;
-    }
     interface VSupport {
-    }
-    interface VVerify {
-        "history": RouterHistory;
-        "match": MatchResults;
     }
 }
 declare global {
@@ -290,12 +276,6 @@ declare global {
         prototype: HTMLVCatchAllElement;
         new (): HTMLVCatchAllElement;
     };
-    interface HTMLVCheckoutElement extends Components.VCheckout, HTMLStencilElement {
-    }
-    var HTMLVCheckoutElement: {
-        prototype: HTMLVCheckoutElement;
-        new (): HTMLVCheckoutElement;
-    };
     interface HTMLVDeleteAccountElement extends Components.VDeleteAccount, HTMLStencilElement {
     }
     var HTMLVDeleteAccountElement: {
@@ -314,29 +294,11 @@ declare global {
         prototype: HTMLVPage1Element;
         new (): HTMLVPage1Element;
     };
-    interface HTMLVPaymentCancelElement extends Components.VPaymentCancel, HTMLStencilElement {
-    }
-    var HTMLVPaymentCancelElement: {
-        prototype: HTMLVPaymentCancelElement;
-        new (): HTMLVPaymentCancelElement;
-    };
-    interface HTMLVPaymentHandleElement extends Components.VPaymentHandle, HTMLStencilElement {
-    }
-    var HTMLVPaymentHandleElement: {
-        prototype: HTMLVPaymentHandleElement;
-        new (): HTMLVPaymentHandleElement;
-    };
     interface HTMLVSupportElement extends Components.VSupport, HTMLStencilElement {
     }
     var HTMLVSupportElement: {
         prototype: HTMLVSupportElement;
         new (): HTMLVSupportElement;
-    };
-    interface HTMLVVerifyElement extends Components.VVerify, HTMLStencilElement {
-    }
-    var HTMLVVerifyElement: {
-        prototype: HTMLVVerifyElement;
-        new (): HTMLVVerifyElement;
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
@@ -366,14 +328,10 @@ declare global {
         "v-account": HTMLVAccountElement;
         "v-billing": HTMLVBillingElement;
         "v-catch-all": HTMLVCatchAllElement;
-        "v-checkout": HTMLVCheckoutElement;
         "v-delete-account": HTMLVDeleteAccountElement;
         "v-home": HTMLVHomeElement;
         "v-page-1": HTMLVPage1Element;
-        "v-payment-cancel": HTMLVPaymentCancelElement;
-        "v-payment-handle": HTMLVPaymentHandleElement;
         "v-support": HTMLVSupportElement;
-        "v-verify": HTMLVVerifyElement;
     }
 }
 declare namespace LocalJSX {
@@ -478,11 +436,6 @@ declare namespace LocalJSX {
     interface VCatchAll {
         "history"?: RouterHistory;
     }
-    interface VCheckout {
-        "history"?: RouterHistory;
-        "match"?: MatchResults;
-        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
-    }
     interface VDeleteAccount {
         "onLogoutEvent"?: (event: CustomEvent<any>) => void;
     }
@@ -490,20 +443,7 @@ declare namespace LocalJSX {
     }
     interface VPage1 {
     }
-    interface VPaymentCancel {
-        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
-    }
-    interface VPaymentHandle {
-        "history"?: RouterHistory;
-        "match"?: MatchResults;
-        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
-    }
     interface VSupport {
-    }
-    interface VVerify {
-        "history"?: RouterHistory;
-        "match"?: MatchResults;
-        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
@@ -533,14 +473,10 @@ declare namespace LocalJSX {
         "v-account": VAccount;
         "v-billing": VBilling;
         "v-catch-all": VCatchAll;
-        "v-checkout": VCheckout;
         "v-delete-account": VDeleteAccount;
         "v-home": VHome;
         "v-page-1": VPage1;
-        "v-payment-cancel": VPaymentCancel;
-        "v-payment-handle": VPaymentHandle;
         "v-support": VSupport;
-        "v-verify": VVerify;
     }
 }
 export { LocalJSX as JSX };
@@ -574,14 +510,10 @@ declare module "@stencil/core" {
             "v-account": LocalJSX.VAccount & JSXBase.HTMLAttributes<HTMLVAccountElement>;
             "v-billing": LocalJSX.VBilling & JSXBase.HTMLAttributes<HTMLVBillingElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
-            "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;
             "v-delete-account": LocalJSX.VDeleteAccount & JSXBase.HTMLAttributes<HTMLVDeleteAccountElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
             "v-page-1": LocalJSX.VPage1 & JSXBase.HTMLAttributes<HTMLVPage1Element>;
-            "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
-            "v-payment-handle": LocalJSX.VPaymentHandle & JSXBase.HTMLAttributes<HTMLVPaymentHandleElement>;
             "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
-            "v-verify": LocalJSX.VVerify & JSXBase.HTMLAttributes<HTMLVVerifyElement>;
         }
     }
 }

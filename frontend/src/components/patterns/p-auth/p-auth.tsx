@@ -18,10 +18,6 @@ import {
   generateSignupPayload,
   validateSignupPayload,
 } from "./helpers";
-import { MailPayloadInterface } from "../../../global/script/interfaces";
-import { GenerateMailPayload } from "../../../global/script/helpers";
-import { ValidateMailPayload } from "../../../global/script/helpers";
-import { MailApi } from "../../../global/script/helpers";
 import { loginPayloadInterface, signupPayloadInterface } from "./interfaces";
 import { gsap } from "gsap";
 import { Var } from "../../../global/script";
@@ -43,8 +39,6 @@ export class PAuth {
       this.loginUser();
     } else if (e.detail.action === "signupUser") {
       this.signupUser();
-    } else if (e.detail.action === "mailPasswordResetLink") {
-      this.mailPasswordResetLink();
     }
   }
 
@@ -63,7 +57,6 @@ export class PAuth {
   @State() activeView: string;
   @State() isLoggingIn: boolean = false;
   @State() isSigningUp: boolean = false;
-  @State() isMailingPasswordResetLink: boolean = false;
 
   @Watch("view") watchView(newVal: string, oldVal: string) {
     this.reset();
@@ -85,7 +78,6 @@ export class PAuth {
     this.password = "";
     this.isLoggingIn = false;
     this.isSigningUp = false;
-    this.isMailingPasswordResetLink = false;
   }
 
   componentWillLoad() {
@@ -112,29 +104,6 @@ export class PAuth {
     }
 
     this.authSuccessfulEventEmitter.emit();
-  }
-
-  async mailPasswordResetLink() {
-    let mailPasswordResetLinkLinkPayload: MailPayloadInterface =
-      GenerateMailPayload(this.email, "passwordResetLink");
-    let { isValid, validationMessage } = ValidateMailPayload(
-      mailPasswordResetLinkLinkPayload
-    );
-    if (!isValid) {
-      return alert(validationMessage);
-    }
-
-    this.hideBanner();
-    this.isMailingPasswordResetLink = true;
-    let { success, message } = await MailApi(mailPasswordResetLinkLinkPayload);
-    this.isMailingPasswordResetLink = false;
-
-    if (!success) {
-      return alert(message);
-    }
-
-    this.showBanner();
-    alert(message);
   }
 
   async signupUser() {
@@ -177,35 +146,6 @@ export class PAuth {
     });
   }
 
-  ResetPassword: FunctionalComponent = () => [
-    <header>
-      <l-row justifyContent="space-between">
-        <e-text variant="display">Reset Password</e-text>
-        <e-button variant="light" action="closeModal">
-          <ph-x color="var(--color__grey--normal)" size="1em"></ph-x>
-        </e-button>
-      </l-row>
-    </header>,
-    <c-banner
-      theme="success"
-      ref={(el) => (this.BannerEl = el as HTMLCBannerElement)}
-    >
-      <e-text>Please check your inbox</e-text>
-    </c-banner>,
-    <e-input type="email" name="email" placeholder="Email"></e-input>,
-    <l-row justifyContent="space-between">
-      <e-button action="goBackToLogin" variant="light">
-        Back
-      </e-button>
-      <e-button
-        action="mailPasswordResetLink"
-        active={this.isMailingPasswordResetLink}
-      >
-        Send reset link
-      </e-button>
-    </l-row>,
-  ];
-
   LogIn: FunctionalComponent = () => [
     <header>
       <l-row justifyContent="space-between">
@@ -226,10 +166,6 @@ export class PAuth {
     <l-spacer value={1}></l-spacer>,
     <e-button variant="link" action="openSignupModal">
       Create an account
-    </e-button>,
-    <br />,
-    <e-button variant="link" action="openForgotPasswordModal">
-      Reset password
     </e-button>,
     <l-spacer value={1.5}></l-spacer>,
     <l-seperator></l-seperator>,
@@ -273,10 +209,6 @@ export class PAuth {
     <e-button variant="link" action="openLoginModal">
       Log into existing account
     </e-button>,
-    <br />,
-    <e-button variant="link" action="openForgotPasswordModal">
-      Reset password
-    </e-button>,
     <l-spacer value={1.5}></l-spacer>,
     <l-seperator></l-seperator>,
     <l-spacer value={1.5}></l-spacer>,
@@ -295,9 +227,6 @@ export class PAuth {
   render() {
     return (
       <Host>
-        {this.activeView === "resetPassword" && (
-          <this.ResetPassword></this.ResetPassword>
-        )}
         {this.activeView === "login" && <this.LogIn></this.LogIn>}
         {this.activeView === "signup" && <this.SignUp></this.SignUp>}
       </Host>

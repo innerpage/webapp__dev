@@ -10,13 +10,7 @@ import {
 import { RouterHistory, injectHistory } from "@stencil/router";
 import { Store, Io, InitSocket } from "../../global/script";
 import { setStore } from "./helpers";
-import { MailApi } from "../../global/script/helpers";
 import { getSessionCookie } from "./helpers";
-import { MailPayloadInterface } from "../../global/script/interfaces";
-import {
-  GenerateMailPayload,
-  ValidateMailPayload,
-} from "../../global/script/helpers";
 import {
   AccountDetailsBySessionApi,
   LogoutApi,
@@ -46,28 +40,13 @@ export class AppRoot {
   }
 
   @Listen("buttonClick") async handleButtonClick(e) {
-    if (e.detail.action === "mailEmailVerificationLink") {
-      let mailEmailVerificationLinkPayload: MailPayloadInterface =
-        GenerateMailPayload(Store.accountEmail, "emailVerificationLink");
-      let { isValid, validationMessage } = ValidateMailPayload(
-        mailEmailVerificationLinkPayload
-      );
-      if (!isValid) {
-        return alert(validationMessage);
-      }
-      this.isMailingEmailVerificationLink = true;
-      let { message } = await MailApi(mailEmailVerificationLinkPayload);
-      this.isMailingEmailVerificationLink = false;
-      alert(message);
-    } else if (
+    if (
       e.detail.action === "openLoginModal" ||
       e.detail.action === "goBackToLogin"
     ) {
       this.openModal("login");
     } else if (e.detail.action === "openSignupModal") {
       this.openModal("signup");
-    } else if (e.detail.action === "openForgotPasswordModal") {
-      this.openModal("resetPassword");
     } else if (e.detail.action === "closeModal") {
       this.closeModal();
     } else if (e.detail.action === "logout") {
