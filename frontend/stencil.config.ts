@@ -1,14 +1,14 @@
-import { Config } from '@stencil/core';
+import { Config } from "@stencil/core";
 
 export const config: Config = {
-  globalStyle: 'src/global/style/index.css',
-  globalScript: 'src/global/script/index.ts',
-  taskQueue: 'async',
+  globalStyle: "src/global/style/index.css",
+  globalScript: "src/global/script/index.ts",
+  taskQueue: "async",
   outputTargets: [
     {
-      type: 'www',
+      type: "www",
       serviceWorker: null,
-      baseUrl: 'https://app.example.com',
+      baseUrl: "https://app.innerpage.org",
     },
   ],
 };

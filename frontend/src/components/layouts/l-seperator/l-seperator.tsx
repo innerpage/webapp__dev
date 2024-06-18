@@ -9,16 +9,6 @@ export class LSeperator {
   @Prop() variant: string = "default";
 
   render() {
-    if (this.variant === "default") {
-      return <div class="seperator--default"></div>;
-    } else if (this.variant === "oauth") {
-      return (
-        <div id="seperator__oauth">
-          <div class="seperator__oauth--lines"></div>
-          <c-text>OR</c-text>
-          <div class="seperator__oauth--lines"></div>
-        </div>
-      );
-    }
+    return <div class="seperator--default"></div>;
   }
 }

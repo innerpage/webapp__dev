@@ -216,10 +216,6 @@ export class PAuth {
       </l-row>
     </header>,
     <l-spacer value={2}></l-spacer>,
-    <p-oauth-button></p-oauth-button>,
-    <l-spacer value={1}></l-spacer>,
-    <l-seperator variant="oauth"></l-seperator>,
-    <l-spacer value={1}></l-spacer>,
     <e-input type="email" name="email" placeholder="Email"></e-input>,
     <l-spacer value={1.5}></l-spacer>,
     <e-input type="password" name="password" placeholder="Password"></e-input>,
@@ -260,10 +256,6 @@ export class PAuth {
       </l-row>
     </header>,
     <l-spacer value={2}></l-spacer>,
-    <p-oauth-button></p-oauth-button>,
-    <l-spacer value={1}></l-spacer>,
-    <l-seperator variant="oauth"></l-seperator>,
-    <l-spacer value={1}></l-spacer>,
     <e-input type="text" name="name" placeholder="Name"></e-input>,
     <l-spacer value={1.5}></l-spacer>,
     <e-input type="email" name="email" placeholder="Email"></e-input>,

@@ -213,11 +213,6 @@ export class AppRoot {
               component="v-support"
             ></this.SessionRoute>
 
-            <this.NonSessionRoute
-              url="/post-oauth"
-              component="v-post-oauth"
-            ></this.NonSessionRoute>
-
             <stencil-route component="v-catch-all" />
           </stencil-route-switch>
         </stencil-router>

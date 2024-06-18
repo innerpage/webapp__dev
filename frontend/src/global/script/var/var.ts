@@ -1,29 +1,37 @@
 export const Var = {
   app: {
-    name: "Projckt WebApp",
+    name: "InnerPage WebApp",
     contact: {
-      email: "projckt@gmail.com",
-      url: "https://projckt.com/support",
+      email: "innerpage.journal@gmail.com",
+      url: "https://innerpage.org/contact-us",
     },
-    domain: "projckt.com",
+    domain: "innerpage.com",
     logo: {
       rectangle: {
-        colour:
-          "https://res.cloudinary.com/projcktold/image/upload/v1718190583/Starter/Webapp/Webapp_Logo.png",
+        black:
+          "https://res.cloudinary.com/dj9xh37fj/image/upload/v1718521642/Logotype_Transparent_Black_kvzkty.png",
+        white:
+          "https://res.cloudinary.com/dj9xh37fj/image/upload/v1718521642/Logotype_Transparent_White_sfcqmy.png",
+      },
+      square: {
+        black:
+          "https://res.cloudinary.com/dj9xh37fj/image/upload/v1718521642/Logo_Transparent_Black_dylnfh.png",
+        white:
+          "https://res.cloudinary.com/dj9xh37fj/image/upload/v1718521642/Logo_Transparent_White_b2sfhk.png",
       },
     },
     policy: {
       tos: {
-        url: "https://projckt.com/terms-of-service",
+        url: "https://innerpage.org/terms-of-service",
       },
       privacy: {
-        url: "https://projckt.com/privacy-policy",
+        url: "https://innerpage.org/privacy-policy",
       },
       cancellationAndRefund: {
-        url: "https://projckt.com/cancellation",
+        url: "https://innerpage.org/cancellation",
       },
     },
-    url: "https://projckt.com",
+    url: "https://innerpage.org",
     owner: {
       name: "Projckt",
       website: { url: "https://projckt.com" },
@@ -37,7 +45,7 @@ export const Var = {
     url:
       document.domain === "localhost"
         ? "http://localhost:4444"
-        : "https://api.example.com",
+        : "https://api.innerpage.org",
     endpoint: {
       account: {
         details: "/account",
@@ -45,9 +53,6 @@ export const Var = {
           login: "/login",
           logout: "/logout",
           signup: "/signup",
-          oauth: {
-            google: "/google-oauth",
-          },
         },
         password: "/password",
       },
@@ -67,14 +72,6 @@ export const Var = {
       },
       verify: {
         email: "/verify-email",
-      },
-    },
-  },
-  keys: {
-    oauth: {
-      google: {
-        clientId:
-          "411214741221-lpl9pf804a1qb5a0t4dvgavfeh6k3l14.apps.googleusercontent.com",
       },
     },
   },

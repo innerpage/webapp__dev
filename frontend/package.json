@@ -1,8 +1,8 @@
 {
-  "name": "app-frontend",
+  "name": "innerpage-webapp",
   "private": true,
   "version": "0.0.1",
-  "description": "App frontend",
+  "description": "InnerPage Webapp",
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
