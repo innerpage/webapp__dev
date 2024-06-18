@@ -7,7 +7,7 @@
 
 ## Edit remote of cloned repo
 
-✅ Change to `git remote set-url origin git@github.com-{username}:{username}/{repo_name}__dev.git`
+✅ Change to `git remote set-url origin git@github.com-{username}:{username}/webapp__dev.git`
 
 <hr/>
 
@@ -19,7 +19,7 @@
 
 ## Edit ./build.sh
 
-✅ Change production repo to `git@github.com-{username}:{username}/{repo_name}__prod.git`
+✅ Change production repo to `git@github.com-{username}:{username}/webapp__prod.git`
 
 <hr/>
 
