@@ -56,9 +56,6 @@ export const Var = {
         },
         password: "/password",
       },
-      mail: {
-        verificationLink: "/mail-verification-link",
-      },
       payment: {
         stripe: {
           session: {
@@ -69,9 +66,6 @@ export const Var = {
             get: "/stripe-get-price",
           },
         },
-      },
-      verify: {
-        email: "/verify-email",
       },
     },
   },

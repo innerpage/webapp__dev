@@ -1,7 +1,7 @@
 {
-  "name": "app-server",
+  "name": "innerpage-webapp-server",
   "version": "1.0.0",
-  "description": "App Server",
+  "description": "InnerPage Webapp Server",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",

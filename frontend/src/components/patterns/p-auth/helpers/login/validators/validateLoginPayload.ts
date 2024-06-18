@@ -2,13 +2,7 @@ import Joi from "joi";
 import { loginPayloadInterface } from "../../../interfaces";
 
 const loginPayloadSchema = Joi.object({
-  email: Joi.string()
-    .email({ tlds: { allow: false } })
-    .min(5)
-    .max(128)
-    .lowercase()
-    .trim()
-    .required(),
+  username: Joi.string().min(8).max(1024).required(),
   password: Joi.string().min(8).max(1024).required(),
 });
 

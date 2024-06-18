@@ -1,5 +1,4 @@
 export interface signupPayloadInterface {
-  name: string;
-  email: string;
+  username: string;
   password: string;
 }

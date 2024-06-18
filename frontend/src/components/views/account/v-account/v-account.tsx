@@ -21,20 +21,11 @@ export class VAccount {
             <e-text variant="heading">Account</e-text>
             <l-spacer value={1}></l-spacer>
             <c-card>
-              <e-text variant="footnote">NAME</e-text>
+              <e-text variant="footnote">USERNAME</e-text>
               <p-editable-text
                 type="text"
-                value={Store.accountName}
-                name="name"
-              ></p-editable-text>
-              <l-spacer value={1.25}></l-spacer>
-              <l-seperator></l-seperator>
-              <l-spacer value={1.25}></l-spacer>
-              <e-text variant="footnote">EMAIL</e-text>
-              <p-editable-text
-                type="link"
-                value={`${Store.accountEmail}`}
-                name="email"
+                value={Store.userName}
+                name="username"
               ></p-editable-text>
               <l-spacer value={1.25}></l-spacer>
               <l-seperator></l-seperator>

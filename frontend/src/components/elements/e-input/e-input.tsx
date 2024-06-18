@@ -28,7 +28,6 @@ export class EInput {
 
   render() {
     if (
-      this.type === "email" ||
       this.type === "number" ||
       this.type === "password" ||
       this.type === "text"

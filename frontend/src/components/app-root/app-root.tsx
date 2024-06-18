@@ -1,14 +1,6 @@
-import {
-  Component,
-  FunctionalComponent,
-  Prop,
-  Host,
-  Listen,
-  State,
-  h,
-} from "@stencil/core";
+import { Component, Prop, Host, Listen, State, h } from "@stencil/core";
 import { RouterHistory, injectHistory } from "@stencil/router";
-import { Store, Io, InitSocket } from "../../global/script";
+import { Store } from "../../global/script";
 import { setStore } from "./helpers";
 import { getSessionCookie } from "./helpers";
 import {
@@ -24,7 +16,6 @@ import {
 export class AppRoot {
   @Prop() history: RouterHistory;
 
-  @State() isMailingEmailVerificationLink: boolean = false;
   @State() modal: string;
 
   @Listen("authSuccessful") authSuccessfulListener() {
@@ -100,7 +91,6 @@ export class AppRoot {
       return alert(message);
     }
     setStore(payload);
-    InitSocket();
   }
 
   async logout() {
@@ -109,9 +99,6 @@ export class AppRoot {
       return alert(message);
     }
     Store.isSessionActive = payload.isSessionActive;
-    Store.accountName = "";
-    Store.accountEmail = "";
-    Store.isEmailVerified = true;
     this.history.push("/", {});
   }
 
@@ -121,29 +108,6 @@ export class AppRoot {
       Store.isModalVisible = true;
     }
   }
-
-  disconnectedCallback() {
-    Io.disconnect();
-  }
-
-  EmailVerificationBanner: FunctionalComponent = () => (
-    <c-banner position="bottom" theme="danger">
-      <l-row justifyContent="space-around">
-        <l-row>
-          <e-text>
-            <strong>{Store.accountEmail}</strong> is not yet verified
-          </e-text>
-          <l-spacer variant="horizontal" value={0.5}></l-spacer>
-          <e-button
-            action="mailEmailVerificationLink"
-            active={this.isMailingEmailVerificationLink}
-          >
-            Verify email
-          </e-button>{" "}
-        </l-row>
-      </l-row>
-    </c-banner>
-  );
 
   render() {
     return (
@@ -195,10 +159,6 @@ export class AppRoot {
             <stencil-route component="v-catch-all" />
           </stencil-route-switch>
         </stencil-router>
-
-        {Store.isSessionActive && !Store.isEmailVerified && (
-          <this.EmailVerificationBanner></this.EmailVerificationBanner>
-        )}
       </Host>
     );
   }

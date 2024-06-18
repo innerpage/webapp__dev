@@ -2,15 +2,9 @@ import Joi from "joi";
 import { signupPayloadInterface } from "../../../interfaces";
 
 const signupPayloadSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string()
-    .email({ tlds: { allow: false } })
-    .min(5)
-    .max(128)
-    .lowercase()
-    .trim()
-    .required(),
+  username: Joi.string().min(8).max(1024).required(),
   password: Joi.string().min(8).max(1024).required(),
+  repeatPassword: Joi.string().min(8).max(1024).required(),
 });
 
 export const validateSignupPayload = (

@@ -1,8 +1,6 @@
 import { Store } from "../../../../global/script";
 
 export const setStore = (accountDetailsPayload) => {
-  Store.accountName = accountDetailsPayload.name;
-  Store.accountEmail = accountDetailsPayload.email;
-  Store.isEmailVerified = accountDetailsPayload.isEmailVerified;
+  Store.userName = accountDetailsPayload.name;
   Store.isSessionActive = accountDetailsPayload.isSessionActive;
 };

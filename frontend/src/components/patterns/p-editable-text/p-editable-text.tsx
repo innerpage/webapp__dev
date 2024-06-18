@@ -84,11 +84,8 @@ export class PEditableText {
       return alert(message);
     }
 
-    if (this.name === "name") {
-      Store.accountName = this.newValue;
-    } else if (this.name === "email") {
-      Store.accountEmail = this.newValue;
-      Store.isEmailVerified = false;
+    if (this.name === "username") {
+      Store.userName = this.newValue;
     }
 
     return alert(message);
@@ -141,11 +138,6 @@ export class PEditableText {
     <l-row justifyContent="space-between">
       {this.type === "text" && <e-text>{this.value}</e-text>}
       {this.type === "password" && <e-text>{this.value}</e-text>}
-      {this.type === "link" && (
-        <e-link variant="email" url={`mailto:${this.value}`}>
-          {this.value}
-        </e-link>
-      )}
       <e-button variant="light" action="startEditMode">
         Edit
       </e-button>

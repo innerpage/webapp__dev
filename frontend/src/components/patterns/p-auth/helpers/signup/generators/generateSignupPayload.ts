@@ -1,13 +1,8 @@
 import { signupPayloadInterface } from "../../../interfaces";
 
-export const generateSignupPayload = (
-  name: string,
-  email: string,
-  password: string
-) => {
+export const generateSignupPayload = (username: string, password: string) => {
   let payload: signupPayloadInterface = {
-    name: name.trim(),
-    email: email.trim().toLowerCase(),
+    username: username.trim().toLowerCase(),
     password: password.trim(),
   };
   return payload;
