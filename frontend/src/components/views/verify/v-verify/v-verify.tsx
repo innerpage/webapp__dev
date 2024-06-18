@@ -286,7 +286,7 @@ export class VVerify {
     return (
       <Host>
         <div>
-          <e-img src={Var.app.logo.rectangle.colour} width="10em"></e-img>
+          <e-img src={Var.app.logo.rectangle.white} width="10em"></e-img>
           <l-spacer value={1}></l-spacer>
           {this.isViewDataFetched ? (
             <this.DataFetchedView></this.DataFetchedView>

@@ -88,9 +88,6 @@ export namespace Components {
         "isVisible": boolean;
         "name": string;
     }
-    interface POauthButton {
-        "variant": string;
-    }
     interface PSidebar {
     }
     interface PSpinner {
@@ -122,9 +119,6 @@ export namespace Components {
     interface VPaymentHandle {
         "history": RouterHistory;
         "match": MatchResults;
-    }
-    interface VPostOauth {
-        "history": RouterHistory;
     }
     interface VSupport {
     }
@@ -254,12 +248,6 @@ declare global {
         prototype: HTMLPModalElement;
         new (): HTMLPModalElement;
     };
-    interface HTMLPOauthButtonElement extends Components.POauthButton, HTMLStencilElement {
-    }
-    var HTMLPOauthButtonElement: {
-        prototype: HTMLPOauthButtonElement;
-        new (): HTMLPOauthButtonElement;
-    };
     interface HTMLPSidebarElement extends Components.PSidebar, HTMLStencilElement {
     }
     var HTMLPSidebarElement: {
@@ -338,12 +326,6 @@ declare global {
         prototype: HTMLVPaymentHandleElement;
         new (): HTMLVPaymentHandleElement;
     };
-    interface HTMLVPostOauthElement extends Components.VPostOauth, HTMLStencilElement {
-    }
-    var HTMLVPostOauthElement: {
-        prototype: HTMLVPostOauthElement;
-        new (): HTMLVPostOauthElement;
-    };
     interface HTMLVSupportElement extends Components.VSupport, HTMLStencilElement {
     }
     var HTMLVSupportElement: {
@@ -377,7 +359,6 @@ declare global {
         "p-editable-text": HTMLPEditableTextElement;
         "p-gallery": HTMLPGalleryElement;
         "p-modal": HTMLPModalElement;
-        "p-oauth-button": HTMLPOauthButtonElement;
         "p-sidebar": HTMLPSidebarElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-topbar": HTMLPTopbarElement;
@@ -391,7 +372,6 @@ declare global {
         "v-page-1": HTMLVPage1Element;
         "v-payment-cancel": HTMLVPaymentCancelElement;
         "v-payment-handle": HTMLVPaymentHandleElement;
-        "v-post-oauth": HTMLVPostOauthElement;
         "v-support": HTMLVSupportElement;
         "v-verify": HTMLVVerifyElement;
     }
@@ -482,10 +462,6 @@ declare namespace LocalJSX {
         "isVisible"?: boolean;
         "name"?: string;
     }
-    interface POauthButton {
-        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
-        "variant"?: string;
-    }
     interface PSidebar {
     }
     interface PSpinner {
@@ -522,12 +498,6 @@ declare namespace LocalJSX {
         "match"?: MatchResults;
         "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
-    interface VPostOauth {
-        "history"?: RouterHistory;
-        "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
-        "onCloseModal"?: (event: CustomEvent<any>) => void;
-        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
-    }
     interface VSupport {
     }
     interface VVerify {
@@ -556,7 +526,6 @@ declare namespace LocalJSX {
         "p-editable-text": PEditableText;
         "p-gallery": PGallery;
         "p-modal": PModal;
-        "p-oauth-button": POauthButton;
         "p-sidebar": PSidebar;
         "p-spinner": PSpinner;
         "p-topbar": PTopbar;
@@ -570,7 +539,6 @@ declare namespace LocalJSX {
         "v-page-1": VPage1;
         "v-payment-cancel": VPaymentCancel;
         "v-payment-handle": VPaymentHandle;
-        "v-post-oauth": VPostOauth;
         "v-support": VSupport;
         "v-verify": VVerify;
     }
@@ -599,7 +567,6 @@ declare module "@stencil/core" {
             "p-editable-text": LocalJSX.PEditableText & JSXBase.HTMLAttributes<HTMLPEditableTextElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
-            "p-oauth-button": LocalJSX.POauthButton & JSXBase.HTMLAttributes<HTMLPOauthButtonElement>;
             "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-topbar": LocalJSX.PTopbar & JSXBase.HTMLAttributes<HTMLPTopbarElement>;
@@ -613,7 +580,6 @@ declare module "@stencil/core" {
             "v-page-1": LocalJSX.VPage1 & JSXBase.HTMLAttributes<HTMLVPage1Element>;
             "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
             "v-payment-handle": LocalJSX.VPaymentHandle & JSXBase.HTMLAttributes<HTMLVPaymentHandleElement>;
-            "v-post-oauth": LocalJSX.VPostOauth & JSXBase.HTMLAttributes<HTMLVPostOauthElement>;
             "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
             "v-verify": LocalJSX.VVerify & JSXBase.HTMLAttributes<HTMLVVerifyElement>;
         }

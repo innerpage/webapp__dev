@@ -12,7 +12,7 @@ export class PTopbar {
       <Host>
         <l-row justifyContent="space-between" align="center">
           <e-link url="/">
-            <e-img src={Var.app.logo.rectangle.colour} width="8em"></e-img>
+            <e-img src={Var.app.logo.rectangle.white} width="8em"></e-img>
           </e-link>
           {Store.isSessionActive ? (
             <p-user-control></p-user-control>
