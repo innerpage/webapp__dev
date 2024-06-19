@@ -16,7 +16,6 @@ export class VAccount {
       <Host>
         <p-topbar></p-topbar>
         <c-content-area>
-          <p-sidebar></p-sidebar>
           <c-main>
             <e-text variant="heading">Account</e-text>
             <l-spacer value={1}></l-spacer>

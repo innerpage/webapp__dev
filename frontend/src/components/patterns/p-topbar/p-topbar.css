@@ -1,15 +1,15 @@
 :host {
   position: fixed;
-  background: white;
   display: block;
   width: 100vw;
   border-bottom: var(--border);
-  padding: calc(var(--padding) / 2.5) var(--padding);
+  padding: calc(var(--padding) / 1.6) var(--padding) calc(var(--padding) / 1)
+    var(--padding);
   height: 50px;
   z-index: 9;
   box-sizing: border-box;
 }
 
 e-img {
-  margin-top: 1em;
+  margin-top: 2em;
 }

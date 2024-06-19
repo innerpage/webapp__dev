@@ -8,5 +8,5 @@ select {
 
 select:hover {
   cursor: pointer;
-  border: 1px solid var(--color__grey--light);
+  border: 1px solid var(--color__white--light);
 }

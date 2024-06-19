@@ -6,6 +6,7 @@ button {
   border-radius: var(--border-radius);
   transition: all 0.25s;
   padding: calc(var(--padding) / 1.6) calc(var(--padding) / 1.5);
+  font-weight: 500;
 }
 button:hover {
   cursor: pointer;
@@ -17,16 +18,14 @@ button:disabled {
 
 /* Primary Button (Default) */
 .button__primary--default {
-  font-weight: 600;
-  border: 1px solid var(--color__blue--regular);
-  background: var(--color__blue--regular);
-  color: white;
+  border: 1px solid var(--color__white--brighter);
+  background: var(--color__white--brighter);
 }
 .button__primary--default:hover {
-  background: var(--color__blue--dark);
+  background: var(--color__white--brightest);
 }
 .button__primary--default:active {
-  background: var(--color__blue--light);
+  background: var(--color__white--bright);
 }
 .button__primary--danger {
   background: var(--color__red--regular);
@@ -41,11 +40,11 @@ button:disabled {
 
 /* Ghost Button (Default) */
 .button__ghost--default {
-  border: 1px solid var(--color__blue--regular);
-  color: var(--color__blue--regular);
+  border: 1px solid var(--color__white--brighter);
+  color: var(--color__white--brighter);
 }
 .button__ghost--default:hover {
-  background: var(--color__blue--lightest);
+  background: var(--color__white--dimmest);
 }
 .button__ghost--default:active {
   color: var(--color__blue--lighter);
@@ -82,7 +81,7 @@ button:disabled {
 }
 
 .button__small {
-  padding: calc(var(--padding) / 2) calc(var(--padding) / 1.5);
+  padding: calc(var(--padding) / 2.5) calc(var(--padding) / 1.5);
 }
 
 /* Active Button */

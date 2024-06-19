@@ -3,5 +3,4 @@
   border: var(--border);
   border-radius: var(--border-radius);
   padding: calc(var(--padding) * 1.5);
-  background: white;
 }

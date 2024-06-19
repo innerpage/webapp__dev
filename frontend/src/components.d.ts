@@ -61,6 +61,9 @@ export namespace Components {
         "variant": string;
         "weight": string;
     }
+    interface ETextarea {
+        "placeholder": string;
+    }
     interface LRow {
         "align": string;
         "direction": string;
@@ -107,8 +110,6 @@ export namespace Components {
     interface VDeleteAccount {
     }
     interface VHome {
-    }
-    interface VPage1 {
     }
     interface VSupport {
     }
@@ -191,6 +192,12 @@ declare global {
     var HTMLETextElement: {
         prototype: HTMLETextElement;
         new (): HTMLETextElement;
+    };
+    interface HTMLETextareaElement extends Components.ETextarea, HTMLStencilElement {
+    }
+    var HTMLETextareaElement: {
+        prototype: HTMLETextareaElement;
+        new (): HTMLETextareaElement;
     };
     interface HTMLLRowElement extends Components.LRow, HTMLStencilElement {
     }
@@ -288,12 +295,6 @@ declare global {
         prototype: HTMLVHomeElement;
         new (): HTMLVHomeElement;
     };
-    interface HTMLVPage1Element extends Components.VPage1, HTMLStencilElement {
-    }
-    var HTMLVPage1Element: {
-        prototype: HTMLVPage1Element;
-        new (): HTMLVPage1Element;
-    };
     interface HTMLVSupportElement extends Components.VSupport, HTMLStencilElement {
     }
     var HTMLVSupportElement: {
@@ -314,6 +315,7 @@ declare global {
         "e-list-item": HTMLEListItemElement;
         "e-select": HTMLESelectElement;
         "e-text": HTMLETextElement;
+        "e-textarea": HTMLETextareaElement;
         "l-row": HTMLLRowElement;
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
@@ -330,7 +332,6 @@ declare global {
         "v-catch-all": HTMLVCatchAllElement;
         "v-delete-account": HTMLVDeleteAccountElement;
         "v-home": HTMLVHomeElement;
-        "v-page-1": HTMLVPage1Element;
         "v-support": HTMLVSupportElement;
     }
 }
@@ -392,6 +393,9 @@ declare namespace LocalJSX {
         "variant"?: string;
         "weight"?: string;
     }
+    interface ETextarea {
+        "placeholder"?: string;
+    }
     interface LRow {
         "align"?: string;
         "direction"?: string;
@@ -441,8 +445,6 @@ declare namespace LocalJSX {
     }
     interface VHome {
     }
-    interface VPage1 {
-    }
     interface VSupport {
     }
     interface IntrinsicElements {
@@ -459,6 +461,7 @@ declare namespace LocalJSX {
         "e-list-item": EListItem;
         "e-select": ESelect;
         "e-text": EText;
+        "e-textarea": ETextarea;
         "l-row": LRow;
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
@@ -475,7 +478,6 @@ declare namespace LocalJSX {
         "v-catch-all": VCatchAll;
         "v-delete-account": VDeleteAccount;
         "v-home": VHome;
-        "v-page-1": VPage1;
         "v-support": VSupport;
     }
 }
@@ -496,6 +498,7 @@ declare module "@stencil/core" {
             "e-list-item": LocalJSX.EListItem & JSXBase.HTMLAttributes<HTMLEListItemElement>;
             "e-select": LocalJSX.ESelect & JSXBase.HTMLAttributes<HTMLESelectElement>;
             "e-text": LocalJSX.EText & JSXBase.HTMLAttributes<HTMLETextElement>;
+            "e-textarea": LocalJSX.ETextarea & JSXBase.HTMLAttributes<HTMLETextareaElement>;
             "l-row": LocalJSX.LRow & JSXBase.HTMLAttributes<HTMLLRowElement>;
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
@@ -512,7 +515,6 @@ declare module "@stencil/core" {
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-delete-account": LocalJSX.VDeleteAccount & JSXBase.HTMLAttributes<HTMLVDeleteAccountElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
-            "v-page-1": LocalJSX.VPage1 & JSXBase.HTMLAttributes<HTMLVPage1Element>;
             "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
         }
     }

@@ -3,7 +3,6 @@
   position: fixed;
   height: calc(100vh - 50px);
   border-right: var(--border);
-  background: white;
   padding-top: 3em;
 }
 

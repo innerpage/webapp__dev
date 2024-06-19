@@ -10,8 +10,8 @@
   --font-family__serif: "IBM Plex Serif", serif;
 
   --padding: 1em;
-  --border: 1px solid rgba(0, 0, 0, 0.1);
-  --border__input: 1px solid rgba(0, 0, 0, 0.2);
+  --border: 1px solid var(--color__white--dimmer);
+  --border__input: 1px solid var(--color__white--dim);
   --border-radius: 0.25em;
   --line-height: 1.8;
 
@@ -23,13 +23,6 @@
   --color__blue--light: #84c2f1;
   --color__blue--lighter: #e6f3fc;
   --color__blue--lightest: #f3f9fe;
-  --color__grey--darkest: rgba(0, 0, 0, 0.8);
-  --color__grey--darker: rgba(0, 0, 0, 0.7);
-  --color__grey--dark: rgba(0, 0, 0, 0.6);
-  --color__grey--regular: rgba(0, 0, 0, 0.5);
-  --color__grey--light: rgba(0, 0, 0, 0.3);
-  --color__grey--lighter: rgba(0, 0, 0, 0.2);
-  --color__grey--lightest: rgba(0, 0, 0, 0.1);
   --color__green--darkest: #00372c;
   --color__green--darker: #005c4a;
   --color__green--dark: #008168;
@@ -51,4 +44,12 @@
   --color__red--light: #eb9898;
   --color__red--lighter: #fbeaea;
   --color__red--lightest: #fdf5f5;
+
+  --color__white--brightest: rgba(255, 255, 255, 1);
+  --color__white--brighter: rgba(255, 255, 255, 0.87);
+  --color__white--bright: rgba(255, 255, 255, 0.6);
+  --color__white--regular: rgba(255, 255, 255, 0.5);
+  --color__white--dim: rgba(255, 255, 255, 0.3);
+  --color__white--dimmer: rgba(255, 255, 255, 0.2);
+  --color__white--dimmest: rgba(255, 255, 255, 0.1);
 }

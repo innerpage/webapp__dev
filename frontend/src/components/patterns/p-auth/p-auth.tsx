@@ -146,7 +146,7 @@ export class PAuth {
       <l-row justifyContent="space-between">
         <e-text variant="display">Log in</e-text>
         <e-button variant="light" action="closeModal">
-          <ph-x color="var(--color__grey--normal)" size="1em"></ph-x>
+          <ph-x color="var(--color__white--normal)" size="1em"></ph-x>
         </e-button>
       </l-row>
     </header>,
@@ -182,7 +182,7 @@ export class PAuth {
       <l-row justifyContent="space-between">
         <e-text variant="display">Sign up</e-text>
         <e-button variant="light" action="closeModal">
-          <ph-x color="var(--color__grey--normal)" size="1em"></ph-x>
+          <ph-x color="var(--color__white--normal)" size="1em"></ph-x>
         </e-button>
       </l-row>
     </header>,

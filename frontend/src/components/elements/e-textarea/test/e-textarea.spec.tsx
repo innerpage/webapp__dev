@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { VPage1 } from '../v-page-1';
+import { ETextarea } from '../e-textarea';
 
-describe('v-page-1', () => {
+describe('e-textarea', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [VPage1],
-      html: `<v-page-1></v-page-1>`,
+      components: [ETextarea],
+      html: `<e-textarea></e-textarea>`,
     });
     expect(page.root).toEqualHtml(`
-      <v-page-1>
+      <e-textarea>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </v-page-1>
+      </e-textarea>
     `);
   });
 });

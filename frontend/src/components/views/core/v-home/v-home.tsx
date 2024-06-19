@@ -80,18 +80,7 @@ export class VHome {
   );
 
   NonSessionView: FunctionalComponent = () => (
-    <c-main>
-      <e-text variant="display">Benefits</e-text>
-      <l-spacer value={2}></l-spacer>
-      <div class="card card-full"></div>
-      <l-spacer value={2}></l-spacer>
-      <l-row justifyContent="space-between">
-        <div class="card card-quarter"></div>
-        <div class="card card-quarter"></div>
-        <div class="card card-quarter"></div>
-        <div class="card card-quarter"></div>
-      </l-row>
-    </c-main>
+    <e-textarea placeholder="Pour your thoughts.."></e-textarea>
   );
 
   render() {
@@ -99,7 +88,6 @@ export class VHome {
       <Host>
         <p-topbar></p-topbar>
         <c-content-area>
-          <p-sidebar></p-sidebar>
           {Store.isSessionActive ? (
             <this.SessionView></this.SessionView>
           ) : (
