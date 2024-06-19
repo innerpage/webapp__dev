@@ -1,6 +1,6 @@
 export const Var = {
   app: {
-    name: "InnerPage WebApp",
+    name: "InnerPage",
     contact: {
       email: "innerpage.journal@gmail.com",
       url: "https://innerpage.org/contact-us",
@@ -31,7 +31,7 @@ export const Var = {
         url: "https://innerpage.org/cancellation",
       },
     },
-    url: "https://innerpage.org",
+    url: "https://app.innerpage.org",
     owner: {
       name: "Projckt",
       website: { url: "https://projckt.com" },
@@ -40,6 +40,7 @@ export const Var = {
         email: "projckt@gmail.com",
       },
     },
+    website: { url: "https://innerpage.org" },
   },
   api: {
     url:
