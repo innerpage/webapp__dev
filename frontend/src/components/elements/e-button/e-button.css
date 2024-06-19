@@ -40,10 +40,11 @@ button:disabled {
 
 /* Ghost Button (Default) */
 .button__ghost--default {
-  border: 1px solid var(--color__white--brighter);
+  border: 1px solid var(--color__white--regular);
   color: var(--color__white--brighter);
 }
 .button__ghost--default:hover {
+  border: 1px solid var(--color__white--brighter);
   background: var(--color__white--dimmest);
 }
 .button__ghost--default:active {
@@ -65,13 +66,13 @@ button:disabled {
 
 /* Light Button (Default) */
 .button__light--default {
-  color: var(--color__blue--regular);
+  color: var(--color__white--regular);
 }
 .button__light--default:hover {
-  background: var(--color__blue--lightest);
+  background: var(--color__white--dimmer);
 }
 .button__light--default:active {
-  color: var(--color__blue--lighter);
+  color: var(--color__white--dimmest);
 }
 
 /*  Button size */

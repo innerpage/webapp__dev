@@ -21,6 +21,7 @@ import {
 import { loginPayloadInterface, signupPayloadInterface } from "./interfaces";
 import { gsap } from "gsap";
 import { Var } from "../../../global/script";
+import "@phosphor-icons/webcomponents";
 
 @Component({
   tag: "p-auth",
@@ -111,15 +112,12 @@ export class PAuth {
     if (!isValid) {
       return alert(validationMessage);
     }
-
     this.isSigningUp = true;
     let { success, message } = await signupApi(signupPayload);
     this.isSigningUp = false;
-
     if (!success) {
       return alert(message);
     }
-
     this.authSuccessfulEventEmitter.emit();
   }
 
@@ -146,7 +144,7 @@ export class PAuth {
       <l-row justifyContent="space-between">
         <e-text variant="display">Log in</e-text>
         <e-button variant="light" action="closeModal">
-          <ph-x color="var(--color__white--normal)" size="1em"></ph-x>
+          <ph-x color="var(--color__white--brighter)" size="1em"></ph-x>
         </e-button>
       </l-row>
     </header>,
@@ -182,7 +180,7 @@ export class PAuth {
       <l-row justifyContent="space-between">
         <e-text variant="display">Sign up</e-text>
         <e-button variant="light" action="closeModal">
-          <ph-x color="var(--color__white--normal)" size="1em"></ph-x>
+          <ph-x color="var(--color__white--brighter)" size="1em"></ph-x>
         </e-button>
       </l-row>
     </header>,
