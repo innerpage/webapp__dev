@@ -4,14 +4,14 @@
 
 a {
   text-decoration: none;
-  color: var(--color__blue--regular);
+  color: var(--color__blue--200);
   transition: all 0.25s;
 }
 a:hover {
-  color: var(--color__blue--dark);
+  color: var(--color__blue--100);
 }
 a:active {
-  color: var(--color__blue--light);
+  color: var(--color__blue--300);
 }
 
 /* Nav link */
@@ -25,7 +25,7 @@ a:active {
   display: block;
   box-sizing: border-box;
   width: 12.5vw;
-  color: var(--color__blue--regular);
+  color: var(--color__blue--light);
   background: var(--color__blue--lightest);
   padding: 0.25em 1em;
 }
@@ -38,7 +38,7 @@ a:active {
   border: var(--border);
 }
 .link__card--default a:hover {
-  background: var(--color__blue--lightest);
+  background: var(--color__blue--darker);
 }
 
 /* Tab link */
@@ -47,16 +47,16 @@ a:active {
 }
 .link__tab--default-active {
   margin-right: 3em;
-  border-bottom: 2px solid var(--color__blue--regular);
+  border-bottom: 2px solid var(--color__blue--light);
 }
 
 /* Danger theme */
 .link__default--danger a {
-  color: var(--color__red--regular);
+  color: var(--color__red--200);
 }
 .link__default--danger a:hover {
-  color: var(--color__red--dark);
+  color: var(--color__red--100);
 }
 .link__default--danger a:active {
-  color: var(--color__red--light);
+  color: var(--color__red--300);
 }

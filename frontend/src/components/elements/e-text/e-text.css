@@ -21,7 +21,7 @@ h2 {
 }
 .footnote {
   font-size: 0.8em;
-  color: var(--color__white--medium);
+  color: var(--color__white--regular);
 }
 
 /* Theme */

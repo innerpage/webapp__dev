@@ -44,8 +44,8 @@ export class PAuth {
   }
 
   @Listen("textInput") handleTextInput(e) {
-    if (e.detail.name === "username") {
-      this.username = e.detail.value;
+    if (e.detail.name === "userName") {
+      this.userName = e.detail.value;
     } else if (e.detail.name === "password") {
       this.password = e.detail.value;
     }
@@ -66,12 +66,12 @@ export class PAuth {
 
   BannerEl: HTMLCBannerElement;
 
-  private username: string = "";
+  private userName: string = "";
   private password: string = "";
   private tl: any = gsap.timeline();
 
   reset() {
-    this.username = "";
+    this.userName = "";
     this.password = "";
     this.isLoggingIn = false;
     this.isSigningUp = false;
@@ -84,28 +84,25 @@ export class PAuth {
 
   async loginUser() {
     let loginPayload: loginPayloadInterface = generateLoginPayload(
-      this.username,
+      this.userName,
       this.password
     );
     let { isValid, validationMessage } = validateLoginPayload(loginPayload);
     if (!isValid) {
       return alert(validationMessage);
     }
-
     this.isLoggingIn = true;
     let { success, message } = await loginApi(loginPayload);
     this.isLoggingIn = false;
-
     if (!success) {
       return alert(message);
     }
-
     this.authSuccessfulEventEmitter.emit();
   }
 
   async signupUser() {
     let signupPayload: signupPayloadInterface = generateSignupPayload(
-      this.username,
+      this.userName,
       this.password
     );
     let { isValid, validationMessage } = validateSignupPayload(signupPayload);
@@ -149,7 +146,7 @@ export class PAuth {
       </l-row>
     </header>,
     <l-spacer value={2}></l-spacer>,
-    <e-input type="text" name="username" placeholder="Username"></e-input>,
+    <e-input type="text" name="userName" placeholder="Username"></e-input>,
     <l-spacer value={1.5}></l-spacer>,
     <e-input type="password" name="password" placeholder="Password"></e-input>,
     <l-spacer value={1.5}></l-spacer>,
@@ -185,7 +182,7 @@ export class PAuth {
       </l-row>
     </header>,
     <l-spacer value={2}></l-spacer>,
-    <e-input type="text" name="username" placeholder="Username"></e-input>,
+    <e-input type="text" name="userName" placeholder="Username"></e-input>,
     <l-spacer value={1.5}></l-spacer>,
     <e-input
       type="password"

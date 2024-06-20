@@ -2,7 +2,7 @@ import Joi from "joi";
 import { loginPayloadInterface } from "../../../interfaces";
 
 const loginPayloadSchema = Joi.object({
-  username: Joi.string().min(8).max(1024).required(),
+  userName: Joi.string().max(1024).required(),
   password: Joi.string().min(8).max(1024).required(),
 });
 

@@ -40,11 +40,11 @@ export class VAccount {
             <e-link url="/delete-account" theme="danger">
               <l-row>
                 <ph-trash
-                  color="var(--color__red--regular)"
+                  color="var(--color__red--200)"
                   weight={Store.activeView === "page1" ? "fill" : "regular"}
                 ></ph-trash>
                 <l-spacer value={0.25} variant="horizontal"></l-spacer>
-                <e-text> Delete account and data</e-text>
+                <e-text>Delete account and data</e-text>
               </l-row>
             </e-link>
           </c-main>{" "}

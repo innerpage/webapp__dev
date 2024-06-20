@@ -53,9 +53,9 @@ export class PUserControl {
             <e-text>{Store.userName}</e-text>
             <l-spacer value={0.25} variant="horizontal"></l-spacer>
             {this.isExpanded ? (
-              <ph-caret-up></ph-caret-up>
+              <ph-caret-up color="var(--color__blue--200)"></ph-caret-up>
             ) : (
-              <ph-caret-down></ph-caret-down>
+              <ph-caret-down color="var(--color__blue--200)"></ph-caret-down>
             )}
           </l-row>
         </e-button>
@@ -64,37 +64,25 @@ export class PUserControl {
             <e-list-item>
               <e-link url="/account">
                 <l-row align="center">
-                  <ph-user color="var(--color__blue--regular)"></ph-user>
+                  <ph-user color="var(--color__blue--200)"></ph-user>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text>Account</e-text>
                 </l-row>
               </e-link>
             </e-list-item>
             <e-list-item>
-              <e-link url="/billing">
-                <l-row align="center">
-                  <ph-credit-card color="var(--color__blue--regular)"></ph-credit-card>
-                  <l-spacer value={0.25} variant="horizontal"></l-spacer>
-                  <e-text>Billing</e-text>
-                </l-row>
-              </e-link>
-            </e-list-item>
-            <e-list-item>
               <e-link url="/support">
                 <l-row align="center">
-                  <ph-headset color="var(--color__blue--regular)"></ph-headset>
+                  <ph-headset color="var(--color__blue--200)"></ph-headset>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text>Support</e-text>
                 </l-row>
               </e-link>
             </e-list-item>
-            <l-spacer value={0.5}></l-spacer>
-            <l-seperator></l-seperator>
-            <l-spacer value={0.5}></l-spacer>
             <e-list-item>
               <e-button variant="link" action="logout">
                 <l-row>
-                  <ph-sign-out color="var(--color__blue--regular)"></ph-sign-out>
+                  <ph-sign-out color="var(--color__blue--200)"></ph-sign-out>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text>Logout</e-text>
                 </l-row>

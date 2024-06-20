@@ -45,34 +45,49 @@ button:disabled {
 }
 .button__ghost--default:hover {
   border: 1px solid var(--color__white--brighter);
-  background: var(--color__white--dimmest);
 }
 .button__ghost--default:active {
-  color: var(--color__blue--lighter);
+  color: var(--color__white--regular);
+  border: 1px solid var(--color__white--dim);
+}
+
+/* Ghost Button (Danger) */
+.button__primary--danger {
+  border: 1px solid var(--color__red--200);
+  color: var(--color__red--200);
+}
+.button__primary--danger:hover {
+  border: 1px solid var(--color__red--100);
+  color: var(--color__red--100);
+}
+.button__primary--danger:active {
+  border: 1px solid var(--color__red--300);
+  color: var(--color__red--300);
 }
 
 /* Link Button */
 .button__link--default {
   padding: 0;
   border: 0;
-  color: var(--color__blue--regular);
+  color: var(--color__blue--200);
 }
 .button__link--default:hover {
-  color: var(--color__blue--dark);
+  color: var(--color__blue--100);
 }
 .button__link--default:active {
-  color: var(--color__blue--light);
+  color: var(--color__blue--300);
 }
 
 /* Light Button (Default) */
 .button__light--default {
-  color: var(--color__white--regular);
+  color: var(--color__white--bright);
 }
 .button__light--default:hover {
   background: var(--color__white--dimmer);
 }
 .button__light--default:active {
-  color: var(--color__white--dimmest);
+  color: var(--color__white--dim);
+  background: var(--color__white--dimmest);
 }
 
 /*  Button size */
