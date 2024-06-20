@@ -3,7 +3,8 @@ input[type="password"],
 input[type="text"] {
   width: 100%;
   padding: calc(var(--padding) / 1.6) calc(var(--padding) / 1.5);
-  border: var(--border__input);
+  /* border: var(--border__input); */
+  border: 1px solid var(--color__white--regular);
   border-radius: var(--border-radius);
   font-size: 1em;
   box-sizing: border-box;

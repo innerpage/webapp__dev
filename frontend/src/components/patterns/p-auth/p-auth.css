@@ -19,3 +19,22 @@ c-banner {
   overflow: hidden;
   opacity: 0;
 }
+
+.username-availability-status-container ph-x,
+.username-availability-status-container ph-check {
+  display: block;
+  margin-top: 5px;
+  margin-right: 0.5em;
+}
+
+span {
+  display: block;
+}
+
+.success {
+  color: var(--color__green--200);
+}
+
+.failed {
+  color: var(--color__red--200);
+}

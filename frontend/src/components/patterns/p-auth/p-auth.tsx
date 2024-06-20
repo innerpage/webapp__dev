@@ -17,11 +17,18 @@ import {
   signupApi,
   generateSignupPayload,
   validateSignupPayload,
+  generateUserNameAvailabilityPayload,
+  validateUserNameAvailabilityPayload,
 } from "./helpers";
-import { loginPayloadInterface, signupPayloadInterface } from "./interfaces";
+import {
+  loginPayloadInterface,
+  signupPayloadInterface,
+  userNameAvailabilityPayloadInterface,
+} from "./interfaces";
 import { gsap } from "gsap";
 import { Var } from "../../../global/script";
 import "@phosphor-icons/webcomponents";
+import { userNameAvailabilityApi } from "./helpers/availability/apis/userNameAvailabilityApi";
 
 @Component({
   tag: "p-auth",
@@ -46,6 +53,14 @@ export class PAuth {
   @Listen("textInput") handleTextInput(e) {
     if (e.detail.name === "userName") {
       this.userName = e.detail.value;
+      if (this.userName.length > 0) {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+          this.getUsernameAvailability();
+        }, 500);
+      } else {
+        this.userNameAvailability = "";
+      }
     } else if (e.detail.name === "password") {
       this.password = e.detail.value;
     }
@@ -56,6 +71,8 @@ export class PAuth {
   @State() activeView: string;
   @State() isLoggingIn: boolean = false;
   @State() isSigningUp: boolean = false;
+  @State() isCheckingUserName: boolean = false;
+  @State() userNameAvailability: string = "";
 
   @Watch("view") watchView(newVal: string, oldVal: string) {
     this.reset();
@@ -65,10 +82,12 @@ export class PAuth {
   }
 
   BannerEl: HTMLCBannerElement;
+  SignUpUserNameInputEl: HTMLEInputElement;
 
   private userName: string = "";
   private password: string = "";
   private tl: any = gsap.timeline();
+  private timer: any;
 
   reset() {
     this.userName = "";
@@ -118,6 +137,30 @@ export class PAuth {
     this.authSuccessfulEventEmitter.emit();
   }
 
+  async getUsernameAvailability() {
+    this.userNameAvailability = "";
+    this.SignUpUserNameInputEl.style.marginBottom = "1em";
+    let userNameAvailabilityPayload: userNameAvailabilityPayloadInterface =
+      generateUserNameAvailabilityPayload(this.userName);
+    let { isValid, validationMessage } = validateUserNameAvailabilityPayload(
+      userNameAvailabilityPayload
+    );
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+    let { success, message } = await userNameAvailabilityApi(
+      userNameAvailabilityPayload
+    );
+    if (!success) {
+      this.userNameAvailability = "unavailable";
+      return alert(message);
+    }
+
+    this.SignUpUserNameInputEl.style.marginBottom = "0em";
+
+    this.userNameAvailability = "available";
+  }
+
   hideBanner() {
     this.tl.to(this.BannerEl, {
       height: "0px",
@@ -145,7 +188,7 @@ export class PAuth {
         </e-button>
       </l-row>
     </header>,
-    <l-spacer value={2}></l-spacer>,
+    <l-spacer value={1.5}></l-spacer>,
     <e-input type="text" name="userName" placeholder="Username"></e-input>,
     <l-spacer value={1.5}></l-spacer>,
     <e-input type="password" name="password" placeholder="Password"></e-input>,
@@ -181,8 +224,28 @@ export class PAuth {
         </e-button>
       </l-row>
     </header>,
-    <l-spacer value={2}></l-spacer>,
-    <e-input type="text" name="userName" placeholder="Username"></e-input>,
+    <l-spacer value={1.5}></l-spacer>,
+    <e-input
+      type="text"
+      name="userName"
+      placeholder="Username"
+      ref={(el) => (this.SignUpUserNameInputEl = el as HTMLEInputElement)}
+    ></e-input>,
+    this.userNameAvailability.length > 0 && (
+      <div class="username-availability-status-container">
+        {this.userNameAvailability === "available" ? (
+          <l-row justifyContent="start">
+            <ph-check color="var(--color__green--200)" size="1em"></ph-check>
+            <span class="success"> {this.userName} is available</span>
+          </l-row>
+        ) : (
+          <l-row justifyContent="start">
+            <ph-x color="var(--color__red--200)" size="1em"></ph-x>
+            <span class="failed"> {this.userName} is taken</span>
+          </l-row>
+        )}
+      </div>
+    ),
     <l-spacer value={1.5}></l-spacer>,
     <e-input
       type="password"

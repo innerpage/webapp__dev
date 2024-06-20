@@ -55,6 +55,9 @@ export const Var = {
           logout: "/logout",
           signup: "/signup",
         },
+        availability: {
+          userName: "/username",
+        },
         password: "/password",
       },
       payment: {
