@@ -24,7 +24,7 @@ export class VAccount {
               <p-editable-text
                 type="text"
                 value={Store.userName}
-                name="username"
+                name="userName"
               ></p-editable-text>
               <l-spacer value={1.25}></l-spacer>
               <l-seperator></l-seperator>

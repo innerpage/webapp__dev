@@ -84,7 +84,7 @@ export class PEditableText {
       return alert(message);
     }
 
-    if (this.name === "username") {
+    if (this.name === "userName") {
       Store.userName = this.newValue;
     }
 

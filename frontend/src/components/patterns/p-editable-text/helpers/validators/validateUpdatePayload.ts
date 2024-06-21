@@ -2,10 +2,10 @@ import Joi from "joi";
 import { updatePayloadInterface } from "../../interfaces";
 
 const updatePayloadSchema = Joi.object({
-  filter: Joi.string().valid("username", "password").required(),
+  filter: Joi.string().valid("userName", "password").required(),
   value: Joi.when("filter", {
     switch: [
-      { is: "username", then: Joi.string().required() },
+      { is: "userName", then: Joi.string().required() },
       { is: "password", then: Joi.string().min(8).max(1024).required() },
     ],
   }),
