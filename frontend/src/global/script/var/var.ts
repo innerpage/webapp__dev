@@ -72,8 +72,8 @@ export const Var = {
         },
       },
       note: {
-        single: "note",
-        all: "notes",
+        single: "/note",
+        all: "/notes",
       },
     },
   },

@@ -1,4 +1,5 @@
 import { Component, Host, State, FunctionalComponent, h } from "@stencil/core";
+import { getAllNotesApi } from "./helpers";
 import { Store } from "../../../../global/script";
 
 interface Note {
@@ -18,12 +19,19 @@ export class VHome {
 
   @State() notes: Note[] = [];
 
-  componentDidLoad() {}
+  async componentDidLoad() {
+    let { success, message, payload } = await getAllNotesApi();
+    if (!success) {
+      return alert(message);
+    }
+    this.notes = payload;
+    this.notes = [...this.notes];
+  }
 
   BlankLibrary: FunctionalComponent = () => (
     <div class="blank-library__container">
       <div>
-        <ph-island size="3em"></ph-island>
+        <ph-book size="3em"></ph-book>
         <e-text variant="heading">
           <strong>You're yet to begin journalling</strong>
         </e-text>
@@ -33,7 +41,15 @@ export class VHome {
     </div>
   );
 
-  NoteLibrary: FunctionalComponent = () => <div></div>;
+  NoteLibrary: FunctionalComponent = () => (
+    <p-gallery>
+      {this.notes.map((node: Note) => (
+        <div>
+          <e-text>{node.preview}</e-text>
+        </div>
+      ))}
+    </p-gallery>
+  );
 
   SessionView: FunctionalComponent = () =>
     this.notes.length > 0 ? (
