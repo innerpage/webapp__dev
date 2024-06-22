@@ -113,6 +113,8 @@ export namespace Components {
     }
     interface VSupport {
     }
+    interface VWriter {
+    }
 }
 declare global {
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
@@ -301,6 +303,12 @@ declare global {
         prototype: HTMLVSupportElement;
         new (): HTMLVSupportElement;
     };
+    interface HTMLVWriterElement extends Components.VWriter, HTMLStencilElement {
+    }
+    var HTMLVWriterElement: {
+        prototype: HTMLVWriterElement;
+        new (): HTMLVWriterElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "c-banner": HTMLCBannerElement;
@@ -333,6 +341,7 @@ declare global {
         "v-delete-account": HTMLVDeleteAccountElement;
         "v-home": HTMLVHomeElement;
         "v-support": HTMLVSupportElement;
+        "v-writer": HTMLVWriterElement;
     }
 }
 declare namespace LocalJSX {
@@ -447,6 +456,8 @@ declare namespace LocalJSX {
     }
     interface VSupport {
     }
+    interface VWriter {
+    }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "c-banner": CBanner;
@@ -479,6 +490,7 @@ declare namespace LocalJSX {
         "v-delete-account": VDeleteAccount;
         "v-home": VHome;
         "v-support": VSupport;
+        "v-writer": VWriter;
     }
 }
 export { LocalJSX as JSX };
@@ -516,6 +528,7 @@ declare module "@stencil/core" {
             "v-delete-account": LocalJSX.VDeleteAccount & JSXBase.HTMLAttributes<HTMLVDeleteAccountElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
             "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
+            "v-writer": LocalJSX.VWriter & JSXBase.HTMLAttributes<HTMLVWriterElement>;
         }
     }
 }

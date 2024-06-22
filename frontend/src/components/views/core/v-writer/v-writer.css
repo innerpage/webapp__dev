@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+header {
+  padding: 1em;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+}
+
+ph-arrow-left {
+  display: block;
+  margin-top: 5px;
+}

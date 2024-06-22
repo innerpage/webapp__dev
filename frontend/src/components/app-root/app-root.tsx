@@ -42,9 +42,8 @@ export class AppRoot {
       this.closeModal();
     } else if (e.detail.action === "logout") {
       this.logout();
-    } else if (e.detail.action === "proceedToLogin") {
-      this.history.push("/", {});
-      this.openModal("login");
+    } else if (e.detail.action === "goToWriter") {
+      this.history.push("/writer", {});
     }
   }
 
@@ -154,6 +153,11 @@ export class AppRoot {
             <this.SessionRoute
               url="/support"
               component="v-support"
+            ></this.SessionRoute>
+
+            <this.SessionRoute
+              url="/writer"
+              component="v-writer"
             ></this.SessionRoute>
 
             <stencil-route component="v-catch-all" />

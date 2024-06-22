@@ -6,3 +6,11 @@ e-textarea {
   margin-top: 2vh;
   height: calc(100vh - 55px -15vh);
 }
+
+.blank-library__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 90vh;
+  text-align: center;
+}
