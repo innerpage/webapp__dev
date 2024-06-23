@@ -1,4 +1,12 @@
-import { Component, Event, EventEmitter, Prop, Host, h } from "@stencil/core";
+import {
+  Component,
+  Event,
+  EventEmitter,
+  Prop,
+  Host,
+  h,
+  Watch,
+} from "@stencil/core";
 
 @Component({
   tag: "e-textarea",
@@ -16,16 +24,25 @@ export class ETextarea {
 
   @Prop() placeholder: string = "";
   @Prop() content: string = "";
-  @Prop() stuff: string = "";
+
+  @Watch("content") watchName(newVal: string, oldVal: string) {
+    if (newVal != oldVal) {
+      this.setTextAreaValue();
+    }
+  }
 
   componentDidLoad() {
     if (this.content.length > 0) {
-      this.textAreaEl.value = this.content;
+      this.setTextAreaValue();
     } else {
       setTimeout(() => {
         this.textAreaEl.focus();
       }, 1000);
     }
+  }
+
+  setTextAreaValue() {
+    this.textAreaEl.value = this.content;
   }
 
   handleTextAreaInput(e) {

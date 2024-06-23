@@ -64,7 +64,6 @@ export namespace Components {
     interface ETextarea {
         "content": string;
         "placeholder": string;
-        "stuff": string;
     }
     interface LRow {
         "align": string;
@@ -109,8 +108,6 @@ export namespace Components {
     interface PUserControl {
     }
     interface VAccount {
-    }
-    interface VBilling {
     }
     interface VCatchAll {
         "history": RouterHistory;
@@ -289,12 +286,6 @@ declare global {
         prototype: HTMLVAccountElement;
         new (): HTMLVAccountElement;
     };
-    interface HTMLVBillingElement extends Components.VBilling, HTMLStencilElement {
-    }
-    var HTMLVBillingElement: {
-        prototype: HTMLVBillingElement;
-        new (): HTMLVBillingElement;
-    };
     interface HTMLVCatchAllElement extends Components.VCatchAll, HTMLStencilElement {
     }
     var HTMLVCatchAllElement: {
@@ -353,7 +344,6 @@ declare global {
         "p-topbar": HTMLPTopbarElement;
         "p-user-control": HTMLPUserControlElement;
         "v-account": HTMLVAccountElement;
-        "v-billing": HTMLVBillingElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-delete-account": HTMLVDeleteAccountElement;
         "v-home": HTMLVHomeElement;
@@ -423,7 +413,6 @@ declare namespace LocalJSX {
         "content"?: string;
         "onTextAreaInput"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
-        "stuff"?: string;
     }
     interface LRow {
         "align"?: string;
@@ -470,8 +459,6 @@ declare namespace LocalJSX {
     }
     interface VAccount {
     }
-    interface VBilling {
-    }
     interface VCatchAll {
         "history"?: RouterHistory;
     }
@@ -515,7 +502,6 @@ declare namespace LocalJSX {
         "p-topbar": PTopbar;
         "p-user-control": PUserControl;
         "v-account": VAccount;
-        "v-billing": VBilling;
         "v-catch-all": VCatchAll;
         "v-delete-account": VDeleteAccount;
         "v-home": VHome;
@@ -554,7 +540,6 @@ declare module "@stencil/core" {
             "p-topbar": LocalJSX.PTopbar & JSXBase.HTMLAttributes<HTMLPTopbarElement>;
             "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
             "v-account": LocalJSX.VAccount & JSXBase.HTMLAttributes<HTMLVAccountElement>;
-            "v-billing": LocalJSX.VBilling & JSXBase.HTMLAttributes<HTMLVBillingElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-delete-account": LocalJSX.VDeleteAccount & JSXBase.HTMLAttributes<HTMLVDeleteAccountElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;

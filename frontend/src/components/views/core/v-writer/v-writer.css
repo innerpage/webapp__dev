@@ -17,3 +17,9 @@ ph-arrow-left {
   display: block;
   margin-top: 5px;
 }
+
+.status__bubble {
+  background: #121212;
+  border-radius: var(--border-radius);
+  padding: 0 1em;
+}
