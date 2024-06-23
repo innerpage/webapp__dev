@@ -1,0 +1,15 @@
+.note__container {
+  display: block;
+  width: 265px;
+  height: 120px;
+  border: var(--border);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.25s;
+}
+
+.note__container:hover {
+  border: 1px solid var(--color__white--regular);
+  cursor: pointer;
+}

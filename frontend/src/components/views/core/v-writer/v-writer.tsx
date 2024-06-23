@@ -26,7 +26,7 @@ export class VWriter {
   render() {
     return (
       <Host>
-        <header>
+        <l-row>
           <e-link url="/">
             <l-row>
               <ph-arrow-left></ph-arrow-left>
@@ -35,7 +35,13 @@ export class VWriter {
             </l-row>
           </e-link>
           {this.renderSaveStatus()}
-        </header>
+          <e-button variant="light" action="deleteNote">
+            <ph-trash
+              color="var(--color__white--brighter)"
+              size="1em"
+            ></ph-trash>
+          </e-button>
+        </l-row>
         <e-textarea placeholder="Pour your thoughts.."></e-textarea>
       </Host>
     );

@@ -3,7 +3,6 @@
 }
 
 e-textarea {
-  margin-top: 2vh;
   height: calc(100vh - 55px -15vh);
 }
 
@@ -13,4 +12,9 @@ e-textarea {
   align-items: center;
   height: 90vh;
   text-align: center;
+}
+
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
 }

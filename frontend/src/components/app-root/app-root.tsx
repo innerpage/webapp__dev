@@ -42,8 +42,6 @@ export class AppRoot {
       this.closeModal();
     } else if (e.detail.action === "logout") {
       this.logout();
-    } else if (e.detail.action === "goToWriter") {
-      this.history.push("/writer", {});
     }
   }
 
@@ -156,7 +154,7 @@ export class AppRoot {
             ></this.SessionRoute>
 
             <this.SessionRoute
-              url="/writer"
+              url="/writer/:noteId"
               component="v-writer"
             ></this.SessionRoute>
 

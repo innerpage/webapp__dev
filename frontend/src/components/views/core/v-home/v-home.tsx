@@ -1,6 +1,15 @@
-import { Component, Host, State, FunctionalComponent, h } from "@stencil/core";
-import { getAllNotesApi } from "./helpers";
+import {
+  Component,
+  Host,
+  State,
+  Listen,
+  FunctionalComponent,
+  Prop,
+  h,
+} from "@stencil/core";
+import { getAllNotesApi, createNoteApi } from "./helpers";
 import { Store } from "../../../../global/script";
+import { RouterHistory, injectHistory } from "@stencil/router";
 
 interface Note {
   id: string;
@@ -13,19 +22,43 @@ interface Note {
   shadow: true,
 })
 export class VHome {
+  @Listen("buttonClick") async handleButtonClick(e) {
+    if (e.detail.action === "writeNote") {
+      this.writeNote();
+    }
+  }
+
+  @Prop() history: RouterHistory;
+  @State() notes: Note[] = [];
+  @State() isInitiatingWriting: boolean = false;
+  @State() isViewDataFetched: boolean = false;
+
   componentWillLoad() {
     Store.activeView = "home";
   }
 
-  @State() notes: Note[] = [];
+  componentDidLoad() {
+    if (Store.isSessionActive) {
+      this.getAllNotes();
+    }
+  }
 
-  async componentDidLoad() {
+  async writeNote() {
+    let { success, message, payload } = await createNoteApi();
+    if (!success) {
+      return alert(message);
+    }
+    this.history.push(`/writer/${payload.id}`, { isNewNote: true });
+  }
+
+  async getAllNotes() {
     let { success, message, payload } = await getAllNotesApi();
     if (!success) {
       return alert(message);
     }
     this.notes = payload;
     this.notes = [...this.notes];
+    this.isViewDataFetched = true;
   }
 
   BlankLibrary: FunctionalComponent = () => (
@@ -36,24 +69,34 @@ export class VHome {
           <strong>You're yet to begin journalling</strong>
         </e-text>
         <l-spacer value={1}></l-spacer>
-        <e-button action="goToWriter">Start writing</e-button>
+        <e-button action="writeNote" active={this.isInitiatingWriting}>
+          Start writing
+        </e-button>
       </div>
     </div>
   );
 
-  NoteLibrary: FunctionalComponent = () => (
+  NoteLibrary: FunctionalComponent = () => [
+    <l-row direction="row-reverse">
+      <e-button action="writeNote" active={this.isInitiatingWriting}>
+        Write
+      </e-button>
+    </l-row>,
+    <l-spacer value={2}></l-spacer>,
     <p-gallery>
-      {this.notes.map((node: Note) => (
-        <div>
-          <e-text>{node.preview}</e-text>
-        </div>
+      {this.notes.map((note: any) => (
+        <p-note
+          id={note.id}
+          preview={note.preview}
+          timestamp={note.timestamp}
+        ></p-note>
       ))}
-    </p-gallery>
-  );
+    </p-gallery>,
+  ];
 
   SessionView: FunctionalComponent = () =>
     this.notes.length > 0 ? (
-      <div></div>
+      <this.NoteLibrary></this.NoteLibrary>
     ) : (
       <this.BlankLibrary></this.BlankLibrary>
     );
@@ -62,20 +105,40 @@ export class VHome {
     <e-textarea placeholder="Pour your thoughts.."></e-textarea>
   );
 
+  Loading: FunctionalComponent = () => (
+    <div class="blank-library__container">
+      <div>
+        <ph-book size="3em"></ph-book>
+        <e-text variant="heading">
+          <strong>Loading notes..</strong>
+        </e-text>
+      </div>
+    </div>
+  );
+
   render() {
     return (
       <Host>
         <p-topbar></p-topbar>
         <c-content-area>
+          <l-spacer value={1}></l-spacer>
           <c-main>
-            {Store.isSessionActive ? (
-              <this.SessionView></this.SessionView>
-            ) : (
-              <this.NonSessionView></this.NonSessionView>
-            )}
+            <div class="wrapper">
+              {Store.isSessionActive ? (
+                this.isViewDataFetched ? (
+                  <this.SessionView></this.SessionView>
+                ) : (
+                  <this.Loading></this.Loading>
+                )
+              ) : (
+                <this.NonSessionView></this.NonSessionView>
+              )}
+            </div>
           </c-main>
         </c-content-area>
       </Host>
     );
   }
 }
+
+injectHistory(VHome);

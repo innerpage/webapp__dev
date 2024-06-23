@@ -91,6 +91,11 @@ export namespace Components {
         "isVisible": boolean;
         "name": string;
     }
+    interface PNote {
+        "id": string;
+        "preview": string;
+        "timestamp": string;
+    }
     interface PSidebar {
     }
     interface PSpinner {
@@ -110,6 +115,7 @@ export namespace Components {
     interface VDeleteAccount {
     }
     interface VHome {
+        "history": RouterHistory;
     }
     interface VSupport {
     }
@@ -243,6 +249,12 @@ declare global {
         prototype: HTMLPModalElement;
         new (): HTMLPModalElement;
     };
+    interface HTMLPNoteElement extends Components.PNote, HTMLStencilElement {
+    }
+    var HTMLPNoteElement: {
+        prototype: HTMLPNoteElement;
+        new (): HTMLPNoteElement;
+    };
     interface HTMLPSidebarElement extends Components.PSidebar, HTMLStencilElement {
     }
     var HTMLPSidebarElement: {
@@ -331,6 +343,7 @@ declare global {
         "p-editable-text": HTMLPEditableTextElement;
         "p-gallery": HTMLPGalleryElement;
         "p-modal": HTMLPModalElement;
+        "p-note": HTMLPNoteElement;
         "p-sidebar": HTMLPSidebarElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-topbar": HTMLPTopbarElement;
@@ -433,6 +446,11 @@ declare namespace LocalJSX {
         "isVisible"?: boolean;
         "name"?: string;
     }
+    interface PNote {
+        "id"?: string;
+        "preview"?: string;
+        "timestamp"?: string;
+    }
     interface PSidebar {
     }
     interface PSpinner {
@@ -453,6 +471,7 @@ declare namespace LocalJSX {
         "onLogoutEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VHome {
+        "history"?: RouterHistory;
     }
     interface VSupport {
     }
@@ -480,6 +499,7 @@ declare namespace LocalJSX {
         "p-editable-text": PEditableText;
         "p-gallery": PGallery;
         "p-modal": PModal;
+        "p-note": PNote;
         "p-sidebar": PSidebar;
         "p-spinner": PSpinner;
         "p-topbar": PTopbar;
@@ -518,6 +538,7 @@ declare module "@stencil/core" {
             "p-editable-text": LocalJSX.PEditableText & JSXBase.HTMLAttributes<HTMLPEditableTextElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
+            "p-note": LocalJSX.PNote & JSXBase.HTMLAttributes<HTMLPNoteElement>;
             "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-topbar": LocalJSX.PTopbar & JSXBase.HTMLAttributes<HTMLPTopbarElement>;

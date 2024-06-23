@@ -2,7 +2,7 @@
   display: block;
 }
 
-header {
+:host > l-row {
   padding: 1em;
   top: 0;
   left: 0;
