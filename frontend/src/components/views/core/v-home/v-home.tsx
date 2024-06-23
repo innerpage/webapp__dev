@@ -66,7 +66,7 @@ export class VHome {
       <div>
         <ph-book size="3em"></ph-book>
         <e-text variant="heading">
-          <strong>You're yet to begin journalling</strong>
+          <strong>You have not journalled yet</strong>
         </e-text>
         <l-spacer value={1}></l-spacer>
         <e-button action="writeNote" active={this.isInitiatingWriting}>

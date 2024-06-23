@@ -13,3 +13,7 @@
   border: 1px solid var(--color__white--regular);
   cursor: pointer;
 }
+
+.preview__container {
+  font-family: "IBM Plex Mono", monospace;
+}

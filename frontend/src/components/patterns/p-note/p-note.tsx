@@ -24,7 +24,9 @@ export class PNote {
       <div class="note__container" onClick={() => this.handleNoteClick()}>
         <e-text variant="footnote">{this.timestamp}</e-text>
         <l-spacer value={0.5}></l-spacer>
-        <e-text>{this.preview}</e-text>
+        <div class="preview__container">
+          <e-text>{this.preview}</e-text>
+        </div>
       </div>
     );
   }
