@@ -48,7 +48,7 @@ export class VHome {
     if (!success) {
       return alert(message);
     }
-    this.history.push(`/writer/${payload.id}`, { isNewNote: true });
+    this.history.push(`/writer/${payload.id}`, {});
   }
 
   async getAllNotes() {

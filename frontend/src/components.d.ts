@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { RouterHistory } from "@stencil/router";
+import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AppRoot {
         "history": RouterHistory;
@@ -62,7 +62,9 @@ export namespace Components {
         "weight": string;
     }
     interface ETextarea {
+        "content": string;
         "placeholder": string;
+        "stuff": string;
     }
     interface LRow {
         "align": string;
@@ -92,6 +94,7 @@ export namespace Components {
         "name": string;
     }
     interface PNote {
+        "history": RouterHistory;
         "id": string;
         "preview": string;
         "timestamp": string;
@@ -120,6 +123,7 @@ export namespace Components {
     interface VSupport {
     }
     interface VWriter {
+        "match": MatchResults;
     }
 }
 declare global {
@@ -416,7 +420,10 @@ declare namespace LocalJSX {
         "weight"?: string;
     }
     interface ETextarea {
+        "content"?: string;
+        "onTextAreaInput"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
+        "stuff"?: string;
     }
     interface LRow {
         "align"?: string;
@@ -447,6 +454,7 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     interface PNote {
+        "history"?: RouterHistory;
         "id"?: string;
         "preview"?: string;
         "timestamp"?: string;
@@ -476,6 +484,8 @@ declare namespace LocalJSX {
     interface VSupport {
     }
     interface VWriter {
+        "match"?: MatchResults;
+        "onRouteToEvent"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;

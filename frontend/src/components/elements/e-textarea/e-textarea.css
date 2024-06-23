@@ -18,4 +18,5 @@ textarea {
   font-weight: 400;
   font-style: normal;
   padding: 6em 0 10em 0;
+  white-space: pre-wrap;
 }

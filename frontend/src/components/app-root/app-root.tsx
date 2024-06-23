@@ -119,11 +119,6 @@ export class AppRoot {
             <stencil-route url="/verify/:type/:code" component="v-verify" />
 
             <this.SessionRoute
-              url="/billing"
-              component="v-billing"
-            ></this.SessionRoute>
-
-            <this.SessionRoute
               url="/account"
               component="v-account"
             ></this.SessionRoute>
@@ -131,21 +126,6 @@ export class AppRoot {
             <this.SessionRoute
               url="/delete-account"
               component="v-delete-account"
-            ></this.SessionRoute>
-
-            <this.SessionRoute
-              url="/payment-cancel"
-              component="v-payment-cancel"
-            ></this.SessionRoute>
-
-            <this.SessionRoute
-              url="/payment-handle/:sessionId"
-              component="v-payment-handle"
-            ></this.SessionRoute>
-
-            <this.SessionRoute
-              url="/checkout/:orderId"
-              component="v-checkout"
             ></this.SessionRoute>
 
             <this.SessionRoute

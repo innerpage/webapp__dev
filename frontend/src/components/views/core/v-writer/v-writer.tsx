@@ -1,4 +1,21 @@
-import { Component, State, Host, h } from "@stencil/core";
+import {
+  Component,
+  Event,
+  EventEmitter,
+  Listen,
+  State,
+  Prop,
+  Host,
+  h,
+} from "@stencil/core";
+import {
+  getNoteApi,
+  updateNoteApi,
+  generateUpdateNotePayload,
+  validateUpdateNotePayload,
+} from "./helpers/";
+import { updateNotePayloadInterface } from "./interfaces";
+import { MatchResults } from "@stencil/router";
 
 @Component({
   tag: "v-writer",
@@ -6,20 +23,80 @@ import { Component, State, Host, h } from "@stencil/core";
   shadow: true,
 })
 export class VWriter {
-  @State() saveStatus: string = "init";
+  @Event({
+    eventName: "routeToEvent",
+    bubbles: true,
+  })
+  routeToEventEmitter: EventEmitter;
 
-  renderSaveStatus() {
-    switch (this.saveStatus) {
-      case "init":
-        return <e-text>Autosave enabled</e-text>;
-      case "saving":
-        return (
-          <e-text>
-            <em>Saving..</em>
-          </e-text>
-        );
-      default:
-        return "";
+  @Prop() match: MatchResults;
+
+  @State() saveStatus: string = "init";
+  @State() fetchedContent: string = "";
+
+  @Listen("textAreaInput") handleTextAreaInput(e) {
+    this.noteContent = e.detail.value;
+    if (this.noteContent.length > 0) {
+      this.saveStatus = "";
+    }
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.saveNote();
+    }, 2000);
+  }
+
+  private noteId: string;
+  private noteContent: string;
+
+  private timer: any;
+
+  componentWillLoad() {
+    if (!this.match.params.noteId) {
+      return this.routeToEventEmitter.emit({
+        type: "push",
+        route: "/",
+        data: {},
+      });
+    }
+    this.noteId = this.match.params.noteId.trim();
+  }
+
+  componentDidLoad() {
+    this.getNote();
+  }
+
+  async getNote() {
+    let { success, message, payload } = await getNoteApi(this.noteId);
+
+    if (!success) {
+      return alert(message);
+    }
+
+    if (payload.content.length === 0) {
+      return;
+    }
+
+    this.fetchedContent = payload.content;
+  }
+
+  async saveNote() {
+    this.saveStatus = "saving";
+
+    let updateNotePayload: updateNotePayloadInterface =
+      generateUpdateNotePayload(this.noteId, this.noteContent);
+
+    let { isValid, validationMessage } =
+      validateUpdateNotePayload(updateNotePayload);
+
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+
+    let { success, message } = await updateNoteApi(updateNotePayload);
+    this.saveStatus = "";
+
+    if (!success) {
+      return alert(message);
     }
   }
 
@@ -34,7 +111,12 @@ export class VWriter {
               <e-text>Back</e-text>
             </l-row>
           </e-link>
-          {this.renderSaveStatus()}
+          {this.saveStatus === "init" && <e-text>Autosave enabled</e-text>}
+          {this.saveStatus === "saving" && (
+            <e-text>
+              <em>Saving..</em>
+            </e-text>
+          )}
           <e-button variant="light" action="deleteNote">
             <ph-trash
               color="var(--color__white--brighter)"
@@ -42,7 +124,10 @@ export class VWriter {
             ></ph-trash>
           </e-button>
         </l-row>
-        <e-textarea placeholder="Pour your thoughts.."></e-textarea>
+        <e-textarea
+          placeholder="Pour your thoughts.."
+          content={this.fetchedContent}
+        ></e-textarea>
       </Host>
     );
   }
