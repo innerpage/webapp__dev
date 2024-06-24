@@ -6,20 +6,6 @@ export const Var = {
       url: "https://innerpage.org/contact-us",
     },
     domain: "innerpage.org",
-    logo: {
-      rectangle: {
-        black:
-          "https://res.cloudinary.com/dj9xh37fj/image/upload/v1718521642/Logotype_Transparent_Black_kvzkty.png",
-        white:
-          "https://res.cloudinary.com/dj9xh37fj/image/upload/v1718521642/Logotype_Transparent_White_sfcqmy.png",
-      },
-      square: {
-        black:
-          "https://res.cloudinary.com/dj9xh37fj/image/upload/v1718521642/Logo_Transparent_Black_dylnfh.png",
-        white:
-          "https://res.cloudinary.com/dj9xh37fj/image/upload/v1718521642/Logo_Transparent_White_b2sfhk.png",
-      },
-    },
     policy: {
       tos: {
         url: "https://innerpage.org/terms-of-service",

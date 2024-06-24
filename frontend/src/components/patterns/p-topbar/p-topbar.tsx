@@ -1,5 +1,5 @@
 import { Component, Host, h } from "@stencil/core";
-import { Store, Var } from "../../../global/script";
+import { Store } from "../../../global/script";
 
 @Component({
   tag: "p-topbar",
@@ -12,7 +12,10 @@ export class PTopbar {
       <Host>
         <l-row justifyContent="space-between" align="center">
           <e-link url="/">
-            <e-img src={Var.app.logo.rectangle.white} width="8em"></e-img>
+            <e-img
+              src="../../assets/logotype_white_transparent.png"
+              width="8em"
+            ></e-img>
           </e-link>
           {Store.isSessionActive ? (
             <p-user-control></p-user-control>
