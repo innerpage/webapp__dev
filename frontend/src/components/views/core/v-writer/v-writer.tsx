@@ -159,10 +159,13 @@ export class VWriter {
             ></ph-trash>
           </e-button>
         </l-row>
-        <e-textarea
-          placeholder="Pour your thoughts.."
-          content={this.fetchedContent}
-        ></e-textarea>
+        <l-spacer value={4}></l-spacer>
+        <c-main>
+          <e-textarea
+            placeholder="Pour your thoughts.."
+            content={this.fetchedContent}
+          ></e-textarea>
+        </c-main>
       </Host>
     );
   }

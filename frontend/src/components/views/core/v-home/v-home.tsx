@@ -41,7 +41,7 @@ export class VHome {
     if (Store.isSessionActive) {
       this.getAllNotes();
     }
-    this.renderKoFiButton();
+    // this.renderKoFiButton();
   }
 
   async writeNote() {
@@ -62,35 +62,35 @@ export class VHome {
     this.isViewDataFetched = true;
   }
 
-  loadScript(src) {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-      document.body.appendChild(script);
-    });
-  }
+  // loadScript(src) {
+  //   return new Promise((resolve) => {
+  //     const script = document.createElement("script");
+  //     script.src = src;
+  //     script.onload = () => {
+  //       resolve(true);
+  //     };
+  //     script.onerror = () => {
+  //       resolve(false);
+  //     };
+  //     document.body.appendChild(script);
+  //   });
+  // }
 
-  async renderKoFiButton() {
-    const isKoFiScriptLoaded = await this.loadScript(
-      "https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
-    );
-    if (!isKoFiScriptLoaded) {
-      return;
-    }
-    const _window = window as any;
-    new _window.kofiWidgetOverlay.draw("innerpage", {
-      type: "floating-chat",
-      "floating-chat.donateButton.text": "Support Us",
-      "floating-chat.donateButton.background-color": "#323842",
-      "floating-chat.donateButton.text-color": "#fff",
-    });
-  }
+  // async renderKoFiButton() {
+  //   const isKoFiScriptLoaded = await this.loadScript(
+  //     "https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
+  //   );
+  //   if (!isKoFiScriptLoaded) {
+  //     return;
+  //   }
+  //   const _window = window as any;
+  //   new _window.kofiWidgetOverlay.draw("innerpage", {
+  //     type: "floating-chat",
+  //     "floating-chat.donateButton.text": "Support Us",
+  //     "floating-chat.donateButton.background-color": "#323842",
+  //     "floating-chat.donateButton.text-color": "#fff",
+  //   });
+  // }
 
   BlankLibrary: FunctionalComponent = () => (
     <div class="blank-library__container">
@@ -152,9 +152,9 @@ export class VHome {
       <Host>
         <p-topbar></p-topbar>
         <c-content-area>
-          <l-spacer value={1}></l-spacer>
           <c-main>
             <div class="wrapper">
+              <l-spacer value={2}></l-spacer>
               {Store.isSessionActive ? (
                 this.isViewDataFetched ? (
                   <this.SessionView></this.SessionView>

@@ -12,10 +12,18 @@ export class PTopbar {
       <Host>
         <l-row justifyContent="space-between" align="center">
           <e-link url="/">
-            <e-img
-              src="../../assets/logotype_white_transparent.png"
-              width="8em"
-            ></e-img>
+            <div class="show-on-mobile">
+              <e-img
+                src="../../assets/logomark_white_on_black.png"
+                width="2em"
+              ></e-img>
+            </div>
+            <div class="show-on-desktop">
+              <e-img
+                src="../../assets/logotype_white_transparent.png"
+                width="8em"
+              ></e-img>
+            </div>
           </e-link>
           {Store.isSessionActive ? (
             <p-user-control></p-user-control>
