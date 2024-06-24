@@ -61,11 +61,8 @@ export class AppRoot {
     setStore(e.detail.payload);
   }
 
-  componentWillLoad() {
-    this.getCookies();
-  }
-
   componentDidLoad() {
+    this.getCookies();
     if (Store.isSessionActive) {
       this.initSession();
     }
