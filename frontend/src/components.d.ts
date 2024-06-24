@@ -94,7 +94,7 @@ export namespace Components {
     }
     interface PNote {
         "history": RouterHistory;
-        "id": string;
+        "noteId": string;
         "preview": string;
         "timestamp": string;
     }
@@ -444,7 +444,7 @@ declare namespace LocalJSX {
     }
     interface PNote {
         "history"?: RouterHistory;
-        "id"?: string;
+        "noteId"?: string;
         "preview"?: string;
         "timestamp"?: string;
     }

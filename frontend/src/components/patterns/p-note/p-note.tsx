@@ -10,13 +10,13 @@ import "@phosphor-icons/webcomponents";
 export class PNote {
   @State() isMenuOpen: boolean = false;
 
-  @Prop() id: string;
+  @Prop() noteId: string;
   @Prop() preview: string;
   @Prop() timestamp: string;
   @Prop() history: RouterHistory;
 
   handleNoteClick() {
-    this.history.push(`/writer/${this.id}`, {});
+    this.history.push(`/writer/${this.noteId}`, {});
   }
 
   render() {

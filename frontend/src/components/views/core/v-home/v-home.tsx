@@ -86,7 +86,7 @@ export class VHome {
     <p-gallery>
       {this.notes.map((note: any) => (
         <p-note
-          id={note.id}
+          noteId={note.id}
           preview={note.preview}
           timestamp={note.timestamp}
         ></p-note>
