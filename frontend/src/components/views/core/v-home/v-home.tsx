@@ -38,12 +38,7 @@ export class VHome {
   }
 
   componentDidLoad() {
-    console.log(1);
-    if (Store.isSessionActive) {
-      console.log(2);
-      this.getAllNotes();
-    }
-    // this.renderKoFiButton();
+    this.getAllNotes();
   }
 
   async writeNote() {
@@ -63,36 +58,6 @@ export class VHome {
     this.notes = [...this.notes];
     this.isViewDataFetched = true;
   }
-
-  // loadScript(src) {
-  //   return new Promise((resolve) => {
-  //     const script = document.createElement("script");
-  //     script.src = src;
-  //     script.onload = () => {
-  //       resolve(true);
-  //     };
-  //     script.onerror = () => {
-  //       resolve(false);
-  //     };
-  //     document.body.appendChild(script);
-  //   });
-  // }
-
-  // async renderKoFiButton() {
-  //   const isKoFiScriptLoaded = await this.loadScript(
-  //     "https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
-  //   );
-  //   if (!isKoFiScriptLoaded) {
-  //     return;
-  //   }
-  //   const _window = window as any;
-  //   new _window.kofiWidgetOverlay.draw("innerpage", {
-  //     type: "floating-chat",
-  //     "floating-chat.donateButton.text": "Support Us",
-  //     "floating-chat.donateButton.background-color": "#323842",
-  //     "floating-chat.donateButton.text-color": "#fff",
-  //   });
-  // }
 
   BlankLibrary: FunctionalComponent = () => (
     <div class="blank-library__container">
