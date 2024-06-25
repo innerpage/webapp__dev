@@ -64,6 +64,7 @@ export class AppRoot {
       return alert(message);
     }
     setStore(payload);
+    this.history.push("/home", {});
   }
 
   async logout() {
@@ -80,10 +81,6 @@ export class AppRoot {
       <Host>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
-            <stencil-route url="/" component="v-home" exact={true} />
-
-            <stencil-route url="/support-us" component="v-support-us" />
-
             <this.NonSessionRoute
               url="/login"
               component="v-login"
@@ -93,6 +90,11 @@ export class AppRoot {
               url="/signup"
               component="v-signup"
             ></this.NonSessionRoute>
+
+            <this.SessionRoute
+              url="/home"
+              component="v-home"
+            ></this.SessionRoute>
 
             <this.SessionRoute
               url="/account"
@@ -118,6 +120,8 @@ export class AppRoot {
               url="/writer/:noteId"
               component="v-writer"
             ></this.SessionRoute>
+
+            <stencil-route url="/support-us" component="v-support-us" />
 
             <stencil-route component="v-catch-all" />
           </stencil-route-switch>
@@ -166,7 +170,7 @@ export class AppRoot {
             );
           } else {
             return (
-              <stencil-router-redirect url="/home"></stencil-router-redirect>
+              <stencil-router-redirect url="/login"></stencil-router-redirect>
             );
           }
         }}

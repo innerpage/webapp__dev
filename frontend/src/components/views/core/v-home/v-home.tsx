@@ -99,10 +99,6 @@ export class VHome {
       <this.BlankLibrary></this.BlankLibrary>
     );
 
-  NonSessionView: FunctionalComponent = () => (
-    <e-textarea placeholder="Pour your thoughts.."></e-textarea>
-  );
-
   Loading: FunctionalComponent = () => (
     <div class="blank-library__container">
       <div>
@@ -122,14 +118,10 @@ export class VHome {
           <c-main>
             <div class="wrapper">
               <l-spacer value={2}></l-spacer>
-              {Store.isSessionActive ? (
-                this.isViewDataFetched ? (
-                  <this.SessionView></this.SessionView>
-                ) : (
-                  <this.Loading></this.Loading>
-                )
+              {this.isViewDataFetched ? (
+                <this.SessionView></this.SessionView>
               ) : (
-                <this.NonSessionView></this.NonSessionView>
+                <this.Loading></this.Loading>
               )}
             </div>
           </c-main>
