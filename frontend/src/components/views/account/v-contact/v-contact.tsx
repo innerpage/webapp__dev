@@ -2,13 +2,13 @@ import { Component, Host, h } from "@stencil/core";
 import { Var, Store } from "../../../../global/script";
 
 @Component({
-  tag: "v-support",
-  styleUrl: "v-support.css",
+  tag: "v-contact",
+  styleUrl: "v-contact.css",
   shadow: true,
 })
-export class VSupport {
+export class VContact {
   componentWillLoad() {
-    Store.activeView = "support";
+    Store.activeView = "contact";
   }
 
   render() {
@@ -17,7 +17,8 @@ export class VSupport {
         <p-topbar></p-topbar>
         <c-content-area>
           <c-main>
-            <e-text variant="heading">Support</e-text>
+            <l-spacer value={2}></l-spacer>
+            <e-text variant="heading">Contact</e-text>
             <l-spacer value={1}></l-spacer>
             <c-card>
               <e-text>

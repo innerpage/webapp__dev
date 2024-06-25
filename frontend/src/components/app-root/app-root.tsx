@@ -42,6 +42,8 @@ export class AppRoot {
       this.closeModal();
     } else if (e.detail.action === "logout") {
       this.logout();
+    } else if (e.detail.action === "openDonateModal") {
+      this.openModal("donate");
     }
   }
 
@@ -111,13 +113,16 @@ export class AppRoot {
           <stencil-route-switch scrollTopOffset={0}>
             <stencil-route url="/" component="v-home" exact={true} />
 
-            <stencil-route url="/page-1" component="v-page-1" />
-
-            <stencil-route url="/verify/:type/:code" component="v-verify" />
+            <stencil-route url="/support-us" component="v-support-us" />
 
             <this.SessionRoute
               url="/account"
               component="v-account"
+            ></this.SessionRoute>
+
+            <this.SessionRoute
+              url="/contact"
+              component="v-contact"
             ></this.SessionRoute>
 
             <this.SessionRoute
@@ -126,8 +131,8 @@ export class AppRoot {
             ></this.SessionRoute>
 
             <this.SessionRoute
-              url="/support"
-              component="v-support"
+              url="/support-us"
+              component="v-support-us"
             ></this.SessionRoute>
 
             <this.SessionRoute

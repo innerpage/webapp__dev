@@ -80,7 +80,7 @@ button:disabled {
 
 /* Light Button (Default) */
 .button__light--default {
-  color: var(--color__white--bright);
+  color: var(--color__white--brighter);
 }
 .button__light--default:hover {
   background: var(--color__white--dimmer);

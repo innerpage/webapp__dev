@@ -25,6 +25,7 @@ export class PTopbar {
               ></e-img>
             </div>
           </e-link>
+          <e-link url="/support-us">Support Us</e-link>
           {Store.isSessionActive ? (
             <p-user-control></p-user-control>
           ) : (

@@ -17,6 +17,7 @@ export class VAccount {
         <p-topbar></p-topbar>
         <c-content-area>
           <c-main>
+            <l-spacer value={2}></l-spacer>
             <e-text variant="heading">Account</e-text>
             <l-spacer value={1}></l-spacer>
             <c-card>

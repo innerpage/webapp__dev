@@ -38,7 +38,9 @@ export class VHome {
   }
 
   componentDidLoad() {
+    console.log(1);
     if (Store.isSessionActive) {
+      console.log(2);
       this.getAllNotes();
     }
     // this.renderKoFiButton();

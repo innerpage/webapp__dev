@@ -71,11 +71,11 @@ export class PUserControl {
               </e-link>
             </e-list-item>
             <e-list-item>
-              <e-link url="/support">
+              <e-link url="/contact">
                 <l-row align="center">
-                  <ph-headset color="var(--color__blue--200)"></ph-headset>
+                  <ph-phone color="var(--color__blue--200)"></ph-phone>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
-                  <e-text>Support</e-text>
+                  <e-text>Contact</e-text>
                 </l-row>
               </e-link>
             </e-list-item>

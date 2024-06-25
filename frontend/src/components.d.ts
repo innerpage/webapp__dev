@@ -112,12 +112,14 @@ export namespace Components {
     interface VCatchAll {
         "history": RouterHistory;
     }
+    interface VContact {
+    }
     interface VDeleteAccount {
     }
     interface VHome {
         "history": RouterHistory;
     }
-    interface VSupport {
+    interface VSupportUs {
     }
     interface VWriter {
         "match": MatchResults;
@@ -292,6 +294,12 @@ declare global {
         prototype: HTMLVCatchAllElement;
         new (): HTMLVCatchAllElement;
     };
+    interface HTMLVContactElement extends Components.VContact, HTMLStencilElement {
+    }
+    var HTMLVContactElement: {
+        prototype: HTMLVContactElement;
+        new (): HTMLVContactElement;
+    };
     interface HTMLVDeleteAccountElement extends Components.VDeleteAccount, HTMLStencilElement {
     }
     var HTMLVDeleteAccountElement: {
@@ -304,11 +312,11 @@ declare global {
         prototype: HTMLVHomeElement;
         new (): HTMLVHomeElement;
     };
-    interface HTMLVSupportElement extends Components.VSupport, HTMLStencilElement {
+    interface HTMLVSupportUsElement extends Components.VSupportUs, HTMLStencilElement {
     }
-    var HTMLVSupportElement: {
-        prototype: HTMLVSupportElement;
-        new (): HTMLVSupportElement;
+    var HTMLVSupportUsElement: {
+        prototype: HTMLVSupportUsElement;
+        new (): HTMLVSupportUsElement;
     };
     interface HTMLVWriterElement extends Components.VWriter, HTMLStencilElement {
     }
@@ -345,9 +353,10 @@ declare global {
         "p-user-control": HTMLPUserControlElement;
         "v-account": HTMLVAccountElement;
         "v-catch-all": HTMLVCatchAllElement;
+        "v-contact": HTMLVContactElement;
         "v-delete-account": HTMLVDeleteAccountElement;
         "v-home": HTMLVHomeElement;
-        "v-support": HTMLVSupportElement;
+        "v-support-us": HTMLVSupportUsElement;
         "v-writer": HTMLVWriterElement;
     }
 }
@@ -462,13 +471,15 @@ declare namespace LocalJSX {
     interface VCatchAll {
         "history"?: RouterHistory;
     }
+    interface VContact {
+    }
     interface VDeleteAccount {
         "onLogoutEvent"?: (event: CustomEvent<any>) => void;
     }
     interface VHome {
         "history"?: RouterHistory;
     }
-    interface VSupport {
+    interface VSupportUs {
     }
     interface VWriter {
         "match"?: MatchResults;
@@ -503,9 +514,10 @@ declare namespace LocalJSX {
         "p-user-control": PUserControl;
         "v-account": VAccount;
         "v-catch-all": VCatchAll;
+        "v-contact": VContact;
         "v-delete-account": VDeleteAccount;
         "v-home": VHome;
-        "v-support": VSupport;
+        "v-support-us": VSupportUs;
         "v-writer": VWriter;
     }
 }
@@ -541,9 +553,10 @@ declare module "@stencil/core" {
             "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
             "v-account": LocalJSX.VAccount & JSXBase.HTMLAttributes<HTMLVAccountElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
+            "v-contact": LocalJSX.VContact & JSXBase.HTMLAttributes<HTMLVContactElement>;
             "v-delete-account": LocalJSX.VDeleteAccount & JSXBase.HTMLAttributes<HTMLVDeleteAccountElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
-            "v-support": LocalJSX.VSupport & JSXBase.HTMLAttributes<HTMLVSupportElement>;
+            "v-support-us": LocalJSX.VSupportUs & JSXBase.HTMLAttributes<HTMLVSupportUsElement>;
             "v-writer": LocalJSX.VWriter & JSXBase.HTMLAttributes<HTMLVWriterElement>;
         }
     }
