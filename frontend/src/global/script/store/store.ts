@@ -4,5 +4,4 @@ export const { state } = createStore({
   activeView: "home",
   isSessionActive: false,
   userName: "",
-  isModalVisible: false,
 });

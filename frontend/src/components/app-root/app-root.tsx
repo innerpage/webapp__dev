@@ -1,4 +1,4 @@
-import { Component, Prop, Host, Listen, State, h } from "@stencil/core";
+import { Component, Prop, Host, Listen, h } from "@stencil/core";
 import { RouterHistory, injectHistory } from "@stencil/router";
 import { Store } from "../../global/script";
 import { setStore } from "./helpers";
@@ -16,34 +16,18 @@ import {
 export class AppRoot {
   @Prop() history: RouterHistory;
 
-  @State() modal: string;
-
   @Listen("authSuccessful") authSuccessfulListener() {
     this.getCookies();
     this.initSession();
-    if (Store.isModalVisible) {
-      this.closeModal();
-    }
-  }
-
-  @Listen("closeModal") closeModalListener() {
-    this.closeModal();
   }
 
   @Listen("buttonClick") async handleButtonClick(e) {
-    if (
-      e.detail.action === "openLoginModal" ||
-      e.detail.action === "goBackToLogin"
-    ) {
-      this.openModal("login");
-    } else if (e.detail.action === "openSignupModal") {
-      this.openModal("signup");
-    } else if (e.detail.action === "closeModal") {
-      this.closeModal();
-    } else if (e.detail.action === "logout") {
+    if (e.detail.action === "logout") {
       this.logout();
-    } else if (e.detail.action === "openDonateModal") {
-      this.openModal("donate");
+    } else if (e.detail.action === "goToLogin") {
+      this.history.push("/login", {});
+    } else if (e.detail.action === "goToSignup") {
+      this.history.push("/signup", {});
     }
   }
 
@@ -70,13 +54,6 @@ export class AppRoot {
     }
   }
 
-  closeModal() {
-    Store.isModalVisible = false;
-    setTimeout(() => {
-      this.modal = "";
-    }, 150);
-  }
-
   getCookies() {
     Store.isSessionActive = getSessionCookie();
   }
@@ -98,22 +75,24 @@ export class AppRoot {
     this.history.push("/", {});
   }
 
-  openModal(name: string) {
-    this.modal = name;
-    if (!Store.isModalVisible) {
-      Store.isModalVisible = true;
-    }
-  }
-
   render() {
     return (
       <Host>
-        <p-modal isVisible={Store.isModalVisible} name={this.modal}></p-modal>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
             <stencil-route url="/" component="v-home" exact={true} />
 
             <stencil-route url="/support-us" component="v-support-us" />
+
+            <this.NonSessionRoute
+              url="/login"
+              component="v-login"
+            ></this.NonSessionRoute>
+
+            <this.NonSessionRoute
+              url="/signup"
+              component="v-signup"
+            ></this.NonSessionRoute>
 
             <this.SessionRoute
               url="/account"

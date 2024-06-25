@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+c-card {
+  width: 250px;
+  border: 0;
+}
+
+e-input {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

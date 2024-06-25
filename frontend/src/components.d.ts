@@ -78,19 +78,12 @@ export namespace Components {
         "value": number;
         "variant": string;
     }
-    interface PAuth {
-        "view": string;
-    }
     interface PEditableText {
         "name": string;
         "type": string;
         "value": string;
     }
     interface PGallery {
-    }
-    interface PModal {
-        "isVisible": boolean;
-        "name": string;
     }
     interface PNote {
         "history": RouterHistory;
@@ -118,6 +111,10 @@ export namespace Components {
     }
     interface VHome {
         "history": RouterHistory;
+    }
+    interface VLogin {
+    }
+    interface VSignup {
     }
     interface VSupportUs {
     }
@@ -228,12 +225,6 @@ declare global {
         prototype: HTMLLSpacerElement;
         new (): HTMLLSpacerElement;
     };
-    interface HTMLPAuthElement extends Components.PAuth, HTMLStencilElement {
-    }
-    var HTMLPAuthElement: {
-        prototype: HTMLPAuthElement;
-        new (): HTMLPAuthElement;
-    };
     interface HTMLPEditableTextElement extends Components.PEditableText, HTMLStencilElement {
     }
     var HTMLPEditableTextElement: {
@@ -245,12 +236,6 @@ declare global {
     var HTMLPGalleryElement: {
         prototype: HTMLPGalleryElement;
         new (): HTMLPGalleryElement;
-    };
-    interface HTMLPModalElement extends Components.PModal, HTMLStencilElement {
-    }
-    var HTMLPModalElement: {
-        prototype: HTMLPModalElement;
-        new (): HTMLPModalElement;
     };
     interface HTMLPNoteElement extends Components.PNote, HTMLStencilElement {
     }
@@ -312,6 +297,18 @@ declare global {
         prototype: HTMLVHomeElement;
         new (): HTMLVHomeElement;
     };
+    interface HTMLVLoginElement extends Components.VLogin, HTMLStencilElement {
+    }
+    var HTMLVLoginElement: {
+        prototype: HTMLVLoginElement;
+        new (): HTMLVLoginElement;
+    };
+    interface HTMLVSignupElement extends Components.VSignup, HTMLStencilElement {
+    }
+    var HTMLVSignupElement: {
+        prototype: HTMLVSignupElement;
+        new (): HTMLVSignupElement;
+    };
     interface HTMLVSupportUsElement extends Components.VSupportUs, HTMLStencilElement {
     }
     var HTMLVSupportUsElement: {
@@ -342,10 +339,8 @@ declare global {
         "l-row": HTMLLRowElement;
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
-        "p-auth": HTMLPAuthElement;
         "p-editable-text": HTMLPEditableTextElement;
         "p-gallery": HTMLPGalleryElement;
-        "p-modal": HTMLPModalElement;
         "p-note": HTMLPNoteElement;
         "p-sidebar": HTMLPSidebarElement;
         "p-spinner": HTMLPSpinnerElement;
@@ -356,6 +351,8 @@ declare global {
         "v-contact": HTMLVContactElement;
         "v-delete-account": HTMLVDeleteAccountElement;
         "v-home": HTMLVHomeElement;
+        "v-login": HTMLVLoginElement;
+        "v-signup": HTMLVSignupElement;
         "v-support-us": HTMLVSupportUsElement;
         "v-writer": HTMLVWriterElement;
     }
@@ -436,20 +433,12 @@ declare namespace LocalJSX {
         "value"?: number;
         "variant"?: string;
     }
-    interface PAuth {
-        "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
-        "view"?: string;
-    }
     interface PEditableText {
         "name"?: string;
         "type"?: string;
         "value"?: string;
     }
     interface PGallery {
-    }
-    interface PModal {
-        "isVisible"?: boolean;
-        "name"?: string;
     }
     interface PNote {
         "history"?: RouterHistory;
@@ -479,6 +468,12 @@ declare namespace LocalJSX {
     interface VHome {
         "history"?: RouterHistory;
     }
+    interface VLogin {
+        "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
+    }
+    interface VSignup {
+        "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
+    }
     interface VSupportUs {
     }
     interface VWriter {
@@ -503,10 +498,8 @@ declare namespace LocalJSX {
         "l-row": LRow;
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
-        "p-auth": PAuth;
         "p-editable-text": PEditableText;
         "p-gallery": PGallery;
-        "p-modal": PModal;
         "p-note": PNote;
         "p-sidebar": PSidebar;
         "p-spinner": PSpinner;
@@ -517,6 +510,8 @@ declare namespace LocalJSX {
         "v-contact": VContact;
         "v-delete-account": VDeleteAccount;
         "v-home": VHome;
+        "v-login": VLogin;
+        "v-signup": VSignup;
         "v-support-us": VSupportUs;
         "v-writer": VWriter;
     }
@@ -542,10 +537,8 @@ declare module "@stencil/core" {
             "l-row": LocalJSX.LRow & JSXBase.HTMLAttributes<HTMLLRowElement>;
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
-            "p-auth": LocalJSX.PAuth & JSXBase.HTMLAttributes<HTMLPAuthElement>;
             "p-editable-text": LocalJSX.PEditableText & JSXBase.HTMLAttributes<HTMLPEditableTextElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
-            "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-note": LocalJSX.PNote & JSXBase.HTMLAttributes<HTMLPNoteElement>;
             "p-sidebar": LocalJSX.PSidebar & JSXBase.HTMLAttributes<HTMLPSidebarElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
@@ -556,6 +549,8 @@ declare module "@stencil/core" {
             "v-contact": LocalJSX.VContact & JSXBase.HTMLAttributes<HTMLVContactElement>;
             "v-delete-account": LocalJSX.VDeleteAccount & JSXBase.HTMLAttributes<HTMLVDeleteAccountElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
+            "v-login": LocalJSX.VLogin & JSXBase.HTMLAttributes<HTMLVLoginElement>;
+            "v-signup": LocalJSX.VSignup & JSXBase.HTMLAttributes<HTMLVSignupElement>;
             "v-support-us": LocalJSX.VSupportUs & JSXBase.HTMLAttributes<HTMLVSupportUsElement>;
             "v-writer": LocalJSX.VWriter & JSXBase.HTMLAttributes<HTMLVWriterElement>;
         }
