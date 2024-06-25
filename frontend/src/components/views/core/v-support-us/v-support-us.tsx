@@ -9,7 +9,7 @@ export class VSupportUs {
   render() {
     return (
       <Host>
-        <l-spacer value={2}></l-spacer>
+        <l-spacer value={1}></l-spacer>
         <c-main>
           <l-row>
             <e-link url="/">
@@ -20,7 +20,7 @@ export class VSupportUs {
               </l-row>
             </e-link>
           </l-row>
-          <l-spacer value={2}></l-spacer>
+          <l-spacer value={1}></l-spacer>
           <iframe
             id="kofiframe"
             src="https://ko-fi.com/innerpage/?hidefeed=true&widget=true&embed=true&preview=true"
