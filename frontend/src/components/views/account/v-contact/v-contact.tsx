@@ -25,9 +25,11 @@ export class VContact {
                 To report bugs or request new features, kindly write to us
                 at:&nbsp;
               </e-text>
-              <e-link variant="email" url={`mailto:${Var.app.contact.email}`}>
-                {Var.app.contact.email}
-              </e-link>
+              <strong>
+                <e-link variant="email" url={`mailto:${Var.app.contact.email}`}>
+                  {Var.app.contact.email}
+                </e-link>
+              </strong>
             </c-card>
           </c-main>
         </c-content-area>
