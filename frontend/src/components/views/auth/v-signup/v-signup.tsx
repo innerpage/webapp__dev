@@ -98,11 +98,11 @@ export class VSignup {
     let { success, message } = await userNameAvailabilityApi(
       userNameAvailabilityPayload
     );
+    this.SignUpUserNameInputEl.style.marginBottom = "0em";
     if (!success) {
       this.userNameAvailability = "unavailable";
-      return alert(message);
+      return console.log(message);
     }
-    this.SignUpUserNameInputEl.style.marginBottom = "0em";
     this.userNameAvailability = "available";
   }
 
