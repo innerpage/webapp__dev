@@ -11,16 +11,16 @@ app.use(express.static(__dirname + "/www"));
 dotenv.config();
 const appPort: number = Number(process.env.APP_PORT);
 
-(async () => {
-  app.get("/*", (req, res) => {
-    let joinedPath: string = path.join(__dirname, "/www/index.html");
-    res.sendFile(joinedPath, (err) => {
-      if (err) {
-        res.status(500).send(err);
-      }
-    });
+app.get("/*", (req, res) => {
+  let joinedPath: string = path.join(__dirname, "/www/index.html");
+  res.sendFile(joinedPath, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
   });
+});
 
+(async () => {
   app.listen(appPort, () => {
     console.log(`Server is running on port: ${appPort}`);
   });
