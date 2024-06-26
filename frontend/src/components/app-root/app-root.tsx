@@ -170,7 +170,7 @@ export class AppRoot {
             );
           } else {
             return (
-              <stencil-router-redirect url="/login"></stencil-router-redirect>
+              <stencil-router-redirect url="/home"></stencil-router-redirect>
             );
           }
         }}
