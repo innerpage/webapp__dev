@@ -8,7 +8,7 @@ export const config: Config = {
     {
       type: "www",
       serviceWorker: null,
-      baseUrl: "https://app.innerpage.org",
+      baseUrl: "https://app.innerpage.org/",
     },
   ],
 };
