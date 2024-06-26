@@ -4,6 +4,9 @@ export const Var = {
     contact: {
       email: "innerpage.journal@gmail.com",
       url: "https://innerpage.org/contact-us",
+      social: {
+        twitter: "https://x.com/TheInnerPage",
+      },
     },
     domain: "innerpage.org",
     policy: {
