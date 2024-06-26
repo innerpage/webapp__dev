@@ -1,7 +1,7 @@
 :host {
   width: 12.5vw;
   position: fixed;
-  height: calc(100vh - 50px);
+  height: calc(100vh - var(--pattern__topbar__height));
   border-right: var(--border);
   padding-top: 3em;
 }

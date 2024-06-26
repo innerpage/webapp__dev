@@ -1,5 +1,4 @@
 import { Component, Host, h } from "@stencil/core";
-import { Store } from "../../../global/script";
 
 @Component({
   tag: "p-topbar",
@@ -26,19 +25,7 @@ export class PTopbar {
             </div>
           </e-link>
           <e-link url="/support-us">Support Us</e-link>
-          {Store.isSessionActive ? (
-            <p-user-control></p-user-control>
-          ) : (
-            <l-row align="centre">
-              <e-button variant="ghost" action="goToLogin" size="small">
-                Log in
-              </e-button>
-              &nbsp; &nbsp;
-              <e-button action="goToSignup" size="small">
-                Sign up
-              </e-button>
-            </l-row>
-          )}
+          <p-user-control></p-user-control>
         </l-row>
       </Host>
     );
