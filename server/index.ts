@@ -12,8 +12,8 @@ dotenv.config();
 const appPort: number = Number(process.env.APP_PORT);
 
 app.get("/*", (req, res) => {
-  let joinedPath: string = path.join(__dirname, "/www/index.html");
-  res.sendFile(joinedPath, (err) => {
+  // let joinedPath: string = path.join(__dirname, "/www/index.html");
+  res.sendFile("/www/index.html", (err) => {
     if (err) {
       res.status(500).send(err);
     }
