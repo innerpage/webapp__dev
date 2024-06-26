@@ -25,7 +25,7 @@ button:disabled {
   background: var(--color__white--brightest);
 }
 .button__primary--default:active {
-  background: var(--color__white--bright);
+  background: none;
 }
 .button__primary--danger {
   background: var(--color__red--regular);
@@ -35,7 +35,7 @@ button:disabled {
   background: var(--color__red--dark);
 }
 .button__primary--danger:active {
-  background: var(--color__red--light);
+  background: none;
 }
 
 /* Ghost Button (Default) */
