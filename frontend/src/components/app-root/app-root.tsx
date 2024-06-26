@@ -43,10 +43,6 @@ export class AppRoot {
     }
   }
 
-  @Listen("authSuccess") handleAuthSuccessEvent(e) {
-    setStore(e.detail.payload);
-  }
-
   componentDidLoad() {
     this.getCookies();
     if (Store.isSessionActive) {
