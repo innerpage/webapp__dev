@@ -1,8 +1,12 @@
 import { Component, Prop, Host, Listen, h } from "@stencil/core";
 import { RouterHistory, injectHistory } from "@stencil/router";
 import { Store } from "../../global/script";
-import { setStore } from "./helpers";
-import { getSessionCookie } from "./helpers";
+import {
+  setStore,
+  setSessionInLS,
+  checkSessionInLS,
+  clearSessionInLS,
+} from "./helpers";
 import {
   AccountDetailsBySessionApi,
   LogoutApi,
@@ -17,7 +21,7 @@ export class AppRoot {
   @Prop() history: RouterHistory;
 
   @Listen("authSuccessful") authSuccessfulListener() {
-    this.getCookies();
+    setSessionInLS();
     this.initSession();
   }
 
@@ -44,17 +48,16 @@ export class AppRoot {
   }
 
   componentWillLoad() {
-    this.getCookies();
+    let { success } = checkSessionInLS();
+    if (success) {
+      Store.isSessionActive = true;
+    }
   }
 
   componentDidLoad() {
     if (Store.isSessionActive) {
       this.initSession();
     }
-  }
-
-  getCookies() {
-    Store.isSessionActive = getSessionCookie();
   }
 
   async initSession() {
@@ -72,6 +75,7 @@ export class AppRoot {
       return alert(message);
     }
     Store.isSessionActive = payload.isSessionActive;
+    clearSessionInLS();
     this.history.push("/", {});
   }
 
