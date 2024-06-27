@@ -43,8 +43,11 @@ export class AppRoot {
     }
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.getCookies();
+  }
+
+  componentDidLoad() {
     if (Store.isSessionActive) {
       this.initSession();
     }
