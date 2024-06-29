@@ -40,7 +40,7 @@ export class VContact {
                   variant="externalLink"
                   url={Var.app.contact.social.twitter}
                 >
-                  @InnerPage
+                  @TheInnerPage
                 </e-link>
               </strong>
             </c-card>

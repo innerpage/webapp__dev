@@ -29,9 +29,7 @@ export class VSupportUs {
           <div class="wrapper">
             <div>
               {!this.isFrameLoaded && (
-                <e-text variant="heading">
-                  <strong>Loading payment..</strong>
-                </e-text>
+                <e-text variant="display">Loading payment..</e-text>
               )}
               <iframe
                 id="kofiframe"

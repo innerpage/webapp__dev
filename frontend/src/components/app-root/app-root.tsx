@@ -124,6 +124,11 @@ export class AppRoot {
               component="v-writer"
             ></this.SessionRoute>
 
+            <this.AdminSessionRoute
+              url="/admin-overview"
+              component="v-admin-overview"
+            ></this.AdminSessionRoute>
+
             <stencil-route url="/support-us" component="v-support-us" />
 
             <stencil-route component="v-catch-all" />
@@ -132,6 +137,30 @@ export class AppRoot {
       </Host>
     );
   }
+
+  AdminSessionRoute = ({ component, ...props }: { [key: string]: any }) => {
+    const Component = component;
+    return (
+      <stencil-route
+        {...props}
+        routeRender={(routeRenderProps) => {
+          if (Store.isSessionActive && Store.isAdmin) {
+            return (
+              <Component
+                {...props}
+                {...props.componentProps}
+                {...routeRenderProps}
+              ></Component>
+            );
+          } else {
+            return (
+              <stencil-router-redirect url="/login"></stencil-router-redirect>
+            );
+          }
+        }}
+      />
+    );
+  };
 
   SessionRoute = ({ component, ...props }: { [key: string]: any }) => {
     const Component = component;

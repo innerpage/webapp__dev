@@ -61,6 +61,17 @@ export class PUserControl {
         </e-button>
         <c-card ref={(el) => (this.userControlCardEl = el as HTMLCCardElement)}>
           <e-list>
+            {Store.isAdmin && (
+              <e-list-item>
+                <e-link url="/admin-overview">
+                  <l-row align="center">
+                    <ph-user-gear color="var(--color__blue--200)"></ph-user-gear>
+                    <l-spacer value={0.25} variant="horizontal"></l-spacer>
+                    <e-text>Admin</e-text>
+                  </l-row>
+                </e-link>
+              </e-list-item>
+            )}
             <e-list-item>
               <e-link url="/home">
                 <l-row align="center">

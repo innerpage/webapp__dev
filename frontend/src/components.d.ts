@@ -102,6 +102,8 @@ export namespace Components {
     }
     interface VAccount {
     }
+    interface VAdminOverview {
+    }
     interface VCatchAll {
         "history": RouterHistory;
     }
@@ -273,6 +275,12 @@ declare global {
         prototype: HTMLVAccountElement;
         new (): HTMLVAccountElement;
     };
+    interface HTMLVAdminOverviewElement extends Components.VAdminOverview, HTMLStencilElement {
+    }
+    var HTMLVAdminOverviewElement: {
+        prototype: HTMLVAdminOverviewElement;
+        new (): HTMLVAdminOverviewElement;
+    };
     interface HTMLVCatchAllElement extends Components.VCatchAll, HTMLStencilElement {
     }
     var HTMLVCatchAllElement: {
@@ -347,6 +355,7 @@ declare global {
         "p-topbar": HTMLPTopbarElement;
         "p-user-control": HTMLPUserControlElement;
         "v-account": HTMLVAccountElement;
+        "v-admin-overview": HTMLVAdminOverviewElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-contact": HTMLVContactElement;
         "v-delete-account": HTMLVDeleteAccountElement;
@@ -457,6 +466,8 @@ declare namespace LocalJSX {
     }
     interface VAccount {
     }
+    interface VAdminOverview {
+    }
     interface VCatchAll {
         "history"?: RouterHistory;
     }
@@ -506,6 +517,7 @@ declare namespace LocalJSX {
         "p-topbar": PTopbar;
         "p-user-control": PUserControl;
         "v-account": VAccount;
+        "v-admin-overview": VAdminOverview;
         "v-catch-all": VCatchAll;
         "v-contact": VContact;
         "v-delete-account": VDeleteAccount;
@@ -545,6 +557,7 @@ declare module "@stencil/core" {
             "p-topbar": LocalJSX.PTopbar & JSXBase.HTMLAttributes<HTMLPTopbarElement>;
             "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
             "v-account": LocalJSX.VAccount & JSXBase.HTMLAttributes<HTMLVAccountElement>;
+            "v-admin-overview": LocalJSX.VAdminOverview & JSXBase.HTMLAttributes<HTMLVAdminOverviewElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-contact": LocalJSX.VContact & JSXBase.HTMLAttributes<HTMLVContactElement>;
             "v-delete-account": LocalJSX.VDeleteAccount & JSXBase.HTMLAttributes<HTMLVDeleteAccountElement>;

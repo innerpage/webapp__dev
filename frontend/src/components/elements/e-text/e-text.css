@@ -26,10 +26,10 @@ h2 {
 
 /* Theme */
 .success {
-  color: var(--color__green--dark);
+  color: var(--color__green--300);
 }
 .danger {
-  color: var(--color__red--regular);
+  color: var(--color__red--300);
 }
 .light-grey {
   color: rgba(0, 0, 0, 0.3);
