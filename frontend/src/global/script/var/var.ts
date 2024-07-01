@@ -37,6 +37,17 @@ export const Var = {
         ? "http://localhost:4444"
         : "https://api.innerpage.org",
     endpoint: {
+      admin: {
+        count: {
+          accounts: "/accounts-count",
+          deletedAccounts: "/deleted-accounts",
+          notes: "/notes-count",
+          creations: {
+            accounts: "/account-creation-count",
+            notes: "/note-creation-count",
+          },
+        },
+      },
       account: {
         details: "/account",
         auth: {
