@@ -1,6 +1,6 @@
 import { Component, Prop, Host, Listen, h } from "@stencil/core";
 import { RouterHistory, injectHistory } from "@stencil/router";
-import { Store } from "../../global/script";
+import { Store, IO, initSocket } from "../../global/script";
 import {
   setStore,
   setSessionInLS,
@@ -52,12 +52,17 @@ export class AppRoot {
     if (success) {
       Store.isSessionActive = true;
     }
+    initSocket();
   }
 
   componentDidLoad() {
     if (Store.isSessionActive) {
       this.initSession();
     }
+  }
+
+  disconnectedCallback() {
+    IO.disconnect();
   }
 
   async initSession() {
