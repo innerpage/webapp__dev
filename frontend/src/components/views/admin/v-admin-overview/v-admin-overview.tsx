@@ -7,6 +7,7 @@ import {
   noteCreationCountApi,
   accountCreationCountApi,
 } from "./helpers";
+import { IO, Store } from "../../../../global/script";
 
 @Component({
   tag: "v-admin-overview",
@@ -22,6 +23,7 @@ export class VAdminOverview {
   @State() notesCount: number = 0;
   @State() accountCreationCount: any = [];
   @State() noteCreationCount: any = [];
+  @State() activeUsers: number = 0;
 
   private accountCreationCtx: any;
   private noteCreationCtx: any;
@@ -38,6 +40,14 @@ export class VAdminOverview {
     this.getNotesCount();
     this.getAccountCreationCount();
     this.getNoteCreationCount();
+
+    setInterval(() => {
+      IO.emit("getActiveUserCount", Store.userName);
+    }, 1000);
+
+    IO.on("activeUserCount", (activeUsers) => {
+      this.activeUsers = activeUsers;
+    });
   }
 
   async getActiveAccountsCount() {
@@ -140,6 +150,14 @@ export class VAdminOverview {
                 <l-spacer value={1}></l-spacer>
                 <e-text variant="display">
                   <strong>{this.notesCount}</strong>
+                </e-text>
+              </c-card>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <c-card>
+                <e-text variant="display">Active Users</e-text>
+                <l-spacer value={1}></l-spacer>
+                <e-text variant="display">
+                  <strong>{this.activeUsers}</strong>
                 </e-text>
               </c-card>
             </l-row>
