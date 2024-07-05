@@ -4,8 +4,7 @@ import {
   activeAccountsCountApi,
   deletedAccountsCountApi,
   notesAccountApi,
-  noteCreationCountApi,
-  accountCreationCountApi,
+  activityApi,
 } from "./helpers";
 import { IO, Store } from "../../../../global/script";
 
@@ -15,31 +14,28 @@ import { IO, Store } from "../../../../global/script";
   shadow: true,
 })
 export class VAdminOverview {
-  accountCreationCanvasEl!: HTMLCanvasElement;
-  noteCreationCanvasEl!: HTMLCanvasElement;
+  activityChartCanvasEl!: HTMLCanvasElement;
 
   @State() activeAccountsCount: number = 0;
   @State() deletedAccountsCount: number = 0;
   @State() notesCount: number = 0;
-  @State() accountCreationCount: any = [];
-  @State() noteCreationCount: any = [];
   @State() activeUsers: number = 0;
+  @State() activityData: any;
 
-  private accountCreationCtx: any;
-  private noteCreationCtx: any;
+  private activityChartCtx: any;
 
   componentDidLoad() {
     ChartJS.defaults.color = "rgba(255, 255, 255, 0.8)";
     ChartJS.defaults.font.size = 14;
     ChartJS.defaults.plugins.legend.display = false;
-    this.accountCreationCtx = this.accountCreationCanvasEl.getContext("2d");
-    this.noteCreationCtx = this.noteCreationCanvasEl.getContext("2d");
+    this.activityChartCtx = this.activityChartCanvasEl.getContext("2d");
 
     this.getActiveAccountsCount();
     this.getDeletedAccountsCount();
     this.getNotesCount();
-    this.getAccountCreationCount();
-    this.getNoteCreationCount();
+    this.getActivity();
+    // this.getAccountCreationCount();
+    // this.getNoteCreationCount();
 
     setInterval(() => {
       IO.emit("getActiveUserCount", Store.userName);
@@ -74,52 +70,71 @@ export class VAdminOverview {
     this.notesCount = payload;
   }
 
-  async getAccountCreationCount() {
-    let { success, message, payload } = await accountCreationCountApi();
+  async getActivity() {
+    let { success, message, payload } = await activityApi();
     if (!success) {
       return alert(message);
     }
-    this.accountCreationCount = payload;
-    this.accountCreationCount = [...this.accountCreationCount];
-    this.renderAccountCreationChart();
+    this.activityData = payload;
+    this.renderActivityChart();
   }
 
-  async getNoteCreationCount() {
-    let { success, message, payload } = await noteCreationCountApi();
-    if (!success) {
-      return alert(message);
-    }
-    this.noteCreationCount = payload;
-    this.noteCreationCount = [...this.noteCreationCount];
-    this.renderNoteCreationChart();
-  }
-
-  renderAccountCreationChart() {
-    new ChartJS(this.accountCreationCtx, {
-      type: "bar",
+  renderActivityChart() {
+    new ChartJS(this.activityChartCtx, {
+      type: "line",
       data: {
-        datasets: [
-          {
-            label: "Accounts",
-            data: this.accountCreationCount,
-            backgroundColor: "#64b5f6",
-          },
-        ],
-      },
-    });
-  }
-
-  renderNoteCreationChart() {
-    new ChartJS(this.noteCreationCtx, {
-      type: "bar",
-      data: {
+        labels: this.activityData.label,
         datasets: [
           {
             label: "Notes",
-            data: this.noteCreationCount,
-            backgroundColor: "#64b5f6",
+            data: this.activityData.notesCount,
+            borderColor: "#FFAB91",
+            borderWidth: 1,
+            fill: false,
+          },
+          {
+            label: "Accounts",
+            data: this.activityData.accountCount,
+            borderColor: "#E6EE9C",
+            borderWidth: 1,
+            fill: false,
           },
         ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            grid: {
+              color: "rgba(255,255,255,0.1)",
+            },
+            title: {
+              display: true,
+              text: "DAYS",
+              font: {
+                weight: "bold",
+              },
+            },
+          },
+          y: {
+            grid: {
+              color: "rgba(255,255,255,0.1)",
+            },
+            title: {
+              display: true,
+              text: "COUNT",
+              font: {
+                weight: "bold",
+              },
+            },
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: true,
+          },
+        },
       },
     });
   }
@@ -162,22 +177,12 @@ export class VAdminOverview {
               </c-card>
             </l-row>
             <l-spacer value={8}></l-spacer>
-            <e-text variant="display">Account Creation</e-text>
+            <e-text variant="display">Activity</e-text>
             <l-spacer value={1}></l-spacer>
             <div class="chart__container">
               <canvas
                 ref={(el) =>
-                  (this.accountCreationCanvasEl = el as HTMLCanvasElement)
-                }
-              ></canvas>
-            </div>
-            <l-spacer value={8}></l-spacer>
-            <e-text variant="display">Notes Creation</e-text>
-            <l-spacer value={1}></l-spacer>
-            <div class="chart__container">
-              <canvas
-                ref={(el) =>
-                  (this.noteCreationCanvasEl = el as HTMLCanvasElement)
+                  (this.activityChartCanvasEl = el as HTMLCanvasElement)
                 }
               ></canvas>
             </div>

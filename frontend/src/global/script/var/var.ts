@@ -47,6 +47,7 @@ export const Var = {
             notes: "/note-creation-count",
           },
         },
+        activity: "/activity",
       },
       account: {
         details: "/account",
