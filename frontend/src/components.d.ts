@@ -53,8 +53,9 @@ export namespace Components {
     interface EListItem {
     }
     interface ESelect {
+        "index": number;
         "name": string;
-        "options": any;
+        "options": string;
     }
     interface EText {
         "theme": string;
@@ -415,9 +416,10 @@ declare namespace LocalJSX {
     interface EListItem {
     }
     interface ESelect {
+        "index"?: number;
         "name"?: string;
-        "onSelectInputEvent"?: (event: CustomEvent<any>) => void;
-        "options"?: any;
+        "onSelectChangeEvent"?: (event: CustomEvent<any>) => void;
+        "options"?: string;
     }
     interface EText {
         "theme"?: string;

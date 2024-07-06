@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter, h } from "@stencil/core";
+import { Component, Prop, Event, State, EventEmitter, h } from "@stencil/core";
 
 @Component({
   tag: "e-select",
@@ -7,34 +7,27 @@ import { Component, Prop, Event, EventEmitter, h } from "@stencil/core";
 })
 export class ESelect {
   @Event({
-    eventName: "selectInputEvent",
+    eventName: "selectChangeEvent",
     bubbles: true,
   })
-  selectInputEventEmitter: EventEmitter;
+  selectChangeEventEmitter: EventEmitter;
 
-  @Prop() options: any;
+  @Prop() options: string;
   @Prop() name: string;
+  @Prop() index: number = 0;
 
-  private parsedOptions: any;
+  @State() parsedOptions: any;
 
   componentWillLoad() {
-    this.parseOptionsString();
-    this.init();
-  }
-
-  parseOptionsString() {
     this.parsedOptions = JSON.parse(this.options);
-  }
-
-  init() {
-    this.selectInputEventEmitter.emit({
+    this.selectChangeEventEmitter.emit({
       name: this.name,
-      value: this.parsedOptions[0].id.trim(),
+      value: this.parsedOptions[this.index].value.trim(),
     });
   }
 
-  handleInputChange(e) {
-    this.selectInputEventEmitter.emit({
+  handleSelectChange(e) {
+    this.selectChangeEventEmitter.emit({
       name: this.name,
       value: e.target.value.trim(),
     });
@@ -42,9 +35,14 @@ export class ESelect {
 
   render() {
     return (
-      <select onChange={(e) => this.handleInputChange(e)}>
-        {this.parsedOptions.map((option) => (
-          <option value={option.id}>{option.title}</option>
+      <select onChange={(e) => this.handleSelectChange(e)}>
+        {this.parsedOptions.map((option, index) => (
+          <option
+            value={option.value}
+            selected={index === this.index ? true : false}
+          >
+            {option.label}
+          </option>
         ))}
       </select>
     );

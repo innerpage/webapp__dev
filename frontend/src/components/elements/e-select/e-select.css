@@ -1,12 +1,16 @@
-select {
+:host {
   display: block;
-  width: 100%;
-  border: var(--border);
+}
+
+select {
+  background: none;
+  outline: none;
+  border: 1px solid var(--color__white--regular);
+  color: var(--color__white--brighter);
   border-radius: var(--border-radius);
-  padding: var(--padding);
+  padding: calc(var(--padding) / 1.6) calc(var(--padding) / 1.5);
 }
 
 select:hover {
-  cursor: pointer;
-  border: 1px solid var(--color__white--light);
+  color: var(--color__white--brightest);
 }

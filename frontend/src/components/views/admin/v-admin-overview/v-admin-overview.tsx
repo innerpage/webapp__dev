@@ -1,4 +1,4 @@
-import { Component, State, Host, h } from "@stencil/core";
+import { Component, State, Host, Listen, h } from "@stencil/core";
 import { Chart as ChartJS } from "chart.js/auto";
 import {
   activeAccountsCountApi,
@@ -16,11 +16,33 @@ import { IO, Store } from "../../../../global/script";
 export class VAdminOverview {
   activityChartCanvasEl!: HTMLCanvasElement;
 
+  @Listen("textInput") handleTextInput(e) {
+    if (e.detail.name === "rangeStartDate") {
+      console.log(e.detail.value);
+    } else if (e.detail.name === "rangeEndDate") {
+      console.log(e.detail.value);
+    }
+  }
+
+  @Listen("selectChangeEvent") selectChangeListener(e) {
+    if (e.detail.name === "activityRangeSelector") {
+      this.activityRange = e.detail.value;
+      if (this.activityRange === "custom") {
+        this.isCustomDate = true;
+      } else {
+        this.isCustomDate = false;
+        this.getActivity2();
+      }
+    }
+  }
+
   @State() activeAccountsCount: number = 0;
   @State() deletedAccountsCount: number = 0;
   @State() notesCount: number = 0;
   @State() activeUsers: number = 0;
   @State() activityData: any;
+  @State() activityRange: string = "";
+  @State() isCustomDate: boolean = false;
 
   private activityChartCtx: any;
 
@@ -34,8 +56,6 @@ export class VAdminOverview {
     this.getDeletedAccountsCount();
     this.getNotesCount();
     this.getActivity();
-    // this.getAccountCreationCount();
-    // this.getNoteCreationCount();
 
     setInterval(() => {
       IO.emit("getActiveUserCount", Store.userName);
@@ -79,6 +99,8 @@ export class VAdminOverview {
     this.renderActivityChart();
   }
 
+  async getActivity2() {}
+
   renderActivityChart() {
     new ChartJS(this.activityChartCtx, {
       type: "line",
@@ -88,14 +110,14 @@ export class VAdminOverview {
           {
             label: "Notes",
             data: this.activityData.notesCount,
-            borderColor: "#FFAB91",
+            borderColor: "#9FA8DA",
             borderWidth: 1,
             fill: false,
           },
           {
             label: "Accounts",
             data: this.activityData.accountCount,
-            borderColor: "#E6EE9C",
+            borderColor: "#F48FB1",
             borderWidth: 1,
             fill: false,
           },
@@ -139,6 +161,16 @@ export class VAdminOverview {
     });
   }
 
+  private rangeOptions = [
+    { value: "1day", label: "1 day" },
+    { value: "1week", label: "1 week" },
+    { value: "1month", label: "1 month" },
+    { value: "3months", label: "3 months" },
+    { value: "6months", label: "6 months" },
+    { value: "1year", label: "1 year" },
+    { value: "custom", label: "Custom" },
+  ];
+
   render() {
     return (
       <Host>
@@ -177,8 +209,30 @@ export class VAdminOverview {
               </c-card>
             </l-row>
             <l-spacer value={8}></l-spacer>
-            <e-text variant="display">Activity</e-text>
-            <l-spacer value={1}></l-spacer>
+            <l-row>
+              <e-text variant="display">Activity</e-text>
+              <l-row>
+                {this.isCustomDate && (
+                  <l-row>
+                    <e-text>From</e-text>
+                    &nbsp;&nbsp;
+                    <e-input type="date" name="rangeStartDate"></e-input>
+                    &nbsp;&nbsp;
+                    <e-text>To</e-text>
+                    &nbsp;&nbsp;
+                    <e-input type="date" name="rangeEndDate"></e-input>
+                    &nbsp;&nbsp;
+                  </l-row>
+                )}
+                <e-select
+                  options={JSON.stringify(this.rangeOptions)}
+                  name="activityRangeSelector"
+                  index={1}
+                ></e-select>
+              </l-row>
+            </l-row>
+            <br />
+            <br />{" "}
             <div class="chart__container">
               <canvas
                 ref={(el) =>

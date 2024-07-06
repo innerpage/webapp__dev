@@ -19,7 +19,7 @@ export class EInput {
   @Prop() value: string;
   @Prop() checked: boolean = false;
 
-  handleAlphaNumericInput(e) {
+  handleInput(e) {
     this.textInputEvent.emit({
       name: this.name,
       value: e.target.value.trim(),
@@ -30,13 +30,15 @@ export class EInput {
     if (
       this.type === "number" ||
       this.type === "password" ||
-      this.type === "text"
+      this.type === "text" ||
+      this.type === "date"
     ) {
       return (
         <input
           type={this.type}
+          name={this.name}
           placeholder={this.placeholder}
-          onInput={(e) => this.handleAlphaNumericInput(e)}
+          onInput={(e) => this.handleInput(e)}
           value={this.value}
         />
       );
