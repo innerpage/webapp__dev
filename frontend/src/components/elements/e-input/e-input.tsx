@@ -31,7 +31,7 @@ export class EInput {
       this.type === "number" ||
       this.type === "password" ||
       this.type === "text" ||
-      this.type === "datetime-local"
+      this.type === "date"
     ) {
       return (
         <input

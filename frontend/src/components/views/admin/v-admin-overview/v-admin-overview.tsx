@@ -35,6 +35,8 @@ export class VAdminOverview {
     if (e.detail.name === "activityRangeSelector") {
       this.activityRange = e.detail.value;
       if (this.activityRange === "custom") {
+        this.rangeStartDate = "";
+        this.rangeEndDate = "";
         this.isCustomDate = true;
       } else {
         this.isCustomDate = false;
@@ -56,6 +58,7 @@ export class VAdminOverview {
   private activityChartCtx: any;
   private rangeStartDate: string = "";
   private rangeEndDate: string = "";
+  private chart: any;
 
   componentDidLoad() {
     ChartJS.defaults.color = "rgba(255, 255, 255, 0.8)";
@@ -113,18 +116,20 @@ export class VAdminOverview {
       return alert(validationMessage);
     }
 
-    await activityApi(activityPayload);
+    let { success, message, payload } = await activityApi(activityPayload);
+    if (!success) {
+      return alert(message);
+    }
+    this.activityData = payload;
 
-    // let { success, message, payload } = await activityApi(activityPayload);
-    // if (!success) {
-    //   return alert(message);
-    // }
-    // this.activityData = payload;
-    // this.renderActivityChart();
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    this.renderActivityChart();
   }
 
   renderActivityChart() {
-    new ChartJS(this.activityChartCtx, {
+    this.chart = new ChartJS(this.activityChartCtx, {
       type: "line",
       data: {
         labels: this.activityData.label,
@@ -135,6 +140,7 @@ export class VAdminOverview {
             borderColor: "#9FA8DA",
             borderWidth: 1,
             fill: false,
+            pointRadius: 0,
           },
           {
             label: "Accounts",
@@ -142,6 +148,7 @@ export class VAdminOverview {
             borderColor: "#F48FB1",
             borderWidth: 1,
             fill: false,
+            pointRadius: 0,
           },
         ],
       },
@@ -238,17 +245,11 @@ export class VAdminOverview {
                   <l-row>
                     <e-text>From</e-text>
                     &nbsp;&nbsp;
-                    <e-input
-                      type="datetime-local"
-                      name="rangeStartDate"
-                    ></e-input>
+                    <e-input type="date" name="rangeStartDate"></e-input>
                     &nbsp;&nbsp;
                     <e-text>To</e-text>
                     &nbsp;&nbsp;
-                    <e-input
-                      type="datetime-local"
-                      name="rangeEndDate"
-                    ></e-input>
+                    <e-input type="date" name="rangeEndDate"></e-input>
                     &nbsp;&nbsp;
                   </l-row>
                 )}
