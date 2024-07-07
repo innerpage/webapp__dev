@@ -21,9 +21,9 @@ export class VAdminOverview {
 
   @Listen("textInput") handleTextInput(e) {
     if (e.detail.name === "rangeStartDate") {
-      this.rangeStartDate = new Date(e.detail.value).toUTCString();
+      this.rangeStartDate = new Date(e.detail.value).toISOString();
     } else if (e.detail.name === "rangeEndDate") {
-      this.rangeEndDate = new Date(e.detail.value).toUTCString();
+      this.rangeEndDate = new Date(e.detail.value).toISOString();
     }
 
     if (this.rangeStartDate && this.rangeEndDate) {
@@ -39,7 +39,7 @@ export class VAdminOverview {
       } else {
         this.isCustomDate = false;
         this.rangeStartDate = "";
-        this.rangeEndDate = "";
+        this.rangeEndDate = new Date().toISOString();
         this.getActivityData();
       }
     }
@@ -113,7 +113,7 @@ export class VAdminOverview {
       return alert(validationMessage);
     }
 
-    console.log(activityPayload);
+    await activityApi(activityPayload);
 
     // let { success, message, payload } = await activityApi(activityPayload);
     // if (!success) {
