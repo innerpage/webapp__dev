@@ -20,6 +20,9 @@ export class ESelect {
 
   componentWillLoad() {
     this.parsedOptions = JSON.parse(this.options);
+  }
+
+  componentDidLoad() {
     this.selectChangeEventEmitter.emit({
       name: this.name,
       value: this.parsedOptions[this.index].value.trim(),

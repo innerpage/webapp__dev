@@ -25,6 +25,6 @@ export const loginApi = async (payload: loginPayloadInterface) => {
   return {
     success: returnData.success,
     message: returnData.message,
-    // payload: returnData.payload,
+    payload: returnData.payload,
   };
 };

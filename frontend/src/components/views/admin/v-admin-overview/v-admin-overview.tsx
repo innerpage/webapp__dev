@@ -5,7 +5,10 @@ import {
   deletedAccountsCountApi,
   notesAccountApi,
   activityApi,
+  generateActivityPayload,
+  validateActivityPayload,
 } from "./helpers";
+import { activityPayloadInterface } from "./interfaces";
 import { IO, Store } from "../../../../global/script";
 
 @Component({
@@ -18,9 +21,13 @@ export class VAdminOverview {
 
   @Listen("textInput") handleTextInput(e) {
     if (e.detail.name === "rangeStartDate") {
-      console.log(e.detail.value);
+      this.rangeStartDate = new Date(e.detail.value).toUTCString();
     } else if (e.detail.name === "rangeEndDate") {
-      console.log(e.detail.value);
+      this.rangeEndDate = new Date(e.detail.value).toUTCString();
+    }
+
+    if (this.rangeStartDate && this.rangeEndDate) {
+      this.getActivityData();
     }
   }
 
@@ -31,7 +38,9 @@ export class VAdminOverview {
         this.isCustomDate = true;
       } else {
         this.isCustomDate = false;
-        this.getActivity2();
+        this.rangeStartDate = "";
+        this.rangeEndDate = "";
+        this.getActivityData();
       }
     }
   }
@@ -45,6 +54,8 @@ export class VAdminOverview {
   @State() isCustomDate: boolean = false;
 
   private activityChartCtx: any;
+  private rangeStartDate: string = "";
+  private rangeEndDate: string = "";
 
   componentDidLoad() {
     ChartJS.defaults.color = "rgba(255, 255, 255, 0.8)";
@@ -55,7 +66,6 @@ export class VAdminOverview {
     this.getActiveAccountsCount();
     this.getDeletedAccountsCount();
     this.getNotesCount();
-    this.getActivity();
 
     setInterval(() => {
       IO.emit("getActiveUserCount", Store.userName);
@@ -90,16 +100,28 @@ export class VAdminOverview {
     this.notesCount = payload;
   }
 
-  async getActivity() {
-    let { success, message, payload } = await activityApi();
-    if (!success) {
-      return alert(message);
-    }
-    this.activityData = payload;
-    this.renderActivityChart();
-  }
+  async getActivityData() {
+    let activityPayload: activityPayloadInterface = generateActivityPayload(
+      this.activityRange,
+      this.rangeStartDate,
+      this.rangeEndDate
+    );
 
-  async getActivity2() {}
+    let { isValid, validationMessage } =
+      validateActivityPayload(activityPayload);
+    if (!isValid) {
+      return alert(validationMessage);
+    }
+
+    console.log(activityPayload);
+
+    // let { success, message, payload } = await activityApi(activityPayload);
+    // if (!success) {
+    //   return alert(message);
+    // }
+    // this.activityData = payload;
+    // this.renderActivityChart();
+  }
 
   renderActivityChart() {
     new ChartJS(this.activityChartCtx, {
@@ -216,11 +238,17 @@ export class VAdminOverview {
                   <l-row>
                     <e-text>From</e-text>
                     &nbsp;&nbsp;
-                    <e-input type="date" name="rangeStartDate"></e-input>
+                    <e-input
+                      type="datetime-local"
+                      name="rangeStartDate"
+                    ></e-input>
                     &nbsp;&nbsp;
                     <e-text>To</e-text>
                     &nbsp;&nbsp;
-                    <e-input type="date" name="rangeEndDate"></e-input>
+                    <e-input
+                      type="datetime-local"
+                      name="rangeEndDate"
+                    ></e-input>
                     &nbsp;&nbsp;
                   </l-row>
                 )}
