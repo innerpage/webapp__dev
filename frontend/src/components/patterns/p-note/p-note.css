@@ -15,5 +15,5 @@
 }
 
 .preview__container {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-family__mono);
 }

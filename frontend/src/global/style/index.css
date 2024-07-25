@@ -1,10 +1,22 @@
 @import "reset/reset.css";
 @import "var/var.css";
 
+@font-face {
+  font-family: "IBM Plex Serif";
+  src: url("./assets/IBMPlexSerif-Regular.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("./assets/IBMPlexMono-Regular-Latin1.woff2");
+  font-display: swap;
+}
+
 body {
   background: var(--color__site--background);
   font-size: var(--font-size__body);
   color: var(--color__gray--200);
-  font-family: var(--font-family__sans-serif);
+  font-family: var(--font-family__serif);
   line-height: var(--line-height);
 }

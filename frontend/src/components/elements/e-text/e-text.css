@@ -12,15 +12,13 @@ h1 {
 }
 
 h2 {
-  color: var(--color__white--light);
+  color: var(--color__gray--400);
 }
 
 /* Variant */
-.display {
-  font-family: var(--font-family__serif);
-}
+
 .footnote {
-  font-size: 0.8em;
+  font-size: 0.9em;
   color: var(--color__gray--400);
 }
 
