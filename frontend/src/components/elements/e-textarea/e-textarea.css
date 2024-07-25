@@ -10,8 +10,8 @@ textarea {
   background: none;
   outline: none;
   border: none;
-  caret-color: var(--color__white--brightest);
-  color: var(--color__white--brighter);
+  caret-color: var(--color__gray--100);
+  color: var(--color__gray--200);
   font-size: 1.2em;
   font-family: "IBM Plex Mono", monospace;
   font-weight: 400;

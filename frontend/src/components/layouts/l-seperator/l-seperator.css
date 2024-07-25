@@ -2,5 +2,5 @@
   display: block;
   width: 100%;
   height: 1px;
-  background: var(--color__white--dimmer);
+  background: var(--color__gray--800);
 }

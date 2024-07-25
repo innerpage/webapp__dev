@@ -153,10 +153,7 @@ export class VWriter {
             )}
           </div>
           <e-button variant="light" action="deleteNote">
-            <ph-trash
-              color="var(--color__white--brighter)"
-              size="1em"
-            ></ph-trash>
+            <ph-trash color="var(--color__gray--200)" size="1em"></ph-trash>
           </e-button>
         </l-row>
         <l-spacer value={4}></l-spacer>

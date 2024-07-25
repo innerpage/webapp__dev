@@ -12,16 +12,10 @@ export class PTopbar {
         <l-row justifyContent="space-between" align="center">
           <e-link url="/">
             <div class="show-on-mobile">
-              <e-img
-                src="../../assets/logomark_white_on_black.png"
-                width="2em"
-              ></e-img>
+              <e-img src="../../assets/logomark.svg" width="2em"></e-img>
             </div>
             <div class="show-on-desktop">
-              <e-img
-                src="../../assets/logotype_white_transparent.png"
-                width="8em"
-              ></e-img>
+              <e-img src="../../assets/logotype.svg" width="8em"></e-img>
             </div>
           </e-link>
           <e-link url="/support-us">Support Us</e-link>

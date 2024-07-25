@@ -4,14 +4,14 @@
 
 a {
   text-decoration: none;
-  color: var(--color__blue--200);
+  color: var(--color__deep-purple--200);
   transition: all 0.25s;
 }
 a:hover {
-  color: var(--color__blue--100);
+  color: var(--color__deep-purple--100);
 }
 a:active {
-  color: var(--color__blue--300);
+  color: var(--color__deep-purple--300);
 }
 
 /* Nav link */

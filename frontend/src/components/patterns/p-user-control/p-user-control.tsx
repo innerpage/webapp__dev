@@ -53,9 +53,9 @@ export class PUserControl {
             <e-text>{Store.userName}</e-text>
             <l-spacer value={0.25} variant="horizontal"></l-spacer>
             {this.isExpanded ? (
-              <ph-caret-up color="var(--color__blue--200)"></ph-caret-up>
+              <ph-caret-up color="var(--color__deep-purple--200)"></ph-caret-up>
             ) : (
-              <ph-caret-down color="var(--color__blue--200)"></ph-caret-down>
+              <ph-caret-down color="var(--color__deep-purple--200)"></ph-caret-down>
             )}
           </l-row>
         </e-button>
@@ -65,7 +65,7 @@ export class PUserControl {
               <e-list-item>
                 <e-link url="/admin-overview">
                   <l-row align="center">
-                    <ph-user-gear color="var(--color__blue--200)"></ph-user-gear>
+                    <ph-user-gear color="var(--color__deep-purple--200)"></ph-user-gear>
                     <l-spacer value={0.25} variant="horizontal"></l-spacer>
                     <e-text>Admin</e-text>
                   </l-row>
@@ -75,7 +75,7 @@ export class PUserControl {
             <e-list-item>
               <e-link url="/home">
                 <l-row align="center">
-                  <ph-house color="var(--color__blue--200)"></ph-house>
+                  <ph-house color="var(--color__deep-purple--200)"></ph-house>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text>Home</e-text>
                 </l-row>
@@ -84,7 +84,7 @@ export class PUserControl {
             <e-list-item>
               <e-link url="/account">
                 <l-row align="center">
-                  <ph-user color="var(--color__blue--200)"></ph-user>
+                  <ph-user color="var(--color__deep-purple--200)"></ph-user>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text>Account</e-text>
                 </l-row>
@@ -93,7 +93,7 @@ export class PUserControl {
             <e-list-item>
               <e-link url="/contact">
                 <l-row align="center">
-                  <ph-phone color="var(--color__blue--200)"></ph-phone>
+                  <ph-phone color="var(--color__deep-purple--200)"></ph-phone>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text>Contact</e-text>
                 </l-row>
@@ -102,7 +102,7 @@ export class PUserControl {
             <e-list-item>
               <e-button variant="link" action="logout">
                 <l-row>
-                  <ph-sign-out color="var(--color__blue--200)"></ph-sign-out>
+                  <ph-sign-out color="var(--color__deep-purple--200)"></ph-sign-out>
                   <l-spacer value={0.25} variant="horizontal"></l-spacer>
                   <e-text>Logout</e-text>
                 </l-row>

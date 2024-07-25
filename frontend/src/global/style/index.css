@@ -4,7 +4,7 @@
 body {
   background: var(--color__site--background);
   font-size: var(--font-size__body);
-  color: var(--color__white--brighter);
+  color: var(--color__gray--200);
   font-family: var(--font-family__sans-serif);
   line-height: var(--line-height);
 }

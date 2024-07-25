@@ -21,7 +21,7 @@ h2 {
 }
 .footnote {
   font-size: 0.8em;
-  color: var(--color__white--regular);
+  color: var(--color__gray--400);
 }
 
 /* Theme */
@@ -35,7 +35,7 @@ h2 {
   color: rgba(0, 0, 0, 0.3);
 }
 .dim {
-  color: var(--color__white--dim);
+  color: var(--color__gray--700);
 }
 
 /* Weight */
