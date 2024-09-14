@@ -2,7 +2,8 @@ Website: [https://app.innerpage.org](https://app.innerpage.org)
 
 ## Technologies Used
 
-- [Stencil](https://stenciljs.com/)
+- **Frontend**: [Stencil](https://stenciljs.com/)
+- **Server**: [Node](https://nodejs.org/en), [Express](https://expressjs.com/)
 
 <br/>
 
@@ -22,13 +23,21 @@ Website: [https://app.innerpage.org](https://app.innerpage.org)
 
 <br/>
 
-## Build and Deployment
+## Build
 
 - Build the code <br/>
 
   ```
     ./build.sh
   ```
+
+<br/>
+
+## Deployment
+
+- [Configure Nginx as Reverse Proxy for Node](https://www.digitalocean.com/community/tutorials/nginx-reverse-proxy-node-angular)
+- Use [PM2](https://pm2.keymetrics.io/) to serve the webapp e.g.
+  `pm2 start index.js --name innerpage-webapp --watch`
 
 <br/>
 
