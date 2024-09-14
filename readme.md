@@ -1,62 +1,37 @@
-## Clone repo
+Website: [https://app.innerpage.org](https://app.innerpage.org)
 
-✅ `git clone git@github.com-projckt:projckt/starter_webapp-dev.git dev`<br/>
-✅ `cd dev`
+## Technologies Used
 
-<hr/>
+- [Stencil](https://stenciljs.com/)
 
-## Edit remote of cloned repo
+<br/>
 
-✅ Change to `git remote set-url origin git@github.com-{username}:{username}/webapp__dev.git`
+## Installation
 
-<hr/>
+- Clone the repository <br/>
 
-## Install dependencies
+  ```
+    git clone git@github.com:innerpage/webapp__dev.git
+    cd webapp__dev
+  ```
 
-✅ `./init.sh`
+- Install dependencies <br/>
+  ```
+    ./init.sh
+  ```
 
-<hr/>
+<br/>
 
-## Edit ./build.sh
+## Build and Deployment
 
-✅ Change production repo to `git@github.com-{username}:{username}/webapp__prod.git`
+- Build the code <br/>
 
-<hr/>
+  ```
+    ./build.sh
+  ```
 
-## Edit ./frontend/package.json
+<br/>
 
-✅ Change `name` <br/>
-✅ Change `description`
+## Contributing
 
-<hr/>
-
-## Edit ./frontend/src/index.html
-
-✅ Change `<meta name="description">` <br/>
-✅ Change `<title></title>` <br/>
-✅ Change `/add/link/to/icon.png` <br/>
-✅ Change `/add/link/to/favicon.ico`
-
-<hr/>
-
-## Remove mobile-blocker in ./frontend/src/index.html
-
-<hr/>
-
-## Edit ./frontend/src/manifest.json
-
-✅ Change `name` <br/>
-✅ Change `short_name` <br/>
-✅ Change `icons.src`
-
-<hr/>
-
-## Edit ./frontend/stencil.config.ts
-
-✅ Change `baseUrl` in `outputTargets`
-
-<hr/>
-
-## Edit ./frontend/src/global/script/var/Var.ts
-
-✅ Edit `Var` values
+Feel free to contribute by opening pull requests or reporting issues.
