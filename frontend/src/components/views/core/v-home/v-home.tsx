@@ -62,10 +62,8 @@ export class VHome {
   BlankLibrary: FunctionalComponent = () => (
     <div class="blank-library__container">
       <div>
-        <ph-book size="3em"></ph-book>
-        <e-text variant="heading">
-          <strong>You have not journalled yet</strong>
-        </e-text>
+        <ph-book size="3em" color="#9575cd"></ph-book>
+        <e-text variant="heading">You have not journalled yet</e-text>
         <l-spacer value={1}></l-spacer>
         <e-button action="writeNote" active={this.isInitiatingWriting}>
           Start writing

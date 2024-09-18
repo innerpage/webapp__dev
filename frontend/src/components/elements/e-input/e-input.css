@@ -5,7 +5,7 @@ input[type="date"] {
   width: 100%;
   padding: calc(var(--padding) / 1.6) calc(var(--padding) / 1.5);
   /* border: var(--border__input); */
-  border: 1px solid var(--color__gray--400);
+  border: 1px solid var(--color__gray--700);
   border-radius: var(--border-radius);
   font-size: 1em;
   box-sizing: border-box;
@@ -25,7 +25,7 @@ input[type="date"] {
 input[type="number"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus {
-  border: 1px solid var(--color__gray--200);
+  border: 1px solid var(--color__gray--400);
 }
 
 ::-webkit-input-placeholder {
