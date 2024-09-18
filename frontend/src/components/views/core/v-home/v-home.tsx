@@ -62,9 +62,8 @@ export class VHome {
   BlankLibrary: FunctionalComponent = () => (
     <div class="blank-library__container">
       <div>
-        <ph-book size="3em" color="#9575cd"></ph-book>
-        <e-text variant="heading">You have not journalled yet</e-text>
-        <l-spacer value={1}></l-spacer>
+        <e-text variant="display">You have not journalled yet</e-text>
+        <l-spacer value={2}></l-spacer>
         <e-button action="writeNote" active={this.isInitiatingWriting}>
           Start writing
         </e-button>
@@ -73,21 +72,20 @@ export class VHome {
   );
 
   NoteLibrary: FunctionalComponent = () => [
+    <l-spacer value={2}></l-spacer>,
     <l-row direction="row-reverse">
       <e-button action="writeNote" active={this.isInitiatingWriting}>
         Write
       </e-button>
     </l-row>,
     <l-spacer value={2}></l-spacer>,
-    <p-gallery>
-      {this.notes.map((note: any) => (
-        <p-note
-          noteId={note.id}
-          preview={note.preview}
-          timestamp={note.timestamp}
-        ></p-note>
-      ))}
-    </p-gallery>,
+    this.notes.map((note: any) => (
+      <p-note
+        noteId={note.id}
+        preview={note.preview}
+        timestamp={note.timestamp}
+      ></p-note>
+    )),
   ];
 
   SessionView: FunctionalComponent = () =>
@@ -99,12 +97,7 @@ export class VHome {
 
   Loading: FunctionalComponent = () => (
     <div class="blank-library__container">
-      <div>
-        <ph-book size="3em"></ph-book>
-        <e-text variant="heading">
-          <strong>Loading notes..</strong>
-        </e-text>
-      </div>
+      <e-text variant="display">Loading notes..</e-text>
     </div>
   );
 
@@ -112,18 +105,11 @@ export class VHome {
     return (
       <Host>
         <p-topbar></p-topbar>
-        <c-content-area>
-          <c-main>
-            <div class="wrapper">
-              <l-spacer value={2}></l-spacer>
-              {this.isViewDataFetched ? (
-                <this.SessionView></this.SessionView>
-              ) : (
-                <this.Loading></this.Loading>
-              )}
-            </div>
-          </c-main>
-        </c-content-area>
+        {this.isViewDataFetched ? (
+          <this.SessionView></this.SessionView>
+        ) : (
+          <this.Loading></this.Loading>
+        )}
       </Host>
     );
   }

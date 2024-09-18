@@ -15,10 +15,12 @@ export class PTopbar {
               <e-img src="../../assets/logomark.svg" width="2em"></e-img>
             </div>
             <div class="show-on-desktop">
-              <e-img src="../../assets/logotype.svg" width="8em"></e-img>
+              <e-img src="../../assets/logotype.svg" width="7.5em"></e-img>
             </div>
           </e-link>
-          <e-link url="/support-us">Support Us</e-link>
+          <e-link url="https://innerpage.org/support-us" variant="externalLink">
+            Support Us
+          </e-link>
           <p-user-control></p-user-control>
         </l-row>
       </Host>

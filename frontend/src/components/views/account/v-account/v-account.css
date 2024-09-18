@@ -2,10 +2,10 @@
   display: block;
 }
 
-c-card {
-  width: 280px;
-}
-
 ph-trash {
   margin-top: 4px;
+}
+
+.half-wrapper {
+  width: 50vw;
 }

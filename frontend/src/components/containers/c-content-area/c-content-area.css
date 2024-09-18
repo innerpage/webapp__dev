@@ -1,6 +1,0 @@
-:host {
-  top: var(--pattern__topbar__height);
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-}

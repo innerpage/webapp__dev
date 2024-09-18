@@ -16,10 +16,6 @@ export namespace Components {
     }
     interface CCard {
     }
-    interface CContentArea {
-    }
-    interface CMain {
-    }
     interface EButton {
         "action": string;
         "active": boolean;
@@ -119,8 +115,6 @@ export namespace Components {
     }
     interface VSignup {
     }
-    interface VSupportUs {
-    }
     interface VWriter {
         "match": MatchResults;
     }
@@ -143,18 +137,6 @@ declare global {
     var HTMLCCardElement: {
         prototype: HTMLCCardElement;
         new (): HTMLCCardElement;
-    };
-    interface HTMLCContentAreaElement extends Components.CContentArea, HTMLStencilElement {
-    }
-    var HTMLCContentAreaElement: {
-        prototype: HTMLCContentAreaElement;
-        new (): HTMLCContentAreaElement;
-    };
-    interface HTMLCMainElement extends Components.CMain, HTMLStencilElement {
-    }
-    var HTMLCMainElement: {
-        prototype: HTMLCMainElement;
-        new (): HTMLCMainElement;
     };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
@@ -318,12 +300,6 @@ declare global {
         prototype: HTMLVSignupElement;
         new (): HTMLVSignupElement;
     };
-    interface HTMLVSupportUsElement extends Components.VSupportUs, HTMLStencilElement {
-    }
-    var HTMLVSupportUsElement: {
-        prototype: HTMLVSupportUsElement;
-        new (): HTMLVSupportUsElement;
-    };
     interface HTMLVWriterElement extends Components.VWriter, HTMLStencilElement {
     }
     var HTMLVWriterElement: {
@@ -334,8 +310,6 @@ declare global {
         "app-root": HTMLAppRootElement;
         "c-banner": HTMLCBannerElement;
         "c-card": HTMLCCardElement;
-        "c-content-area": HTMLCContentAreaElement;
-        "c-main": HTMLCMainElement;
         "e-button": HTMLEButtonElement;
         "e-img": HTMLEImgElement;
         "e-input": HTMLEInputElement;
@@ -363,7 +337,6 @@ declare global {
         "v-home": HTMLVHomeElement;
         "v-login": HTMLVLoginElement;
         "v-signup": HTMLVSignupElement;
-        "v-support-us": HTMLVSupportUsElement;
         "v-writer": HTMLVWriterElement;
     }
 }
@@ -376,10 +349,6 @@ declare namespace LocalJSX {
         "theme"?: string;
     }
     interface CCard {
-    }
-    interface CContentArea {
-    }
-    interface CMain {
     }
     interface EButton {
         "action"?: string;
@@ -487,8 +456,6 @@ declare namespace LocalJSX {
     interface VSignup {
         "onAuthSuccessful"?: (event: CustomEvent<any>) => void;
     }
-    interface VSupportUs {
-    }
     interface VWriter {
         "match"?: MatchResults;
         "onRouteToEvent"?: (event: CustomEvent<any>) => void;
@@ -497,8 +464,6 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "c-banner": CBanner;
         "c-card": CCard;
-        "c-content-area": CContentArea;
-        "c-main": CMain;
         "e-button": EButton;
         "e-img": EImg;
         "e-input": EInput;
@@ -526,7 +491,6 @@ declare namespace LocalJSX {
         "v-home": VHome;
         "v-login": VLogin;
         "v-signup": VSignup;
-        "v-support-us": VSupportUs;
         "v-writer": VWriter;
     }
 }
@@ -537,8 +501,6 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "c-banner": LocalJSX.CBanner & JSXBase.HTMLAttributes<HTMLCBannerElement>;
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
-            "c-content-area": LocalJSX.CContentArea & JSXBase.HTMLAttributes<HTMLCContentAreaElement>;
-            "c-main": LocalJSX.CMain & JSXBase.HTMLAttributes<HTMLCMainElement>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-img": LocalJSX.EImg & JSXBase.HTMLAttributes<HTMLEImgElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
@@ -566,7 +528,6 @@ declare module "@stencil/core" {
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
             "v-login": LocalJSX.VLogin & JSXBase.HTMLAttributes<HTMLVLoginElement>;
             "v-signup": LocalJSX.VSignup & JSXBase.HTMLAttributes<HTMLVSignupElement>;
-            "v-support-us": LocalJSX.VSupportUs & JSXBase.HTMLAttributes<HTMLVSupportUsElement>;
             "v-writer": LocalJSX.VWriter & JSXBase.HTMLAttributes<HTMLVWriterElement>;
         }
     }

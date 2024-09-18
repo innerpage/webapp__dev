@@ -120,11 +120,6 @@ export class AppRoot {
             ></this.SessionRoute>
 
             <this.SessionRoute
-              url="/support-us"
-              component="v-support-us"
-            ></this.SessionRoute>
-
-            <this.SessionRoute
               url="/writer/:noteId"
               component="v-writer"
             ></this.SessionRoute>

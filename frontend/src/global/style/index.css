@@ -14,15 +14,16 @@
 }
 
 html {
-  /* background: var(--color__site--background); */
   background: linear-gradient(0deg, #121016 0%, #241f2c 85%, #362f42 100%);
   min-height: 100vh;
 }
 
 body {
-  /* background: var(--color__site--background); */
   font-size: var(--font-size__body);
-  color: var(--color__gray--200);
+  color: var(--color__gray--400);
   font-family: var(--font-family__serif);
   line-height: var(--line-height);
+  max-width: 1024px;
+  width: 90vw;
+  margin: 0 auto;
 }

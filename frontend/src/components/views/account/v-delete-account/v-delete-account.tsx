@@ -47,10 +47,10 @@ export class VDeleteAccount {
           <e-text variant="display">Are you sure?</e-text>
           <l-spacer value={1}></l-spacer>
           <e-text>
-            <u>Deleting your account is an irreversible step</u>. Your account
-            and data will be <u>lost forever</u>. Do you still want to proceed?
+            Deleting your account is an irreversible step. Your account and data
+            will be purged immediately. Do you still want to proceed?
           </e-text>
-          <l-spacer value={0.5}></l-spacer>
+          <l-spacer value={2}></l-spacer>
           <l-row justifyContent="space-between" align="center">
             <e-link url="/account">Back</e-link>
             <e-button

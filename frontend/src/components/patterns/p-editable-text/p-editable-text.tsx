@@ -136,8 +136,10 @@ export class PEditableText {
 
   EditModeOff: FunctionalComponent = () => (
     <l-row justifyContent="space-between">
-      {this.type === "text" && <e-text>{this.value}</e-text>}
-      {this.type === "password" && <e-text>{this.value}</e-text>}
+      {this.type === "text" && <e-text variant="heading">{this.value}</e-text>}
+      {this.type === "password" && (
+        <e-text variant="heading">{this.value}</e-text>
+      )}
       <e-button variant="light" action="startEditMode">
         Edit
       </e-button>

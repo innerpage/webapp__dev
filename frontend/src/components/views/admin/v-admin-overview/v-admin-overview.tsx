@@ -204,73 +204,71 @@ export class VAdminOverview {
     return (
       <Host>
         <p-topbar></p-topbar>
-        <c-content-area>
-          <c-main>
-            <l-spacer value={4}></l-spacer>
-            <l-row justifyContent="flex-start">
-              <c-card>
-                <e-text variant="display">Accounts</e-text>
-                <l-spacer value={1}></l-spacer>
-                <l-row>
-                  <e-text variant="display" theme="success">
-                    <strong>{this.activeAccountsCount}</strong>
-                  </e-text>
-                  <e-text variant="display" theme="danger">
-                    <strong>{this.deletedAccountsCount}</strong>
-                  </e-text>
-                </l-row>
-              </c-card>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <c-card>
-                <e-text variant="display">Notes</e-text>
-                <l-spacer value={1}></l-spacer>
-                <e-text variant="display">
-                  <strong>{this.notesCount}</strong>
-                </e-text>
-              </c-card>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <c-card>
-                <e-text variant="display">Active Users</e-text>
-                <l-spacer value={1}></l-spacer>
-                <e-text variant="display">
-                  <strong>{this.activeUsers}</strong>
-                </e-text>
-              </c-card>
-            </l-row>
-            <l-spacer value={8}></l-spacer>
-            <l-row>
-              <e-text variant="display">Activity</e-text>
+        <c-main>
+          <l-spacer value={4}></l-spacer>
+          <l-row justifyContent="flex-start">
+            <c-card>
+              <e-text variant="display">Accounts</e-text>
+              <l-spacer value={1}></l-spacer>
               <l-row>
-                {this.isCustomDate && (
-                  <l-row>
-                    <e-text>From</e-text>
-                    &nbsp;&nbsp;
-                    <e-input type="date" name="rangeStartDate"></e-input>
-                    &nbsp;&nbsp;
-                    <e-text>To</e-text>
-                    &nbsp;&nbsp;
-                    <e-input type="date" name="rangeEndDate"></e-input>
-                    &nbsp;&nbsp;
-                  </l-row>
-                )}
-                <e-select
-                  options={JSON.stringify(this.rangeOptions)}
-                  name="activityRangeSelector"
-                  index={1}
-                ></e-select>
+                <e-text variant="display" theme="success">
+                  <strong>{this.activeAccountsCount}</strong>
+                </e-text>
+                <e-text variant="display" theme="danger">
+                  <strong>{this.deletedAccountsCount}</strong>
+                </e-text>
               </l-row>
+            </c-card>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <c-card>
+              <e-text variant="display">Notes</e-text>
+              <l-spacer value={1}></l-spacer>
+              <e-text variant="display">
+                <strong>{this.notesCount}</strong>
+              </e-text>
+            </c-card>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <c-card>
+              <e-text variant="display">Active Users</e-text>
+              <l-spacer value={1}></l-spacer>
+              <e-text variant="display">
+                <strong>{this.activeUsers}</strong>
+              </e-text>
+            </c-card>
+          </l-row>
+          <l-spacer value={8}></l-spacer>
+          <l-row>
+            <e-text variant="display">Activity</e-text>
+            <l-row>
+              {this.isCustomDate && (
+                <l-row>
+                  <e-text>From</e-text>
+                  &nbsp;&nbsp;
+                  <e-input type="date" name="rangeStartDate"></e-input>
+                  &nbsp;&nbsp;
+                  <e-text>To</e-text>
+                  &nbsp;&nbsp;
+                  <e-input type="date" name="rangeEndDate"></e-input>
+                  &nbsp;&nbsp;
+                </l-row>
+              )}
+              <e-select
+                options={JSON.stringify(this.rangeOptions)}
+                name="activityRangeSelector"
+                index={1}
+              ></e-select>
             </l-row>
-            <br />
-            <br />{" "}
-            <div class="chart__container">
-              <canvas
-                ref={(el) =>
-                  (this.activityChartCanvasEl = el as HTMLCanvasElement)
-                }
-              ></canvas>
-            </div>
-          </c-main>
-        </c-content-area>
+          </l-row>
+          <br />
+          <br />{" "}
+          <div class="chart__container">
+            <canvas
+              ref={(el) =>
+                (this.activityChartCanvasEl = el as HTMLCanvasElement)
+              }
+            ></canvas>
+          </div>
+        </c-main>
       </Host>
     );
   }

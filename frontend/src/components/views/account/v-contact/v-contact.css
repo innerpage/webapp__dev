@@ -1,9 +1,5 @@
 :host {
-  display: flex;
-}
-
-c-card {
-  width: 280px;
+  display: block;
 }
 
 .text-row {

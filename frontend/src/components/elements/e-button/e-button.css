@@ -80,14 +80,10 @@ button:disabled {
 
 /* Light Button (Default) */
 .button__light--default {
-  color: var(--color__gray--200);
+  color: var(--color__deep-purple--200);
 }
 .button__light--default:hover {
-  background: var(--color__gray--800);
-}
-.button__light--default:active {
-  color: var(--color__gray--700);
-  background: var(--color__gray--900);
+  color: var(--color__deep-purple--100);
 }
 
 /*  Button size */
