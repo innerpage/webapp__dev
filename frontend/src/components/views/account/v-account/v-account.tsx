@@ -15,11 +15,11 @@ export class VAccount {
     return (
       <Host>
         <p-topbar></p-topbar>
-        <l-spacer value={5}></l-spacer>
+        <l-spacer value={3}></l-spacer>
         <e-text variant="display">Account</e-text>
         <l-spacer value={3}></l-spacer>
-        <div class="half-wrapper">
-          <e-text variant="footnote">USERNAME</e-text>
+        <div class="wrapper">
+          <e-text variant="footnote">Username</e-text>
           <p-editable-text
             type="text"
             value={Store.userName}
@@ -28,7 +28,7 @@ export class VAccount {
           <l-spacer value={1.25}></l-spacer>
           <l-seperator></l-seperator>
           <l-spacer value={1.25}></l-spacer>
-          <e-text variant="footnote">PASSWORD</e-text>
+          <e-text variant="footnote">Password</e-text>
           <p-editable-text
             type="password"
             value="********"

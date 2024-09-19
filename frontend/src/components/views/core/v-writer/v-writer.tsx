@@ -49,7 +49,7 @@ export class VWriter {
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
       this.updateNote();
-    }, 1000);
+    }, 500);
   }
 
   @Listen("buttonClick") async handleButtonClick(e) {

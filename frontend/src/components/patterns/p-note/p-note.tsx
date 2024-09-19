@@ -25,7 +25,7 @@ export class PNote {
         <e-text variant="footnote">{this.timestamp}</e-text>
         <l-spacer value={0.5}></l-spacer>
         <div class="preview__container">
-          <e-text theme="link">{this.preview}</e-text>
+          <e-text theme="theme-text">{this.preview}</e-text>
         </div>
       </div>
     );

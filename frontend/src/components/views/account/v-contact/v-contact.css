@@ -7,6 +7,12 @@
   align-items: flex-end;
 }
 
-.half-wrapper {
-  width: 50vw;
+.wrapper {
+  width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+  }
 }

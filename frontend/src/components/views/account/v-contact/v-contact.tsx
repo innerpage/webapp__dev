@@ -18,7 +18,7 @@ export class VContact {
         <l-spacer value={5}></l-spacer>
         <e-text variant="display">Contact</e-text>
         <l-spacer value={3}></l-spacer>
-        <div class="half-wrapper">
+        <div class="wrapper">
           <e-text>
             Kindly reach out to us for any kind of assistance, feature requests
             or bug reports:

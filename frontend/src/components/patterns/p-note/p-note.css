@@ -1,6 +1,5 @@
 .note__container {
   display: block;
-  /* width: 100%; */
   border-bottom: var(--border);
   padding: var(--padding);
   transition: all 0.25s;

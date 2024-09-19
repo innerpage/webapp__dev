@@ -47,8 +47,8 @@ h2 {
   color: var(--color__gray--700);
 }
 
-.link {
-  color: var(--color__deep-purple--200);
+.theme-text {
+  color: var(--color__deep-purple--100);
 }
 
 /* Weight */

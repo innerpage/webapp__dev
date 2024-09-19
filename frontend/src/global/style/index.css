@@ -28,3 +28,9 @@ body {
   margin: 0 auto;
   padding-bottom: 8em;
 }
+
+@media only screen and (max-width: 768px) {
+  body {
+    width: 90vw;
+  }
+}
