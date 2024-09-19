@@ -140,18 +140,22 @@ export class VWriter {
           <e-link url="/">
             <l-row>
               <ph-arrow-left></ph-arrow-left>
-              &nbsp;&nbsp;
-              <e-text>Back</e-text>
             </l-row>
           </e-link>
-          <div class="status__bubble">
-            {this.saveStatus === "init" && <e-text>Autosave enabled</e-text>}
-            {this.saveStatus === "saving" && (
+
+          {this.saveStatus === "init" && (
+            <div class="status__bubble">
+              <e-text>Autosave enabled</e-text>
+            </div>
+          )}
+
+          {this.saveStatus === "saving" && (
+            <div class="status__bubble">
               <e-text>
                 <em>Saving..</em>
               </e-text>
-            )}
-          </div>
+            </div>
+          )}
           <e-button variant="light" action="deleteNote">
             <ph-trash
               color="var(--color__deep-purple--300)"
@@ -161,7 +165,7 @@ export class VWriter {
         </l-row>
         <l-spacer value={4}></l-spacer>
         <e-textarea
-          placeholder="Pour your thoughts.."
+          placeholder="How are you feeling? Pour it out.."
           content={this.fetchedContent}
         ></e-textarea>
       </Host>

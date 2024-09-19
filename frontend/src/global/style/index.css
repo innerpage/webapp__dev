@@ -24,6 +24,7 @@ body {
   font-family: var(--font-family__serif);
   line-height: var(--line-height);
   max-width: 1024px;
-  width: 90vw;
+  width: 95vw;
   margin: 0 auto;
+  padding-bottom: 8em;
 }

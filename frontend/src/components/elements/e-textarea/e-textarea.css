@@ -5,24 +5,25 @@
 
 textarea {
   display: block;
-  width: 70vw;
+  width: 70%;
   height: 90vh;
   background: none;
   outline: none;
   border: none;
   caret-color: var(--color__gray--100);
-  color: var(--color__gray--200);
-  font-size: 1.2em;
+  color: var(--color__deep-purple--100);
   font-family: var(--font-family__mono);
   font-weight: 400;
   font-style: normal;
   padding: 1em 0 10em 0;
   white-space: pre-wrap;
-  line-height: 2;
+  line-height: 1.8;
+  font-size: 1em;
 }
 
 @media only screen and (max-width: 768px) {
   textarea {
-    width: 100%;
+    width: 90%;
+    line-height: 1.6;
   }
 }

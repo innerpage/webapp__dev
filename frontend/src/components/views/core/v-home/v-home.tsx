@@ -71,22 +71,25 @@ export class VHome {
     </div>
   );
 
-  NoteLibrary: FunctionalComponent = () => [
-    <l-spacer value={2}></l-spacer>,
-    <l-row direction="row-reverse">
-      <e-button action="writeNote" active={this.isInitiatingWriting}>
-        Write
-      </e-button>
-    </l-row>,
-    <l-spacer value={2}></l-spacer>,
-    this.notes.map((note: any) => (
-      <p-note
-        noteId={note.id}
-        preview={note.preview}
-        timestamp={note.timestamp}
-      ></p-note>
-    )),
-  ];
+  NoteLibrary: FunctionalComponent = () => (
+    <div class="note-library__container">
+      <l-spacer value={2}></l-spacer>
+      {this.notes.map((note: any) => (
+        <p-note
+          noteId={note.id}
+          preview={note.preview}
+          timestamp={note.timestamp}
+        ></p-note>
+      ))}
+      <div class="note-library__button">
+        <e-button action="writeNote" active={this.isInitiatingWriting}>
+          <l-row>
+            <ph-pen-nib></ph-pen-nib>&nbsp;Write
+          </l-row>
+        </e-button>
+      </div>
+    </div>
+  );
 
   SessionView: FunctionalComponent = () =>
     this.notes.length > 0 ? (

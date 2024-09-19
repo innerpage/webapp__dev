@@ -1,16 +1,22 @@
 :host {
   display: block;
+  margin: 0 auto;
+  position: relative;
 }
 
 :host > l-row {
   padding: 1em;
   top: 0;
   left: 0;
+  right: 0;
   box-sizing: border-box;
   position: fixed;
   display: flex;
   width: 100vw;
+  max-width: 1024px;
   justify-content: space-between;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 ph-arrow-left {
@@ -19,7 +25,8 @@ ph-arrow-left {
 }
 
 .status__bubble {
-  background: #121212;
+  background: #0f0c14;
   border-radius: var(--border-radius);
-  padding: 0 1em;
+  padding: 0.25em 1em;
+  font-size: 0.8em;
 }
