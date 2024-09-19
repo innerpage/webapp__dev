@@ -3,7 +3,6 @@ export const Var = {
     name: "InnerPage",
     contact: {
       email: "innerpage.journal@gmail.com",
-      url: "https://innerpage.org/contact-us",
       social: {
         twitter: "https://x.com/TheInnerPage",
       },
@@ -15,9 +14,6 @@ export const Var = {
       },
       privacy: {
         url: "https://innerpage.org/privacy-policy",
-      },
-      cancellationAndRefund: {
-        url: "https://innerpage.org/cancellation",
       },
     },
     url: "https://app.innerpage.org",
@@ -60,17 +56,6 @@ export const Var = {
           userName: "/username",
         },
         password: "/password",
-      },
-      payment: {
-        stripe: {
-          session: {
-            create: "/stripe-create-session",
-            check: "/stripe-check-session",
-          },
-          price: {
-            get: "/stripe-get-price",
-          },
-        },
       },
       note: {
         single: "/note",

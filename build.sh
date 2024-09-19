@@ -1,5 +1,6 @@
 ## Delete old prod & ./server/dest
-rm -rf ../prod server/dest
+rm -rf ../prod 
+rm -rf server/dest
 mkdir ../prod
 
 ## Build ./server
