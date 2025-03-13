@@ -18,7 +18,7 @@ export class PTopbar {
               <e-img src="../../assets/logotype.svg" width="7.5em"></e-img>
             </div>
           </e-link>
-          <e-link url="https://innerpage.org/support-us" variant="externalLink">
+          <e-link url="https://innerpage.org/support" variant="externalLink">
             Support Us
           </e-link>
           <p-user-control></p-user-control>
