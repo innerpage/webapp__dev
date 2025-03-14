@@ -112,7 +112,7 @@ export class VSignup {
         <c-card>
           <e-img src="../../assets/logomark.svg" width="4em"></e-img>
           <l-spacer value={1.5}></l-spacer>
-          <e-text variant="display">Sign up</e-text>
+          <h1>Sign up</h1>
           <l-spacer value={1.5}></l-spacer>
           <e-input
             type="text"

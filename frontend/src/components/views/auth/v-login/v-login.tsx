@@ -70,7 +70,7 @@ export class VLogin {
         <c-card>
           <e-img src="../../assets/logomark.svg" width="4em"></e-img>
           <l-spacer value={1.5}></l-spacer>
-          <e-text variant="display">Log in</e-text>
+          <h1>Log in</h1>
           <l-spacer value={1.5}></l-spacer>
           <e-input type="text" name="userName" placeholder="Username"></e-input>
           <l-spacer value={1.5}></l-spacer>
